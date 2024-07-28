@@ -227,21 +227,16 @@ The app must be publicly available in AppStore, Google Play Store, or elsewhere;
 
 Predictions were made at the end of July, 2024.
 
+
 ## References
 
 References to academic papers:
 
-
 1. https://scholar.colorado.edu/concern/graduate_thesis_or_dissertations/zp38wc97m (DASH is first mentioned on page 68)
-
 2. https://www.politesi.polimi.it/retrieve/b39227dd-0963-40f2-a44b-624f205cb224/2022_4_Randazzo_01.pdf
-
 3. http://act-r.psy.cmu.edu/wordpress/wp-content/themes/ACT-R/workshops/2003/proceedings/46.pdf
-
 4. https://github.com/duolingo/halflife-regression/blob/master/settles.acl16.pdf
-
 5. https://arxiv.org/pdf/2402.12291.pdf
-
 6. https://www.researchgate.net/publication/381792698_DRL-SRS_A_Deep_Reinforcement_Learning_Approach_for_Optimizing_Spaced_Repetition_Scheduling
 
 References to things that aren't academic papers:
