@@ -133,9 +133,123 @@ Additionally, below is a table comparing different algorithms.
 
 ![Comparison table](https://github.com/user-attachments/assets/642fb300-e43e-4a84-a85d-06fb884fe679)
 
+It should be noted that some algorithms, such as SM-2, which were not designed to be adaptive, could still be made adaptive and benefit from parameter optimization. In the table, boxes in the Adaptive column are checked based on the original design of the algorithm.
+
+As for symmetry, for some algorithms, such as DASH and GRU-P, probabilities can be calculated easily, but due to the quirks of their forgetting curves, it is not possible to determine interval lengths that correspond to specific probabilities via an exact formula. Though it can still be done approximately. Nonetheless, symmetry is desirable for practical purposes of scheduling.
 
 
+## Dataset
+
+The dataset used in the benchmark is [FSRS Anki 20k](https://huggingface.co/datasets/open-spaced-repetition/FSRS-Anki-20k), the largest in the world. It contains data about ~1.7 billion flashcard reviews from 20 thousand users, which is approximately 8 times more reviews than in the [Maimemo dataset](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VAGUL0), and approximately 131 times more reviews than in [the Duolingo dataset](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/N8XJME).
+
+The data itself is also different. In Anki, each user makes their own flashcards, while Maimemo and Duolingo offer pre-made courses. Anki has data about certain users reviewing different material, while Maimemo and Duolingo have data about certain material being reviewed by different users.
+
+This benchmark is based on 19,990 collections and 707,964,360 reviews, excluding same-day reviews (which constitute a substantial proportion of all reviews); only 1 review of a card per day is used by each algorithm other than FSRS-5, which uses same-day reviews for training, but not for evaluation. Additionally, some reviews are filtered out, such as when the user manually changed the due date (which would count as a review), or when the user used what's called a "filtered deck" if "Reschedule cards based on my answers in this deck" was disabled. Finally, an outlier filter is applied. Because of all of that, the real number of reviews used for evaluation is around 700 million, much smaller than 1.7B.
 
 
+## Results
+
+In the tables and charts below, the averages are weighted by the number of reviews in each user's collection, meaning that users with more reviews have a greater impact on the value of the average. If someone has 100 thousand reviews, they will affect the average 100 times more than someone who only has 1 thousand reviews.
+The tables also show the number of optimizable parameters of each algorithm. The benchmark repo also has [unweighted averages](https://github.com/open-spaced-repetition/srs-benchmark?tab=readme-ov-file#result).
+
+![RMSE (table)](https://github.com/user-attachments/assets/72570add-a896-4732-83b5-06e38ffa6b59)
+
+![RMSE](https://github.com/user-attachments/assets/b033f88d-2024-4a1a-96f2-69fc974e760a)
+
+Lower is better. Black caps are 99% confidence intervals.
+Don't focus too much on absolute values, they depend on a lot of things: how we calculate RMSE (which involves somewhat arbitrary binning), whether the averages are weighted by the number of reviews or not, and how the outlier filter works. Instead, focus on the ranking - which algorithm is the best, which one is the second best, which one is the third best, etc.
+
+The bars corresponding to FSRS-5 and GRU-P (short-term) are colored differently to indicate that these algorithms have been trained on more reviews; all other algorithms are trained without using same-day reviews. However, the comparison is still fair because all algorithms are evaluated on the same data, even if the training data is different. Here's an analogy: one student did a lot of homework before the test, the other did less homework. After that, both students took the same test. Even though they did a different amount of homework, since the test is the same, it's still valid to compare the test scores of these two students.
+
+Now let's look at log loss.
+
+![Log loss (table)](https://github.com/user-attachments/assets/6f6a8f49-5bcf-492a-a926-f7078ff1c049)
+
+![Log loss](https://github.com/user-attachments/assets/f447ae5e-d17b-4d65-9a3f-4a54e1b2cda4)
+
+Lower is better. Black caps are 99% confidence intervals.
+As you can see, the ranking is a little different. For example, based on RMSE, the ranks of NN-17 and GRU are very close (10th and 11th best, respectively), but based on log loss, NN-17 is ranked much higher (9th best, GRU is 14th). SM-2 and Transformer have switched places. AVG has a higher rank.
+
+Finally, let's look at AUC.
+
+![AUC (table)](https://github.com/user-attachments/assets/9ed66833-f5a7-471f-9ea9-cf4f79811a15)
+
+![AUC](https://github.com/user-attachments/assets/ff9261e9-1779-48f4-8e5b-545e7adb9578)
+
+Higher is better. Black caps are 99% confidence intervals.
+Now ranking is very different. This isn't too surprising, considering that AUC is completely uncorrelated with both RMSE and log loss.
+It's interesting that the AUC score of HLR is 0.631, much higher than 0.54, which is what Duolingo reported in their paper. Granted, 0.631 is not that impressive either. In fact, all spaced repetition algorithms have rather unimpressive AUC scores.
+Unsurprisingly, AVG has an AUC score close to 0.5. Since it always outputs a constant, it cannot differentiate between forgotten and recalled cards.
+It is somewhat surprising that NN-17 has a relatively low AUC score, given that it combines the best of both worlds - a model of human memory, supplemented with a neural network. Granted, the goal  was not to create the perfect algorithm; rather, the goal was to emulate SM-17, but still.
+LMSherlock's implementation of Transformer doesn't perform well according to all 3 metrics, so if any neural network experts think, "I bet I can do better!", they are welcome!
+
+Let's address GRU-P. As you can see, it outperforms all other algorithms by all three metrics. So you're probably wondering "If predicting R directly is better than predicting an intermediate value first, why not do that?". Here's what happens when you let an algorithm predict R directly.
+
+These are forgetting curves that GRU-P generated for different users. Only one of them makes sense. S-shaped (number 1) curve is not what an actual forgetting curve looks like, according to most (all?) research. A curve that becomes flat (number 2) not only makes no sense, but is also unusable in practice, it could result in infinitely long intervals when used for scheduling. A curve with a maximum that is not at time=0 (number 3) makes no sense either, unless it's a superposition of two different curves. Only number 4 is a proper forgetting curve. So while GRU-P outperforms all other algorithms, it's not usable in practice as it could result in all kinds of strange behavior.
+
+## Discussion
+
+Caveats:
+1. We cannot benchmark proprietary algorithms, such as the latest SuperMemo algorithms.
+
+2. There are algorithms that require extra features, such as HLR with Duolingo's lexeme tags or [KAR3L](https://arxiv.org/pdf/2402.12291.pdf), which uses not only interval lengths and grades but also the text of the card and mildly outperforms FSRS v4 (though it's unknown whether it outperforms FSRS-4.5 and FSRS-5), according to the paper. Such algorithms can be more accurate than FSRS when given the necessary information, but they cannot be benchmarked on our dataset. Only algorithms that use interval lengths and grades can be benchmarked since no other features are available.
+
+We would love to benchmark [THLR](https://www.researchgate.net/publication/381792698_DRL-SRS_A_Deep_Reinforcement_Learning_Approach_for_Optimizing_Spaced_Repetition_Scheduling), but the researchers didn't release their code publicly.
+
+Regarding the future of FSRS, we have been racking our brains, trying to come up with some way to improve it, and this mild improvement in FSRS-5 was the best we could do. FSRS-5 is the final version, there will be no major releases in the foreseeable future.
+
+There are several ways to make FSRS more accurate, none of which are currently feasible:
+1. Consider the number of reviews done before a particular review + time of the day to estimate how fatigued the user was (perhaps some other factors could be taken into account when estimating fatigue as well). If someone is doing their first review at 4 PM, they are probably less fatigued than someone who is doing their 500th review at 4 AM, which affects retention. This is not possible with the way Anki currently works - FSRS cannot access datetime information - and would require major changes.
+
+2. Consider the content of the cards: text, sound and images. It would require adding another machine learning algorithm (or even several algorithms) just for text/audio/image recognition, and we wouldn't be able to train it since Dae (the main Anki dev) can't give us a dataset that has all of the content of cards. That is against Anki's privacy policy, only scheduling data is available publicly.
+
+3. Consider the interference from sibling cards. This could also be extended to "conceptual siblings" - cards that don't come from the same note, but test you on similar material. Again, not possible due to how Anki works: when the user is reviewing a particular card, FSRS (or any other algorithm) cannot access review history of any other card. So it cannot combine data from multiple cards. Even if it could, optimization would probably become a nightmare.
+
+All three of these combined could greatly increase the efficiency of spaced repetition. The third enhancement could be particularly effective if each pair of cards is assigned a "similarity score" (using some machine learning algorithm), though doing that naively would be computationally intractable - the number of pairs is proportional to the number of cards squared; for example, 10,000 cards have 49,995,000 pairs. Still, I would expect great improvements from an algorithm that doesn't treat cards as independent, and a review of card A increases not only the memory stability of card A but also the memory stability of card B, albeit to a lesser extent.
+
+**Anki is not designed for advanced spaced repetition algorithms.**
+There are about 20 different ways to get learning steps wrong, and having two arbitrary stages ("learning" and "review") isn't necessary to begin with.
+Any algorithm, FSRS or otherwise, can only access interval lengths and grades, nothing else.
+Datetime info is inaccessible when scheduling the next review.
+Info from other cards (other than the card that is being reviewed right now) is inaccessible when scheduling the next review.
+[There is no way to manually create connections between cards](https://faqs.ankiweb.net/linking-cards-together.html).
+
+With all that in mind, I want to make several predictions:
+
+1. No further version of FSRS beyond FSRS-5 will be used in Anki by 2027. No FSRS-5.5, FSRS-6, or any other version that supersedes FSRS-5. Though it's possible that LMSherlock will develop a more advanced version of FSRS for another app, but that is not related to this prediction.
+
+2. By 2029, no algorithm in our benchmark will have achieved a (weighted by reviews) log loss lower than 0.27, unless the dataset used in the benchmark changes, in which case this prediction is rendered void.
+
+3. By 2029, no algorithm in our benchmark will have achieved an (weighted by reviews) AUC score higher than 0.83, unless the dataset used in the benchmark changes.
+
+4. By 2031, there will be an app with an algorithm that employs at least one out of three ideas proposed above (which are not specific to FSRS), and that app will not be Anki. For example, an app using KAR3L.
+The app must be publicly available in AppStore, Google Play Store, or elsewhere; and must not be in the beta testing stage. I'm adding these extra conditions because without them, mathacademy.com has already [met the main condition](https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/). Even with the extra conditions, this prediction can easily come true way sooner than 2031.
+
+Predictions were made at the end of July, 2024.
+
+## References
+
+References to academic papers:
 
 
+1. https://scholar.colorado.edu/concern/graduate_thesis_or_dissertations/zp38wc97m (DASH is first mentioned on page 68)
+
+2. https://www.politesi.polimi.it/retrieve/b39227dd-0963-40f2-a44b-624f205cb224/2022_4_Randazzo_01.pdf
+
+3. http://act-r.psy.cmu.edu/wordpress/wp-content/themes/ACT-R/workshops/2003/proceedings/46.pdf
+
+4. https://github.com/duolingo/halflife-regression/blob/master/settles.acl16.pdf
+
+5. https://arxiv.org/pdf/2402.12291.pdf
+
+6. https://www.researchgate.net/publication/381792698_DRL-SRS_A_Deep_Reinforcement_Learning_Approach_for_Optimizing_Spaced_Repetition_Scheduling
+
+References to things that aren't academic papers:
+
+1. https://github.com/open-spaced-repetition/srs-benchmark?tab=readme-ov-file#srs-benchmark
+2. https://huggingface.co/datasets/open-spaced-repetition/FSRS-Anki-20k
+3. https://github.com/open-spaced-repetition/fsrs4anki/wiki/The-Metric
+4. https://supermemo.guru/wiki/Algorithm_SM-17
+5. https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VAGUL0
+6. https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/N8XJME
+7. https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/
