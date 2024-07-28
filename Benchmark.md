@@ -1,8 +1,10 @@
 # Benchmark of Spaced Repetition Algorithms
 
+
 ## Intro
 This is an extended version of my Reddit post. This article should take approximately 25–30 minutes to read, the Reddit post should take around 11–13 minutes. I tried to make this article suited both to tech-savvy and casual readers, so I may have over-explained some things.
-Side note: when I say "we", I'm referring to myself and [LMSherlock](https://github.com/L-M-Sherlock) (Jarrett Ye), the creator of [FSRS](https://github.com/open-spaced-repetition/fsrs4anki/wiki/ABC-of-FSRS).
+Side note: when I say "we", I'm referring to myself and [L-M-Sherlock](https://github.com/L-M-Sherlock) (Jarrett Ye), the creator of [FSRS](https://github.com/open-spaced-repetition/fsrs4anki/wiki/ABC-of-FSRS).
+
 
 ## Metrics
 First of all, every spaced repetition algorithm must be able to predict the **probability of recalling** a card at a given point in time, given the card's review history. Let's call that **R**. All three metrics that we use are related to the probability of recall.
@@ -41,11 +43,11 @@ Below is a table comparing different metrics.
 
 ### FSRS family
 
-​1.​ ​FSRS v3. It was the first version of FSRS that people actually used, it was released in October 2022. It wasn't terrible, but it had issues. LMSherlock, I, and several other users have proposed and tested several dozens of ideas (only a handful of them proved to be effective) to improve the algorithm.
-​
-2​. ​FSRS v4. It came out in July 2023, and at the beginning of November 2023, it was integrated into Anki. It's a significant improvement over v3.
+1. ​FSRS v3. It was the first version of FSRS that people actually used, it was released in October 2022. It wasn't terrible, but it had issues. LMSherlock, I, and several other users have proposed and tested several dozens of ideas (only a handful of them proved to be effective) to improve the algorithm.
 
-​3​. ​FSRS-4.5. It's a slightly improved version of FSRS v4, the shape of the forgetting curve has been changed.
+2. FSRS v4. It came out in July 2023, and at the beginning of November 2023, it was integrated into Anki. It's a significant improvement over v3.
+
+3. FSRS-4.5. It's a slightly improved version of FSRS v4, the shape of the forgetting curve has been changed.
 
 4. FSRS-5. The newest version. The main difference is that it takes into account same-day reviews, unlike all previous version, though the improvement in performance is small. Anki 24.XX uses it, AnkiMobile and AnkiDroid haven't been updated yet, so they use FSRS-4.5. If you want to read about the differences between FSRS-4.5 and FSRS-5, I have an article with an in-depth explanation of FSRS formulas.
 
@@ -176,20 +178,22 @@ Finally, let's look at AUC.
 
 ![AUC](https://github.com/user-attachments/assets/ff9261e9-1779-48f4-8e5b-545e7adb9578)
 
-Higher is better. Black caps are 99% confidence intervals.
-Now ranking is very different. This isn't too surprising, considering that AUC is completely uncorrelated with both RMSE and log loss.
-It's interesting that the AUC score of HLR is 0.631, much higher than 0.54, which is what Duolingo reported in their paper. Granted, 0.631 is not that impressive either. In fact, all spaced repetition algorithms have rather unimpressive AUC scores.
-Unsurprisingly, AVG has an AUC score close to 0.5. Since it always outputs a constant, it cannot differentiate between forgotten and recalled cards.
-It is somewhat surprising that NN-17 has a relatively low AUC score, given that it combines the best of both worlds - a model of human memory, supplemented with a neural network. Granted, the goal  was not to create the perfect algorithm; rather, the goal was to emulate SM-17, but still.
+Higher is better. Black caps are 99% confidence intervals.  <br />
+Now ranking is very different. This isn't too surprising, considering that AUC is completely uncorrelated with both RMSE and log loss. <br />
+It's interesting that the AUC score of HLR is 0.631, much higher than 0.54, which is what Duolingo reported in their paper. Granted, 0.631 is not that impressive either. In fact, all spaced repetition algorithms have rather unimpressive AUC scores. <br />
+Unsurprisingly, AVG has an AUC score close to 0.5. Since it always outputs a constant, it cannot differentiate between forgotten and recalled cards. <br />
+It is somewhat surprising that NN-17 has a relatively low AUC score, given that it combines the best of both worlds - a model of human memory, supplemented with a neural network. Granted, the goal  was not to create the perfect algorithm; rather, the goal was to emulate <br />SM-17, but still. <br />
 LMSherlock's implementation of Transformer doesn't perform well according to all 3 metrics, so if any neural network experts think, "I bet I can do better!", they are welcome!
 
 Let's address GRU-P. As you can see, it outperforms all other algorithms by all three metrics. So you're probably wondering "If predicting R directly is better than predicting an intermediate value first, why not do that?". Here's what happens when you let an algorithm predict R directly.
 
 These are forgetting curves that GRU-P generated for different users. Only one of them makes sense. S-shaped (number 1) curve is not what an actual forgetting curve looks like, according to most (all?) research. A curve that becomes flat (number 2) not only makes no sense, but is also unusable in practice, it could result in infinitely long intervals when used for scheduling. A curve with a maximum that is not at time=0 (number 3) makes no sense either, unless it's a superposition of two different curves. Only number 4 is a proper forgetting curve. So while GRU-P outperforms all other algorithms, it's not usable in practice as it could result in all kinds of strange behavior.
 
+
 ## Discussion
 
 Caveats:
+
 1. We cannot benchmark proprietary algorithms, such as the latest SuperMemo algorithms.
 
 2. There are algorithms that require extra features, such as HLR with Duolingo's lexeme tags or [KAR3L](https://arxiv.org/pdf/2402.12291.pdf), which uses not only interval lengths and grades but also the text of the card and mildly outperforms FSRS v4 (though it's unknown whether it outperforms FSRS-4.5 and FSRS-5), according to the paper. Such algorithms can be more accurate than FSRS when given the necessary information, but they cannot be benchmarked on our dataset. Only algorithms that use interval lengths and grades can be benchmarked since no other features are available.
@@ -199,6 +203,7 @@ We would love to benchmark [THLR](https://www.researchgate.net/publication/38179
 Regarding the future of FSRS, we have been racking our brains, trying to come up with some way to improve it, and this mild improvement in FSRS-5 was the best we could do. FSRS-5 is the final version, there will be no major releases in the foreseeable future.
 
 There are several ways to make FSRS more accurate, none of which are currently feasible:
+
 1. Consider the number of reviews done before a particular review + time of the day to estimate how fatigued the user was (perhaps some other factors could be taken into account when estimating fatigue as well). If someone is doing their first review at 4 PM, they are probably less fatigued than someone who is doing their 500th review at 4 AM, which affects retention. This is not possible with the way Anki currently works - FSRS cannot access datetime information - and would require major changes.
 
 2. Consider the content of the cards: text, sound and images. It would require adding another machine learning algorithm (or even several algorithms) just for text/audio/image recognition, and we wouldn't be able to train it since Dae (the main Anki dev) can't give us a dataset that has all of the content of cards. That is against Anki's privacy policy, only scheduling data is available publicly.
@@ -208,11 +213,11 @@ There are several ways to make FSRS more accurate, none of which are currently f
 All three of these combined could greatly increase the efficiency of spaced repetition. The third enhancement could be particularly effective if each pair of cards is assigned a "similarity score" (using some machine learning algorithm), though doing that naively would be computationally intractable - the number of pairs is proportional to the number of cards squared; for example, 10,000 cards have 49,995,000 pairs. Still, I would expect great improvements from an algorithm that doesn't treat cards as independent, and a review of card A increases not only the memory stability of card A but also the memory stability of card B, albeit to a lesser extent.
 
 **Anki is not designed for advanced spaced repetition algorithms.**
-There are about 20 different ways to get learning steps wrong, and having two arbitrary stages ("learning" and "review") isn't necessary to begin with.
-Any algorithm, FSRS or otherwise, can only access interval lengths and grades, nothing else.
-Datetime info is inaccessible when scheduling the next review.
-Info from other cards (other than the card that is being reviewed right now) is inaccessible when scheduling the next review.
-[There is no way to manually create connections between cards](https://faqs.ankiweb.net/linking-cards-together.html).
+There are about 20 different ways to get learning steps wrong, and having two arbitrary stages ("learning" and "review") isn't necessary to begin with. <br />
+Any algorithm, FSRS or otherwise, can only access interval lengths and grades, nothing else. <br />
+Datetime info is inaccessible when scheduling the next review. <br />
+Info from other cards (other than the card that is being reviewed right now) is inaccessible when scheduling the next review. <br />
+[There is no way to manually create connections between cards](https://faqs.ankiweb.net/linking-cards-together.html). <br />
 
 With all that in mind, I want to make several predictions:
 
