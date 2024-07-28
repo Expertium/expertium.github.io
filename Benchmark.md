@@ -21,7 +21,7 @@ Here's what you need to know about RMSE:
 1. RMSE measures how close the predicted R is to reality. It puts reviews into bins and measures the difference between *average* actual retention and *average* predicted R within each bin.
 2. RMSE ranges from 0 to 1, lower is better.
 3. We calculate it by binning reviews in a way that is specific to spaced repetition, you won't find this in the literature. This isn't very nice for making the benchmark results accepted by other researchers, but we have other metrics for that.
-4. It's not what the optimizer in Anki is minimizing. Log loss is what the FSRS optimizer is internally used for optimization, not RMSE. We can't use RMSE for that.
+4. It's not what the optimizer in Anki is minimizing. Log loss is what the FSRS optimizer is internally using for optimization, not RMSE. We can't use RMSE for that.
 
 Next is log loss. Here's what you need to know about log loss:
 1. Log loss measures how close the predicted probability of recall (R) is to reality, just like RMSE. However, unlike RMSE, it doesn't rely on binning reviews. RMSE is based on the difference between averages, whereas log loss is based on the difference between individual predictions and individual review outcomes.
