@@ -199,7 +199,7 @@ Higher is better. Black caps are 99% confidence intervals.  <br />
 Now ranking is very different. This isn't too surprising, considering that AUC is completely uncorrelated with both RMSE and log loss. <br />
 It's interesting that the AUC score of HLR is 0.631, much higher than 0.54, which is what Duolingo reported in their paper. Granted, 0.631 is not that impressive either. In fact, all spaced repetition algorithms have rather unimpressive AUC scores. <br />
 Unsurprisingly, AVG has an AUC score close to 0.5. Since it always outputs a constant, it cannot differentiate between forgotten and recalled cards. <br />
-It is somewhat surprising that NN-17 has a relatively low AUC score, given that it combines the best of both worlds - a model of human memory, supplemented with a neural network. Granted, the goal  was not to create the perfect algorithm; rather, the goal was to emulate <br />SM-17, but still. <br />
+It is somewhat surprising that NN-17 has a relatively low AUC score, given that it combines the best of both worlds - a model of human memory, supplemented with a neural network. Granted, the goal  was not to create the perfect algorithm; rather, the goal was to emulate <br />SM-17. <br />
 Jarrett's implementation of Transformer doesn't perform well according to all 3 metrics, so if any neural network experts think, "I bet I can do better!", they are welcome!
 
 Let's address GRU-P. As you can see, it outperforms all other algorithms by all three metrics. So you're probably wondering "If predicting R directly is better than predicting an intermediate value first, why not do that?". Here's what happens when you let an algorithm predict R directly.
