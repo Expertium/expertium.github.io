@@ -23,7 +23,17 @@ Here's what you need to know about RMSE:
 3. We calculate it by binning reviews in a way that is specific to spaced repetition, you won't find this in the literature. This isn't very nice for making the benchmark results accepted by other researchers, but we have other metrics for that.
 4. It's not what the optimizer in Anki is minimizing. Log loss is what the FSRS optimizer is internally using for optimization, not RMSE. We can't use RMSE for that.
 
-Next is log loss. Here's what you need to know about log loss:
+Next is log loss. It is calculated using the following formula:
+
+$$
+\begin{aligned}
+loss = -{(y\log(p) + (1 - y)\log(1 - p))}
+\end{aligned}
+$$
+
+where y is a binary label (either 0 or 1), and p is the probability predicted by an algorithm (a real number between 0 and 1).
+
+Here's what you need to know about log loss:
 1. Log loss measures how close the predicted probability of recall (R) is to reality, just like RMSE. However, unlike RMSE, it doesn't rely on binning reviews. RMSE is based on the difference between averages, whereas log loss is based on the difference between individual predictions and individual review outcomes.
 2. Log loss ranges from 0 to infinity, lower is better.
 3. Unlike RMSE, log loss never reaches 0, unless the algorithm only outputs ones and zeros. If an algorithm outputs numbers between 0 and 1, the minimum possible value of log loss that it can achieve is >0. This makes log loss less intuitive than RMSE. You might intuitively expect that if the distribution of predicted probabilities exactly matches the distribution of true probabilities, the loss would be zero, but no.
