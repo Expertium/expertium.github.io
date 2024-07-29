@@ -15,7 +15,7 @@ Once we have an algorithm that predicts R, we can run it on some users' review h
 
 Loosely speaking, if an algorithm predicts an X% chance of something happening, it should happen X% of the time. For example, if a weatherman says "There is a 90% chance of rain today", it should rain on 90% of days when he said that. That's good calibration. If it rained only on 40% of those days, it means that the weatherman (or, well, his forecasting system) is poorly calibrated - his probabilities don't match observed frequencies. RMSE measures how well-calibrated an algorithm is.
 
-The calculation of RMSE has been reworked in the past to prevent cheating, aka algorithms achieving good numbers on paper without getting better at predicting R in reality. If you want to know the nitty-gritty mathematical details, you can read this article by LMSherlock and me. The new method is our own invention, and you won't find it in any academic paper. Anki >=24.04 use the new method when "Evaluate" is used.
+The calculation of RMSE has been reworked in the past to prevent cheating, aka algorithms achieving good numbers on paper without getting better at predicting R in reality. If you want to know the nitty-gritty mathematical details, you can read [this article by LMSherlock and me](https://github.com/open-spaced-repetition/fsrs4anki/wiki/The-Metric). The new method is our own invention, and you won't find it in any academic paper. Anki >=24.04 use the new method when "Evaluate" is used.
 
 Here's what you need to know about RMSE:
 1. RMSE measures how close the predicted R is to reality. It puts reviews into bins and measures the difference between *average* actual retention and *average* predicted R within each bin.
