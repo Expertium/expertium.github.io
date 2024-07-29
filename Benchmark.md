@@ -28,7 +28,7 @@ Next is log loss. Here's what you need to know about log loss:
 2. Log loss ranges from 0 to infinity, lower is better.
 3. Unlike RMSE, log loss never reaches 0, unless the algorithm only outputs ones and zeros. If an algorithm outputs numbers between 0 and 1, the minimum possible value of log loss that it can achieve is >0. This makes log loss less intuitive than RMSE. You might intuitively expect that if the distribution of predicted probabilities exactly matches the distribution of true probabilities, the loss would be zero, but no.
 
-Next is AUC (Area Under Curve). Unlike the previous two metrics, AUC is not a measure of **calibration** but of **discrimination**. Here's what you need to know about AUC:
+Next is AUC (Area Under the Curve). Unlike the previous two metrics, AUC is not a measure of **calibration** but of **discrimination**. Here's what you need to know about AUC:
 1. AUC measures how well an algorithm can tell classes apart; in our case, classes are "recalled" and "forgotten." You can think of AUC as a measure of how well the algorithm can draw a boundary between two classes, such that all members of class 1 are on one side of the boundary, and all members of class 2 are on the other side.
 2. AUC scores range from 0 to 1, however, in practice it's almost always greater than 0.5. AUC scores less than 0.5 indicate that the algorithm is performing worse than random. Higher is better.
 
