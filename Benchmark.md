@@ -36,7 +36,7 @@ AUC can be rather unintuitive in some cases. Exaggerated example: suppose you ha
 
 Below is a diagram that explains AUC.
 
-![AUC 2](https://github.com/user-attachments/assets/289a8993-8226-45f5-a485-57eabb4c045f)
+![AUC 2 1](https://github.com/user-attachments/assets/28c55552-0613-4643-ad69-bfecf04dfce8)
 
 
 Here's a table comparing different metrics.
