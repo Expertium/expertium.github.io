@@ -3,7 +3,7 @@
 
 ## Intro
 This is an extended version of my Reddit post. This article should take approximately 25–30 minutes to read, the Reddit post should take around 11–13 minutes. I tried to make this article suited both to tech-savvy and casual readers, so I may have over-explained some things.
-Side note: when I say "we", I'm referring to myself and [L-M-Sherlock](https://github.com/L-M-Sherlock) (Jarrett Ye), the creator of [FSRS](https://github.com/open-spaced-repetition/fsrs4anki/wiki/ABC-of-FSRS).
+Side note: when I say "we", I'm referring to myself and [Jarrett Ye](https://github.com/L-M-Sherlock), the creator of [FSRS](https://github.com/open-spaced-repetition/fsrs4anki/wiki/ABC-of-FSRS).
 
 
 ## Metrics
@@ -15,7 +15,7 @@ Once we have an algorithm that predicts R, we can run it on some users' review h
 
 Loosely speaking, if an algorithm predicts an X% chance of something happening, it should happen X% of the time. For example, if a weatherman says "There is a 90% chance of rain today", it should rain on 90% of days when he said that. That's good calibration. If it rained only on 40% of those days, it means that the weatherman (or, well, his forecasting system) is poorly calibrated - his probabilities don't match observed frequencies. RMSE measures how well-calibrated an algorithm is.
 
-The calculation of RMSE has been reworked in the past to prevent cheating, aka algorithms achieving good numbers on paper without getting better at predicting R in reality. If you want to know the nitty-gritty mathematical details, you can read [this article by LMSherlock and me](https://github.com/open-spaced-repetition/fsrs4anki/wiki/The-Metric). The new method is our own invention, and you won't find it in any academic paper. Anki >=24.04 use the new method when "Evaluate" is used.
+The calculation of RMSE has been reworked in the past to prevent cheating, aka algorithms achieving good numbers on paper without getting better at predicting R in reality. If you want to know the nitty-gritty mathematical details, you can read [this article by Jarrett and me](https://github.com/open-spaced-repetition/fsrs4anki/wiki/The-Metric). The new method is our own invention, and you won't find it in any academic paper. Anki >=24.04 use the new method when "Evaluate" is used.
 
 Here's what you need to know about RMSE:
 1. RMSE measures how close the predicted R is to reality. It puts reviews into bins and measures the difference between *average* actual retention and *average* predicted R within each bin.
@@ -50,7 +50,7 @@ Here's a table comparing different metrics.
 
 ### FSRS family
 
-1. ​FSRS v3. It was the first version of FSRS that people actually used, it was released in October 2022. It wasn't terrible, but it had issues. LMSherlock, I, and several other users have proposed and tested several dozens of ideas (only a handful of them proved to be effective) to improve the algorithm.
+1. ​FSRS v3. It was the first version of FSRS that people actually used, it was released in October 2022. It wasn't terrible, but it had issues. Jarrett, I, and several other users have proposed and tested several dozens of ideas (only a handful of them proved to be effective) to improve the algorithm.
 
 2. FSRS v4. It came out in July 2023, and at the beginning of November 2023, it was integrated into Anki. It's a significant improvement over v3.
 
