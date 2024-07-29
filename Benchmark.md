@@ -254,9 +254,10 @@ References to academic papers:
 References to things that aren't academic papers:
 
 1. https://github.com/open-spaced-repetition/srs-benchmark?tab=readme-ov-file#srs-benchmark
-2. https://huggingface.co/datasets/open-spaced-repetition/FSRS-Anki-20k
-3. https://github.com/open-spaced-repetition/fsrs4anki/wiki/The-Metric
-4. https://supermemo.guru/wiki/Algorithm_SM-17
-5. https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VAGUL0
-6. https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/N8XJME
-7. https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/
+2. https://www.geeksforgeeks.org/auc-roc-curve/
+3. https://huggingface.co/datasets/open-spaced-repetition/FSRS-Anki-20k
+4. https://github.com/open-spaced-repetition/fsrs4anki/wiki/The-Metric
+5. https://supermemo.guru/wiki/Algorithm_SM-17
+6. https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VAGUL0
+7. https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/N8XJME
+8. https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/
