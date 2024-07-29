@@ -239,6 +239,7 @@ Info from other cards (other than the card that is being reviewed right now) is 
 With all that in mind, I want to make several predictions:
 
 1. No further version of FSRS beyond FSRS-5 will be used in Anki by 2027. No FSRS-5.5, FSRS-6, or any other version that supersedes FSRS-5. Though it's possible that Jarrett will develop a more advanced version of FSRS for another app, but that is not related to this prediction.
+Clarification: I made this prediciton a few days before Jarrett made [this tweet](https://x.com/JarrettYe/status/1817570865699299818). After seeing his tweet, I'm even more confident in this prediction.
 
 2. By 2029, no algorithm in our benchmark will have achieved a (weighted by reviews) log loss lower than 0.27, unless the dataset used in the benchmark changes, in which case this prediction is rendered void.
 
