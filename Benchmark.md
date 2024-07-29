@@ -38,6 +38,8 @@ Below is a diagram that explains AUC.
 
 ![AUC 2 1](https://github.com/user-attachments/assets/28c55552-0613-4643-ad69-bfecf04dfce8)
 
+For a more in-depth explanation of AUC, you can read [this article](https://www.geeksforgeeks.org/auc-roc-curve/).
+
 
 Here's a table comparing different metrics.
 
