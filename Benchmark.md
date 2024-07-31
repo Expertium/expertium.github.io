@@ -207,7 +207,7 @@ Let's address GRU-P. As you can see, it outperforms all other algorithms by all 
 ![GRU-P curves](https://github.com/user-attachments/assets/3420e64b-8bfb-4533-89f4-77908877af66)
 
 These are forgetting curves that GRU-P generated for different users. Only one of them makes sense. <br />
-A curve that becomes flat (top left) not only makes no sense, but is also unusable in practice, it could result in *infinitely* long intervals when used for scheduling. <br />
+A curve that becomes flat (top left) not only makes no sense but is also unusable in practice, it could result in *infinitely* long intervals when used for scheduling. <br />
 A curve with a maximum that is not at time=0 (bottom left) makes no sense either. A curve with a minimum (top right) implies that after some point in time, forgetting ends and some sort of anti-forgetting starts, which also makes no sense. <br />
 Only bottom right is a proper forgetting curve. Well, minus the fact that it's wiggly. And minus the fact that it doesn't start at 100%. <br />
 So while GRU-P outperforms all other algorithms, it's not usable in practice as it could result in all kinds of strange behavior.
