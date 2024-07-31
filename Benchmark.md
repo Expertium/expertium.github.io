@@ -225,6 +225,8 @@ We would love to benchmark [THLR](https://www.researchgate.net/publication/38179
 
 Regarding the future of FSRS, we have been racking our brains, trying to come up with some way to improve it, and this mild improvement in FSRS-5 was the best we could do. FSRS-5 is the final version, there will be no major releases in the foreseeable future.
 
+Broadly speaking, machine learning algorithms are bound by the amount of computational power available, by the amount of data, and by the software. FSRS is not bound by computational power at all, its parameters can be optimized on an average home PC in a matter of seconds. It's somewhat bounded by data since a lot of users don't have hundreds of thousands of reviews. It's almost entirely bound by software, aka theory.
+
 There are several ways to make FSRS more accurate, none of which are currently feasible:
 
 1. Consider the number of reviews done before a particular review + time of the day to estimate how fatigued the user was (perhaps some other factors could be taken into account when estimating fatigue as well). If someone is doing their first review at 4 PM, they are probably less fatigued than someone who is doing their 500th review at 4 AM, which affects retention. This is not possible with the way Anki currently works - FSRS cannot access datetime information - and would require major changes.
