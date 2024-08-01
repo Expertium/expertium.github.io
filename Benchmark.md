@@ -119,10 +119,10 @@ Also, even though the diagram shows "Next interval length" as output, in reality
 
 Below are some example forgetting curves.
 
-![Forgetting curves 2 1](https://github.com/user-attachments/assets/adac29fe-1694-49d8-b679-8741bab47284)
+![Forgetting curves 2 1](https://github.com/user-attachments/assets/08694d4b-fdfa-49cb-93d0-7712ffe2e71a)
 
 These curves were plotted using default parameters, which have been obtained by running each algorithm on 20 thousand collections of Anki users. So what you're seeing are "average" or "typical" curves.
-DASH's curve looks like a step function, which goes against our human intuition and common sense. DASH[MCM] attempts to smooth it, but you can see that it's not perfect. DASH[ACT-R] achieves a smooth curve. In ACT-R and DASH, probability of recall doesn't start from 100%. <br />
+DASH's curve looks like a step function, which goes against our human intuition and common sense. DASH[MCM] attempts to smooth it, but you can see that it's not perfect. DASH[ACT-R] achieves a smooth curve. The probability of recall doesn't start from 100% for DASH models and ACT-R. <br />
 It's interesting that the forgetting curve of FSRS-4.5 (and FSRS-5, they use the same formula) is so steep compared to other models. FSRS v3 used a much steeper exponential formula, which was replaced with a less steep power formula in FSRS v4, and with an even less steep power formula in FSRS-4.5. And yet, even that still predicts much faster forgetting than other models. While we could make the forgetting curve of FSRS-5 even less steep, it would practically prevent the probability of recall from ever reaching values less than 10%, since even for small values of memory stability, it would take more than a human life to reach 10% with such a curve.
 
 15. [HLR](https://github.com/duolingo/halflife-regression/blob/master/settles.acl16.pdf), Half-Life Regression. It's an algorithm developed by Duolingo for Duolingo. The memory half-life in HLR is conceptually very similar to the memory stability in FSRS, but it's calculated using an overly simplistic formula.
