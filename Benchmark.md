@@ -214,7 +214,7 @@ A curve with a maximum that is not at time=0 (bottom left) makes no sense either
 Only bottom right is a proper forgetting curve. Well, minus the fact that it's wiggly. And minus the fact that it doesn't start at 100%. <br />
 So while GRU-P outperforms all other algorithms, it's not usable in practice as it could result in all kinds of strange behavior.
 
-Finally, notice that while GRU-P (short-term) outperforms GRU-P, and while FSRS-5 outperforms FSRS-4.5, the difference in all 3 metrics is very small. This suggests that **same-day reviews have a very small impact on long-term memory**.
+Finally, notice that while GRU-P (short-term) outperforms GRU-P, and while FSRS-5 outperforms FSRS-4.5, the difference in all 3 metrics is very small. This suggests that **same-day reviews have a very small impact on long-term memory**. Either that, or they require some kind of specialized approach to make them useful.
 
 
 ## Discussion
