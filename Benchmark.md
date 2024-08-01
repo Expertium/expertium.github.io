@@ -171,9 +171,9 @@ This benchmark is based on 19,990 collections and 707,964,360 reviews, excluding
 In the tables and charts below, the averages are weighted by the number of reviews in each user's collection, meaning that users with more reviews have a greater impact on the value of the average. If someone has 100 thousand reviews, they will affect the average 100 times more than someone who only has 1 thousand reviews.
 The tables also show the number of optimizable parameters of each algorithm. The benchmark repo also has [unweighted averages](https://github.com/open-spaced-repetition/srs-benchmark?tab=readme-ov-file#result).
 
-![RMSE (table)](https://github.com/user-attachments/assets/72570add-a896-4732-83b5-06e38ffa6b59)
+![image](https://github.com/user-attachments/assets/d0cb4b6d-2ab9-4716-93b6-c855ea29e253)
 
-![RMSE](https://github.com/user-attachments/assets/b033f88d-2024-4a1a-96f2-69fc974e760a)
+![RMSE](https://github.com/user-attachments/assets/f1b6dd67-faf8-4a93-b9cf-80121b2b76dd)
 
 Lower is better. Black caps are 99% confidence intervals.
 Don't focus too much on absolute values, they depend on a lot of things: how we calculate RMSE (which involves somewhat arbitrary binning), whether the averages are weighted by the number of reviews or not, and how the outlier filter works. Instead, focus on the ranking - which algorithm is the best, which one is the second best, which one is the third best, etc.
@@ -182,18 +182,18 @@ The bars corresponding to FSRS-5 and GRU-P (short-term) are colored differently 
 
 Now let's look at log loss.
 
-![Log loss (table)](https://github.com/user-attachments/assets/6f6a8f49-5bcf-492a-a926-f7078ff1c049)
+![image](https://github.com/user-attachments/assets/736e8fff-410e-4cd6-a582-10f44379e970)
 
-![Log loss](https://github.com/user-attachments/assets/f447ae5e-d17b-4d65-9a3f-4a54e1b2cda4)
+![Log loss](https://github.com/user-attachments/assets/21afe690-a321-4090-a416-9034bc147c35)
 
 Lower is better. Black caps are 99% confidence intervals.
 As you can see, the ranking is a little different. For example, based on RMSE, the ranks of NN-17 and GRU are very close (10th and 11th best, respectively), but based on log loss, NN-17 is ranked much higher (9th best, GRU is 14th). SM-2 and Transformer have switched places. AVG has a higher rank.
 
 Finally, let's look at AUC.
 
-![AUC (table)](https://github.com/user-attachments/assets/9ed66833-f5a7-471f-9ea9-cf4f79811a15)
+![image](https://github.com/user-attachments/assets/3526628d-c35c-4c02-abf3-48d87790eedf)
 
-![AUC](https://github.com/user-attachments/assets/ff9261e9-1779-48f4-8e5b-545e7adb9578)
+![AUC](https://github.com/user-attachments/assets/c16fdef5-afd4-40ab-ba85-c957d192f436)
 
 Higher is better. Black caps are 99% confidence intervals.  <br />
 Now ranking is very different. This isn't too surprising, considering that AUC is completely uncorrelated with both RMSE and log loss. <br />
