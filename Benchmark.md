@@ -119,10 +119,11 @@ Also, even though the diagram shows "Next interval length" as output, in reality
 
 Below are some example forgetting curves.
 
-![Forgetting curves 2](https://github.com/user-attachments/assets/2a3baf64-f3bc-41cc-acdd-57dd31a0b213)
+![Forgetting curves 2 1](https://github.com/user-attachments/assets/adac29fe-1694-49d8-b679-8741bab47284)
 
 These curves were plotted using default parameters, which have been obtained by running each algorithm on 20 thousand collections of Anki users. So what you're seeing are "average" or "typical" curves.
 DASH's curve looks like a step function, which goes against our human intuition and common sense. DASH[MCM] attempts to smooth it, but you can see that it's not perfect. DASH[ACT-R] achieves a smooth curve. In ACT-R and DASH, probability of recall doesn't start from 100%.
+It's interesting that the forgetting curve of FSRS-4.5 (and FSRS-5, they use the same formula) is so steep compared to other models. FSRS v3 used a much steeper exponential formula, which was replaced with a less steep power formula in FSRS v4, and with an even less steep power formula in FSRS-4.5. And yet, even that still predicts much faster forgetting than other models. While we could make the forgetting curve of FSRS-5 even less steep, it would practically prevent the probability of forgetting from ever reaching values less than 10%, since even for small values of memory stability, it would take more than a human life to reach 10% with such a curve.
 
 15. [HLR](https://github.com/duolingo/halflife-regression/blob/master/settles.acl16.pdf), Half-Life Regression. It's an algorithm developed by Duolingo for Duolingo. The memory half-life in HLR is conceptually very similar to the memory stability in FSRS, but it's calculated using an overly simplistic formula.
 
@@ -225,7 +226,7 @@ We would love to benchmark [THLR](https://www.researchgate.net/publication/38179
 
 Regarding the future of FSRS, we have been racking our brains, trying to come up with some way to improve it, and this mild improvement in FSRS-5 was the best we could do. FSRS-5 is the final version, there will be no major releases in the foreseeable future.
 
-Broadly speaking, machine learning algorithms are bound by the amount of computational power available, by the amount of data, and by the software. FSRS is not bound by computational power at all, its parameters can be optimized on an average home PC in a matter of seconds; training FSRS for 10x as long would only improve the metrics by 1-2%. FSRS is somewhat bound by data since most of users don't have hundreds of thousands of reviews. And it's almost entirely bound by software, aka theory.
+Broadly speaking, machine learning algorithms are bound by the amount of computational power available, by the amount of data, and by the software. FSRS is not bound by computational power at all, its parameters can be optimized on an average home PC in a matter of seconds; training FSRS for 10x as long would only improve the metrics by 1-2%. FSRS is somewhat bound by data since most of users don't have hundreds of thousands of reviews. And it's almost entirely bound by software, aka theory of forgetting.
 
 There are several ways to make FSRS more accurate, none of which are currently feasible:
 
