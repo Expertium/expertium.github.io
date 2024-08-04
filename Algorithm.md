@@ -102,7 +102,7 @@ Unlike S and R, D has no precise definition and is just a crude heuristic. Here 
 
 ![image](https://github.com/user-attachments/assets/4564336c-f8cb-4b9c-9f6f-4ac0e85c5e42)
 
-G is grade. Again=0, Hard=1, Good=3, Easy=4. We have tried turning these four values into optimizable parameters (as opposed to just using constants), but that didn't improve accuracy.
+G is grade. Again=1, Hard=2, Good=3, Easy=4. We have tried turning these four values into optimizable parameters (as opposed to just using constants), but that didn't improve accuracy.
 
 And here is the formula for the next value of D.
 
@@ -153,7 +153,7 @@ In FSRS-5, the formula for initial D was changed.
 
 ![CodeCogsEqn (3)](https://github.com/user-attachments/assets/09a02eb1-d2da-4faa-aacd-4c905556889d)
 
-Again=0, Hard=1, Good=3, Easy=4. This formula provides a *slightly* better fit.
+Again=1, Hard=2, Good=3, Easy=4. This formula provides a *slightly* better fit.
 
 FSRS-5 also updates D and S after same-day reviews, which previously were unused. Difficulty is updated using the same formula that I described in the previous section. S is updated using the following formula.
 
