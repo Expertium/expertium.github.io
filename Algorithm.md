@@ -136,11 +136,13 @@ Clearly, these two situations are different, because in the second one it's very
 
 **Important takeaway number five: properly defined difficulty must depend on retrievability, not only on grades.**
 
-However, a more in-depth analysis reveals that the current formula works surprisingly well.
+However, a more in-depth analysis reveals that the current formula works reasonably well.
+
+![image](https://github.com/user-attachments/assets/b55dc15d-655e-43a9-9c86-223cf6b0670a)
 
 On the x axis, we have D, and on the y axis, we have predicted and measured S. Blue dots are values of memory stability that have been measured from my review history, and the orange line is the predicted value of memory stability. Of course, both are *averages* that require thousands of reviews to estimate accurately.
 
-As you can see, the orange line is very close to the blue dots, meaning that, *on average*, predicted stability is very close to actual stability. Though the fit is worse for low values of D, they are also based on fewer reviews.
+As you can see, the orange line is close to the blue dots, meaning that, *on average*, predicted stability is close to actual stability. Though the fit is worse for low values of D, they are also based on fewer reviews.
 
 Side note: D ranges from 1 to 10, but in the built-in version of FSRS, D is displayed as a number between 0 and 1. This conversion is completely unnecessary in my opinion.
 
