@@ -157,6 +157,8 @@ In FSRS-5, the formula for initial D was changed.
 
 Again=1, Hard=2, Good=3, Easy=4. This formula provides a *slightly* better fit.
 
+"Mean reversion" now reverses the difficulty to that of $D_0(4)$, rather than $D_0(3)$.
+
 FSRS-5 also updates D and S after same-day reviews, which previously were unused. Difficulty is updated using the same formula that I described in the previous section. S is updated using the following formula.
 
 ![CodeCogsEqn (2)](https://github.com/user-attachments/assets/fde251b9-70b4-4207-813f-3fe3874c2887)
