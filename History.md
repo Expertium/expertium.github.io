@@ -18,7 +18,7 @@
 
 2022: FSRS v3 is developed. This was the first publicly available version that people actually used. FSRS v1 and v2 weren't publicly available.
 
-2023: For the first time since the development of SM-2, app developers start implementing a new algo - FSRS. Though it's possible that some obscure app has experimented with machine learning (excluding Duolingo, I have already mentioned them) and I am simply unaware of that.
+2023: For the first time since the development of SM-2, app developers start implementing a new algo - FSRS, with Anki being the pioneer. Though it's possible that some obscure app has experimented with machine learning (excluding Duolingo, I have already mentioned them) and I am simply unaware of that.
 
 2024: [RemNote implements FSRS-4.5](https://help.remnote.com/en/articles/9124137-the-fsrs-spaced-repetition-algorithm) (or FSRS v4? I'm not sure), [some chess moves learning app](https://x.com/chessbookcom/status/1805137108991946775) apparently does too.
 
