@@ -1,5 +1,13 @@
 # Benchmark of Spaced Repetition Algorithms
 
+# Table of contents
+- [Intro](#intro)
+- [Metrics](#metrics)
+- [Algorithms](#algorithms)
+- [Dataset](#dataset)
+- [Results](#results)
+- [Discussion](#discussion)
+- [References](#references)
 
 ## Intro
 This is an extended version of my Reddit post. This article should take approximately 27–32 minutes to read, the Reddit post should take around 11–13 minutes. I tried to make this article suited both to tech-savvy and casual readers, so I may have over-explained some things.
