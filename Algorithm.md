@@ -14,8 +14,6 @@ The main difference between them is how fast R declines when t>>S. Note that whe
 
 So why does a power function provide a better fit than the exponential function if forgetting is (in theory) exponential? Let's take two exponential curves, with S=0.2 and S=3. And then let's take the average of the two resulting values of R. In other words, we will have 3 functions: R_1=0.9^(t/0.2), R_1=0.9^(t/3) and R=0.5*(0.9^(t/0.2)+0.9^(t/3)).
 
-test $\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}$
-
 ![image](https://github.com/user-attachments/assets/b32dc8d0-23a4-40ed-af32-8674b529fdc8)
 
 Now here's the interesting part: if you try to approximate the resulting function (purple), the power approximation would provide a better fit than an exponential one!
