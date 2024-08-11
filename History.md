@@ -1,3 +1,5 @@
+# Abridged history of spaced repetition
+
 1885: [Hermann Ebbinghaus plots the first forgetting curve](https://en.wikipedia.org/wiki/Forgetting_curve). Although it didn't have retention on the Y axis, and also, if you have ever seen one of the images below (or something similar), you should know that **his paper didn't have that serrated kind of curve. That is a common myth.**
 
 ![image](https://github.com/user-attachments/assets/226382cf-0989-4919-a9f8-076d75ce9b62)
