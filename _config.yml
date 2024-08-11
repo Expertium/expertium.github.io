@@ -1,3 +1,5 @@
-theme: jekyll-theme-minimal
-title: aaaaaa
-description: bbbbbb
+title: Expertium's Blog
+description: Spaced repetition stuff
+remote_theme: pages-themes/cayman@v0.2.0
+
+url: "https://expertium.github.io/"
