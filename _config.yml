@@ -1,5 +1,6 @@
 title: Expertium's Blog
+description: Spaced repetition stuff
 site_name: ""
 site_description: ""
-description: Spaced repetition stuff
+logo: "/logo_icon.png"
 remote_theme: pages-themes/cayman@v0.2.0
