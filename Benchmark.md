@@ -271,20 +271,20 @@ Predictions were made at the end of July, 2024.
 
 References to academic papers:
 
-1. https://scholar.colorado.edu/concern/graduate_thesis_or_dissertations/zp38wc97m (DASH is first mentioned on page 68)
-2. https://www.politesi.polimi.it/retrieve/b39227dd-0963-40f2-a44b-624f205cb224/2022_4_Randazzo_01.pdf
-3. http://act-r.psy.cmu.edu/wordpress/wp-content/themes/ACT-R/workshops/2003/proceedings/46.pdf
-4. https://github.com/duolingo/halflife-regression/blob/master/settles.acl16.pdf
-5. https://arxiv.org/pdf/2402.12291.pdf
-6. https://www.researchgate.net/publication/381792698_DRL-SRS_A_Deep_Reinforcement_Learning_Approach_for_Optimizing_Spaced_Repetition_Scheduling
+1. [https://scholar.colorado.edu/concern/graduate_thesis_or_dissertations/zp38wc97m](https://scholar.colorado.edu/concern/graduate_thesis_or_dissertations/zp38wc97m) (DASH is first mentioned on page 68)
+2. [https://www.politesi.polimi.it/retrieve/b39227dd-0963-40f2-a44b-624f205cb224/2022_4_Randazzo_01.pdf](https://www.politesi.polimi.it/retrieve/b39227dd-0963-40f2-a44b-624f205cb224/2022_4_Randazzo_01.pdf)
+3. [http://act-r.psy.cmu.edu/wordpress/wp-content/themes/ACT-R/workshops/2003/proceedings/46.pdf](http://act-r.psy.cmu.edu/wordpress/wp-content/themes/ACT-R/workshops/2003/proceedings/46.pdf)
+4. [https://github.com/duolingo/halflife-regression/blob/master/settles.acl16.pdf](https://github.com/duolingo/halflife-regression/blob/master/settles.acl16.pdf)
+5. [https://arxiv.org/pdf/2402.12291.pdf](https://arxiv.org/pdf/2402.12291.pdf)
+6. [https://www.researchgate.net/publication/381792698_DRL-SRS_A_Deep_Reinforcement_Learning_Approach_for_Optimizing_Spaced_Repetition_Scheduling](https://www.researchgate.net/publication/381792698_DRL-SRS_A_Deep_Reinforcement_Learning_Approach_for_Optimizing_Spaced_Repetition_Scheduling)
 
 References to things that aren't academic papers:
 
-1. https://github.com/open-spaced-repetition/srs-benchmark?tab=readme-ov-file#srs-benchmark
-2. https://www.geeksforgeeks.org/auc-roc-curve/
-3. https://huggingface.co/datasets/open-spaced-repetition/FSRS-Anki-20k
-4. https://github.com/open-spaced-repetition/fsrs4anki/wiki/The-Metric
-5. https://supermemo.guru/wiki/Algorithm_SM-17
-6. https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VAGUL0
-7. https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/N8XJME
-8. https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/
+1. [https://github.com/open-spaced-repetition/srs-benchmark?tab=readme-ov-file#srs-benchmark](https://github.com/open-spaced-repetition/srs-benchmark?tab=readme-ov-file#srs-benchmark)
+2. [https://www.geeksforgeeks.org/auc-roc-curve/](https://www.geeksforgeeks.org/auc-roc-curve/)
+3. [https://huggingface.co/datasets/open-spaced-repetition/FSRS-Anki-20k](https://huggingface.co/datasets/open-spaced-repetition/FSRS-Anki-20k)
+4. [https://github.com/open-spaced-repetition/fsrs4anki/wiki/The-Metric](https://github.com/open-spaced-repetition/fsrs4anki/wiki/The-Metric)
+5. [https://supermemo.guru/wiki/Algorithm_SM-17](https://supermemo.guru/wiki/Algorithm_SM-17)
+6. [https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VAGUL0](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VAGUL0)
+7. [https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/N8XJME](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/N8XJME)
+8. [https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/](https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/)
