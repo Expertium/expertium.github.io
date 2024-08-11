@@ -1,8 +1,9 @@
-title: Spaced Repetition Stuff
-description: 
+title: "Spaced Repetition Stuff"
 remote_theme: pages-themes/cayman@v0.2.0
+
 plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
+
 kramdown:
   input: GFM
   math_engine: mathjax # you can also set this field to 'katex'
