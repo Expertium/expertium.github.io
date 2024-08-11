@@ -12,7 +12,7 @@ Let's start with the forgetting curve. In FSRS v3, an exponential function was u
 
 The main difference between them is how fast R declines when t>>S. Note that when t=S, R=90% for all three functions. This has to hold true because in FSRS, memory stability is defined as the amount of time required for R to decrease from 100% to 90%. You can play around with them here: [https://www.desmos.com/calculator/au54ecrpiz](https://www.desmos.com/calculator/au54ecrpiz).
 
-So why does a power function provide a better fit than the exponential function if forgetting is (in theory) exponential? Let's take two exponential curves, with S=0.2 and S=3. And then let's take the average of the two resulting values of R. In other words, we will have 3 functions: $R_1=0.9^\frac{t}{0.2}$, $R_2=0.9^\frac{t}{3}$ and $R=0.5(0.9^\frac{t}{0.2}+0.9^\frac{t}{3})$.
+So why does a power function provide a better fit than the exponential function if forgetting is (in theory) exponential? Let's take two exponential curves, with S=0.2 and S=3. And then let's take the average of the two resulting values of R. In other words, we will have 3 functions: R_1=0.9^(t/0.2), R_1=0.9^(t/3) and R=0.5*(0.9^(t/0.2)+0.9^(t/3)).
 
 ![image](https://github.com/user-attachments/assets/b32dc8d0-23a4-40ed-af32-8674b529fdc8)
 
@@ -20,7 +20,7 @@ Now here's the interesting part: if you try to approximate the resulting functio
 
 ![image](https://github.com/user-attachments/assets/42efa53e-4046-4698-81f7-0602498d550b)
 
-Note that I displayed $R^2$ on the graph, but you can use any other measure to determine the goodness of fit, the conclusion will be the same.
+Note that I displayed R^2 on the graph, but you can use any other measure to determine the goodness of fit, the conclusion will be the same.
 
 **Important takeaway number one: a superposition of two exponential functions is better approximated by a power function.**
 
@@ -43,13 +43,13 @@ SInc is equal to one plus the product of functions of three components of memory
 
 ![image](https://github.com/user-attachments/assets/dd069043-83d4-4806-9477-6bfd347d8120)
 
-Now let's "unfold" each of them, starting with $f(D)$.
+Now let's "unfold" each of them, starting with *f(D)*.
 
 ![image](https://github.com/user-attachments/assets/af75c9f2-d501-4e07-917e-eef5a4ce4b5e)
 
 **Important takeaway number two: the larger the value of D, the smaller the SInc value. This means that the increase in memory stability for difficult material is smaller than for easy material.**
 
-Next, let's unfold $f(S)$.
+Next, let's unfold *f(S)*.
 
 ![image](https://github.com/user-attachments/assets/2442dc3d-e5ba-4a1f-ab15-6a1521acbb02)
 
@@ -57,7 +57,7 @@ Next, let's unfold $f(S)$.
 
 This will likely surprise a lot of people, but the data supports it.
 
-Finally, let's unfold $f(R)$.
+Finally, let's unfold *f(R)*.
 
 ![image](https://github.com/user-attachments/assets/1d720801-d0a2-453d-92c9-de706b6507e1)
 
@@ -77,7 +77,7 @@ The formula for the next value of S is different if the user pressed "Again".
 
 min(..., S) is necessary to ensure that post-lapse stability can never be greater than stability before the lapse. w11 serves a similar purpose to e^w8 in the main formula: it just scales the whole product by some factor to provide a better fit.
 
-An interesting detail: in the main formula, the function of D is linear: $f(D)=(11-D)$. Here, however, $f(D)$ is nonlinear: $f(D)=D^{-w_{12}}$. Me and LMSherlock have tried different formulas, and surprisingly, these provide the best fit.
+An interesting detail: in the main formula, the function of D is linear: f(D)=(11-D). Here, however, *f(D)* is nonlinear. Me and LMSherlock have tried different formulas, and surprisingly, these provide the best fit.
 
 There is one problem with these formulas, though. Since both formulas require the previous value of S to calculate the next value of S, they cannot be used to estimate initial stability after the first review since there is no such thing as a "zeroth review". So initial stability has to be estimated in a completely different way.
 
@@ -159,13 +159,13 @@ In FSRS-5, the formula for initial D was changed.
 
 Again=1, Hard=2, Good=3, Easy=4. This formula provides a *slightly* better fit.
 
-"Mean reversion" now reverses the difficulty to that of $D_0(4)$, rather than $D_0(3)$.
+"Mean reversion" now reverses the difficulty to that of D0(4), rather than D0(3).
 
 FSRS-5 also updates D and S after same-day reviews, which previously were unused. Difficulty is updated using the same formula that I described in the previous section. S is updated using the following formula.
 
 ![CodeCogsEqn (2)](https://github.com/user-attachments/assets/fde251b9-70b4-4207-813f-3fe3874c2887)
 
-In Anki, FSRS cannot get access to the real interval lengths of same-day reviews, so it has to rely solely on grades. $w_{17}$ and $w_{18}$ are two new parameters.
+In Anki, FSRS cannot get access to the real interval lengths of same-day reviews, so it has to rely solely on grades. w17 and w18 are two new parameters.
 
 
 ## Optimization aka training
