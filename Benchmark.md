@@ -125,6 +125,8 @@ Below are some example forgetting curves.
 
 ![Forgetting curves 2 1](https://github.com/user-attachments/assets/08694d4b-fdfa-49cb-93d0-7712ffe2e71a)
 
+The Y axis doesn't start at 0.
+
 These curves were plotted using default parameters, which have been obtained by running each algorithm on 20 thousand collections of Anki users. So what you're seeing are "average" or "typical" curves.
 DASH's curve looks like a step function, which goes against our human intuition and common sense. DASH[MCM] attempts to smooth it, but you can see that it's not perfect. DASH[ACT-R] achieves a smooth curve. <br />
 Also, the probability of recall doesn't start from 100% for DASH models and ACT-R. <br />
