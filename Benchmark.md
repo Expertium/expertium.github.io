@@ -288,3 +288,7 @@ References to things that aren't academic papers:
 6. [https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VAGUL0](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VAGUL0)
 7. [https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/N8XJME](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/N8XJME)
 8. [https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/](https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/)
+
+
+___
+### [Return to homepage](https://expertium.github.io/)
