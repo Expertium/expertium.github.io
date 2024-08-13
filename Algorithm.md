@@ -185,4 +185,4 @@ I won't go too into detail about this, instead you can watch [this video about g
 Of course, it's a lot more nuanced than that, but if you want to learn about gradient descent, there are hundreds of videos and articles on the Internet, since this is how almost every machine learning algorithm in the world is trained.
 
 ___
-### [Return to homepage](https://expertium.github.io/)
+### [←Return to homepage](https://expertium.github.io/)
