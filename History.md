@@ -24,3 +24,6 @@
 
 2024: [RemNote implements FSRS-4.5](https://help.remnote.com/en/articles/9124137-the-fsrs-spaced-repetition-algorithm) (or FSRS v4? I'm not sure), [some chess moves learning app](https://x.com/chessbookcom/status/1805137108991946775) apparently does too.
 
+
+___
+### [Return to homepage](https://expertium.github.io/)
