@@ -293,4 +293,4 @@ References to things that aren't academic papers:
 
 
 ___
-### [Return to homepage](https://expertium.github.io/)
+### [←Return to homepage](https://expertium.github.io/)
