@@ -10,3 +10,9 @@ html:
   comments:
     utterances:
       repo: "github.com/Expertium/expertium.github.io"
+
+utterances:
+  repo: "github.com/Expertium/expertium.github.io"
+  issue-term: "pathname"
+  label: "utteranc.es"
+  theme: "github-light"
