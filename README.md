@@ -4,3 +4,4 @@ I write articles about spaced repetition, mostly about [FSRS](https://github.com
 2. [Abridged history of spaced repetition](/History.md).
 3. [A technical explanation of FSRS](/Algorithm.md), where I explain the formulas that are used to calculate the probability of recall.
 4. [Understanding what retention means in FSRS](/Retention.md). I recommend reading this article if you are confused by terms like "desired retention", "true retention" and "average predicted retention", the latter two can be found in Stats if you have the FSRS Helper add-on installed and press Shift + Left Mouse Click on the Stats button.
+5. [A short analysis of how review time is related to answer buttons](/Buttons.md). Some wonder, "Do people tend to think longer before pressing Again than before pressing Good?". In this article, I answer that question. Spoiler: yes.
