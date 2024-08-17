@@ -1,6 +1,6 @@
 # Button usage and review time of Anki users
 
-Apart from being great for running algorithms on it, the [Anki 20k dataset](https://huggingface.co/datasets/open-spaced-repetition/FSRS-Anki-20k) also provides a definitive answer to an age-old question: is the amount of time spent reviewing a card correlated with which answer button (Again/Hard/Good/Easy) the user will press?
+Apart from being great for benchmarking algorithms on it, the [Anki 20k dataset](https://huggingface.co/datasets/open-spaced-repetition/FSRS-Anki-20k) also provides a definitive answer to an age-old question: is the amount of time spent reviewing a card correlated with which answer button (Again/Hard/Good/Easy) the user will press?
 
 Here's the answer: 
 
