@@ -158,7 +158,7 @@ HLR lacks a difficulty variable, but it does have memory stability (half-life) a
 
 Additionally, below is a table comparing different algorithms.
 
-![Comparison table 1 2](https://github.com/user-attachments/assets/9b773c5d-3bd3-4561-8edd-00729c9642cb)
+![Comparison table 1 2](https://github.com/user-attachments/assets/97acbd9b-79f8-4072-804d-e921fa3369be)
 
 It should be noted that some algorithms, such as SM-2, which were not designed to be adaptive, could still be made adaptive and benefit from parameter optimization. In the table, boxes in the Adaptive column are checked based on the original design of the algorithm.
 
