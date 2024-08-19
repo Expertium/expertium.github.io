@@ -158,11 +158,11 @@ HLR lacks a difficulty variable, but it does have memory stability (half-life) a
 
 Additionally, below is a table comparing different algorithms.
 
-![Comparison table](https://github.com/user-attachments/assets/642fb300-e43e-4a84-a85d-06fb884fe679)
+![Comparison table 1 2](https://github.com/user-attachments/assets/9b773c5d-3bd3-4561-8edd-00729c9642cb)
 
 It should be noted that some algorithms, such as SM-2, which were not designed to be adaptive, could still be made adaptive and benefit from parameter optimization. In the table, boxes in the Adaptive column are checked based on the original design of the algorithm.
 
-As for symmetry, for some algorithms, such as DASH and GRU-P, probabilities can be calculated easily, but due to the quirks of their forgetting curves, it is not possible to determine interval lengths that correspond to specific probabilities via an exact formula. Though it can still be done approximately. Nonetheless, symmetry is desirable for practical purposes of scheduling.
+Regarding invertibility: for some algorithms, such as DASH and GRU-P, probabilities can be calculated easily, but due to the quirks of their forgetting curves, it is not possible to determine interval lengths that correspond to specific probabilities via an exact formula. Though it can still be done approximately. Nonetheless, invertibility is desirable for practical purposes of scheduling.
 
 
 ## Dataset
