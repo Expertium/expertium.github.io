@@ -35,7 +35,7 @@ Next is log loss. It is calculated using the following formula:
 
 ![image](https://github.com/user-attachments/assets/34f3f2c2-af4c-4433-ac2d-29c5e18dc201)
 
-where y is a binary label (either 0 or 1), and p is a probability (a real number between 0 and 1) predicted by some algorithm.
+where *y* is a binary label (either 0 or 1), and *p* is a probability (a real number between 0 and 1) predicted by some algorithm.
 
 Here's what you need to know about log loss:
 1. Log loss measures how close the predicted probability of recall (R) is to reality, just like RMSE. However, unlike RMSE, it doesn't rely on binning reviews. RMSE is based on the difference between averages, whereas log loss is based on the difference between individual predictions and individual review outcomes.
