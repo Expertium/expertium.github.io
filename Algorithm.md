@@ -4,6 +4,13 @@ If you want a simple overview first, start here: [ABC of FSRS](https://github.co
 
 In this article, I'll explain how FSRS-4.5 works. The differences between FSRS-4.5 and FSRS-5 are outlined near the end.
 
+# Table of contents
+- [R, Retrievability](#r-retrievability)
+- [S, Stability](s-stability)
+- [D, Difficulty](#d-difficulty)
+- [Changes in FSRS-5](#changes-in-fsrs-5)
+- [Optimization aka training](#optimization-aka-training)
+
 ## R, Retrievability
 
 Let's start with the forgetting curve. In FSRS v3, an exponential function was used. In FSRS v4, the exponential function was replaced by a power function, which provided a better fit to the data. Then, in FSRS-4.5, it was replaced by a different power function which provided an even better fit. It is used in FSRS-5 as well.
