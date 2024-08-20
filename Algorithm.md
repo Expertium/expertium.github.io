@@ -6,7 +6,7 @@ In this article, I'll explain how FSRS-4.5 works. The differences between FSRS-4
 
 # Table of contents
 - [R, Retrievability](#r-retrievability)
-- [S, Stability](s-stability)
+- [S, Stability](#s-stability)
 - [D, Difficulty](#d-difficulty)
 - [Changes in FSRS-5](#changes-in-fsrs-5)
 - [Optimization aka training](#optimization-aka-training)
