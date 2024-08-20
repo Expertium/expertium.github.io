@@ -10,7 +10,7 @@ In all seriousness, though, I don't think that FSRS (or any similar algorithm) c
 
 1) Making FSRS the default algorithm.
 
-2) Hiding the field with parameters, as well as anything that has the word "parameter" in it.
+2) Hiding the field with parameters, as well as anything that has the word "parameter" or "optimize" in it.
 
 3) Hiding any numbers other than desired retention, which should be the only number that the user can see.
 
