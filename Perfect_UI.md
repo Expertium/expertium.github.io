@@ -2,7 +2,7 @@
 
 As you (hopefully) realize, the average person doesn't want to spend time to understand 20 different settings, especially if they involve math. With that in mind, I propose the following redesign of deck options:
 
-![Perfect UI](https://github.com/user-attachments/assets/ae49e2cd-e7ca-4cf6-a159-61a02be1b43c)
+![Perfect UI](https://github.com/user-attachments/assets/4ee6d79f-7931-44e6-8d19-a3a246c61ca2)
 
 It doesn't get any simpler than this!
 
