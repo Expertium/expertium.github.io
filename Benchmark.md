@@ -171,7 +171,7 @@ The dataset used in the benchmark is [FSRS Anki 20k](https://huggingface.co/data
 
 The data itself is also different. In Anki, each user makes their own flashcards, while Maimemo and Duolingo offer pre-made courses. Anki has data about certain users reviewing different material, while Maimemo and Duolingo have data about certain material being reviewed by different users.
 
-This benchmark is based on 19,990 collections and 707,964,360 reviews, excluding same-day reviews (which constitute a substantial proportion of all reviews); only 1 review of a card per day is used by each algorithm other than FSRS-5 and GRU-P (short-term), which use same-day reviews for training but not for evaluation. Additionally, some reviews are filtered out, such as when the user manually changed the due date (which would count as a review) or when the user used what's called a "filtered deck" if "Reschedule cards based on my answers in this deck" was disabled. Finally, an outlier filter is applied. Because of all of that, the real number of reviews used for evaluation is around 700 million, much smaller than 1.7 billion.
+This benchmark is based on 19,990 collections and 702,721,850 reviews, excluding same-day reviews (which constitute a substantial proportion of all reviews); only 1 review of a card per day is used by each algorithm other than FSRS-5 and GRU-P (short-term), which use same-day reviews for training but not for evaluation. Additionally, some reviews are filtered out, such as when the user manually changed the due date (which would count as a review) or when the user used what's called a "filtered deck" if "Reschedule cards based on my answers in this deck" was disabled. Finally, an outlier filter is applied. Because of all of that, the real number of reviews used for evaluation is around 700 million, much smaller than 1.7 billion.
 
 
 ## Results
@@ -181,7 +181,7 @@ The tables also show the number of optimizable parameters of each algorithm. The
 
 ![image](https://github.com/user-attachments/assets/a01f511e-04fa-47a0-bd85-6370d26cac73)
 
-![RMSE](https://github.com/user-attachments/assets/6240c78f-0582-4d54-8edc-b610a380280a)
+![RMSE](https://github.com/user-attachments/assets/aea2aa3e-0793-4cf7-b4dc-7d4c87aebe05)
 
 Lower is better. Black caps are 99% confidence intervals.
 Don't focus too much on absolute values, they depend on a lot of things: how we calculate RMSE (which involves somewhat arbitrary binning), whether the averages are weighted by the number of reviews or not, and how the outlier filter works. Instead, focus on the ranking - which algorithm is the best, which one is the second best, which one is the third best, etc.
@@ -192,7 +192,7 @@ Now let's look at log loss.
 
 ![image](https://github.com/user-attachments/assets/6bcc355c-a2dd-42f6-8c1b-a6acbd17d7ee)
 
-![Log loss](https://github.com/user-attachments/assets/bca7328e-81ed-4a6a-b31e-10bdf9c5c66a)
+![Log loss](https://github.com/user-attachments/assets/45d4e510-b922-4632-a0a3-b002fcc2a906)
 
 Lower is better. Black caps are 99% confidence intervals.
 As you can see, the ranking is a little different. For example, based on RMSE, the ranks of NN-17 and GRU are very close (10th and 11th best, respectively), but based on log loss, NN-17 is ranked much higher (9th best, GRU is 14th). SM-2 and Transformer have switched places.
@@ -201,7 +201,7 @@ Finally, let's look at AUC.
 
 ![image](https://github.com/user-attachments/assets/fcc824fb-78b1-431b-8f8f-45b73a99792b)
 
-![AUC](https://github.com/user-attachments/assets/95e43b15-f001-4e83-84f0-efa2f441b838)
+![AUC](https://github.com/user-attachments/assets/4318c086-b4cc-4aea-8ecf-e9b4b6f11fd6)
 
 Higher is better. Black caps are 99% confidence intervals.  <br />
 Now ranking is very different. This isn't too surprising, considering that AUC is completely uncorrelated with both RMSE and log loss. <br />
