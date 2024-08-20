@@ -19,7 +19,7 @@ Let's start with the forgetting curve. In FSRS v3, an exponential function was u
 
 The main difference between them is how fast R declines when t>>S. Note that when t=S, R=90% for all three functions. This has to hold true because in FSRS, memory stability is defined as the amount of time required for R to decrease from 100% to 90%. You can play around with them here: [https://www.desmos.com/calculator/au54ecrpiz](https://www.desmos.com/calculator/au54ecrpiz).
 
-So why does a power function provide a better fit than the exponential function if forgetting is (in theory) exponential? Let's take two exponential curves, with S=0.2 and S=3. And then let's take the average of the two resulting values of R. In other words, we will have 3 functions: R_1=0.9^(t/0.2), R_1=0.9^(t/3) and R=0.5*(0.9^(t/0.2)+0.9^(t/3)).
+So why does a power function provide a better fit than the exponential function if forgetting is (in theory) exponential? Let's take two exponential curves, with S=0.2 and S=3. And then let's take the average of the two resulting values of R. We will have 3 functions: R_1=0.9^(t/0.2), R_1=0.9^(t/3) and R=0.5*(0.9^(t/0.2)+0.9^(t/3)).
 
 ![image](https://github.com/user-attachments/assets/b32dc8d0-23a4-40ed-af32-8674b529fdc8)
 
@@ -94,7 +94,7 @@ Here's how. First, all reviews are grouped into 4 groups based on the first grad
 
 ![image](https://github.com/user-attachments/assets/e4692dc6-dcd8-4fee-b7a6-1f5c6316ecdf)
 
-On the x axis, we have t, or, in other words, interval length. On the y axis, we have the proportion of cards that the user got right for that particular interval. The size of the blue circle indicates the number of reviews. A bigger circle means more reviews.
+On the x axis, we have t, the interval length. On the y axis, we have the proportion of cards that the user got right for that particular interval. The size of the blue circle indicates the number of reviews. A bigger circle means more reviews.
 
 Next, we need to find a forgetting curve that provides the best fit to this data, in other words, we need to find the value of S that minimizes the difference between the measured probability of recalling a card after this many days and the predicted probability. This is done using a fast curve-fitting method, so it only takes a fraction of the overall time required to optimize parameters. I could write three or four more paragraphs about the specifics of this curve-fitting procedure, but that's neither interesting nor very important for understanding FSRS as a whole.
 
@@ -155,7 +155,7 @@ As you can see, the orange line is close to the blue dots, meaning that, *on ave
 
 Side note: D ranges from 1 to 10, but in the built-in version of FSRS, D is displayed as a number between 0 and 1. This conversion is completely unnecessary in my opinion.
 
-It's important to mention that me and Sherlock have tried to incorporate R into the formulas for D, but it didn't improve the accuracy. In other words, even though we know that in theory D should depend on R, we don't know how to actually add R to D in a way that is useful.
+It's important to mention that me and Sherlock have tried to incorporate R into the formulas for D, but it didn't improve the accuracy. Even though we know that in theory D should depend on R, we don't know how to actually add R to D in a way that is useful.
 
 
 ## Changes in FSRS-5
@@ -187,7 +187,7 @@ I won't go too into detail about this, instead you can watch [this video about g
 
 4. Update parameters to decrease the loss.
 
-5. Keep updating the parameters based on how much it affects the loss (steps 2-4) until the loss stops decreasing, in other words, until you reach the minimum.
+5. Keep updating the parameters based on how much it affects the loss (steps 2-4) until the loss stops decreasing, which indicates that you have reached the minimum.
 
 Of course, it's a lot more nuanced than that, but if you want to learn about gradient descent, there are hundreds of videos and articles on the Internet, since this is how almost every machine learning algorithm in the world is trained.
 
