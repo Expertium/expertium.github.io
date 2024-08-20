@@ -4,7 +4,7 @@ As you (hopefully) realize, the average person doesn't want to spend time to und
 
 ![Perfect UI](https://github.com/user-attachments/assets/ae49e2cd-e7ca-4cf6-a159-61a02be1b43c)
 
-Now there is only one setting to worry about!
+It doesn't get any simpler than this!
 
 In all seriousness, though, I don't think that FSRS (or any similar algorithm) can come anywhere close to mass adoption without:
 
