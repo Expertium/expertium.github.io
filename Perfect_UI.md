@@ -18,7 +18,7 @@ In all seriousness, though, I don't think that FSRS (or any similar algorithm) c
 
 5) Automatically, periodically optimizing parameters without notifying the user.
 
-This is what it takes to even begin reaching mass adoption (of course, other elements of UI would also have to redesigned). In its current state, FSRS is difficult to use, even for advanced users.
+This is what it takes to even begin reaching mass adoption (of course, other elements of the UI would also have to be redesigned). In its current state, FSRS is difficult to use, even for advanced users.
 
 
 ___
