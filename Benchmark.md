@@ -10,7 +10,7 @@
 - [References](#references)
 
 ## Intro
-This is an extended version of my Reddit post. This article should take approximately 27–32 minutes to read, the Reddit post should take around 11–13 minutes. I tried to make this article suited both to tech-savvy and casual readers, so I may have over-explained some things.
+This is an extended version of my Reddit post. This article should take approximately 27–32 minutes to read, the Reddit post should take around 11–13 minutes. I tried to make this article suitable for both tech-savvy and casual readers, so I may have over-explained some things.
 Side note: when I say "we", I'm referring to myself and [Jarrett Ye](https://github.com/L-M-Sherlock), the creator of [FSRS](https://github.com/open-spaced-repetition/fsrs4anki/wiki/ABC-of-FSRS).
 
 
@@ -21,9 +21,9 @@ If an algorithm doesn't calculate probabilities and just outputs an interval, it
 
 Once we have an algorithm that predicts R, we can run it on some users' review histories to see how much predicted R deviates from measured R. If we do that using hundreds of millions of reviews, we will get a very good idea of which algorithm performs better on average. **RMSE**, or root mean square error, can be interpreted as "the average difference between predicted and measured probability of recall (R)". RMSE is a measure of **calibration**.
 
-Loosely speaking, if an algorithm predicts an X% chance of something happening, it should happen X% of the time. For example, if a weatherman says "There is a 90% chance of rain today", it should rain on 90% of days when he said that. That's good calibration. If it rained only on 40% of those days, it means that the weatherman (or, well, his forecasting system) is poorly calibrated - his probabilities don't match observed frequencies. RMSE measures how well-calibrated an algorithm is.
+Loosely speaking, if an algorithm predicts an X% chance of something happening, it should happen X% of the time. For example, if a weatherman says, "There is a 90% chance of rain today,"  it should rain on 90% of days when he says that. That's good calibration. If it rained only on 40% of those days, it means that the weatherman (or, well, his forecasting system) is poorly calibrated - his probabilities don't match observed frequencies. RMSE measures how well-calibrated an algorithm is.
 
-The calculation of RMSE has been reworked in the past to prevent cheating, aka algorithms achieving good numbers on paper without getting better at predicting R in reality. If you want to know the nitty-gritty mathematical details, you can read [this article by Jarrett and me](https://github.com/open-spaced-repetition/fsrs4anki/wiki/The-Metric). The new method is our own invention, and you won't find it in any academic paper. Anki >=24.04 use the new method when "Evaluate" is used.
+The calculation of RMSE has been reworked in the past to prevent cheating, aka algorithms achieving good numbers on paper without getting better at predicting R in reality. If you want to know the nitty-gritty mathematical details, you can read [this article by Jarrett and me](https://github.com/open-spaced-repetition/fsrs4anki/wiki/The-Metric). The new method is our own invention, and you won't find it in any academic paper. Anki >=24.04 uses the new method when "Evaluate" is used.
 
 Here's what you need to know about RMSE:
 1. RMSE measures how close the predicted R is to reality. It puts reviews into bins and measures the difference between *average* actual retention and *average* predicted R within each bin.
@@ -43,10 +43,10 @@ Here's what you need to know about log loss:
 3. Unlike RMSE, log loss never reaches 0, unless the algorithm only outputs ones and zeros. If an algorithm outputs numbers between 0 and 1, the minimum possible value of log loss that it can achieve is >0. This makes log loss less intuitive than RMSE. You might intuitively expect that if the distribution of predicted probabilities exactly matches the distribution of true probabilities, the loss would be zero, but no.
 
 Next is AUC (Area Under the Curve). Unlike the previous two metrics, AUC is not a measure of **calibration** but of **discrimination**. Here's what you need to know about AUC:
-1. AUC measures how well an algorithm can tell classes apart; in our case, classes are "recalled" and "forgotten." You can think of AUC as a measure of how well the algorithm can draw a boundary between two classes, such that all members of class 1 are on one side of the boundary, and all members of class 2 are on the other side.
-2. AUC scores range from 0 to 1, however, in practice it's almost always greater than 0.5. AUC scores less than 0.5 indicate that the algorithm is performing worse than random. Higher is better.
+1. AUC measures how well an algorithm can tell classes apart; in our case, classes are "recalled" and "forgotten." You can think of AUC as a measure of how well the algorithm can draw a boundary between two classes, such that all members of class 1 are on one side of the boundary and all members of class 2 are on the other side.
+2. AUC scores range from 0 to 1, but in practice they're almost always greater than 0.5. AUC scores less than 0.5 indicate that the algorithm is performing worse than random. Higher is better.
 
-AUC can be rather unintuitive in some cases. Exaggerated example: suppose you have an algorithm always outputs 99% probability of having cancer for people who do have cancer, and always outputs a 98% probability of having cancer for people who do not have cancer. It never outptus 98% for those who do have cancer, and never outputs 99% for those who do. What do you think is the AUC score of this algorithm? Answer: 1.0, because it can perfectly distinguish between these two classes, even if the calibration is absolutely terrible. AUC doesn't tell us anything about calibration, only about discrimination.
+AUC can be rather unintuitive in some cases. Exaggerated example: suppose you have an algorithm that always outputs a 99% probability of having cancer for people who do have cancer and a 98% probability of having cancer for people who do not have cancer. It never outputs 98% for those who do have cancer, and it never outputs 99% for those who do. What do you think is the AUC score of this algorithm? Answer: 1.0, because it can perfectly distinguish between these two classes, even if the calibration is absolutely terrible. AUC doesn't tell us anything about calibration, only about discrimination.
 
 Below is a diagram that explains AUC.
 
@@ -70,11 +70,11 @@ Here's a table comparing different metrics.
 
 3. FSRS-4.5. It's a slightly improved version of FSRS v4, the shape of the forgetting curve has been changed.
 
-4. FSRS-5. The newest version. The main difference is that it takes into account same-day reviews, unlike all previous version, though the improvement in performance is small. Anki 24.XX uses it, AnkiMobile and AnkiDroid haven't been updated yet, so they use FSRS-4.5. If you want to read about the differences between FSRS-4.5 and FSRS-5, I have an article with an in-depth explanation of FSRS formulas.
+4. FSRS-5. The newest version. The main difference is that it takes into account same-day reviews, unlike all previous versions, though the improvement in performance is small. Anki 24.XX uses it, AnkiMobile and AnkiDroid haven't been updated yet, so they use FSRS-4.5. If you want to read about the differences between FSRS-4.5 and FSRS-5, I have an article with an in-depth explanation of FSRS formulas.
 
 5. FSRS-5 (default parameters). This is just to see how well FSRS-5 performs without optimization.
 
-6. FSRS-5 (pretrain). In FSRS, the first 4 parameters (values of initial stability) are optimized in a completely different way, compared to the rest. "Pretrain" is when the first 4 parameters are optimized, while the rest of parameters are set to default. In Anki >=24.06, when parameters are optimized, the optimizer determines whether to keep the default parameters, perform pretrain, or perform a full optimization; which one is used depends on the user's review history. The more reviews a user has, the more likely it is that full optimization will be performed.
+6. FSRS-5 (pretrain). In FSRS, the first 4 parameters (values of initial stability) are optimized in a completely different way compared to the rest. "Pretrain" is when the first 4 parameters are optimized, while the rest of parameters are set to default. In Anki >=24.06, when parameters are optimized, the optimizer determines whether to keep the default parameters, perform pretrain, or perform a full optimization; which one is used depends on the user's review history. The more reviews a user has, the more likely it is that full optimization will be performed.
 
 Below is a diagram that should give you a better understanding of FSRS.
 
@@ -91,7 +91,7 @@ In order to calculate the length of the next interval, FSRS requires the length 
 
 ![GRU](https://github.com/user-attachments/assets/49f3152b-524f-46d3-b202-4b0090f921d0)
 
-GRU is also a recurrent algorithm, just like FSRS, even if the mathematical formulas are completely different. Its state is represented using one number. GRU also calculates memory stability as an intermediate value and employs an exponential forgetting curve.
+GRU is also a recurrent algorithm, just like FSRS, even if the mathematical formulas are completely different. Its state is represented by one number. GRU also calculates memory stability as an intermediate value and employs an exponential forgetting curve.
 
 9. GRU-P. Unlike GRU, which predicts memory stability before converting it into R via an exponential forgetting curve formula, GRU-P predicts R directly. More about GRU-P later.
 
@@ -129,7 +129,7 @@ The Y axis doesn't start at 0.
 
 These curves were plotted using default parameters, which have been obtained by running each algorithm on 20 thousand collections of Anki users. So what you're seeing are "average" or "typical" curves.
 DASH's curve looks like a step function, which goes against our human intuition and common sense. DASH[MCM] attempts to smooth it, but you can see that it's not perfect. DASH[ACT-R] achieves a smooth curve. <br />
-Also, the probability of recall doesn't start from 100% for DASH models and ACT-R. <br />
+Also, the probability of recall doesn't start at 100% for DASH models and ACT-R. <br />
 It's interesting that the forgetting curve of FSRS-4.5 (and FSRS-5, they use the same formula) is so steep compared to other models. FSRS v3 used a much steeper exponential formula, which was replaced with a less steep power formula in FSRS v4, and with an even less steep power formula in FSRS-4.5. And yet, even that still predicts much faster forgetting than other models. While we could make the forgetting curve of FSRS-5 even less steep, it would practically prevent the probability of recall from ever reaching values less than 10%, since even for small values of memory stability, it would take more than a human life to reach 10% with such a curve.
 
 15. [HLR](https://github.com/duolingo/halflife-regression/blob/master/settles.acl16.pdf), Half-Life Regression. It's an algorithm developed by Duolingo for Duolingo. The memory half-life in HLR is conceptually very similar to the memory stability in FSRS, but it's calculated using an overly simplistic formula.
@@ -138,15 +138,15 @@ It's interesting that the forgetting curve of FSRS-4.5 (and FSRS-5, they use the
 
 For HLR, the order of reviews doesn't matter because it only requires summary statistics about the whole review history. Regardless of how you rearrange reviews, the total number of reviews, passed reviews, and failed reviews (lapses) will remain the same.
 
-16. SM-2. It's a 35+ year old algorithm that is still used by Anki, Mnemosyne, and possibly other apps as well. It's main advantage is simplicity. Note that in our benchmark it is implemented the way it was originally designed. It's not the Anki version of SM-2, it's the original SM-2. We put a not-so-rigorous interval-to-probability converter on top of it.
+16. SM-2. It's a 35+ year-old algorithm that is still used by Anki, Mnemosyne, and possibly other apps as well. It's main advantage is simplicity. Note that in our benchmark, it is implemented the way it was originally designed. It's not the Anki version of SM-2, it's the original SM-2. We put a not-so-rigorous interval-to-probability converter on top of it.
 
-17. NN-17. It's a neural network approximation of [SM-17](https://supermemo.guru/wiki/Algorithm_SM-17). The SuperMemo wiki page about SM-17 may appear very detailed at first, but it actually obfuscates all of the important details that are necessary to implement SM-17. It tells you what the algorithm is doing, but not how. Our approximation relies on the limited information available on the formulas of SM-17, while utilizing neural networks to fill in any gaps.
+17. NN-17. It's a neural network approximation of [SM-17](https://supermemo.guru/wiki/Algorithm_SM-17). The SuperMemo wiki page about SM-17 may appear very detailed at first, but it actually obfuscates all of the important details that are necessary to implement SM-17. It tells you what the algorithm is doing, but not how. Our approximation relies on the limited information available on the formulas of SM-17 while utilizing neural networks to fill in any gaps.
 
 ![NN-17](https://github.com/user-attachments/assets/f877e8f9-f06c-46c7-9573-335bfccb196b)
 
-In order to calculate the length of the next interval, NN-17 requires the length of the previous interval, grade (Again/Hard/Good/Easy) and its own previous state, which is represented using four numbers: Difficulty, memory Stability, Retrievability and the number of lapses.
+In order to calculate the length of the next interval, NN-17 requires the length of the previous interval, grade (Again/Hard/Good/Easy) and its own previous state, which is represented using four numbers: Difficulty, memory Stability, Retrievability, and the number of lapses.
 
-18. AVG. It's an "algorithm" that outputs a constant equal to the user's average retention. For example, if the user presses Hard/Good/Easy 85% of the time, the "algorithm" will always output an 85% probability of recall for any given review. You can think of it as a weatherman who says "The temperature today will be average, the wind speed will be average, and the humidity will be average as well" every single day. This "algorithm" is intended only to serve as a baseline for comparison and has no practical applications.
+18. AVG. It's an "algorithm" that outputs a constant equal to the user's average retention. For example, if the user presses Hard/Good/Easy 85% of the time, the "algorithm" will always output an 85% probability of recall for any given review. You can think of it as a weatherman who says, "The temperature today will be average, the wind speed will be average, and the humidity will be average as well" every single day. This "algorithm" is intended only to serve as a baseline for comparison and has no practical applications.
 
 I did my best to create a "taxonomy" of spaced repetition algorithms.
 
@@ -154,7 +154,7 @@ I did my best to create a "taxonomy" of spaced repetition algorithms.
 
 SM-2 is not included in this diagram because it wasn't designed to predict the probability of recall, unlike the other algorithms.
 SM-17/18 algorithms also use the three-component (Difficulty, Stability, Retrievability) model of memory.
-HLR lacks a difficulty variable, but it does have memory stability (half-life) and retrievability, so one could say that it employs a two-component model of memory, rather than a three-component model.
+HLR lacks a difficulty variable, but it does have memory stability (half-life) and retrievability, so one could say that it employs a two-component model of memory rather than a three-component model.
 
 Additionally, below is a table comparing different algorithms.
 
@@ -167,11 +167,11 @@ Regarding invertibility: for some algorithms, such as DASH and GRU-P, probabilit
 
 ## Dataset
 
-The dataset used in the benchmark is [FSRS Anki 20k](https://huggingface.co/datasets/open-spaced-repetition/FSRS-Anki-20k), the largest in the world. It contains data about ~1.7 billion flashcard reviews from 20 thousand users, which is approximately 8 times more reviews than in the [Maimemo dataset](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VAGUL0), and approximately 131 times more reviews than in [the Duolingo dataset](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/N8XJME).
+The dataset used in the benchmark is [FSRS Anki 20k](https://huggingface.co/datasets/open-spaced-repetition/FSRS-Anki-20k), the largest in the world. It contains data about ~1.7 billion flashcard reviews from 20 thousand users, which is approximately 8 times more reviews than in the [Maimemo dataset](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VAGUL0) and approximately 131 times more reviews than in [the Duolingo dataset](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/N8XJME).
 
 The data itself is also different. In Anki, each user makes their own flashcards, while Maimemo and Duolingo offer pre-made courses. Anki has data about certain users reviewing different material, while Maimemo and Duolingo have data about certain material being reviewed by different users.
 
-This benchmark is based on 19,990 collections and 707,964,360 reviews, excluding same-day reviews (which constitute a substantial proportion of all reviews); only 1 review of a card per day is used by each algorithm other than FSRS-5 and GRU-P (short-term), which use same-day reviews for training, but not for evaluation. Additionally, some reviews are filtered out, such as when the user manually changed the due date (which would count as a review), or when the user used what's called a "filtered deck" if "Reschedule cards based on my answers in this deck" was disabled. Finally, an outlier filter is applied. Because of all of that, the real number of reviews used for evaluation is around 700 million, much smaller than 1.7B.
+This benchmark is based on 19,990 collections and 707,964,360 reviews, excluding same-day reviews (which constitute a substantial proportion of all reviews); only 1 review of a card per day is used by each algorithm other than FSRS-5 and GRU-P (short-term), which use same-day reviews for training but not for evaluation. Additionally, some reviews are filtered out, such as when the user manually changed the due date (which would count as a review) or when the user used what's called a "filtered deck" if "Reschedule cards based on my answers in this deck" was disabled. Finally, an outlier filter is applied. Because of all of that, the real number of reviews used for evaluation is around 700 million, much smaller than 1.7 billion.
 
 
 ## Results
@@ -179,9 +179,9 @@ This benchmark is based on 19,990 collections and 707,964,360 reviews, excluding
 In the tables and charts below, the averages are weighted by the number of reviews in each user's collection, meaning that users with more reviews have a greater impact on the value of the average. If someone has 100 thousand reviews, they will affect the average 100 times more than someone who only has 1 thousand reviews.
 The tables also show the number of optimizable parameters of each algorithm. The benchmark repo also has [unweighted averages](https://github.com/open-spaced-repetition/srs-benchmark?tab=readme-ov-file#result).
 
-![image](https://github.com/user-attachments/assets/d0cb4b6d-2ab9-4716-93b6-c855ea29e253)
+![image](https://github.com/user-attachments/assets/a01f511e-04fa-47a0-bd85-6370d26cac73)
 
-![RMSE](https://github.com/user-attachments/assets/f1b6dd67-faf8-4a93-b9cf-80121b2b76dd)
+![RMSE](https://github.com/user-attachments/assets/6240c78f-0582-4d54-8edc-b610a380280a)
 
 Lower is better. Black caps are 99% confidence intervals.
 Don't focus too much on absolute values, they depend on a lot of things: how we calculate RMSE (which involves somewhat arbitrary binning), whether the averages are weighted by the number of reviews or not, and how the outlier filter works. Instead, focus on the ranking - which algorithm is the best, which one is the second best, which one is the third best, etc.
@@ -190,25 +190,25 @@ The bars corresponding to FSRS-5 and GRU-P (short-term) are colored differently 
 
 Now let's look at log loss.
 
-![image](https://github.com/user-attachments/assets/736e8fff-410e-4cd6-a582-10f44379e970)
+![image](https://github.com/user-attachments/assets/6bcc355c-a2dd-42f6-8c1b-a6acbd17d7ee)
 
-![Log loss](https://github.com/user-attachments/assets/21afe690-a321-4090-a416-9034bc147c35)
+![Log loss](https://github.com/user-attachments/assets/bca7328e-81ed-4a6a-b31e-10bdf9c5c66a)
 
 Lower is better. Black caps are 99% confidence intervals.
-As you can see, the ranking is a little different. For example, based on RMSE, the ranks of NN-17 and GRU are very close (10th and 11th best, respectively), but based on log loss, NN-17 is ranked much higher (9th best, GRU is 14th). SM-2 and Transformer have switched places. AVG has a higher rank.
+As you can see, the ranking is a little different. For example, based on RMSE, the ranks of NN-17 and GRU are very close (10th and 11th best, respectively), but based on log loss, NN-17 is ranked much higher (9th best, GRU is 14th). SM-2 and Transformer have switched places.
 
 Finally, let's look at AUC.
 
-![image](https://github.com/user-attachments/assets/3526628d-c35c-4c02-abf3-48d87790eedf)
+![image](https://github.com/user-attachments/assets/fcc824fb-78b1-431b-8f8f-45b73a99792b)
 
-![AUC](https://github.com/user-attachments/assets/c16fdef5-afd4-40ab-ba85-c957d192f436)
+![AUC](https://github.com/user-attachments/assets/95e43b15-f001-4e83-84f0-efa2f441b838)
 
 Higher is better. Black caps are 99% confidence intervals.  <br />
 Now ranking is very different. This isn't too surprising, considering that AUC is completely uncorrelated with both RMSE and log loss. <br />
 It's interesting that the AUC score of HLR is 0.631, much higher than 0.54, which is what Duolingo reported in their paper. Granted, 0.631 is not that impressive either. In fact, all spaced repetition algorithms have rather unimpressive AUC scores. <br />
 Unsurprisingly, AVG has an AUC score close to 0.5. Since it always outputs a constant, it cannot differentiate between forgotten and recalled cards. <br />
-It is somewhat surprising that NN-17 has a relatively low AUC score, given that it combines the best of both worlds - a model of human memory, supplemented with a neural network. Granted, the goal  was not to create the perfect algorithm; rather, the goal was to emulate <br />SM-17. <br />
-Jarrett's implementation of Transformer doesn't perform well according to all 3 metrics, so if any neural network experts think, "I bet I can do better!", they are welcome!
+It is somewhat surprising that NN-17 has a relatively low AUC score, given that it combines the best of both worlds - a model of human memory supplemented with a neural network. Granted, the goal  was not to create the perfect algorithm; rather, the goal was to emulate SM-17. <br />
+Jarrett's implementation of Transformer doesn't perform well according to all 3 metrics, so if any neural network experts think, "I bet I can do better!" they are welcome!
 
 Let's address GRU-P. As you can see, it outperforms all other algorithms by all three metrics. So you're probably wondering "If predicting R directly is better than predicting an intermediate value first, why not do that?". Here's what happens when you let an algorithm predict R directly.
 
@@ -217,10 +217,10 @@ Let's address GRU-P. As you can see, it outperforms all other algorithms by all 
 These are forgetting curves that GRU-P generated for different users. Only one of them makes sense. <br />
 A curve that becomes flat (top left) not only makes no sense but is also unusable in practice, it could result in *infinitely* long intervals when used for scheduling. <br />
 A curve with a maximum that is not at time=0 (bottom left) makes no sense either. A curve with a minimum (top right) implies that after some point in time, forgetting ends and some sort of anti-forgetting starts, which also makes no sense. <br />
-Only bottom right is a proper forgetting curve. Well, minus the fact that it's wiggly. And minus the fact that it doesn't start at 100%. <br />
+Only the bottom right is a proper forgetting curve. Well, minus the fact that it's wiggly. And minus the fact that it doesn't start at 100%. <br />
 So while GRU-P outperforms all other algorithms, it's not usable in practice as it could result in all kinds of strange behavior.
 
-Finally, notice that while GRU-P (short-term) outperforms GRU-P, and while FSRS-5 outperforms FSRS-4.5, the difference in all 3 metrics is very small. This suggests that **same-day reviews have a very small impact on long-term memory**. Either that, or they require some kind of specialized approach to make them useful.
+Finally, notice that while GRU-P (short-term) outperforms GRU-P and while FSRS-5 outperforms FSRS-4.5, the difference in all 3 metrics is very small. This suggests that **same-day reviews have a very small impact on long-term memory**. Either that, or they require some kind of specialized approach to make them useful.
 
 
 ## Discussion
@@ -235,23 +235,23 @@ We would love to benchmark [THLR](https://www.researchgate.net/publication/38179
 
 Regarding the future of FSRS, we have been racking our brains, trying to come up with some way to improve it, and this mild improvement in FSRS-5 was the best we could do. FSRS-5 is the final version, there will be no major releases in the foreseeable future.
 
-Broadly speaking, machine learning algorithms are bound by the amount of computational power available, by the amount of data, and by the software. FSRS is not bound by computational power at all, its parameters can be optimized on an average home PC in a matter of seconds; training FSRS for 10x as long would only improve the metrics by 1-2%. FSRS is somewhat bound by data since most of users don't have hundreds of thousands of reviews. And it's almost entirely bound by software, aka theory of forgetting.
+Broadly speaking, machine learning algorithms are bound by the amount of computational power available, by the amount of data, and by the software. FSRS is not bound by computational power at all, its parameters can be optimized on an average home PC in a matter of seconds; training FSRS for 10x as long would only improve the metrics by 1-2%. FSRS is somewhat bound by data since most users don't have hundreds of thousands of reviews. And it's almost entirely bound by software, aka the theory of memory and forgetting.
 
 There are several ways to make FSRS more accurate, none of which are currently feasible:
 
-1. Consider the number of reviews done before a particular review + time of the day to estimate how fatigued the user was (perhaps some other factors could be taken into account when estimating fatigue as well). If someone is doing their first review at 4 PM, they are probably less fatigued than someone who is doing their 500th review at 4 AM, which affects retention. This is not possible with the way Anki currently works - FSRS cannot access datetime information - and would require major changes.
+1. Consider the number of reviews done before a particular review and the time of day to estimate how fatigued the user was (perhaps some other factors could be taken into account when estimating fatigue as well). If someone is doing their first review at 4 PM, they are probably less fatigued than someone who is doing their 500th review at 4 AM, which affects retention. This is not possible with the way Anki currently works - FSRS cannot access datetime information - and would require major changes.
 
-2. Consider the content of the cards: text, sound and images. It would require adding another machine learning algorithm (or even several algorithms) just for text/audio/image recognition, and we wouldn't be able to train it since Dae (the main Anki dev) can't give us a dataset that has all of the content of cards. That is against Anki's privacy policy, only scheduling data is available publicly.
+2. Consider the content of the cards: text, sound, and images. It would require adding another machine learning algorithm (or even several algorithms) just for text/audio/image recognition, and we wouldn't be able to train it since Dae (the main Anki dev) can't give us a dataset that has all of the content of cards. That is against Anki's privacy policy, only scheduling data is available publicly.
 
-3. Consider the interference from sibling cards. This could also be extended to "conceptual siblings" - cards that don't come from the same note, but test you on similar material. Again, not possible due to how Anki works: when the user is reviewing a particular card, FSRS (or any other algorithm) cannot access review history of any other card. So it cannot combine data from multiple cards. Even if it could, optimization would probably become a nightmare.
+3. Consider the interference from sibling cards. This could also be extended to "conceptual siblings" - cards that don't come from the same note, but test you on similar material. Again, not possible due to how Anki works: when the user is reviewing a particular card, FSRS (or any other algorithm) cannot access the review history of any other card. So it cannot combine data from multiple cards. Even if it could, optimization would probably become a nightmare.
 
 All three of these combined could greatly increase the efficiency of spaced repetition. The third enhancement could be particularly effective if each pair of cards is assigned a "similarity score" (using some machine learning algorithm), though doing that naively would be computationally intractable - the number of pairs is proportional to the number of cards squared; for example, 10,000 cards have 49,995,000 pairs. Still, I would expect great improvements from an algorithm that doesn't treat cards as independent, and a review of card A increases not only the memory stability of card A but also the memory stability of card B, albeit to a lesser extent.
 
 **Anki is not designed for advanced spaced repetition algorithms.**
 There are about 20 different ways to get learning steps wrong, and having two arbitrary stages ("learning" and "review") isn't necessary to begin with. <br />
 Any algorithm, FSRS or otherwise, can only access interval lengths and grades, nothing else. <br />
-Datetime info is inaccessible when scheduling the next review. <br />
-Info from other cards (other than the card that is being reviewed right now) is inaccessible when scheduling the next review. <br />
+Datetime information is inaccessible when scheduling the next review. <br />
+Information from other cards (other than the card that is being reviewed right now) is inaccessible when scheduling the next review. <br />
 [There is no way to manually create connections between cards](https://faqs.ankiweb.net/linking-cards-together.html). <br />
 
 With all that in mind, I want to make several predictions:
@@ -263,8 +263,8 @@ Clarification: I made this prediciton a few days before Jarrett made [this tweet
 
 3. By 2029, no algorithm in our benchmark will have achieved an (weighted by reviews) AUC score higher than 0.83, unless the dataset used in the benchmark changes.
 
-4. By 2031, there will be an app with an algorithm that employs at least one out of three ideas proposed above (which are not specific to FSRS), and that app will not be Anki. For example, an app using KAR3L.
-The app must be publicly available in AppStore, Google Play Store, or elsewhere; and must not be in the beta testing stage. I'm adding these extra conditions because without them, mathacademy.com has already [met the main condition](https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/). Even with the extra conditions, this prediction can easily come true way sooner than 2031.
+4. By 2031, there will be an app with an algorithm that employs at least one out of the three ideas proposed above (which are not specific to FSRS), and that app will not be Anki. For example, an app using KAR3L.
+The app must be publicly available in AppStore, Google Play Store, or elsewhere, and it must not be in the beta testing stage. I'm adding these extra conditions because, without them, mathacademy.com has already [met the main condition](https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/). Even with the extra conditions, this prediction can easily come true way sooner than 2031.
 
 Predictions were made at the end of July, 2024.
 
