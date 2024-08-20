@@ -4,7 +4,7 @@ Apart from being great for benchmarking algorithms on it, the [Anki 20k dataset]
 
 Here's the answer: 
 
-![Average reveiw time](https://github.com/user-attachments/assets/502974f1-24cc-4c68-81e6-47965fffefec)
+![Review time](https://github.com/user-attachments/assets/a0b9fa96-d23f-471a-930c-cb3311f30921)
 
 This is based on 20k collections and 1.4 **billion** reviews. The black caps are 99% confidence intervals, but they are too narrow to see properly.
 
