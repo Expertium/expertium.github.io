@@ -8,13 +8,15 @@ Now there is only one setting to worry about!
 
 In all seriousness, though, I don't think that FSRS (or any similar algorithm) can come anywhere close to mass adoption without:
 
-1) Hiding the field with parameters, as well as anything that has the word "parameter" in it.
+1) Making FSRS the default algorithm.
 
-2) Hiding any numbers other than desired retention, which should be the only number that the user can see.
+2) Hiding the field with parameters, as well as anything that has the word "parameter" in it.
 
-3) Automatically suggesting the optimal value of desired retention so that the user can turn their brain off and just go along with the suggestion.
+3) Hiding any numbers other than desired retention, which should be the only number that the user can see.
 
-4) Automatically, periodically optimizing parameters without notifying the user.
+4) Automatically suggesting the optimal value of desired retention so that the user can turn their brain off and just go along with the suggestion.
+
+5) Automatically, periodically optimizing parameters without notifying the user.
 
 That is what it take to even begin reaching mass adoption. In its current state, FSRS is difficult to use, even for advanced users.
 
