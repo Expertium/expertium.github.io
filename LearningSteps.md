@@ -1,6 +1,6 @@
 # Let's get learning steps wrong! (it's very easy)
 
-Let's just preface this by saying that **15m**, **20m** or **30m** is ideal both with FSRS and with the old algorithm too. But who cares about what is ideal or optimal? We're here to get things WRONG! Without further ado, here are 12 ways to get the learning steps in Anki wrong:
+Let's just preface this by saying that **15m**, **20m** or **30m** is ideal both with FSRS and with the old algorithm too. But who cares about what is "ideal" or "optimal"? We're here to get things WRONG! Here are 12 ways to get the learning steps in Anki wrong:
 
 1) **​2d**. This can cause the interval for Hard to be longer than the interval for Good.
 2) **1d**. Believe it or not, this also can cause the same problem as above, because it can somehow turn Hard into 2d, don't ask how.
