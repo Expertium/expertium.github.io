@@ -85,9 +85,9 @@ In order to calculate the length of the next interval, FSRS requires the length 
 
 ### General-purpose machine learning algorithms family
 
-7. Transformer. This neural network architecture has become popular in recent years because of its superior performance in natural language processing. ChatGPT uses this architecture. In our implementation, Transformer calculates memory stability as an intermediate value and employs an exponential forgetting curve.
+7. Transformer. This neural network architecture has become popular in recent years because of its superior performance in natural language processing. ChatGPT uses this architecture. In our implementation, Transformer calculates memory stability as an intermediate value and employs an exponential forgetting curve. For the sake of making the comparison more fair, it uses the same power forgetting curve as FSRS-4.5/5.
 
-8. GRU, Gated Recurrent Unit. This neural network architecture is commonly used for time series analysis, such as predicting stock market trends or recognizing human speech. Originally, we used a more complex architecture called LSTM, but GRU performed better with fewer parameters.
+8. GRU, Gated Recurrent Unit. This neural network architecture is commonly used for time series analysis, such as predicting stock market trends or recognizing human speech. Originally, we used a more complex architecture called LSTM, but GRU performed better with fewer parameters. Again, for the sake of making the comparison more fair, it uses the same power forgetting curve as FSRS-4.5/5.
 
 ![GRU](https://github.com/user-attachments/assets/49f3152b-524f-46d3-b202-4b0090f921d0)
 
@@ -179,9 +179,9 @@ This benchmark is based on 19,990 collections and 702,721,850 reviews, excluding
 In the tables and charts below, the averages are weighted by the number of reviews in each user's collection, meaning that users with more reviews have a greater impact on the value of the average. If someone has 100 thousand reviews, they will affect the average 100 times more than someone who only has 1 thousand reviews.
 The tables also show the number of optimizable parameters of each algorithm. The benchmark repo also has [unweighted averages](https://github.com/open-spaced-repetition/srs-benchmark?tab=readme-ov-file#result).
 
-![image](https://github.com/user-attachments/assets/a01f511e-04fa-47a0-bd85-6370d26cac73)
+![image](https://github.com/user-attachments/assets/1e46dba1-459b-402d-aaeb-c743df027c64)
 
-![RMSE](https://github.com/user-attachments/assets/aea2aa3e-0793-4cf7-b4dc-7d4c87aebe05)
+![RMSE](https://github.com/user-attachments/assets/ccbb3963-7e95-40ac-8882-eaa534b20456)
 
 Lower is better. Black caps are 99% confidence intervals.
 Don't focus too much on absolute values, they depend on a lot of things: how we calculate RMSE (which involves somewhat arbitrary binning), whether the averages are weighted by the number of reviews or not, and how the outlier filter works. Instead, focus on the ranking - which algorithm is the best, which one is the second best, which one is the third best, etc.
@@ -190,18 +190,18 @@ The bars corresponding to FSRS-5 and GRU-P (short-term) are colored differently 
 
 Now let's look at log loss.
 
-![image](https://github.com/user-attachments/assets/6bcc355c-a2dd-42f6-8c1b-a6acbd17d7ee)
+![image](https://github.com/user-attachments/assets/57a80da5-9675-4cf0-a602-3e87d95b7a56)
 
-![Log loss](https://github.com/user-attachments/assets/45d4e510-b922-4632-a0a3-b002fcc2a906)
+![Log loss](https://github.com/user-attachments/assets/c9575b39-7553-4bc4-8308-cbb71576d9c1)
 
 Lower is better. Black caps are 99% confidence intervals.
 As you can see, the ranking is a little different. For example, based on RMSE, the ranks of NN-17 and GRU are very close (10th and 11th best, respectively), but based on log loss, NN-17 is ranked much higher (9th best, GRU is 14th). SM-2 and Transformer have switched places.
 
 Finally, let's look at AUC.
 
-![image](https://github.com/user-attachments/assets/fcc824fb-78b1-431b-8f8f-45b73a99792b)
+![image](https://github.com/user-attachments/assets/16a30242-0f9c-4eb8-aced-73bf99d00a86)
 
-![AUC](https://github.com/user-attachments/assets/4318c086-b4cc-4aea-8ecf-e9b4b6f11fd6)
+![AUC](https://github.com/user-attachments/assets/9e07125d-803c-4013-9009-d30b831c6f6c)
 
 Higher is better. Black caps are 99% confidence intervals.  <br />
 Now ranking is very different. This isn't too surprising, considering that AUC is completely uncorrelated with both RMSE and log loss. <br />
