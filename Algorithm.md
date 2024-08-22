@@ -174,7 +174,7 @@ Again=1, Hard=2, Good=3, Easy=4. This formula provides a *slightly* better fit.
 
 In Anki, FSRS cannot get access to the real interval lengths of same-day reviews, so it has to rely solely on grades. w17 and w18 are two new parameters.
 
-4) Previously, the first 4 parameters - values of initial stability - were optimized without using gradient descent, using a curve-fitting method that is specific to spaced repetition. After that, they remained "frozen". Now, after they are calculated, they can be adjusted by gradient descent, just like the other parameters. This results in a slightly better fit, though the reason why is unknown. It's possible that FSRS is changing them to compensate for an inaccuracy somewhere else.
+4) Previously, the first 4 parameters - values of initial stability - were optimized without using gradient descent, using a curve-fitting method that is specific to spaced repetition. After that, they remained "frozen". Now, after they are calculated, they can be adjusted by gradient descent, just like the other parameters. This results in a slightly better fit, though the reason why is unknown. It's possible that the optimizer is changing them to compensate for an inaccuracy somewhere else.
 
 
 ## Optimization aka training
