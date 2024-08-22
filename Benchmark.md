@@ -85,15 +85,15 @@ In order to calculate the length of the next interval, FSRS requires the length 
 
 ### General-purpose machine learning algorithms family
 
-7. Transformer. This neural network architecture has become popular in recent years because of its superior performance in natural language processing. ChatGPT uses this architecture. In our implementation, Transformer calculates memory stability as an intermediate value and employs an exponential forgetting curve.
+7. Transformer. This neural network architecture has become popular in recent years because of its superior performance in natural language processing. ChatGPT uses this architecture.
 
-8. GRU, Gated Recurrent Unit. This neural network architecture is commonly used for time series analysis, such as predicting stock market trends or recognizing human speech. Originally, we used a more complex architecture called LSTM, but GRU performed better with fewer parameters. Again, for the sake of making the comparison more fair, it uses the same power forgetting curve as FSRS-4.5/5.
+8. GRU, Gated Recurrent Unit. This neural network architecture is commonly used for time series analysis, such as predicting stock market trends or recognizing human speech. Originally, we used a more complex architecture called LSTM, but GRU performed better with fewer parameters. Both GRU and Transformer use the same power forgetting curve as FSRS-4.5 and FSRS-5 to make the comparison more fair.
 
 ![GRU](https://github.com/user-attachments/assets/49f3152b-524f-46d3-b202-4b0090f921d0)
 
-GRU is also a recurrent algorithm, just like FSRS, even if the mathematical formulas are completely different. Its state is represented by one number. Both GRU and Transformer use the same power forgetting curve as FSRS-4.5 and FSRS-5 to make the comparison more fair.
+GRU is also a recurrent algorithm, just like FSRS, even if the mathematical formulas are completely different. Its state is represented by one number.
 
-9. GRU-P. Unlike GRU, which predicts memory stability before converting it into R via an exponential forgetting curve formula, GRU-P predicts R directly. More about GRU-P later.
+9. GRU-P. Unlike GRU, which predicts memory stability before converting it into R via a power forgetting curve formula, GRU-P predicts R directly. More about GRU-P later.
 
 10. GRU-P (short-term). Same as above, but it also uses same-day reviews, so it's trained on more data.
 
