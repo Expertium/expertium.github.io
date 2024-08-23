@@ -2,17 +2,3 @@ title: Expertium's Blog
 description: Spaced repetition stuff
 site_name: ""
 site_description: ""
-logourl: /logo_icon.png
-logo: /logo_icon.png
-remote_theme: pages-themes/cayman@v0.2.0
-
-html:
-  comments:
-    utterances:
-      repo: "github.com/Expertium/expertium.github.io"
-
-utterances:
-  repo: "github.com/Expertium/expertium.github.io"
-  issue-term: "pathname"
-  label: "utteranc.es"
-  theme: "github-light"
