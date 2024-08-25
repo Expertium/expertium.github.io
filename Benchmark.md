@@ -76,7 +76,7 @@ Here's a table comparing different metrics.
 
 6.​ FSRS-5 (pretrain). In FSRS, the first 4 parameters (values of initial stability) are optimized in a completely different way compared to the rest. "Pretrain" is when the first 4 parameters are optimized, while the rest of parameters are set to default. In Anki >=24.06, when parameters are optimized, the optimizer determines whether to keep the default parameters, perform pretrain, or perform a full optimization; which one is used depends on the user's review history. The more reviews a user has, the more likely it is that full optimization will be performed.
 
-Below is a diagram that should give you a better understanding of FSRS.
+Below is a diagram that should give you a better understanding of FSRS. If you want to know the details, please read [this article](/Algorithm.md).
 
 ![FSRS](https://github.com/user-attachments/assets/89dd0ca5-6579-4471-bf95-2b1c3535f881)
 
