@@ -220,7 +220,13 @@ A curve with a maximum that is not at time=0 (bottom left) makes no sense either
 Only the bottom right is a proper forgetting curve. Well, minus the fact that it's wiggly. And minus the fact that it doesn't start at 100%. <br />
 So while GRU-P outperforms all other algorithms, it's not usable in practice as it could result in all kinds of strange behavior.
 
-Finally, notice that while GRU-P (short-term) outperforms GRU-P and while FSRS-5 outperforms FSRS-4.5, the difference in all 3 metrics is very small. This suggests that **same-day reviews have a very small impact on long-term memory**. Either that, or they require some kind of specialized approach to make them useful.
+Notice that while GRU-P (short-term) outperforms GRU-P and while FSRS-5 outperforms FSRS-4.5, the difference in all 3 metrics is very small. This suggests that **same-day reviews have a very small impact on long-term memory**. Either that, or they require some kind of specialized approach to make them useful.
+
+Finally, one more thing. The metrics presented above can be difficult to interpret. In order to make it easier to understand how algorithms perform relative to each other, the image below shows the percentage of users for whom algorithm A (row) has a lower RMSE than algorithm B (column). For example, GRU-P-short has a 94.5% superiority over the Transformer, meaning that for 94.5% of all collections in this benchmark, GRU-P-short can estimate the probability of recall more accurately than the Transformer.
+
+![Superiority, 19990](https://github.com/user-attachments/assets/b2a51cf0-e0d7-4274-95cc-8d48511fdb5a)
+
+You may have noticed that FSRS-5 has a 99.0% superiority over SM-2, meaning that for 99.0% of users, RMSE will be lower (and the probability of recall will be more accurate) with FSRS-5 than with SM-2. But please remember that SM-2 wasn't designed to predict probabilities, and the only reason it does that in this benchmark is because Jarrett added extra formulas on top of SM-2.
 
 
 ## Discussion
