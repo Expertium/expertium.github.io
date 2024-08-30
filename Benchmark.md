@@ -226,7 +226,7 @@ Finally, one more thing. The metrics presented above can be difficult to interpr
 
 ![Superiority, 19990](https://github.com/user-attachments/assets/b2a51cf0-e0d7-4274-95cc-8d48511fdb5a)
 
-You may have noticed that FSRS-5 has a 99.0% superiority over SM-2, meaning that for 99.0% of users, RMSE will be lower (and the predicted probability of recall will be more accurate) with FSRS-5 than with SM-2. But please remember that SM-2 wasn't designed to predict probabilities, and the only reason it does that in this benchmark is because Jarrett added extra formulas on top of SM-2. **There is no way to have a truly fair, no caveats, comparison between FSRS and SM-2.**
+You may have noticed that FSRS-5 has a 99.0% superiority over SM-2, meaning that for 99.0% of users, RMSE will be lower with FSRS-5 than with SM-2. But please remember that SM-2 wasn’t designed to predict probabilities, and the only reason it does that in this benchmark is because extra formulas for converting intervals given by SM-2 into probabilities were added on top of it. **There is no way to have a truly fair, no caveats, comparison between FSRS and SM-2.**
 
 
 ## Discussion
