@@ -228,6 +228,16 @@ Finally, one more thing. The metrics presented above can be difficult to interpr
 
 You may have noticed that FSRS-5 has a 99.0% superiority over SM-2, meaning that for 99.0% of users, RMSE will be lower with FSRS-5 than with SM-2. But please remember that SM-2 wasn’t designed to predict probabilities, and the only reason it does that in this benchmark is because extra formulas for converting intervals given by SM-2 into probabilities were added on top of it. **There is no way to have a truly fair, no caveats, comparison between FSRS and SM-2.**
 
+Here are a few fun numbers from this diagram:
+
+FSRS-5 vs FSRS-4.5: 67.9% superiority.
+
+FSRS-5 vs FSRS v4: 82.5% superiority.
+
+FSRS-5 vs FSRS v3: 90.4% superiority.
+
+FSRS-5 optimized vs FSRS-5 with default parameters: 81.8% superiority.
+
 
 ## Discussion
 
