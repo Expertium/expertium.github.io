@@ -181,7 +181,7 @@ The tables also show the number of optimizable parameters of each algorithm. The
 
 ![image](https://github.com/user-attachments/assets/1e46dba1-459b-402d-aaeb-c743df027c64)
 
-![RMSE](https://github.com/user-attachments/assets/ccbb3963-7e95-40ac-8882-eaa534b20456)
+![RMSE](https://github.com/user-attachments/assets/7774c392-322c-4304-be18-46b0b1f72573)
 
 Lower is better. Black caps are 99% confidence intervals.
 Don't focus too much on absolute values, they depend on a lot of things: how we calculate RMSE (which involves somewhat arbitrary binning), whether the averages are weighted by the number of reviews or not, and how the outlier filter works. Instead, focus on the ranking - which algorithm is the best, which one is the second best, which one is the third best, etc.
@@ -192,7 +192,7 @@ Now let's look at log loss.
 
 ![image](https://github.com/user-attachments/assets/57a80da5-9675-4cf0-a602-3e87d95b7a56)
 
-![Log loss](https://github.com/user-attachments/assets/c9575b39-7553-4bc4-8308-cbb71576d9c1)
+![Log loss](https://github.com/user-attachments/assets/5fcc05a2-db57-4e28-bfa8-ec8d7e1af452)
 
 Lower is better. Black caps are 99% confidence intervals.
 As you can see, the ranking is a little different. For example, based on RMSE, the ranks of NN-17 and GRU are very close (10th and 11th best, respectively), but based on log loss, NN-17 is ranked much higher (9th best, GRU is 14th). SM-2 and Transformer have switched places.
@@ -201,7 +201,7 @@ Finally, let's look at AUC.
 
 ![image](https://github.com/user-attachments/assets/16a30242-0f9c-4eb8-aced-73bf99d00a86)
 
-![AUC](https://github.com/user-attachments/assets/9e07125d-803c-4013-9009-d30b831c6f6c)
+![AUC](https://github.com/user-attachments/assets/44772a1c-c0f4-4601-87dd-7742b04d2951)
 
 Higher is better. Black caps are 99% confidence intervals.  <br />
 Now ranking is very different. This isn't too surprising, considering that AUC is completely uncorrelated with both RMSE and log loss. <br />
