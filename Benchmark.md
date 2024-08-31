@@ -236,7 +236,8 @@ FSRS-5 vs FSRS v4: 82.5% superiority.
 
 FSRS-5 vs FSRS v3: 90.4% superiority.
 
-FSRS-5 optimized vs FSRS-5 with default parameters: 81.8% superiority.
+FSRS-5 optimized vs FSRS-5 with default parameters: 81.8% superiority. <br />
+You may be thinking, "Wait, so in 18% of cases, unoptimized parameters are better? That seems too high.". The reason is that optimization and evaluation are performed on different data. This is a common practice in machine learning. Evaluating the performance of an algorithm on the same data that it was trained on usually leads to an overly optimistic estimate of performance, and in reality the algorithm performs worse. To get a more realistic estimate, the algorithm is trained on one subset of data (training set) and evaluated on another one (test set). Informally, you can think of it like giving a student practice problems as homework but evaluating him based on his answers during the exam rather than based on his answers to homework problems.
 
 
 ## Discussion
