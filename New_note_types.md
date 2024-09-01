@@ -1,4 +1,6 @@
-# Match pairs
+# New note types
+
+## Match Pairs
 
 Have you ever had cards like this? There are 2 pieces of knowledge and you can't remember which is which, so you make a Cloze.
 
@@ -30,6 +32,10 @@ Here you have 2 countries but 3 capitals, so you can't answer correctly if you o
 Make sure that the extra answer is wrong, but not *obviously* wrong. In this example, I won't benefit from adding Jakarta to the second list, since it's obviously wrong. Which is why I added Amsterdam. I don't have to think very hard to remember that Jakarta is neither the capital of Sweden nor Switzerland, whereas Amsterdam makes me pause and think.
 
 Of course, how useful this note type is for you depends on how often you encounter what I call "negative interference", where card A makes it harder to remember card B, and card B makes it harder to remember card A. Personally, I really wish that this note type would become a built-in type. I think it has enough advantages to justify being a part of Anki.
+
+## Randomized Cloze
+
+This is another note type that aims to solve the "memorizing the shape of the question rather than the content" problem.
 
 ___
 ### [←Return to homepage](https://expertium.github.io/)
