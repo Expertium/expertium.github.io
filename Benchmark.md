@@ -264,7 +264,7 @@ There are several ways to make FSRS more accurate, none of which are currently f
 
 All three of these combined could greatly increase the efficiency of spaced repetition. The third enhancement could be particularly effective if each pair of cards is assigned a "similarity score" (using some machine learning algorithm), though doing that naively would be computationally intractable​  -  ​the number of pairs is proportional to the number of cards squared; for example, 10,000 cards have 49,995,000 pairs. Still, I would expect great improvements from an algorithm that doesn't treat cards as independent, and a review of card A increases not only the memory stability of card A but also the memory stability of card B, albeit to a lesser extent.
 
-**Anki is not designed for advanced spaced repetition algorithms.**
+**Anki is not designed for advanced spaced repetition algorithms.** <br />
 There are about 20 different ways to get learning steps wrong, and having two arbitrary stages ("learning" and "review") isn't necessary to begin with. <br />
 Any algorithm, FSRS or otherwise, can only access interval lengths and grades, nothing else. <br />
 Datetime information is inaccessible when scheduling the next review. <br />
