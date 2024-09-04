@@ -14,7 +14,7 @@ However, this is inefficient - now you have 2 notes for the same thing. If only 
 
 [Well, now there is!](https://ankiweb.net/shared/info/1079148231?cb=1724844470880)
 
-(video 2, capitals)
+![ezgif-7-6213ee4eb8](https://github.com/user-attachments/assets/8b2ef2dd-1211-4ddd-9e36-d50dad5cd14c)
 
 And it's not the only advantage of this note type. It also supports images.
 
@@ -26,7 +26,7 @@ And audio.
 
 And if you think that this is too easy, and therefore would make active recall ineffective, you can make your life harder by adding 1 or 2 fake answers.
 
-(video 4, capitals but with Amsterdam thrown into the mix)
+![3 capitals](https://github.com/user-attachments/assets/4133a134-4501-4a7b-a17b-a562d0ec3228)
 
 Here you have 2 countries but 3 capitals, so you can't answer correctly if you only know the capital of one country but not the capital of the other one. <br />
 Make sure that the extra answer is wrong, but not *obviously* wrong. In this example, I won't benefit from adding Jakarta to the second list, since it's obviously wrong. Which is why I added Amsterdam. I don't have to think very hard to remember that Jakarta is neither the capital of Sweden nor Switzerland, whereas Amsterdam makes me pause and think.
