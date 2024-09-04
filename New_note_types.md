@@ -37,5 +37,9 @@ Of course, how useful this note type is for you depends on how often you encount
 
 This is another note type that aims to solve the "memorizing the shape of the question rather than the content" problem.
 
+## Alternative
+
+There is another note type conceptually similar to Match Pairs: https://github.com/cjdduarte/anki-template-interactive-drag-drop/blob/main/Example.apkg. Feel free to use whichever you like more.
+
 ___
 ### [←Return to homepage](https://expertium.github.io/)
