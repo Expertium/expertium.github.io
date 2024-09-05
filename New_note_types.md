@@ -12,7 +12,7 @@ But there is a problem - you may end up just memorizing "thingy 1 is the top one
 
 However, this is inefficient - now you have 2 notes for the same thing. If only there was a way to put them into the same note and randomize order...
 
-[Well, now there is!](https://ankiweb.net/shared/info/1079148231?cb=1724844470880)
+[Well, now there is!](https://ankiweb.net/shared/info/171015247)
 
 ![ezgif-7-6213ee4eb8](https://github.com/user-attachments/assets/8b2ef2dd-1211-4ddd-9e36-d50dad5cd14c)
 
