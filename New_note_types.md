@@ -18,7 +18,7 @@ However, this is inefficient - now you have 2 notes for the same thing. If only 
 
 And it's not the only advantage of this note type. It also supports images.
 
-(video 2, turtle vs tortoise)
+![Images](https://github.com/user-attachments/assets/5edef924-016f-46c1-aa11-a53f4e708ed2)
 
 And audio.
 
