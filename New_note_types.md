@@ -20,7 +20,7 @@ And it's not the only advantage of this note type. It also supports images.
 
 ![Images](https://github.com/user-attachments/assets/5edef924-016f-46c1-aa11-a53f4e708ed2)
 
-And audio (if you can't hear it, make sure to click the speaker symbol ![image](https://github.com/user-attachments/assets/7c5e85ac-1357-4ac3-a68b-c2a65e0d2877)).
+And audio (if you can't hear it in the example below, make sure to click the speaker symbol ![image](https://github.com/user-attachments/assets/7c5e85ac-1357-4ac3-a68b-c2a65e0d2877)).
 
 https://github.com/user-attachments/assets/6f65fb06-322b-4745-8ee9-101b126e2df5
 
