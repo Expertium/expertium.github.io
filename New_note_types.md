@@ -60,6 +60,7 @@ As it says, don't delete it. The thing about audio is that it's impossible to pl
 
 But that will affect other note types as well. So some crude hacks are needed to prevent only Match Pairs from playing audio automatically.
 
+In all examples above I used two pairs, but you can add more. However, stuffing too much information into a single card is a bad practice.
 
 Of course, how useful this note type is for you depends on how often you encounter what I call "negative interference", where card A makes it harder to remember card B, and card B makes it harder to remember card A. Personally, I really wish that this note type would become a built-in type. I think it has enough advantages to justify being a part of Anki.
 
@@ -71,7 +72,9 @@ This is another note type that aims to solve the "memorizing the shape of the qu
 
 To save some time and effort, you can ask ChatGPT, Claude or Gemini to rephrase the sentence and generate 2-3 sentences with the same meaning, although I recommend taking the time to write sentences yourself.
 
-One thing that you should keep in mind: the numbers in curly brackets have to be the same, otherwise you'll end up making multiple cards instead of one card. The separator is the same as for Match Pairs.
+One thing that you should keep in mind: the numbers in curly brackets have to be the same for each item, otherwise you'll end up making multiple cards instead of one card. It doesn't mean that the number always has to be 1, you aboslutely can have multiple cloze selections per item. Like this: `Just some {{c1::random}} {{c2::text}}| Also just some {{c1::random}} {{c2::text}} | And this is some {{c1::random}} {{c2::text}}, too`.
+
+The separator is the same as for Match Pairs.
 
 ![Cloze edit](https://github.com/user-attachments/assets/5881adc5-7150-4f3a-8efa-90517425eb7a)
 
@@ -79,11 +82,18 @@ One thing that you should keep in mind: the numbers in curly brackets have to be
 
 It's exactly what it sounds like. And the separator is the same.
 
+(gif)
+
+(image with fields)
 
 
 ## Click Words
 
-[The deck with these new note types](https://ankiweb.net/shared/info/171015247) also has a fourth note type, but I don't really like it. Feel free to try it out on your own.
+(gif)
+
+(image with fields)
+
+I don't really like this note type. It's like Cloze, but with multiple answers. I believe this isn't beneficial since it makes recall much easier than cloze, which isn't good for strengthening memories, and the only "advantage" is that it looks fancy. Just use Cloze, or even better - Randomized Cloze.
 
 
 ## Alternatives
