@@ -226,7 +226,7 @@ You might be thinking, "But what if the dataset just has very few same-day revie
 
 Finally, one more thing. The metrics presented above can be difficult to interpret. In order to make it easier to understand how algorithms perform relative to each other, the image below shows the percentage of users for whom algorithm A (row) has a lower RMSE than algorithm B (column). For example, GRU-P-short has a 94.5% superiority over the Transformer, meaning that for 94.5% of all collections in this benchmark, GRU-P-short can estimate the probability of recall more accurately than the Transformer.
 
-![Superiority, 19990](https://github.com/user-attachments/assets/b2a51cf0-e0d7-4274-95cc-8d48511fdb5a)
+![Superiority, 19990](https://github.com/user-attachments/assets/eee84fd8-0820-40ab-a2da-4e309cb8a6c9)
 
 You may have noticed that FSRS-5 has a 99.0% superiority over SM-2, meaning that for 99.0% of users, RMSE will be lower with FSRS-5 than with SM-2. But please remember that SM-2 wasn’t designed to predict probabilities, and the only reason it does that in this benchmark is because extra formulas for converting intervals given by SM-2 into probabilities were added on top of it. **There is no way to have a truly fair, no caveats, comparison between FSRS and SM-2.**
 
@@ -239,7 +239,7 @@ FSRS-5 vs FSRS v4: 82.5% superiority.
 FSRS-5 vs FSRS v3: 90.4% superiority.
 
 FSRS-5 optimized vs FSRS-5 with default parameters: 81.8% superiority. <br />
-You may be thinking, "Wait, so in 18% of cases, unoptimized parameters are better? That seems too high.". The reason is that optimization and evaluation are performed on different data. This is a common practice in machine learning. Evaluating the performance of an algorithm on the same data that it was trained on usually leads to an overly optimistic estimate of performance, and in reality the algorithm performs worse. To get a more realistic estimate, the algorithm is trained on one subset of data (training set) and evaluated on another one (test set). Informally, you can think of it like giving a student practice problems as homework but evaluating him based on his answers during the exam rather than based on his answers to homework problems.
+You may be thinking, "Wait, so in 18% of cases, unoptimized parameters are better? That seems too high." The reason is that optimization and evaluation are performed on different data. This is a common practice in machine learning. Evaluating the performance of an algorithm on the same data that it was trained on usually leads to an overly optimistic estimate of performance, and in reality the algorithm performs worse. To get a more realistic estimate, the algorithm is trained on one subset of data (training set) and evaluated on another one (test set). Informally, you can think of it like giving a student practice problems as homework but evaluating him based on his answers during the exam rather than based on his answers to homework problems.
 
 
 ## Discussion
