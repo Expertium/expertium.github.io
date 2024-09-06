@@ -220,7 +220,7 @@ A curve with a maximum that is not at time=0 (bottom left) makes no sense either
 Only the bottom right is a proper forgetting curve. Well, minus the fact that it's wiggly. And minus the fact that it doesn't start at 100%. <br />
 So while GRU-P outperforms all other algorithms, it's not usable in practice as it could result in all kinds of strange behavior.
 
-Notice that while GRU-P (short-term) outperforms GRU-P and while FSRS-5 outperforms FSRS-4.5, the difference in all 3 metrics is very small. This suggests that **same-day reviews have a very small impact on long-term memory**. Either that, or they require some kind of specialized approach to make them useful. Since the architecture of FSRS and GRU-P is very different, the fact that the improvement is small for both of them suggests that architecture is not to blame here.
+Notice that while GRU-P (short-term) outperforms GRU-P and while FSRS-5 outperforms FSRS-4.5, the difference in all 3 metrics is very small. This suggests that **same-day reviews have a very small impact on long-term memory**. Since the architecture of FSRS and GRU-P is very different, the fact that the improvement is small for both of them suggests that architecture is not to blame here.
 
 You might be thinking, "But what if the dataset just has very few same-day reviews? Then it would appear that, on average, their impact is small." That's a valid concern, but in the Anki 20k dataset, 24.6% of reviews are same-day reviews (this is *after* excluding manual due date changes and other special cases). So clearly, lack of data isn't an issue.
 
