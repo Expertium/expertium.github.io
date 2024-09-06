@@ -171,7 +171,7 @@ The dataset used in the benchmark is [FSRS Anki 20k](https://huggingface.co/data
 
 The data itself is also different. In Anki, each user makes their own flashcards, while Maimemo and Duolingo offer pre-made courses. Anki has data about certain users reviewing different material, while Maimemo and Duolingo have data about certain material being reviewed by different users.
 
-This benchmark is based on 19,990 collections and 702,721,850 reviews, excluding same-day reviews (which constitute a substantial proportion of all reviews); only 1 review of a card per day is used by each algorithm other than FSRS-5 and GRU-P (short-term), which use same-day reviews for training but not for evaluation. Additionally, some reviews are filtered out, such as when the user manually changed the due date (which would count as a review) or when the user used what's called a "filtered deck" if "Reschedule cards based on my answers in this deck" was disabled. Finally, an outlier filter is applied. Because of all of that, the real number of reviews used for evaluation is around 700 million, much smaller than 1.7 billion.
+This benchmark is based on 19,990 collections and 702,721,850 reviews, excluding same-day reviews (which constitute approximately 24.6% of all reviews); only 1 review of a card per day is used by each algorithm other than FSRS-5 and GRU-P (short-term), which use same-day reviews for training but not for evaluation. Additionally, some reviews are filtered out, such as when the user manually changed the due date (which would count as a review) or when the user used what's called a "filtered deck" if "Reschedule cards based on my answers in this deck" was disabled. Finally, an outlier filter is applied. Because of all of that, the real number of reviews used for evaluation is around 700 million, much smaller than the 1.7 billion figure mentioned above.
 
 
 ## Results
@@ -220,7 +220,9 @@ A curve with a maximum that is not at time=0 (bottom left) makes no sense either
 Only the bottom right is a proper forgetting curve. Well, minus the fact that it's wiggly. And minus the fact that it doesn't start at 100%. <br />
 So while GRU-P outperforms all other algorithms, it's not usable in practice as it could result in all kinds of strange behavior.
 
-Notice that while GRU-P (short-term) outperforms GRU-P and while FSRS-5 outperforms FSRS-4.5, the difference in all 3 metrics is very small. This suggests that **same-day reviews have a very small impact on long-term memory**. Either that, or they require some kind of specialized approach to make them useful.
+Notice that while GRU-P (short-term) outperforms GRU-P and while FSRS-5 outperforms FSRS-4.5, the difference in all 3 metrics is very small. This suggests that **same-day reviews have a very small impact on long-term memory**. Either that, or they require some kind of specialized approach to make them useful. Since the architecture of FSRS and GRU-P is very different, the fact that the improvement is small for both of them suggests that architecture is not to blame here.
+
+You might be thinking, "But what if the dataset just has very few same-day reviews? Then it would appear that, on average, their impact is small." That's a valid concern, but in the Anki 20k dataset, 24.6% of reviews are same-day reviews (this is *after* excluding manual due date changes and other special cases). So clearly, lack of data isn't an issue.
 
 Finally, one more thing. The metrics presented above can be difficult to interpret. In order to make it easier to understand how algorithms perform relative to each other, the image below shows the percentage of users for whom algorithm A (row) has a lower RMSE than algorithm B (column). For example, GRU-P-short has a 94.5% superiority over the Transformer, meaning that for 94.5% of all collections in this benchmark, GRU-P-short can estimate the probability of recall more accurately than the Transformer.
 
