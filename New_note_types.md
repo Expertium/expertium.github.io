@@ -86,6 +86,8 @@ It's exactly what it sounds like. And the separator is the same.
 
 (image with fields)
 
+Keep in mind that this isn't Match Pairs, the back can only have **one** item. The `|` separator won't work.
+
 
 ## Click Words
 
