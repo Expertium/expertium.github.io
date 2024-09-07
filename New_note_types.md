@@ -88,6 +88,10 @@ It's exactly what it sounds like. And the separator is the same.
 
 Keep in mind that this isn't Match Pairs, the back can only have **one** item. The `|` separator won't work.
 
+Here's a little diagram to help you.
+
+![Match Pairs vs Randomized Basic](https://github.com/user-attachments/assets/3926eee6-4146-403c-be11-e5e96775f151)
+
 
 ## Click Words
 
