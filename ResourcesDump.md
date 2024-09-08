@@ -10,7 +10,7 @@
 
 5​.​ [https://supermemo.guru/wiki/SuperMemo_Guru](https://supermemo.guru/wiki/SuperMemo_Guru). This one has a metric crapton of articles: about spaced repetition, neuroscience, education, etc. Some are great, some...not so much.
 
-6​.​ A great article about spaced repetition algorithms by Jarrett Ye, the dreator of FSRS: [https://github.com/open-spaced-repetition/fsrs4anki/wiki/Spaced-Repetition-Algorithm:-A-Three%E2%80%90Day-Journey-from-Novice-to-Expert](https://github.com/open-spaced-repetition/fsrs4anki/wiki/Spaced-Repetition-Algorithm:-A-Three%E2%80%90Day-Journey-from-Novice-to-Expert)
+6​.​ A great article about spaced repetition algorithms by Jarrett Ye, the creator of FSRS: [https://github.com/open-spaced-repetition/fsrs4anki/wiki/Spaced-Repetition-Algorithm:-A-Three%E2%80%90Day-Journey-from-Novice-to-Expert](https://github.com/open-spaced-repetition/fsrs4anki/wiki/Spaced-Repetition-Algorithm:-A-Three%E2%80%90Day-Journey-from-Novice-to-Expert)
 
 7​.​ [https://andymatuschak.org/](https://andymatuschak.org/)
 
