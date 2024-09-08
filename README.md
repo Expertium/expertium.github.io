@@ -6,4 +6,6 @@ I write articles about spaced repetition and especially about [FSRS](https://git
 5. [A short analysis of how review time is related to answer buttons](/Buttons.md). Some wonder, "Do people tend to think longer before pressing Again than before pressing Good?". In this article, I answer that question. Spoiler: yes.
 6. [Abridged history of spaced repetition](/History.md).
 7. [Mass adoption and the perfect UI](/Perfect_UI.md). Can FSRS be easy to use? Yes. But first, we'll need to change ~~some~~ a ton of things.
-8. [Let's get learning steps wrong!](/LearningSteps) It's much easier than you think.
+8. [Let's get learning steps wrong!](/LearningSteps.md) It's much easier than you think.
+
+Nothing that floats your boat? [Take a look at these articles and blogs then](/ResourcesDump.md).
