@@ -21,12 +21,11 @@ However, this is inefficient - now you have 2 notes for the same thing. If only 
 
 Well, with Match Pairs there is!
 
-
-![ezgif-7-6213ee4eb8](https://github.com/user-attachments/assets/8b2ef2dd-1211-4ddd-9e36-d50dad5cd14c)
+![2 capitals](https://github.com/user-attachments/assets/905f5a88-33f4-419a-a662-e1906c835385)
 
 And it's not the only advantage of this note type. It also supports images.
 
-![Images](https://github.com/user-attachments/assets/5edef924-016f-46c1-aa11-a53f4e708ed2)
+![Images](https://github.com/user-attachments/assets/2b648768-12d4-4755-a036-d0ba7681c416)
 
 And audio (if you can't hear it in the example below, make sure to click the speaker symbol ![image](https://github.com/user-attachments/assets/9d3d1efb-8669-484d-91bb-e1c7a91b7b30)).
 
@@ -41,9 +40,7 @@ Make sure that the extra answer is wrong, but not *obviously* wrong. In this exa
 
 Btw, you don't necessarily have to drag answers - you can click on them. When you click on an answer, it is put in the *top* box.
 
-![Answer is put at the top](https://github.com/user-attachments/assets/4c1fbea7-7f69-4a34-81c1-d0e86637d2dc)
-
-Here's what the fields look like:
+And here's what the fields look like:
 
 ![image](https://github.com/user-attachments/assets/87a2b1b6-231b-40c2-8934-b0f9977b1cd8)
 
@@ -54,11 +51,7 @@ When you download the deck, there will be this card:
 
 ![image](https://github.com/user-attachments/assets/ff46142b-776b-479a-bf9a-884e76761ef3)
 
-As it says, don't delete it. The thing about audio is that it's impossible to play multiple audio files in whatever order you want. This is a problem for Match Pairs, where the order in which udio plays should, ideally, be randomized. Solution: just don't let Anki play the audio automatically, so that the user has to play it manually. You can do that by using this setting:
-
-![image](https://github.com/user-attachments/assets/1708ee2d-c553-4233-acb4-472be5d0cb0d)
-
-But that will affect other note types as well. So some crude hacks are needed to prevent only Match Pairs from playing audio automatically.
+As it says, don't delete it. I won't go into the details regarding this, but basically Match Pairs doesn't play audio automatically. It's not a bug, it's a feature.
 
 In all examples above I used two pairs, but you can add more. However, stuffing too much information into a single card is a bad practice.
 
