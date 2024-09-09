@@ -7,5 +7,6 @@ I write articles about spaced repetition and especially about [FSRS](https://git
 6. [Abridged history of spaced repetition](/History.md).
 7. [Mass adoption and the perfect UI](/Perfect_UI.md). Can FSRS be easy to use? Yes. But first, we'll need to change ~~some~~ a lot of things.
 8. [Let's get learning steps wrong!](/LearningSteps.md) It's much easier than you think.
+9. [Should you lower your maximum interval?[/MaxInterval.md]
 
 Nothing that floats your boat? [Take a look at these articles and blogs then](/ResourcesDump.md).
