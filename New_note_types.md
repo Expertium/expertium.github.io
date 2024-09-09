@@ -32,7 +32,7 @@ And audio (if you can't hear it in the example below, make sure to click the spe
 
 https://github.com/user-attachments/assets/6f65fb06-322b-4745-8ee9-101b126e2df5
 
-And if you think that this is too easy, and therefore would make active recall ineffective, you can make your life harder by adding 1 or 2 fake answers.
+And if you think that this is too easy, and therefore would make active recall ineffective, you can make your life harder by adding one or two fake answers.
 
 ![3 capitals](https://github.com/user-attachments/assets/4133a134-4501-4a7b-a17b-a562d0ec3228)
 
@@ -82,9 +82,9 @@ The separator is the same as for Match Pairs.
 
 It's exactly what it sounds like. And the separator is the same.
 
-(gif)
+![Randomized Basic](https://github.com/user-attachments/assets/7a4e54a4-5646-4f3c-8a25-7f3dfc9f3f54)
 
-(image with fields)
+![image](https://github.com/user-attachments/assets/5df3b54d-3e07-4227-ba98-c420054674ae)
 
 Keep in mind that this isn't Match Pairs, the back can only have **one** item. The `|` separator won't work.
 
@@ -95,9 +95,11 @@ Here's a little diagram to help you.
 
 ## Click Words
 
-(gif)
+![Click Words](https://github.com/user-attachments/assets/02d7bc6f-2a1d-4b7e-818d-9b4f30631caa)
 
-(image with fields)
+![image](https://github.com/user-attachments/assets/5e4cd91d-0f0f-46e0-a265-ba2e90acf0bc)
+
+"Title" is an extra field, you can leave it empty, if you want.
 
 I don't really like this note type. It's like Cloze, but with multiple answers. I believe this isn't beneficial since it makes recall much easier than cloze, which isn't good for strengthening memories, and the only "advantage" is that it looks fancy. Just use Cloze, or even better - Randomized Cloze.
 
