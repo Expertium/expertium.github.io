@@ -9,11 +9,11 @@
 
 ## Match Pairs
 
-Have you ever had cards like this? There are 2 pieces of knowledge and you can't remember which is which, so you make a Cloze.
+Have you ever had cards like this? There are 2 pieces of knowledge, and you can't remember which is which, so you make a Cloze.
 
 ![1](https://github.com/user-attachments/assets/def904c9-b78b-437f-ac66-d8f0807f155f)
 
-But there is a problem - you may end up just memorizing "thingy 1 is the top one, thingy 2 is the bottom one". In order to avoid that, you could make two notes with the order switched.
+But there is a problem: you may end up just memorizing "thingy 1 is the top one, thingy 2 is the bottom one". In order to avoid that, you could make two notes with the order switched.
 
 ![2](https://github.com/user-attachments/assets/8ef6dd0a-6417-4106-a422-10048bd67af6)
 
@@ -31,7 +31,7 @@ And audio (if you can't hear it in the example below, make sure to click the spe
 
 https://github.com/user-attachments/assets/6f65fb06-322b-4745-8ee9-101b126e2df5
 
-And if you think that this is too easy, and therefore would make active recall ineffective, you can make your life harder by adding one or two fake answers.
+And if you think that this is too easy and therefore would make active recall ineffective, you can make your life harder by adding one or two fake answers.
 
 ![3 capitals](https://github.com/user-attachments/assets/4133a134-4501-4a7b-a17b-a562d0ec3228)
 
@@ -53,9 +53,9 @@ When you download the deck, there will be this card:
 
 As it says, don't delete it. I won't go into the details regarding this, but basically Match Pairs doesn't play audio automatically. It's not a bug, it's a feature.
 
-In all examples above I used two pairs, but you can add more. However, stuffing too much information into a single card is a bad practice.
+In all examples above, I used two pairs, but you can add more. However, stuffing too much information into a single card is a bad practice.
 
-Of course, how useful this note type is for you depends on how often you encounter what I call "negative interference", where card A makes it harder to remember card B, and card B makes it harder to remember card A. Personally, I really wish that this note type would become a built-in type. I think it has enough advantages to justify being a part of Anki.
+Of course, how useful this note type is for you depends on how often you encounter what I call "negative interference", where card A makes it harder to remember card B, and card B makes it harder to remember card A. Personally, I really wish that this note type would become a built-in type. Personally, I've been able to replace dozens of unnecessary clozes with this note type.
 
 ## Randomized Cloze
 
@@ -65,7 +65,7 @@ This is another note type that aims to solve the "memorizing the shape of the qu
 
 To save some time and effort, you can ask ChatGPT, Claude or Gemini to rephrase the sentence and generate 2-3 sentences with the same meaning, although I recommend taking the time to write sentences yourself.
 
-One thing that you should keep in mind: the numbers in curly brackets have to be the same for each item, otherwise you'll end up making multiple cards instead of one card. It doesn't mean that the number always has to be 1, you aboslutely can have multiple cloze selections per item. Like this: `Just some {{c1::random}} {{c2::text}}| Also just some {{c1::random}} {{c2::text}} | And this is some {{c1::random}} {{c2::text}}, too`.
+One thing that you should keep in mind: the numbers in curly brackets have to be the same for each item, otherwise you'll end up making multiple cards instead of one card. It doesn't mean that the number always has to be 1, you absolutely can have multiple cloze selections per item. Like this: `Just some {{c1::random}} {{c2::text}}| Also just some {{c1::random}} {{c2::text}} | And this is some {{c1::random}} {{c2::text}}, too`.
 
 The separator is the same as for Match Pairs.
 
