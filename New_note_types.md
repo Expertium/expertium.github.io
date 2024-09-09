@@ -58,7 +58,7 @@ In all examples above, I used two pairs, but you can add more. However, stuffing
 
 Of course, how useful this note type is for you depends on how often you encounter what I call "negative interference", where card A makes it harder to remember card B, and card B makes it harder to remember card A. Personally, I really wish that this note type would become a built-in type. Personally, I've been able to replace dozens of unnecessary clozes with this note type.
 
-P.S. On AnkiDroid you can only click an answer, which puts it in the topmost vacant answer box. You can't drag answers, that only works on PC.
+P.S. On AnkiDroid you can only **click** an answer, which puts it in the topmost vacant answer box. You **can't drag** answers, that only works on PC.
 
 ## Randomized Cloze
 
