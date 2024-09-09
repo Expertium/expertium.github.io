@@ -241,6 +241,22 @@ FSRS-5 vs FSRS v3: 90.4% superiority.
 FSRS-5 optimized vs FSRS-5 with default parameters: 81.8% superiority. <br />
 You may be thinking, "Wait, so in 18% of cases, unoptimized parameters are better? That seems too high." The reason is that optimization and evaluation are performed on different data. This is a common practice in machine learning. Evaluating the performance of an algorithm on the same data that it was trained on usually leads to an overly optimistic estimate of performance, and in reality the algorithm performs worse. To get a more realistic estimate, the algorithm is trained on one subset of data (training set) and evaluated on another one (test set). Informally, you can think of it like giving a student practice problems as homework but evaluating him based on his answers during the exam rather than based on his answers to homework problems.
 
+If you want a more technical explanation, here:
+
+1​.​ Data is split into 5 parts, let's call them A-B-C-D-E. A contains the oldest reviews, E contains the most recent reviews.
+
+2​.​ An algorithm is trained on A and evaluated on B. Let's call the error that is obtained at this evaluation error 1.
+
+3​.​ An algorithm is trained on A and B and evaluated on C to obtain error 2.
+
+4​.​ An algorithm is trained on A, B and C and evaluated on D to obtain error 3.
+
+5​.​ An algorithm is trained on A, B, C and D and evaluated on E to obtain error 4.
+
+6​.​ The final error is a simple average of four errors, and the final parameters are from step 5.
+
+This procedure is used for all algorithms, and it's used in Anki as well. Thanks to this clever way of splitting data, no data is thrown away while at the same time the algorithm is trained on different data than it is evaluated on, so we get a realistic estimate of how it would perform on new, previously unseen data.
+
 
 ## Discussion
 
