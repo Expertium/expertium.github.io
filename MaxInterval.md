@@ -8,7 +8,7 @@ At the same time, lowering it too much can increase your workload significantly.
 
 ![image](https://github.com/user-attachments/assets/87ef0f3f-050c-4320-bc59-5c42a8b1e9f7)
 
-Average total time per card is basically "How many minutes you will spend on this card over it’s entire lifetime".
+Average total time per card is basically "How many minutes you will spend on this card over it’s entire lifetime". In the table above, "Anki" just means "the default algorithm of Anki".
 
 As you can see, the amount of time spend increases as you decrease max. interval. Decreasing it form 36500 days to 365 days increases the total amount of time spent reviewing an average card by 50-60%, assuming you will be using Anki for 100 years.
 
