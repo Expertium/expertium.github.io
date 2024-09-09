@@ -10,7 +10,7 @@ At the same time, lowering it too much can increase your workload significantly.
 
 Average total time per card is basically "How many minutes you will spend on this card over it’s entire lifetime".
 
-As you can see, the amount of time spend increases as you decrease max. interval. Decreasing it form 36500 days to 365 days increases the total amount of time spent reviewing an average card by 50-60%.
+As you can see, the amount of time spend increases as you decrease max. interval. Decreasing it form 36500 days to 365 days increases the total amount of time spent reviewing an average card by 50-60%, assuming you will be using Anki for 100 years.
 
 So, should you lower your max. interval?
 
