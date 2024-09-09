@@ -2,6 +2,8 @@
 
 [https://ankiweb.net/shared/info/171015247](https://ankiweb.net/shared/info/171015247). The deck has examples of 4 new note types: Match Pairs, Randomized Cloze, Randomized Basic and Click Words. Once you download it, you'll be able to make cards based on these note types on your own, no add-ons needed.
 
+They work on PC and on AnkiDroid too, but haven't been tested on AnkiMobile.
+
 - [Match Pairs](#match-pairs)
 - [Randomized Cloze](#randomized-cloze)
 - [Randomized Basic](#randomized-basic)
@@ -38,14 +40,13 @@ And if you think that this is too easy and therefore would make active recall in
 Here you have 2 countries but 3 capitals, so you can't answer correctly if you only know the capital of one country but not the capital of the other one. <br />
 Make sure that the extra answer is wrong, but not *obviously* wrong. In this example, I won't benefit from adding Jakarta to the second list, since it's obviously wrong. Which is why I added Amsterdam. I don't have to think very hard to remember that Jakarta is neither the capital of Sweden nor Switzerland, whereas Amsterdam makes me pause and think.
 
-Btw, you don't necessarily have to drag answers - you can click on them. When you click on an answer, it is put in the *top* box.
+Btw, you don't necessarily have to drag answers - you can click on them. When you click on an answer, it is put in the topmost vacant answer box.
 
 And here's what the fields look like:
 
 ![image](https://github.com/user-attachments/assets/87a2b1b6-231b-40c2-8934-b0f9977b1cd8)
 
 `|` is the separator that you should put between items. Don't worry about leading/trailing spaces, they are stripped away automatically: `Answer1 | Answer2` will produce the same result as `Answer1|Answer2`.
-
 
 When you download the deck, there will be this card:
 
@@ -56,6 +57,8 @@ As it says, don't delete it. I won't go into the details regarding this, but bas
 In all examples above, I used two pairs, but you can add more. However, stuffing too much information into a single card is a bad practice.
 
 Of course, how useful this note type is for you depends on how often you encounter what I call "negative interference", where card A makes it harder to remember card B, and card B makes it harder to remember card A. Personally, I really wish that this note type would become a built-in type. Personally, I've been able to replace dozens of unnecessary clozes with this note type.
+
+P.S. On AnkiDroid you can only click an answer, which puts it in the topmost vacant answer box. You can't drag answers, that only works on PC.
 
 ## Randomized Cloze
 
