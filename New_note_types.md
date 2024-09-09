@@ -1,6 +1,6 @@
 # New note types
 
-[https://ankiweb.net/shared/info/171015247](https://ankiweb.net/shared/info/171015247). The deck has examples of 4 new note types: Match Pairs, Randomized Cloze, Randomized Basic and Click Words.
+[https://ankiweb.net/shared/info/171015247](https://ankiweb.net/shared/info/171015247). The deck has examples of 4 new note types: Match Pairs, Randomized Cloze, Randomized Basic and Click Words. Once you download it, you'll be able to make cards based on these note types on your own, no add-ons needed.
 
 - [Match Pairs](#match-pairs)
 - [Randomized Cloze](#randomized-cloze)
