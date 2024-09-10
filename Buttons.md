@@ -18,6 +18,17 @@ In case you are confused: for example, Again > Hard > Good > Easy means "Average
 
 I hope nobody will interpret this article as "It's ok to use review time to automatically select the answer button for the user".
 
+1) Time to answer varies not only between different people but also between different types of material. So Anki will have to estimate what time corresponds to Again-Hard-Good-Easy for this specific user and for this specific material.
+   
+3) averag_t(Again) > averag_t(Hard) > averag_t(Good) > averag_t(Easy) is true only for 40% of users. It could be due to noise, it could be that some people really do take longer to answer Hard than Again (about 21%).
+
+3) There will be outliers if the user went to the toilet or got distracted by a phone call or something.
+
+It's **WAY** easier to just use self-reported grades. There are a lot of arguments about using 2 vs 4 buttons, and those arguments will likely last as long as Anki itself, but using time as a proxy for the answer button will be worse than either of those options. Using time as a proxy will work reliably only for about 40% of users, will be prone to outliers, and the exact cutoffs will have to be adjusted for each user individually and for different decks.
+
+Compare that to just asking the user to click a button.
+
+
 
 ___
 ### [←Return to homepage](https://expertium.github.io/)
