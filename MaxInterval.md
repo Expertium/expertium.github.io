@@ -14,7 +14,7 @@ As you can see, the amount of time spent increases as you decrease max. interval
 
 So, should you lower your max. interval?
 
-Well...maybe. I really want to find a mathematically optimal value of the max. interval, but I don't know how. On the one hand, I definitely don't want to spend 20 years not knowing a card. On the other hand, I also don't want to do more work.
+Well...maybe. I really want to find a mathematically optimal value of the max. interval, but I don't know how. On the one hand, I definitely don't want to spend 20 years not knowing the information in a card. On the other hand, I also don't want to do more work.
 Perhaps one day I'll come up with a way to precisely determine the optimal value of max. interval.
 
 Until then, I set it to 5 years for most of my decks, except for decks with very hard material, where I keep the max. interval at 365 days. I think it's a reasonable compromise.
