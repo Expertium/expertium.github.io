@@ -224,7 +224,7 @@ Notice that while GRU-P (short-term) outperforms GRU-P and while FSRS-5 outperfo
 
 You might be thinking, "But what if the dataset just has very few same-day reviews? Then it would appear that, on average, their impact is small." That's a valid concern, but in the Anki 20k dataset, 24.6% of reviews are same-day reviews (this is *after* excluding manual due date changes and other special cases). So clearly, lack of data isn't an issue.
 
-Finally, one more thing. The metrics presented above can be difficult to interpret. In order to make it easier to understand how algorithms perform relative to each other, the image below shows the percentage of users for whom algorithm A (row) has a lower RMSE than algorithm B (column). For example, GRU-P-short has a 94.5% superiority over the Transformer, meaning that for 94.5% of all collections in this benchmark, GRU-P-short can estimate the probability of recall more accurately than the Transformer.
+One more thing. The metrics presented above can be difficult to interpret. In order to make it easier to understand how algorithms perform relative to each other, the image below shows the percentage of users for whom algorithm A (row) has a lower RMSE than algorithm B (column). For example, GRU-P-short has a 94.5% superiority over the Transformer, meaning that for 94.5% of all collections in this benchmark, GRU-P-short can estimate the probability of recall more accurately than the Transformer.
 
 ![Superiority, 19990](https://github.com/user-attachments/assets/eee84fd8-0820-40ab-a2da-4e309cb8a6c9)
 
@@ -268,7 +268,7 @@ Caveats:
 
 We would love to benchmark [THLR](https://www.researchgate.net/publication/381792698_DRL-SRS_A_Deep_Reinforcement_Learning_Approach_for_Optimizing_Spaced_Repetition_Scheduling), but the researchers didn't release their code publicly.
 
-Regarding the future of FSRS, we have been racking our brains, trying to come up with some way to improve it, and this mild improvement in FSRS-5 was the best we could do. FSRS-5 is the final version, there will be no major releases in the foreseeable future.
+Regarding the future of FSRS, we have been racking our brains, trying to come up with some way to improve it, and this mild improvement in FSRS-5 was the best we could do. **FSRS-5 is the final version, there will be no major releases in the foreseeable future.**
 
 Broadly speaking, machine learning algorithms are bound by the amount of computational power available, by the amount of data, and by the software. FSRS is not bound by computational power at all, its parameters can be optimized on an average home PC in a matter of seconds; training FSRS for 10x as long would only improve the metrics by 1-2%. FSRS is somewhat bound by data since most users don't have hundreds of thousands of reviews. And it's almost entirely bound by software, aka the theory of memory and forgetting.
 
@@ -292,7 +292,7 @@ Information from other cards (other than the card that is being reviewed right n
 With all that in mind, I want to make several predictions:
 
 1. No further version of FSRS beyond FSRS-5 will be used in Anki by 2027. No FSRS-5.5, FSRS-6, or any other version that supersedes FSRS-5.
-Clarification: I made this prediciton a few days before Jarrett made [this tweet](https://x.com/JarrettYe/status/1817570865699299818). After seeing his tweet, I'm even more confident in this prediction. I have an idea for FSRS-6, but it requires getting a new dataset and using more input features than just interval lengths and grades. Overall, I find it unlikely that FSRS-6 will be released before 2027.
+Clarification: I made this prediciton a few days before Jarrett made [this tweet](https://x.com/JarrettYe/status/1817570865699299818). After seeing his tweet, I'm even more confident in this prediction. I have an idea for FSRS-6, but it requires getting a new dataset and using more input features than just interval lengths and grades. Also, LMSherlock said that unless some other famous app decides to implement FSRS, he won't work on FSRS-6 just for the sake of Anki. Overall, I find it unlikely that FSRS-6 will be released before 2027.
 
 3. By 2029, no algorithm in our benchmark will have achieved a (weighted by reviews) log loss lower than 0.27, unless the dataset used in the benchmark changes, in which case this prediction is rendered void.
 
