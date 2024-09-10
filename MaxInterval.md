@@ -4,7 +4,7 @@ The lower your max. interval, the more frequently you will have to see your card
 An "interval" in Anki can be interpreted as "the amount of time between two subsequent reviews". But I want to reframe it: an interval is **the maximum amount of time that your material can spend being forgotten**.
 Let's assume that you reviewed a card, and the next interval is 20 years. Let's also assume that you immediately forgot the material in this card. This means that you will spend **20 years not knowing this material**. That doesn't sound very good, does it?
 
-At the same time, lowering it too much can increase your workload significantly. [Here](https://forums.ankiweb.net/t/decrease-the-default-value-of-maximum-interval/36725/11?u=expertium) are the results of (somewhat old) simulations:
+At the same time, lowering the max. interval too much can increase your workload significantly. [Here](https://forums.ankiweb.net/t/decrease-the-default-value-of-maximum-interval/36725/11?u=expertium) are the results of (somewhat old) simulations:
 
 ![image](https://github.com/user-attachments/assets/87ef0f3f-050c-4320-bc59-5c42a8b1e9f7)
 
