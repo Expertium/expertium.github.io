@@ -164,7 +164,7 @@ It's important to mention that me and Sherlock have tried to incorporate R into 
 
 ![CodeCogsEqn (3)](https://github.com/user-attachments/assets/09a02eb1-d2da-4faa-aacd-4c905556889d)
 
-Again=1, Hard=2, Good=3, Easy=4. This formula provides a *slightly* better fit.
+Again=1, Hard=2, Good=3, Easy=4. This formula provides a *slightly* better fit. Because difficulty is clamped between 1 and 10, negative values of D are not a problem, they will simply be replaced with 1.
 
 2) "Mean reversion" now reverses the difficulty to that of D0(4), rather than D0(3).
 
