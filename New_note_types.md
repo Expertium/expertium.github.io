@@ -41,7 +41,7 @@ Here you have 2 countries and 3 capitals, so you need to think harder.<br />
 Make sure that the extra answer is wrong, but not *obviously* wrong. In this example, I won't benefit from adding Jakarta to the second list, since it's obviously wrong. Which is why I added Amsterdam - Amsterdam makes me pause and think, Jakarta doesn't.
 
 Still not hard enough? Match Pairs supports any number of wrong answers. If you have 2, 3, or N wrong answers, one of them will be randomly selected instead of displaying all of them at once to avoid visual clutter.<br />
-In this case, not only is the order randomized, but which wrong answer is displayed is also randomized. I never thought that a random number generator could be so useful for learning, lol.
+In this case, not only is the order randomized, but *which* wrong answer is displayed is also randomized. I never thought that a random number generator could be so useful for learning, lol.
 
 (gif)
 
@@ -63,7 +63,7 @@ As it says, don't delete it. I won't go into the details regarding this, but bas
 
 In all examples above, I used two pairs, but you can add more. However, stuffing too much information into a single card is a bad practice.
 
-Of course, how useful this note type is for you depends on how often you encounter what I call "negative interference", where card A makes it harder to remember card B, and card B makes it harder to remember card A. Personally, I really wish that this note type would become a built-in type. Personally, I've been able to replace dozens of unnecessary clozes with this note type.
+Of course, how useful this note type is for you depends on how often you encounter what I call "negative interference", where card A makes it harder to remember card B, and card B makes it harder to remember card A. Personally, I've been able to replace dozens of unnecessary clozes with this note type, and I think it would be cool if this would become built-in in the future.
 
 P.S. On AnkiDroid you can only **click** an answer, which puts it in the topmost vacant answer box. You **can't drag** answers, that only works on PC.
 
