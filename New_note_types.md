@@ -55,17 +55,17 @@ And here's what the fields look like:
 
 `|` is the separator that you should put between items. Don't worry about leading/trailing spaces, they are stripped away automatically: `Answer1 | Answer2` will produce the same result as `Answer1|Answer2`.
 
-When you download the deck, there will be this card:
-
-![image](https://github.com/user-attachments/assets/ff46142b-776b-479a-bf9a-884e76761ef3)
-
-As it says, don't delete it. I won't go into the details regarding this, but basically Match Pairs doesn't play audio automatically. It's not a bug, it's a feature.
-
 In all examples above, I used two pairs, but you can add more. However, stuffing too much information into a single card is a bad practice. I recommend having 2-3 pairs, *maaaaaaaaaaaybe* 4, but not more.
 
 Of course, how useful this note type is for you depends on how often you encounter what I call "negative interference", where card A makes it harder to remember card B, and card B makes it harder to remember card A. Personally, I've been able to replace dozens of unnecessary clozes with this note type, and I think it would be cool if this would become built-in in the future.
 
 P.S. On AnkiDroid you can only **click** an answer, which puts it in the topmost vacant answer box. You **can't drag** answers, that only works on PC.
+
+P.P.S. When you download the deck, there will be this card:
+
+![image](https://github.com/user-attachments/assets/ff46142b-776b-479a-bf9a-884e76761ef3)
+
+As it says, don't delete it. I won't go into the details regarding this, but basically Match Pairs doesn't play audio automatically. It's not a bug, it's a feature.
 
 ## Randomized Cloze
 
