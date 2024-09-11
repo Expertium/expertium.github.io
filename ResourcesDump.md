@@ -20,7 +20,9 @@
 
 10​.​ Learning techniques ranked based on effectiveness: [http://web.archive.org/web/20190711014620/http://tlcp.depaultla.org/wp-content/uploads/sites/2/2015/05/Dunlosky-et-al-2013-What-Works-What-Doesnt.pdf](http://web.archive.org/web/20190711014620/http://tlcp.depaultla.org/wp-content/uploads/sites/2/2015/05/Dunlosky-et-al-2013-What-Works-What-Doesnt.pdf)
 
-11​.​ An interactive comic that explains spaced repetition in a beginner-friendly way: [https://ncase.me/remember/](https://ncase.me/remember/).
+11​.​ An interactive comic that explains spaced repetition in a beginner-friendly way: [https://ncase.me/remember/](https://ncase.me/remember/)
+
+12​.​ Spaced repetition for hierarchical knowledge, such as math and physics: [https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/](https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/)
 
 
 ___
