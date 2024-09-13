@@ -255,7 +255,7 @@ If you want a more technical explanation, here:
 
 6​.​ The final error is a simple average of four errors, and the final parameters are from step 5.
 
-This procedure is used for all algorithms, and it's used in Anki as well. Thanks to this clever way of splitting data, no data is thrown away while at the same time the algorithm is trained on different data than it is evaluated on, so we get a realistic estimate of how it would perform on new, previously unseen data.
+This procedure is used for all algorithms, and it's used in Anki as well. Thanks to this clever way of splitting data, no data is thrown away while at the same time the algorithm is trained on different data than it is evaluated on, so we get a realistic estimate of how it would perform on new, previously unseen data. By the way, this is not how Evaluate works in Anki. Evaluate uses a simplified procedure to avoid optimizing parameters every time the user wants to evaluate them.
 
 
 ## Discussion
