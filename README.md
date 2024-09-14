@@ -9,4 +9,6 @@ I write articles about spaced repetition and especially about [FSRS](https://git
 8. [Should you lower your maximum interval?](/MaxInterval.md) 
 9. [Mass adoption and the perfect UI](/Perfect_UI.md). Can FSRS be easy to use? Yes. But first, we'll need to change ~~some~~ a lot of things.
 
+A list of all implementations of FSRS in different programming languages: [https://github.com/open-spaced-repetition/awesome-fsrs.](https://github.com/open-spaced-repetition/awesome-fsrs)
+
 Nothing that floats your boat? [Take a look at these articles and blogs then](/ResourcesDump.md).
