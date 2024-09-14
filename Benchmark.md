@@ -258,7 +258,7 @@ If you want a more technical explanation, here:
 
 This procedure is used for all algorithms, and it's used in Anki as well. Thanks to this clever way of splitting data, no data is thrown away while at the same time the algorithm is trained on different data than it is evaluated on, so we get a realistic estimate of how it would perform on new, previously unseen data.
 
-By the way, this is not how Evaluate works in Anki. Evaluate uses a simplified procedure to avoid optimizing parameters every time the user wants to evaluate them - it just evaluates the specified parameters on the entire history, without optimizing them and without any splitting. It can only tell the user how well the parameters fit the *current* review history aka the training set. But the benchmark should evaluate the model's ability to generalize beyond the training set data.
+By the way, this is not how "Evaluate" works in Anki. "Evaluate" uses a simplified procedure to avoid optimizing parameters every time the user wants to evaluate them - it just evaluates the specified parameters on the entire history, without optimizing them and without any splitting; training set = test set. "Evaluate" can only tell the user how well the parameters fit the *current* review history aka the training set. But the benchmark should evaluate the model's ability to generalize beyond the training set data.
 
 
 
