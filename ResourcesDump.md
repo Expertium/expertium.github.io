@@ -24,8 +24,6 @@
 
 12​.​ Spaced repetition for hierarchical knowledge, such as math and physics: [https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/](https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/)
 
-13.​ A list of FSRS implementations in different programming languages, as well as papers about spaced repetition and apps that use FSRS: [https://github.com/open-spaced-repetition/awesome-fsrs.](https://github.com/open-spaced-repetition/awesome-fsrs)
-
 
 ___
 ### [←Return to homepage](https://expertium.github.io/)
