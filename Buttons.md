@@ -20,7 +20,7 @@ I hope nobody will interpret this article as "It's ok to use review time to auto
 
 1) Time to answer varies not only between different people but also between different types of material. So Anki will have to estimate what time corresponds to Again-Hard-Good-Easy for this specific user and for this specific material.
    
-2) average_t(Again) > average_t(Hard) > average_t(Good) > average_t(Easy) is true only for 40% of users. It could be due to noise, it could be that some people really do take longer to answer Hard than Again (about 21%).
+2) average_t(Again) > average_t(Hard) > average_t(Good) > average_t(Easy) is true only for 40% of users.
 
 3) There will be outliers if the user went to the toilet or got distracted by a phone call or something.
 
