@@ -14,16 +14,20 @@ Then me and Josh wrote down every feature that could be relevant to estimating r
 
 1) Mean sentence length. The longer the sentence, the less likely a beginner is to fully grasp its meaning.
 2) Mean frequency rank of kanji used in the text. In case you don't know what "frequency rank" means, here's an example: according to my own custom frequency list, 日 is the most commonly used kanji in the Japanese language, which means its frequency rank is 1. 年 is the second most commonly used kanji, which means its rank is 2, etc. Simple texts have common kanji, sophisticated texts have more obscure kanji.
-3) Mean number of commas, colons and [ellipses](https://en.wikipedia.org/wiki/Ellipsis) in a sentence. Simple texts don't use that kind of punctuation.
-4) Percentage of wago (和語): words of Japanese origin.
-5) Percentage of kango (漢語): words of Chinese origin.
-6) Percentage of verbs (動詞).
+3) Percentage of wago (和語): words of Japanese origin.
+4) Percentage of kango (漢語): words of Chinese origin.
+5) Percentage of verbs (動詞).
+6) Percentage of adverbs (副詞).
 7) Percentage of nouns (名詞).
-8) Percentage of adverbs (副詞).
-9) Percentage of katakana words aka loanwords.
-10) Percentage of particles (助詞).
-11) Percentage of determiners.
-12) Percentage of subordinating conjuctions.
+8) Percentage of katakana words aka loanwords.
+9) Percentage of particles (助詞).
+10) Percentage of aixiliary verbs (助動詞).
+11) Percentage of interjections (感動詞).
+12) Percentage of proper nouns (固有名詞).
+13) Percentage of pronouns (代名詞).
+14) Percentage of adjectives (形容詞).
+15) Percentage of numerals (数詞).
+16) Percentage of symbols, such as $, %, §, ©, +, −, ×, ÷, =, <, >, etc.
 
 ## The model
 
