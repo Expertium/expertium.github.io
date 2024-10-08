@@ -10,8 +10,8 @@ transcripts of videos classified as Complete Beginner, Beginner, Intermediate, a
 
 ## Text features
 
-1) Average sentence length. The longer the sentence, the less likely a beginner is to fully grasp its meaning.
-2) Average frequency rank of kanji used in the text. In case you don't know what "frequency rank" means, here's an example: according to my own custom frequency list, 日 is the most commonly used kanji in the Japanese language, which means its frequency rank is 1. 年 is the second most commonly used kanji, which means its rank is 2, etc.
+1) Mean sentence length. The longer the sentence, the less likely a beginner is to fully grasp its meaning.
+2) Mean frequency rank of kanji used in the text. In case you don't know what "frequency rank" means, here's an example: according to my own custom frequency list, 日 is the most commonly used kanji in the Japanese language, which means its frequency rank is 1. 年 is the second most commonly used kanji, which means its rank is 2, etc.
 3) Mean number of commas in a sentence. Simple sentences don't have commas.
 4) Proportion of wago (漢語): words of Japanese origin.
 5) Proportion of kango (漢語): words of Chinese origin.
