@@ -2,7 +2,7 @@
 
 ## Intro
 
-The authors of [this paper](https://researchmap.jp/jhlee/published_papers/21426109) present a simple formula for calculating "readability" of Japanese texts. Higher scores indicate that this is a text for beginners, lower scores indicate that this is an advanced text.
+The authors of the paper ["Introducing a readability evaluation system for Japanese language education"](https://jreadability.net/file/hasebe-lee-2015-castelj.pdf) and ["Readability measurement of Japanese texts based on levelled corpora"](https://researchmap.jp/jhlee/published_papers/21426109) present a simple formula for calculating "readability" of Japanese texts. Higher scores indicate that this is a text for beginners, lower scores indicate that this is an advanced text.
 This is intended to help Japanese learners select appropriate material for their level. This is not intended for native Japanese speakers.
 
 The Python implementation of their formula can be found here: https://github.com/joshdavham/jreadability. However, I was left somewhat unsatisfied and felt that a better model can be made rather easily. Thanks to Josh, I was able to get my hands on the data from https://cijapanese.com/, specifically,
@@ -15,15 +15,15 @@ Then me and Josh wrote down every feature that could be relevant to estimating r
 1) Mean sentence length. The longer the sentence, the less likely a beginner is to fully grasp its meaning.
 2) Mean frequency rank of kanji used in the text. In case you don't know what "frequency rank" means, here's an example: according to my own custom frequency list, 日 is the most commonly used kanji in the Japanese language, which means its frequency rank is 1. 年 is the second most commonly used kanji, which means its rank is 2, etc. Simple texts have common kanji, sophisticated texts have more obscure kanji.
 3) Mean number of commas, colons and [ellipses](https://en.wikipedia.org/wiki/Ellipsis) in a sentence. Simple texts don't have a lot of commas and don't use ellipses.
-4) Proportion of wago (和語): words of Japanese origin.
-5) Proportion of kango (漢語): words of Chinese origin.
-6) Proportion of verbs (動詞).
-7) Proportion of nouns (名詞).
-8) Proportion of adverbs (副詞).
-9) Proportion of katakana words aka loanwords.
-10) Proportion of particles (助詞).
-11) Proportion of determinants.
-12) Proportion of subordinating conjuctions.
+4) Percentage of wago (和語): words of Japanese origin.
+5) Percentage of kango (漢語): words of Chinese origin.
+6) Percentage of verbs (動詞).
+7) Percentage of nouns (名詞).
+8) Percentage of adverbs (副詞).
+9) Percentage of katakana words aka loanwords.
+10) Percentage of particles (助詞).
+11) Percentage of determinants.
+12) Percentage of subordinating conjuctions.
 
 ## The model
 
