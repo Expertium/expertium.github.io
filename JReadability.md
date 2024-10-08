@@ -6,7 +6,7 @@ The authors of the paper ["Introducing a readability evaluation system for Japan
 This is intended to help Japanese learners select appropriate material for their level. This is not intended for native Japanese speakers.
 
 The Python implementation of their formula can be found here: https://github.com/joshdavham/jreadability. However, I was left somewhat unsatisfied and felt that a better model can be made rather easily. Thanks to Josh, I was able to get my hands on the data from https://cijapanese.com/, specifically,
-transcripts of videos classified as Complete Beginner, Beginner, Intermediate, and Advanced. The dataset consists of 231 transcripts of videos labeled as Complete Beginner, 315 Beginner video transcripts, 287 Intermediate video transcripts and 77 Advanced video transcripts; 910 texts in total.
+transcripts of videos classified as Complete Beginner, Beginner, Intermediate, and Advanced. The dataset consists of 231 transcripts of videos labeled as Complete Beginner, 315 Beginner video transcripts, 287 Intermediate video transcripts and 77 Advanced video transcripts. In total, there are 910 texts and 2,071,441 characters.
 
 Then me and Josh wrote down every feature that could be relevant to estimating readability.
 
