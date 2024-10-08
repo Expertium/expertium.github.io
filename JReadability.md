@@ -14,7 +14,7 @@ Then me and Josh wrote down every feature that could be relevant to estimating r
 
 1) Mean sentence length. The longer the sentence, the less likely a beginner is to fully grasp its meaning.
 2) Mean frequency rank of kanji used in the text. In case you don't know what "frequency rank" means, here's an example: according to my own custom frequency list, 日 is the most commonly used kanji in the Japanese language, which means its frequency rank is 1. 年 is the second most commonly used kanji, which means its rank is 2, etc. Simple texts have common kanji, sophisticated texts have more obscure kanji.
-3) Mean number of commas in a sentence. Simple texts don't have a lot of commas.
+3) Mean number of commas and [ellipses](https://en.wikipedia.org/wiki/Ellipsis) in a sentence. Simple texts don't have a lot of commas and don't use ellipses.
 4) Proportion of wago (和語): words of Japanese origin.
 5) Proportion of kango (漢語): words of Chinese origin.
 6) Proportion of verbs (動詞).
