@@ -29,7 +29,7 @@ Then me and Josh wrote down every feature that could be relevant to estimating r
 15) Percentage of numerals (数詞).
 16) Percentage of symbols, such as $, %, §, ©, +, −, ×, ÷, =, <, >, etc.
 
-Thanks to [fugashi](https://pypi.org/project/fugashi/), most of it can be doen very simply. I only had to make functions for 1, 2 and 8 on my own.
+Thanks to [fugashi](https://pypi.org/project/fugashi/), most of it can be done very simply. I only had to make functions for 1, 2 and 8 on my own.
 
 ## The model
 
