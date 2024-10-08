@@ -21,7 +21,7 @@ transcripts of videos classified as Complete Beginner, Beginner, Intermediate an
 
 Then I made a simple linear model where the number of parameters is equal to the number of features plus one (because of the constant). And order to see how much benefit there is in adding more features, I tested 7 models, including the original model proposed in "Readability measurement of Japanese texts based on levelled corpora".
 
-Below is the table comparing all of the different models:
+Below is a table comparing all of the different models:
 
 Models were optimized by minimizing the Root Mean Square Error (RMSE). I converted levels to numbers in the following way: Complete Beginner = 4, Beginner = 3, Intermediate = 2, Advanced = 1. Error = (label-prediction)^2. RMSE is calculated as the square root of the average of errors squared.
 I also calculated Spearman rank correlation between predictions and labels. Spearman's correlation coefficient is more appropriate here than Pearson's because Spearman's works better when one of the variables is ordinal (as opposed to continuous).
