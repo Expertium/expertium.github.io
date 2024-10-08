@@ -8,7 +8,7 @@ This is intended to help Japanese learners select appropriate material for their
 The Python implementation of their formula can be found here: https://github.com/joshdavham/jreadability. However, I was left somewhat unsatisfied and felt that a better model can be made rather easily. Thanks to Josh, I was able to get my hands on the data from https://cijapanese.com/, specifically,
 transcripts of videos classified as Complete Beginner, Beginner, Intermediate, and Advanced. Then me and Josh wrote down every feature that could be relevant to estimating readability.
 
-## Text Features
+## Text features
 
 1) Average sentence length. The longer the sentence, the less likely a beginner is to fully grasp its meaning.
 2) Average frequency rank of kanji used in the text. In case you don't know what "frequency rank" means, here's an example: according to my own custom frequency list, 日 is the most commonly used kanji in the Japanese language, which means its frequency rank is 1. 年 is the second most commonly used kanji, which means its rank is 2, etc.
@@ -23,9 +23,9 @@ transcripts of videos classified as Complete Beginner, Beginner, Intermediate, a
 11) Proportion of determinants.
 12) Proportion of subordinating conjuctions.
 
-## Model
+## The model
 
-Then I made a simple linear model where the number of parameters is equal to the number of features plus one (because of the constant). And in order to see how much benefit there is in adding more features, I tested 7 versions of the model, including the original version proposed in "Readability measurement of Japanese texts based on levelled corpora."
+I made a simple linear model where the number of parameters is equal to the number of features plus one (because of the constant). And in order to see how much benefit there is in adding more features, I tested 7 versions of the model, including the original version proposed in "Readability measurement of Japanese texts based on levelled corpora."
 
 Below is a table comparing all of the different versions:
 
