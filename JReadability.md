@@ -18,7 +18,7 @@ Then me and Josh wrote down every feature that could be relevant to estimating r
 4) Percentage of kango (漢語): words of Chinese origin.
 5) Percentage of verbs (動詞).
 6) Percentage of adverbs (副詞).
-7) Percentage of nouns (名詞).
+7) Percentage of nouns (名詞), excluding proper nouns and numerals, those are counted separately.
 8) Percentage of katakana words aka loanwords.
 9) Percentage of particles (助詞).
 10) Percentage of aixiliary verbs (助動詞).
