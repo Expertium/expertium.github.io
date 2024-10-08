@@ -37,8 +37,11 @@ I made a simple linear model where the number of parameters is equal to the numb
 
 Below is a table comparing all of the different versions:
 
-Parameters were optimized by minimizing the Root Mean Square Error (RMSE), I used `scipy.optimize.minimize`. I converted levels to numbers in the following way: Complete Beginner = 4, Beginner = 3, Intermediate = 2, Advanced = 1. Error = (label-prediction)^2. RMSE is calculated as the square root of the average of squared errors.
-I also calculated the Spearman rank correlation between predictions and labels. Spearman's correlation coefficient is more appropriate here than Pearson's because Spearman's works better when one of the variables is ordinal (as opposed to continuous).
+Parameters were optimized by minimizing the Root Mean Square Error (RMSE), I used `scipy.optimize.minimize`. I converted levels to numbers in the following way: Complete Beginner = 4, Beginner = 3, Intermediate = 2, Advanced = 1. RMSE is calculated as the square root of the average of squared errors.
+
+![RMSE](https://github.com/user-attachments/assets/ecc3e586-e8f5-40fb-b847-02a8abdf7069)
+
+I also calculated the Spearman rank correlation between predictions and levels. Spearman's correlation coefficient is more appropriate here than Pearson's because Spearman's works better when one of the variables is ordinal (as opposed to continuous).
 
 Below are graphs illustrating Spearman's correlation coefficients and average RMSE of each version:
 
