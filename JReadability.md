@@ -22,12 +22,12 @@ Then me and Josh wrote down every feature that could be relevant to estimating r
 8) Percentage of adverbs (副詞).
 9) Percentage of katakana words aka loanwords.
 10) Percentage of particles (助詞).
-11) Percentage of determinants.
+11) Percentage of determiners.
 12) Percentage of subordinating conjuctions.
 
 ## The model
 
-I made a simple linear model where the number of parameters is equal to the number of features plus one (because of the constant). And in order to see how much benefit there is in adding more features, I tested 7 versions of the model, including the original version proposed in "Readability measurement of Japanese texts based on levelled corpora."
+I made a simple linear model where the number of parameters is equal to the number of features plus one (because of the constant). And in order to see how much benefit there is in adding more features, I tested 8 versions of the model, including the original version proposed in "Readability measurement of Japanese texts based on levelled corpora." Each version is called JReadability-X, where X is the number of features used in the formula. The number of parameters is X+1.
 
 Below is a table comparing all of the different versions:
 
