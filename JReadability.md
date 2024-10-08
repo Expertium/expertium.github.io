@@ -40,7 +40,7 @@ And here is the formula used in JReadability-12, the best version that uses all 
 
 Japanese text: おはようございます！今日は天気がいいですね。This means "Good morning! The weather is nice today". Readability score = .
 
-Japanese text: 船員は自衛隊員が務め、観測隊員は厳しい審査と訓練に合格した人間だけ。This means "The boat is manned by the military, and the expedition members have to pass strict screenings and training". Readability score = .
+Japanese text: 船員は自衛隊員が務め、観測隊員は厳しい審査と訓練に合格した人間だけ。This means "The ship is manned by the military, and the expedition members have to pass strict screenings and training". Readability score = .
 
 ## Implementation
 
