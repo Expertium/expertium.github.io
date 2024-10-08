@@ -45,7 +45,7 @@ I also calculated the Spearman rank correlation between predictions and levels. 
 
 Below are graphs illustrating Spearman's correlation coefficients and average RMSE of each version:
 
-And here is the formula used in JReadability-12, the best version that uses all 12 aforementioned features:
+And here is the formula used in JReadability-16, the best version that uses all 16 aforementioned features:
 
 ## Examples
 
