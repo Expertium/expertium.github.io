@@ -16,8 +16,8 @@ transcripts of videos classified as Complete Beginner, Beginner, Intermediate, a
 4) Proportion of wago (漢語): words of Japanese origin.
 5) Proportion of kango (漢語): words of Chinese origin.
 6) Proportion of verbs (動詞).
-7) Proportion of adverbs (副詞).
-8) Proportion of nouns (名詞).
+7) Proportion of nouns (名詞).
+8) Proportion of adverbs (副詞).
 9) Proportion of katakana words aka loanwords.
 10) Proportion of particles (助詞).
 11) Proportion of determinants.
