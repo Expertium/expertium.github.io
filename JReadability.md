@@ -46,7 +46,7 @@ Japanese text: 船員は自衛隊員が務め、観測隊員は厳しい審査�
 
 ## Implementation
 
-From now on, https://github.com/joshdavham/jreadability is using my JReadability-12 to output a readability score between 1 and 4. It has been implemented in the JReadability add-on for Anki. Huge thanks to [Josh](https://github.com/joshdavham) for helping me obtain the dataset and to ___ for making the add-on!
+https://github.com/___ is using my JReadability-12 to output a readability score between 1 and 4. It has been implemented in the [JReadability add-on]() for Anki. Huge thanks to [Josh](https://github.com/joshdavham) for helping me obtain the dataset and to ___ for making the add-on!
 
 
 ___
