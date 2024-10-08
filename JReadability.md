@@ -1,6 +1,6 @@
 # JReadability
 
-# Intro
+## Intro
 
 The authors of [this paper](https://researchmap.jp/jhlee/published_papers/21426109) present a simple formula for calculating "readability" of Japanese texts. Higher scores indicate that this is a text for beginners, lower scores indicate that this is an advanced text.
 This is intended to help Japanese learners select appropriate material for their level. This is not intended for native Japanese speakers.
