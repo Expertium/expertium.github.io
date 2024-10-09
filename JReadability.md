@@ -38,7 +38,7 @@ I made a simple linear model where the number of parameters is equal to the numb
 
 Below is a table comparing all of the different versions:
 
-Parameters were optimized by minimizing the Root Mean Square Error (RMSE), I used [sklearn.linear_model.LinearRegression()](https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LinearRegression.html). I converted levels to numbers in the following way: Complete Beginner = 4, Beginner = 3, Intermediate = 2, Advanced = 1. RMSE is calculated as the square root of the average of squared errors.
+Parameters were optimized by minimizing the Root Mean Square Error (RMSE), I used [sklearn.linear_model.LinearRegression()](https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LinearRegression.html) to find the parameters. I converted levels to numbers in the following way: Complete Beginner = 4, Beginner = 3, Intermediate = 2, Advanced = 1. RMSE is calculated as the square root of the average of squared errors.
 
 ![RMSE](https://github.com/user-attachments/assets/3428265b-46f7-4491-b858-13f23340a159)
 
