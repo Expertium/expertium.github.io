@@ -24,12 +24,13 @@ Then me and Josh wrote down every feature that could be relevant to estimating r
 10) Percentage of aixiliary verbs (助動詞).
 11) Percentage of interjections (感動詞).
 12) Percentage of proper nouns (固有名詞).
-13) Percentage of pronouns (代名詞).
+13) Percentage of personal pronouns.
 14) Percentage of adjectives (形容詞).
 15) Percentage of numerals (数詞).
-16) Percentage of symbols, such as $, %, §, ©, +, −, ×, ÷, =, <, >, etc.
+16) Percentage of coordinating conjunctions (接続詞).
+17) Percentage of symbols, such as $, %, §, ©, +, −, ×, ÷, =, <, >, etc.
 
-Thanks to [fugashi](https://pypi.org/project/fugashi/), most of it can be done very simply. I only had to make functions for 1, 2 and 8 on my own.
+Thanks to [fugashi](https://pypi.org/project/fugashi/), most of it can be done very simply. I only had to make functions for 1, 2, 8 and 13 on my own.
 
 ## The model
 
