@@ -48,7 +48,7 @@ Below is a table comparing all of the different versions:
 
 And also here are graphs illustrating Spearman's correlation coefficients and average RMSE of each version:
 
-Here is the formula used in JReadability-17, the best version that uses all 17 aforementioned features:
+Here is the formula used in JReadability-19, the best version that uses all 19 aforementioned features:
 
 Remember how I said that simple texts must have sentences with more repeated words than advanced texts? The coefficient before 'mean_percentage_of_repetitions` is negative, meaning that *higher* percentage is associated with *lower* score aka more advanced texts. This is rather strange, but the result is quite robust.
 
