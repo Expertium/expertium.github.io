@@ -5,8 +5,8 @@
 The authors of ["Introducing a readability evaluation system for Japanese language education"](https://jreadability.net/file/hasebe-lee-2015-castelj.pdf) and ["Readability measurement of Japanese texts based on levelled corpora"](https://researchmap.jp/jhlee/published_papers/21426109) present a simple formula for calculating "readability" of Japanese texts. Higher scores indicate that this is a text for beginners, lower scores indicate that this is an advanced text.
 This is intended to help Japanese learners select appropriate material for their level. This is not intended for native Japanese speakers.
 
-The Python implementation of their formula can be found here: https://github.com/joshdavham/jreadability. However, I was left somewhat unsatisfied and felt that a better model can be made rather easily. Thanks to Josh, I was able to get my hands on the data from https://cijapanese.com/, specifically,
-transcripts of videos classified as Complete Beginner, Beginner, Intermediate, and Advanced. The dataset consists of 231 transcripts of videos labeled as Complete Beginner, 315 Beginner video transcripts, 287 Intermediate video transcripts and 77 Advanced video transcripts. In total, there are 910 texts and 2,071,441 characters.
+The Python implementation of their formula can be found here: https://github.com/joshdavham/jreadability. However, I was left somewhat unsatisfied and felt that a better model can be made rather easily. Thanks to Josh, I was able to get my hands on the data from https://cijapanese.com, specifically,
+transcripts of videos classified as Complete Beginner, Beginner, Intermediate, and Advanced. The dataset consists of 231 transcripts of videos labeled as Complete Beginner, 315 Beginner video transcripts, 287 Intermediate video transcripts and 77 Advanced video transcripts. In total, there are 910 texts and 2,071,441 characters. I am not allowed to share the dataset, apologies to the few data scientists who would like to try their own models. But you can register at https://cijapanese.com and the email them, maybe they'll share the dataset with you, too.
 
 Then me and Josh wrote down every feature that could be relevant to estimating readability.
 
@@ -14,21 +14,23 @@ Then me and Josh wrote down every feature that could be relevant to estimating r
 
 1) Mean sentence length. The longer the sentence, the less likely a beginner is to fully grasp its meaning.
 2) Mean frequency rank of kanji used in the text. In case you don't know what "frequency rank" means, here's an example: according to my own custom frequency list, 日 is the most commonly used kanji in the Japanese language, which means its frequency rank is 1. 年 is the second most commonly used kanji, which means its rank is 2, etc. Simple texts have common kanji, sophisticated texts have more obscure kanji.
-3) Percentage of wago (和語): words of Japanese origin.
-4) Percentage of kango (漢語): words of Chinese origin.
-5) Percentage of verbs (動詞).
-6) Percentage of adverbs (副詞).
-7) Percentage of nouns (名詞), excluding proper nouns and numerals, those are counted separately.
-8) Percentage of katakana words aka loanwords.
-9) Percentage of particles (助詞).
-10) Percentage of aixiliary verbs (助動詞).
-11) Percentage of interjections (感動詞).
-12) Percentage of proper nouns (固有名詞).
-13) Percentage of personal pronouns.
-14) Percentage of adjectives (形容詞).
-15) Percentage of numerals (数詞).
-16) Percentage of coordinating conjunctions (接続詞).
-17) Percentage of symbols, such as $, %, §, ©, +, −, ×, ÷, =, <, >, etc.
+3) Mean frequency rank of words used in the text. This is similar to the previous one, but also different, since a word can be made of several kanji or no kanji at all.
+4) Mean percentage of repeated words in a sentence. Originally, I thought that simple texts have more repetitions. But, as you will see later, the parameters suggest otherwise. 
+5) Percentage of wago (和語): words of Japanese origin.
+6) Percentage of kango (漢語): words of Chinese origin.
+7) Percentage of verbs (動詞).
+8) Percentage of adverbs (副詞).
+9) Percentage of nouns (名詞), excluding proper nouns and numerals, those are counted separately.
+10) Percentage of katakana words aka loanwords.
+11) Percentage of particles (助詞).
+12) Percentage of aixiliary verbs (助動詞).
+13) Percentage of interjections (感動詞).
+14) Percentage of proper nouns (固有名詞).
+15) Percentage of personal pronouns.
+16) Percentage of adjectives (形容詞).
+17) Percentage of numerals (数詞).
+18) Percentage of coordinating conjunctions (接続詞).
+19) Percentage of symbols, such as $, %, §, ©, +, −, ×, ÷, =, <, >, etc.
 
 Thanks to [fugashi](https://pypi.org/project/fugashi/), most of it can be done very simply. I only had to make functions for 1, 2, 8 and 13 on my own.
 
@@ -48,7 +50,7 @@ And also here are graphs illustrating Spearman's correlation coefficients and av
 
 Here is the formula used in JReadability-17, the best version that uses all 17 aforementioned features:
 
-
+Remember how I said that simple texts must have sentences with more repeated words than advanced texts? The coefficient before 'mean_percentage_of_repetitions` is negative, meaning that *higher* percentage is associated with *lower* score aka more advanced texts. This is rather strange, but the result is quite robust.
 
 ## Examples
 
