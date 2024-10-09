@@ -46,7 +46,9 @@ I also calculated the Spearman rank correlation between predictions and levels. 
 
 Below are graphs illustrating Spearman's correlation coefficients and average RMSE of each version:
 
-And here is the formula used in JReadability-16, the best version that uses all 16 aforementioned features:
+And here is the formula used in JReadability-16, the best version that uses all 17 aforementioned features:
+
+The advantage of this model is that we can see how "important" certain features (specifically, the percentages of parts of speech) based on the absolute values of their coefficients. The percentage of adverbs has the largest coefficient, meaning that it affects the readability score the most. The percentage of proper nouns has the second largest coefficient. The percentage of auxiliary verbs has the smallest coefficient, meaning that it doesn't affect readability very much.
 
 ## Examples
 
