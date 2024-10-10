@@ -6,7 +6,9 @@ The authors of ["Introducing a readability evaluation system for Japanese langua
 This is intended to help Japanese learners select appropriate material for their level. This is not intended for native Japanese speakers.
 
 The Python implementation of their formula can be found here: https://github.com/joshdavham/jreadability. However, I was left somewhat unsatisfied and felt that a better model can be made rather easily. Thanks to Josh, I was able to get my hands on the data from https://cijapanese.com, specifically,
-transcripts of videos classified as Complete Beginner, Beginner, Intermediate, and Advanced. The dataset consists of 231 transcripts of videos labeled as Complete Beginner, 315 Beginner video transcripts, 287 Intermediate video transcripts and 77 Advanced video transcripts. In total, there are 910 texts and 2,071,441 characters. I am not allowed to share the dataset, apologies to the few data scientists who would like to try their own models. But you can register at https://cijapanese.com and the email them, maybe they'll share the dataset with you, too.
+transcripts of videos classified as Complete Beginner, Beginner, Intermediate, and Advanced. The dataset consists of 231 transcripts of videos labeled as Complete Beginner, 315 Beginner video transcripts, 287 Intermediate video transcripts and 77 Advanced video transcripts. In total, there are 910 texts and 2,071,441 characters. I thought the dataset is somewhat imbalanced, so I added 200 more Advanced texts: 85 from random Wikipedia articles, 30 from scientific papers and 85 from books by Osamu Dazai, Natsume Sōseki, Akutagawa Ryūnosuke and a few others.
+
+I am not allowed to share the dataset, apologies to the few data scientists who would like to try their own models. But you can register at https://cijapanese.com and the email them, maybe they'll share the dataset with you, too.
 
 Then me and Josh wrote down every feature that could be relevant to estimating readability.
 
@@ -15,7 +17,7 @@ Then me and Josh wrote down every feature that could be relevant to estimating r
 1) Mean sentence length. The longer the sentence, the less likely a beginner is to fully grasp its meaning.
 2) Mean frequency rank of kanji used in the text. In case you don't know what "frequency rank" means, here's an example: according to my own custom frequency list, 日 is the most commonly used kanji in the Japanese language, which means its frequency rank is 1. 年 is the second most commonly used kanji, which means its rank is 2, etc. Simple texts have common kanji, sophisticated texts have more obscure kanji.
 3) Mean frequency rank of words used in the text. This is similar to the previous one, but also different, since a word can be made of several kanji or no kanji at all. The kanji frequency dictionary and the word frequency dictionary are based on different data and made by different people who probably used different approaches, which isn't ideal, but it's the best we have.
-4) Mean number of relative repetitions. Ok, I don't fully understand this one, this was Josh's idea. Basically, it's a measure of how many words are repeated twice or more.
+4) Mean number of relative repetitions. Ok, I don't fully understand this one, this was Josh's idea. Basically, it's a measure of how many words are repeated several times.
 5) Percentage of wago (和語): words of Japanese origin.
 6) Percentage of kango (漢語): words of Chinese origin.
 7) Percentage of verbs (動詞).
