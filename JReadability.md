@@ -14,8 +14,8 @@ Then me and Josh wrote down every feature that could be relevant to estimating r
 
 1) Mean sentence length. The longer the sentence, the less likely a beginner is to fully grasp its meaning.
 2) Mean frequency rank of kanji used in the text. In case you don't know what "frequency rank" means, here's an example: according to my own custom frequency list, 日 is the most commonly used kanji in the Japanese language, which means its frequency rank is 1. 年 is the second most commonly used kanji, which means its rank is 2, etc. Simple texts have common kanji, sophisticated texts have more obscure kanji.
-3) Mean frequency rank of words used in the text. This is similar to the previous one, but also different, since a word can be made of several kanji or no kanji at all.
-4) Mean percentage of repeated words in a sentence. Originally, I thought that simple texts have more repetitions. But, as you will see later, the parameters suggest otherwise. 
+3) Mean frequency rank of words used in the text. This is similar to the previous one, but also different, since a word can be made of several kanji or no kanji at all. The kanji frequency dictionary and the word frequency dictionary are based on different data and made by different people who probably used different approaches, which isn't ideal, but it's the best we have.
+4) Mean number of relative repetitions. Ok, I don't fully understand this one, this was Josh's idea. Basically, it's a measure of how many words are repeated twice or more.
 5) Percentage of wago (和語): words of Japanese origin.
 6) Percentage of kango (漢語): words of Chinese origin.
 7) Percentage of verbs (動詞).
