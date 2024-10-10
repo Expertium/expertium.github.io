@@ -38,11 +38,12 @@ Thanks to [fugashi](https://pypi.org/project/fugashi/), most of it can be done v
 
 I made a simple linear model where the number of parameters is equal to the number of features plus one (because of the constant). And in order to see how much benefit there is in adding more features, I tested 9 versions of the model, including the original version proposed in "Readability measurement of Japanese texts based on levelled corpora." Each version is called JReadability-X, where X is the number of features used in the formula. The number of parameters is X+1.
 
-Parameters were optimized by minimizing the Root Mean Square Error (RMSE), I used [sklearn.linear_model.LinearRegression()](https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LinearRegression.html) to find the parameters. I converted levels to numbers in the following way: Complete Beginner = 4, Beginner = 3, Intermediate = 2, Advanced = 1. RMSE is calculated as the square root of the average of squared errors.
+Parameters were optimized using [sklearn.linear_model.LinearRegression()](https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LinearRegression.html). I converted levels to numbers in the following way: Complete Beginner = 4, Beginner = 3, Intermediate = 2, Advanced = 1. 
+
+For evaluation of the goodness-of-fit, I used two metrics: Spearman's rank correlation coefficient, and RMSE is calculated as the square root of the average of squared errors. Spearman's correlation coefficient is more appropriate here than Pearson's because Spearman's works better when one of the variables is ordinal (as opposed to continuous).
 
 ![RMSE](https://github.com/user-attachments/assets/3428265b-46f7-4491-b858-13f23340a159)
 
-I also calculated the Spearman rank correlation between predictions and levels. Spearman's correlation coefficient is more appropriate here than Pearson's because Spearman's works better when one of the variables is ordinal (as opposed to continuous).
 
 Below is a table comparing all of the different versions:
 
