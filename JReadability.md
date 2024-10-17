@@ -57,15 +57,12 @@ And here are graphs illustrating Spearman's correlation coefficients and average
 
 ![JReadability Spearman](https://github.com/user-attachments/assets/b3e7ac10-bfaf-4848-a96e-4c26db65eca7)
 
-Here is the formula used in JReadability-19, the best version that uses all 19 aforementioned features:
-
-Remember how I said that simple texts must have sentences with more repeated words than advanced texts? The coefficient before 'mean_percentage_of_repetitions` is negative, meaning that *higher* percentage is associated with *lower* score aka more advanced texts. This is rather strange, but the result is quite robust.
 
 ## Examples
 
-Japanese text: おはようございます！今日は天気がいいですね。This means "Good morning! The weather is nice today". Readability score = .
+Japanese text: "おはようございます！" This means "Good morning!". Readability score = 4.00.
 
-Japanese text: 船員は自衛隊員が務め、観測隊員は厳しい審査と訓練に合格した人間だけ。This means "The ship is manned by the military, and the expedition members have to pass strict screenings and training". Readability score = .
+Japanese text: "船員は自衛隊員が務め、観測隊員は厳しい審査と訓練に合格した人間だけ。" This means "The ship is manned by the military, and the expedition members have to pass strict screenings and training". Readability score = 1.84.
 
 ## Implementation
 
