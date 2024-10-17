@@ -1,4 +1,4 @@
-I write articles about spaced repetition and especially about [FSRS](https://github.com/open-spaced-repetition/fsrs4anki/wiki/ABC-of-FSRS). That's all, end of the intro. Here are the articles, sorted from most important to least important:
+I write articles about spaced repetition and especially about [FSRS](https://github.com/open-spaced-repetition/fsrs4anki/wiki/ABC-of-FSRS). That's all, end of the intro. Here are the articles, (kinda) sorted from most important to least important:
 
 1. (unfinished)[Benchmark of spaced repetition algorithms](/Benchmark.md). In this article, I analyze results from the [open spaced repetition benchmark repository](https://github.com/open-spaced-repetition/srs-benchmark?tab=readme-ov-file#result), where many modern spaced repetition algorithms are compared based on their ability to predict the probability of recall. This is the most high-effort piece I've ever written. It will be finished when the next major release of Anki comes out.
 3. [A technical explanation of FSRS](/Algorithm.md), where I explain the formulas that are used to calculate the probability of recall.
