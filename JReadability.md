@@ -66,6 +66,8 @@ Japanese text: "今日は天気がいいですね". This means " The weather is 
 
 Japanese text: "船員は自衛隊員が務め、観測隊員は厳しい審査と訓練に合格した人間だけ". This means "The ship is manned by the military, and the expedition members have to pass strict screenings and training". Readability score = 1.91.
 
+Japanese text: "夜間不用意に岸辺に近づいた部下たちは全員正体不明の怪物によって食い殺されてしまいました". This means "But once night had fallen, all my soldiers that had wandered near the shore were eaten by some sort of monster". Readability score = 1.02.
+
 ## Implementation
 
 https://github.com/___ is using my JReadability-12 to output a readability score between 1 and 4. It has been implemented in the [JReadability add-on]() for Anki. Huge thanks to [Josh](https://github.com/joshdavham) for helping me obtain the dataset and to ___ for making the add-on! And make sure to read Josh's article [on readability](https://cij-analysis.streamlit.app/).
