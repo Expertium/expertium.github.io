@@ -105,9 +105,5 @@ Here's a little diagram to help you.
 I don't really like this note type. It's like Cloze, but with multiple answers. I believe this isn't beneficial since it makes recall much easier than cloze, which isn't good for strengthening memories, and the only "advantage" is that it looks fancy. Just use Cloze, or even better - Randomized Cloze.
 
 
-## Alternatives
-
-There is another note type that's conceptually similar to Match Pairs: https://github.com/cjdduarte/anki-template-interactive-drag-drop/blob/main/Example.apkg. Feel free to use whichever you like more.
-
 ___
 ### [←Return to homepage](https://expertium.github.io/)
