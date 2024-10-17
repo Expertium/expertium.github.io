@@ -49,11 +49,11 @@ For evaluation of the goodness-of-fit, I used two metrics: Spearman's rank corre
 
 Below is a table comparing all of the different versions:
 
-![image](https://github.com/user-attachments/assets/d60d0651-ca1d-4f98-8e31-50eb8a1761ff)
+![image](https://github.com/user-attachments/assets/d7765b58-bf3a-4d93-8f8d-fec01efd0115)
 
 And here are graphs illustrating Spearman's correlation coefficients and average RMSE of each version:
 
-![JReadability RMSE](https://github.com/user-attachments/assets/70ef6eba-4bb0-4b39-985a-60272e0acc43)
+![JReadability RMSE](https://github.com/user-attachments/assets/fef4eece-0eb4-4f00-8cf8-6532b94920dd)
 
 ![JReadability Spearman](https://github.com/user-attachments/assets/b3e7ac10-bfaf-4848-a96e-4c26db65eca7)
 
