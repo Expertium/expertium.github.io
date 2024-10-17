@@ -60,7 +60,9 @@ And here are graphs illustrating Spearman's correlation coefficients and average
 
 ## Examples
 
-Japanese text: "おはようございます". This means "Good morning!". Readability score = 4.00.
+Japanese text: "おはようございます". This means "Good morning". Readability score = 4.00.
+
+Japanese text: "今日は天気がいいですね". This means " The weather is nice today". Readability score = 3.45.
 
 Japanese text: "船員は自衛隊員が務め、観測隊員は厳しい審査と訓練に合格した人間だけ". This means "The ship is manned by the military, and the expedition members have to pass strict screenings and training". Readability score = 1.91.
 
