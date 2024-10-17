@@ -38,7 +38,7 @@ Thanks to [fugashi](https://pypi.org/project/fugashi/), most of it can be done v
 
 ## The model
 
-I made a simple linear model where the number of parameters is equal to the number of features plus one (because of the constant). And in order to see how much benefit there is in adding more features, I tested 9 versions of the model, including the original version proposed in "Readability measurement of Japanese texts based on levelled corpora." Each version is called JReadability-X, where X is the number of features used in the formula. The number of parameters is X+1.
+I made a simple linear model where the number of parameters is equal to the number of features plus one (because of the constant). And in order to see how much benefit there is in adding more features, I tested 8 versions of the model, including the original version proposed in "Readability measurement of Japanese texts based on levelled corpora." Each version is called JReadability-X, where X is the number of features used in the formula. The number of parameters is X+1.
 
 Parameters were optimized using [sklearn.linear_model.LinearRegression()](https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LinearRegression.html). I converted levels to numbers in the following way: Complete Beginner = 4, Beginner = 3, Intermediate = 2, Advanced = 1. 
 
@@ -49,7 +49,13 @@ For evaluation of the goodness-of-fit, I used two metrics: Spearman's rank corre
 
 Below is a table comparing all of the different versions:
 
-And also here are graphs illustrating Spearman's correlation coefficients and average RMSE of each version:
+![image](https://github.com/user-attachments/assets/b760c3fb-ba2d-4b6a-9e5f-29bdb535590e)
+
+And here are graphs illustrating Spearman's correlation coefficients and average RMSE of each version:
+
+![JReadability RMSE](https://github.com/user-attachments/assets/c26e6d03-98da-47ab-bb29-f24af8eec0c9)
+
+![JReadability Spearman](https://github.com/user-attachments/assets/b3e7ac10-bfaf-4848-a96e-4c26db65eca7)
 
 Here is the formula used in JReadability-19, the best version that uses all 19 aforementioned features:
 
