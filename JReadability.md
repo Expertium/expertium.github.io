@@ -57,6 +57,7 @@ And here are graphs illustrating Spearman's correlation coefficients and average
 
 ![JReadability Spearman](https://github.com/user-attachments/assets/b3e7ac10-bfaf-4848-a96e-4c26db65eca7)
 
+JReadability-5 is the original model proposed in "Introducing a readability evaluation system for Japanese language education".
 
 ## Examples
 
