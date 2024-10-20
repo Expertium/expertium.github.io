@@ -70,7 +70,7 @@ Japanese text: "夜間不用意に岸辺に近づいた部下たちは全員正�
 
 ## Implementation
 
-https://github.com/___ is using my NihongoScore-12 to output a readability score between 1 and 4. It has been implemented in the [NihongoScore add-on]() for Anki. Huge thanks to [Josh](https://github.com/joshdavham) for helping me obtain the dataset and to ___ for making the add-on! And make sure to read Josh's article [on readability](https://cij-analysis.streamlit.app/).
+https://github.com/___ is using my NihongoScore-19 to output a readability score between 1 and 4. It has been implemented in the [NihongoScore add-on]() for Anki. Huge thanks to [Josh](https://github.com/joshdavham) for helping me obtain the dataset and to ___ for making the add-on! And make sure to read Josh's article [on readability](https://cij-analysis.streamlit.app/).
 
 
 ___
