@@ -34,7 +34,7 @@ Then me and Josh wrote down every feature that could be relevant to estimating r
 18) Percentage of coordinating conjunctions (接続詞).
 19) Percentage of symbols, such as $, %, §, ©, +, −, ×, ÷, =, <, >, etc.
 
-Thanks to [fugashi](https://pypi.org/project/fugashi/), most of it can be done very simply. I only had to make functions for 1, 2, 8 and 13 on my own.
+Thanks to [fugashi](https://pypi.org/project/fugashi/), most of it can be done without reinventing the wheel. I only had to make functions for 1, 2, 3, 4, 10 and 15 on my own.
 
 ## The model
 
