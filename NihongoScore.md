@@ -1,11 +1,11 @@
-# JReadability
+# NihongoScore
 
 ## Intro
 
-The authors of ["Introducing a readability evaluation system for Japanese language education"](https://jreadability.net/file/hasebe-lee-2015-castelj.pdf) and ["Readability measurement of Japanese texts based on levelled corpora"](https://researchmap.jp/jhlee/published_papers/21426109) present a simple formula for calculating "readability" of Japanese texts. Higher scores indicate that this is a text for beginners, lower scores indicate that this is an advanced text.
+The authors of ["Introducing a readability evaluation system for Japanese language education"](https://NihongoScore.net/file/hasebe-lee-2015-castelj.pdf) and ["Readability measurement of Japanese texts based on levelled corpora"](https://researchmap.jp/jhlee/published_papers/21426109) present a simple formula for calculating "readability" of Japanese texts. Higher scores indicate that this is a text for beginners, lower scores indicate that this is an advanced text.
 This is intended to help Japanese learners select appropriate material for their level. This is not intended for native Japanese speakers.
 
-The Python implementation of their formula can be found here: https://github.com/joshdavham/jreadability. However, I was left somewhat unsatisfied and felt that a better model can be made rather easily. Thanks to Josh, I was able to get my hands on the data from https://cijapanese.com, specifically,
+The Python implementation of their formula can be found here: https://github.com/joshdavham/NihongoScore. However, I was left somewhat unsatisfied and felt that a better model can be made rather easily. Thanks to Josh, I was able to get my hands on the data from https://cijapanese.com, specifically,
 transcripts of videos classified as Complete Beginner, Beginner, Intermediate, and Advanced. The dataset consists of 231 transcripts of videos labeled as Complete Beginner, 315 Beginner video transcripts, 287 Intermediate video transcripts and 77 Advanced video transcripts. In total, there are 910 texts and 2,022,948 characters after removing spaces. I thought the dataset is somewhat imbalanced, so I added 150 more Advanced texts: 66 from random Wikipedia articles, 30 from scientific papers and 54 from books from the Aozora Bunko digital library. The final enhanced dataset contains 1,060 texts and 2,175,630 characters.
 
 I am not allowed to share the dataset, apologies to the few data scientists who would like to try their own models. But you can register at https://cijapanese.com and the email them, maybe they'll share the dataset with you, too.
@@ -38,7 +38,7 @@ Thanks to [fugashi](https://pypi.org/project/fugashi/), most of it can be done v
 
 ## The model
 
-I made a simple linear model where the number of parameters is equal to the number of features plus one (because of the constant). And in order to see how much benefit there is in adding more features, I tested 8 versions of the model, including the original version proposed in "Readability measurement of Japanese texts based on levelled corpora." Each version is called JReadability-X, where X is the number of features used in the formula. The number of parameters is X+1.
+I made a simple linear model where the number of parameters is equal to the number of features plus one (because of the constant). And in order to see how much benefit there is in adding more features, I tested 8 versions of the model, including the original version proposed in "Readability measurement of Japanese texts based on levelled corpora." Each version is called NihongoScore-X, where X is the number of features used in the formula. The number of parameters is X+1.
 
 Parameters were optimized using [sklearn.linear_model.LinearRegression()](https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LinearRegression.html). I converted levels to numbers in the following way: Complete Beginner = 4, Beginner = 3, Intermediate = 2, Advanced = 1. 
 
@@ -46,18 +46,17 @@ For evaluation of the goodness-of-fit, I used two metrics: Spearman's rank corre
 
 ![RMSE](https://github.com/user-attachments/assets/3428265b-46f7-4491-b858-13f23340a159)
 
-
 Below is a table comparing all of the different versions:
 
-![image](https://github.com/user-attachments/assets/d7765b58-bf3a-4d93-8f8d-fec01efd0115)
+![NihongoScore table](https://github.com/user-attachments/assets/d59c66ed-df93-4af8-9357-7f2956025617)
 
 And here are graphs illustrating Spearman's correlation coefficients and average RMSE of each version:
 
-![JReadability RMSE](https://github.com/user-attachments/assets/fef4eece-0eb4-4f00-8cf8-6532b94920dd)
+![NihongoScore RMSE](https://github.com/user-attachments/assets/c86e8aed-5a80-4c36-b466-e68ec3be6cc7)
 
-![JReadability Spearman](https://github.com/user-attachments/assets/b3e7ac10-bfaf-4848-a96e-4c26db65eca7)
+![NihongoScore Spearman](https://github.com/user-attachments/assets/76f4669c-16d8-4644-b2d5-74ba516a93d9)
 
-JReadability-5 is the original model proposed in "Introducing a readability evaluation system for Japanese language education".
+JReadability is the original model proposed in "Introducing a readability evaluation system for Japanese language education". The features are the same, the parameters are fine-tuned for my dataset.
 
 ## Examples
 
@@ -71,7 +70,7 @@ Japanese text: "夜間不用意に岸辺に近づいた部下たちは全員正�
 
 ## Implementation
 
-https://github.com/___ is using my JReadability-12 to output a readability score between 1 and 4. It has been implemented in the [JReadability add-on]() for Anki. Huge thanks to [Josh](https://github.com/joshdavham) for helping me obtain the dataset and to ___ for making the add-on! And make sure to read Josh's article [on readability](https://cij-analysis.streamlit.app/).
+https://github.com/___ is using my NihongoScore-12 to output a readability score between 1 and 4. It has been implemented in the [NihongoScore add-on]() for Anki. Huge thanks to [Josh](https://github.com/joshdavham) for helping me obtain the dataset and to ___ for making the add-on! And make sure to read Josh's article [on readability](https://cij-analysis.streamlit.app/).
 
 
 ___
