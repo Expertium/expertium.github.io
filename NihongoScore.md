@@ -44,6 +44,10 @@ Parameters were optimized using [sklearn.linear_model.LinearRegression()](https:
 
 For evaluation of the goodness-of-fit, I used two metrics: Spearman's rank correlation coefficient, and RMSE is calculated as the square root of the average of squared errors. Spearman's correlation coefficient is more appropriate here than Pearson's because Spearman's works better when one of the variables is ordinal (as opposed to continuous).
 
+I ended up being unsatisfied with the performance of a linear model, so I made a simple [multilayer perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron), NihongoScore-19N. It has 92 parameters and uses the same 19 features described above. I trained it using `scipy.optimize.minimize`, which is very dumb and inefficient, and if I used pytorch I could probably speed it up by x100 or even x1000, but I don't know it well enough, and I didn't want to spend a month just to set up the optimization procedure.
+
+Since this is a highly non-linear model with a lot of parameters, I made the optimization procedure more sophisticated just for this model — I split the data into a "train set" and a "test set" with a 70:30 ratio. I made sure that the proportions of levels (Complete Beginner, Beginner, Intermediate, Advanced) are very close in both datasets. Then I trained the model on the train set while keeping an eye out for the test set RMSE. If test set RMSE starts increasing while the train set RMSE decreases, that means the model is overfitting. The final parameters selected for the model are the ones that minimize the *test* set loss, since it's a better indicator of performance: it tells you how well the model performs on new data that it hasn't seen during training on. The results below show *test* set RMSE and Spearman's correlation coefficient for NihongoScore-19N. For other models, train set = test set = full dataset.
+
 ![RMSE](https://github.com/user-attachments/assets/3428265b-46f7-4491-b858-13f23340a159)
 
 Below is a table comparing all of the different versions:
@@ -60,17 +64,17 @@ JReadability is the original model proposed in "Introducing a readability evalua
 
 ## Examples
 
-Japanese text: "おはようございます". This means "Good morning". Readability score = 4.00.
+Japanese text: "おはようございます". This means "Good morning". Readability score = .
 
-Japanese text: "今日は天気がいいですね". This means " The weather is nice today". Readability score = 3.45.
+Japanese text: "今日は天気がいいですね". This means " The weather is nice today". Readability score = .
 
-Japanese text: "船員は自衛隊員が務め、観測隊員は厳しい審査と訓練に合格した人間だけ". This means "The ship is manned by the military, and the expedition members have to pass strict screenings and training". Readability score = 1.91.
+Japanese text: "船員は自衛隊員が務め、観測隊員は厳しい審査と訓練に合格した人間だけ". This means "The ship is manned by the military, and the expedition members have to pass strict screenings and training". Readability score = .
 
-Japanese text: "夜間不用意に岸辺に近づいた部下たちは全員正体不明の怪物によって食い殺されてしまいました". This means "But once night had fallen, all my soldiers that had wandered near the shore were eaten by some sort of monster". Readability score = 1.02.
+Japanese text: "夜間不用意に岸辺に近づいた部下たちは全員正体不明の怪物によって食い殺されてしまいました". This means "But once night had fallen, all my soldiers that had wandered near the shore were eaten by some sort of monster". Readability score = .
 
 ## Implementation
 
-https://github.com/___ is using my NihongoScore-19 to output a readability score between 1 and 4. It has been implemented in the [NihongoScore add-on]() for Anki. Huge thanks to [Josh](https://github.com/joshdavham) for helping me obtain the dataset and to ___ for making the add-on! And make sure to read Josh's article [on readability](https://cij-analysis.streamlit.app/).
+https://github.com/___ is using my NihongoScore-19N to output a readability score between 1 and 4. It has been implemented in the [NihongoScore add-on]() for Anki. Huge thanks to [Josh](https://github.com/joshdavham) for helping me obtain the dataset and to ___ for making the add-on! And make sure to read Josh's article [on readability](https://cij-analysis.streamlit.app/).
 
 
 ___
