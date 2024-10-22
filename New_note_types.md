@@ -40,12 +40,9 @@ And if you think that this is too easy and therefore would make active recall in
 Here you have 2 countries and 3 capitals, so you need to think harder.<br />
 Make sure that the extra answer is wrong, but not *obviously* wrong. In this example, I won't benefit from adding Jakarta to the second list, since it's obviously wrong. Which is why I added Amsterdam - Amsterdam makes me pause and think, Jakarta doesn't.
 
-Still not hard enough? Match Pairs supports any number of wrong answers. If you have 2, 3, or N wrong answers, one of them will be randomly selected instead of displaying all of them at once to avoid visual clutter.<br />
-In this case, not only is the order randomized, but *which* wrong answer is displayed is also randomized. I never thought that a random number generator could be so useful for learning, lol.
+Still not hard enough? You can add 2 wrong answers. If you have 3 or more wrong answers, only two of them will be shown. The card below will never show "Poopville".
 
-(gif)
-
-This card will always show Bern and Stockholm, since those are the correct answers, and will also randomly show either Copenhagen or Amsterdam.
+![image](https://github.com/user-attachments/assets/c1a4eb0e-d218-4562-8a0d-f5d9e4a77d20)
 
 Btw, you don't necessarily have to drag answers - you can click on them. When you click on an answer, it is put in the topmost vacant answer box.
 
