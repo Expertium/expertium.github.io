@@ -44,7 +44,7 @@ Parameters were optimized using [sklearn.linear_model.LinearRegression()](https:
 
 For evaluation of the goodness-of-fit, I used two metrics: Spearman's rank correlation coefficient, and RMSE is calculated as the square root of the average of squared errors. Spearman's correlation coefficient is more appropriate here than Pearson's because Spearman's works better when one of the variables is ordinal (as opposed to continuous).
 
-I ended up being unsatisfied with the performance of a linear model, so I made a simple [multilayer perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron), NihongoScore-19N. It has 92 parameters and uses the same 19 features described above. I trained it using `scipy.optimize.minimize`, which is very dumb and inefficient, and if I used pytorch I could probably speed it up by x100 or even x1000, but I don't know it well enough, and I didn't want to spend a month just to set up the optimization procedure.
+I ended up being unsatisfied with the performance of a linear model, so I made a simple [multilayer perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron), NihongoScore-19N. It has 95 parameters and uses the same 19 features described above. I trained it using `scipy.optimize.minimize`, which is very dumb and inefficient, and if I used pytorch I could probably speed it up by x100 or even x1000, but I don't know it well enough, and I didn't want to spend a month just to set up the optimization procedure.
 
 Here's a diagram that explains its architecture:
 
