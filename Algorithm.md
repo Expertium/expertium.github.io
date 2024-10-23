@@ -168,13 +168,23 @@ Again=1, Hard=2, Good=3, Easy=4. This formula provides a *slightly* better fit. 
 
 2) "Mean reversion" now reverses the difficulty to that of D0(4), rather than D0(3).
 
-3) FSRS-5 updates D and S after same-day reviews, which previously were unused. Difficulty is updated using the same formula that I described in the previous section. S is updated using the following formula.
+3) A new term has been added. Thanks to that term, when the user presses "Again" or "Hard", difficulty will approach 10 *asymptotically*, meaning that it will never be precisely 10.
+
+Here is the new formula:
+
+![DeltaD](https://github.com/user-attachments/assets/52227f33-c383-4336-b00a-bb2562790a31)
+
+![NewD](https://github.com/user-attachments/assets/5eda1ee5-9459-4ccc-927c-07e00250ad27)
+
+(10-D)/9 is the linear damping term. The closer D is to 10, the smaller this term, the smaller the change in difficulty.
+
+4) FSRS-5 updates D and S after same-day reviews, which previously were unused. Difficulty is updated using the same formula that I described in the previous section. S is updated using the following formula.
 
 ![CodeCogsEqn (2)](https://github.com/user-attachments/assets/fde251b9-70b4-4207-813f-3fe3874c2887)
 
 In Anki, FSRS cannot get access to the real interval lengths of same-day reviews, so it has to rely solely on grades. w17 and w18 are two new parameters.
 
-4) Previously, the first 4 parameters - values of initial stability - were optimized without using gradient descent, using a curve-fitting method that is specific to spaced repetition. After that, they remained "frozen". Now, after they are calculated, they can be adjusted by gradient descent, just like the other parameters. This results in a slightly better fit.
+5) Previously, the first 4 parameters - values of initial stability - were optimized without using gradient descent, using a curve-fitting method that is specific to spaced repetition. After that, they remained "frozen". Now, after they are calculated, they can be adjusted by gradient descent, just like the other parameters. This results in a slightly better fit.
 
 
 ## Optimization aka training
