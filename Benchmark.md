@@ -62,7 +62,11 @@ Here's a table comparing different metrics.
 
 ## Algorithms
 
+Most of the algorithms are based on the Stability, Retrievability (alternatively Half-Life, Probability) model of memory, or it's extension, Difficulty, Stability, Retrievability (alternatively Difficulty, Half-Life, Probability). I will refer to the former as the SR model and to the latter as the DSR model.
+
 ### FSRS family
+
+All FSRS algorithms use the DSR model of memory.
 
 1.​ ​FSRS v3. It was the first version of FSRS that people actually used, it was released in October 2022. It wasn't terrible, but it had issues. Jarrett, I, and several other users have proposed and tested several dozens of ideas (only a handful of them proved to be effective) to improve the algorithm.
 
@@ -82,23 +86,23 @@ Below is a diagram that should give you a better understanding of FSRS. If you w
 
 In order to calculate the length of the next interval, FSRS requires the length of the previous interval, grade (Again/Hard/Good/Easy) and its own previous state, which is represented using three numbers: Difficulty, memory Stability, and Retrievability (DSR). Notice that horizontal arrows always point to the right, showing that past states can affect future states, but future states cannot affect past states.
 
-
 ### General-purpose machine learning algorithms family
 
-7.​ Transformer. This neural network architecture has become popular in recent years because of its superior performance in natural language processing. ChatGPT uses this architecture.
+7.​ Transformer. This neural network architecture has become popular in recent years because of its superior performance in natural language processing. ChatGPT uses this architecture. This implementation uses the SR model.
 
-8.​ GRU, Gated Recurrent Unit. This neural network architecture is commonly used for time series analysis, such as predicting stock market trends or recognizing human speech. Originally, we used a more complex architecture called LSTM, but GRU performed better with fewer parameters. Both GRU and Transformer use the same power forgetting curve as FSRS-4.5 and FSRS-5 to make the comparison more fair.
+8.​ GRU, Gated Recurrent Unit. This neural network architecture is commonly used for time series analysis, such as predicting stock market trends or recognizing human speech. Originally, we used a more complex architecture called LSTM, but GRU performed better with fewer parameters. Both GRU and Transformer use the same power forgetting curve as FSRS-4.5 and FSRS-5 to make the comparison more fair. This implementation uses the SR model.
 
 ![GRU](https://github.com/user-attachments/assets/49f3152b-524f-46d3-b202-4b0090f921d0)
 
 GRU is also a recurrent algorithm, just like FSRS, even if the mathematical formulas are completely different. Its state is represented by one number.
 
-9.​ GRU-P. Unlike GRU, which predicts memory stability before converting it into R via a power forgetting curve formula, GRU-P predicts R directly. More about GRU-P later.
+9.​ GRU-P. Unlike GRU, which predicts memory stability before converting it into R via a power forgetting curve formula, GRU-P predicts R directly. More about GRU-P later. This implementation does not rely on SR or DSR models of memory.
 
-10.​ GRU-P (short-term). Same as above, but it also uses same-day reviews, so it's trained on more data.
-
+10.​ GRU-P (short-term). Same as above, but it also uses same-day reviews, so it's trained on more data. This implementation does not rely on SR or DSR models of memory.
 
 ### DASH family
+
+These algorithms are based on a different model, not SR or DSR.
 
 11.​ [DASH](https://scholar.colorado.edu/concern/graduate_thesis_or_dissertations/zp38wc97m), Difficulty, Ability and Study History. This is an actual *bona fide* model of human memory based on neuroscience. Well, kind of. The issue with it is that the forgetting curve looks like a step function.
 
@@ -113,7 +117,6 @@ GRU is also a recurrent algorithm, just like FSRS, even if the mathematical form
 DASH, DASH[MCM] and DASH[ACT-R] don't have state variables that are carried on between reviews, and they don't process reviews sequentially, like SM-17/18 or FSRS. They are more like Transformers: all past reviews must be processed in order to calculate the length of the next interval. This makes them much slower than FSRS when the number of reviews is large. In FSRS, each review takes a constant amount of time to process. If a card has 100 reviews, processing the first review will take the same amount of time as processing the 100th review. In DASH, the processing time of a single review depends on the number of past reviews. Therefore, processing the 100th review takes much longer than processing the first one.
 
 Also, even though the diagram shows "Next interval length" as output, in reality, calculating the next interval using DASH algorithms would be very difficult due to the quirks of their forgetting curves. With FSRS and HLR, calculating the probability of recall that corresponds to a specific interval length and calculating the interval length that corresponds to a specific probability of recall is equally easy, but not with DASH algorithms. Still, I drew the diagram this way because a diagram that shows how algorithms predict probabilities would be much harder to read.
-
 
 ### Other algorithms
 
@@ -132,7 +135,7 @@ DASH's curve looks like a step function, which goes against our human intuition 
 Also, the probability of recall doesn't start at 100% for DASH models and ACT-R. <br />
 It's interesting that the forgetting curve of FSRS-4.5 (and FSRS-5, they use the same formula) is so steep compared to other models. FSRS v3 used a much steeper exponential formula, which was replaced with a less steep power formula in FSRS v4, and with an even less steep power formula in FSRS-4.5. And yet, even that still predicts much faster forgetting than other models. While we could make the forgetting curve of FSRS-5 even less steep, it would practically prevent the probability of recall from ever reaching values less than 10%, since even for small values of memory stability, it would take more than a human life to reach 10% with such a curve.
 
-15.​ [HLR](https://github.com/duolingo/halflife-regression/blob/master/settles.acl16.pdf), Half-Life Regression. It's an algorithm developed by Duolingo for Duolingo. The memory half-life in HLR is conceptually very similar to the memory stability in FSRS, but it's calculated using an overly simplistic formula.
+15.​ [HLR](https://github.com/duolingo/halflife-regression/blob/master/settles.acl16.pdf), Half-Life Regression. It's an algorithm developed by Duolingo for Duolingo. The memory half-life in HLR is conceptually very similar to the memory stability in FSRS, but it's calculated using an overly simplistic formula. It uses the SR model.
 
 ![HLR](https://github.com/user-attachments/assets/5bfd0b0a-d030-4889-a478-27a8f520cbd9)
 
@@ -140,17 +143,19 @@ For HLR, the order of reviews doesn't matter because it only requires summary st
 
 16.​ SM-2. It's a 35+ year-old algorithm that is still used by Anki, Mnemosyne, and possibly other apps as well. It's main advantage is simplicity. Note that in our benchmark, it is implemented the way it was originally designed. It's not the Anki version of SM-2, it's the original SM-2. We put a not-so-rigorous interval-to-probability converter on top of it.
 
-17.​ NN-17. It's a neural network approximation of [SM-17](https://supermemo.guru/wiki/Algorithm_SM-17). The SuperMemo wiki page about SM-17 may appear very detailed at first, but it actually obfuscates all of the important details that are necessary to implement SM-17. It tells you what the algorithm is doing, but not how. Our approximation relies on the limited information available on the formulas of SM-17 while utilizing neural networks to fill in any gaps.
+17.​ NN-17. It's a neural network approximation of [SM-17](https://supermemo.guru/wiki/Algorithm_SM-17). The SuperMemo wiki page about SM-17 may appear very detailed at first, but it actually obfuscates all of the important details that are necessary to implement SM-17. It tells you what the algorithm is doing, but not how. Our approximation relies on the limited information available on the formulas of SM-17 while utilizing neural networks to fill in any gaps. It uses teh DSR model.
 
 ![NN-17](https://github.com/user-attachments/assets/f877e8f9-f06c-46c7-9573-335bfccb196b)
 
 In order to calculate the length of the next interval, NN-17 requires the length of the previous interval, grade (Again/Hard/Good/Easy) and its own previous state, which is represented using four numbers: Difficulty, memory Stability, Retrievability, and the number of lapses.
 
-18.​ AVG. It's an "algorithm" that outputs a constant equal to the user's average retention. For example, if the user presses Hard/Good/Easy 85% of the time, the "algorithm" will always output an 85% probability of recall for any given review. You can think of it as a weatherman who says, "The temperature today will be average, the wind speed will be average, and the humidity will be average as well" every single day. This "algorithm" is intended only to serve as a baseline for comparison and has no practical applications.
+18.​ Ebisu v2. [It's an algorithm that uses Bayesian statistics](https://fasiha.github.io/ebisu/) to update its estimate of memory half-life after each review. It uses the SR model.
+
+19.​ AVG. It's an "algorithm" that outputs a constant equal to the user's average retention. For example, if the user presses Hard/Good/Easy 85% of the time, the "algorithm" will always output an 85% probability of recall for any given review. You can think of it as a weatherman who says, "The temperature today will be average, the wind speed will be average, and the humidity will be average as well" every single day. This "algorithm" is intended only to serve as a baseline for comparison and has no practical applications. It does not use any model of memory.
 
 I did my best to create a "taxonomy" of spaced repetition algorithms.
 
-![All algorithms (new) 1 1](https://github.com/user-attachments/assets/f676cef3-0807-4ec3-a0f4-30c91006677b)
+![All algorithms (new) 1 1](https://github.com/user-attachments/assets/f629c0f6-d324-489c-a5b1-f9afeeac74df)
 
 SM-2 is not included in this diagram because it wasn't designed to predict the probability of recall, unlike the other algorithms.
 SM-17/18 algorithms also use the three-component (Difficulty, Stability, Retrievability) model of memory.
