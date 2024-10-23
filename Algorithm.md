@@ -174,7 +174,7 @@ Here is the new formula:
 
 ![DeltaD](https://github.com/user-attachments/assets/52227f33-c383-4336-b00a-bb2562790a31)
 
-![NewD](https://github.com/user-attachments/assets/5eda1ee5-9459-4ccc-927c-07e00250ad27)
+![NewD](https://github.com/user-attachments/assets/e7135b00-8216-48d5-b78e-d8454e241457)
 
 (10-D)/9 is the linear damping term. The closer D is to 10, the smaller this term, the smaller the change in difficulty.
 
