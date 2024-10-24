@@ -68,19 +68,15 @@ And here are graphs illustrating Spearman's correlation coefficients and average
 
 JReadability is the original model proposed in "Introducing a readability evaluation system for Japanese language education". The features are the same, the parameters are fine-tuned for my dataset.
 
-## Examples
+## Caveats
 
-Japanese text: "おはようございます". This means "Good morning". Readability score = .
+The model was trained on texts that have, on average, 2052 characters (median=1409 characters, 10th percentile=680, 90th percentile=4066). It doesn't generalize well to texts that are 20-50 characters long, which means that it's not suitable for an Anki add-on that calculates the readability of text in cards for sentence mining. I highly doubt that Japanese learners put entire paragraphs into their cards.
 
-Japanese text: "今日は天気がいいですね". This means " The weather is nice today". Readability score = .
-
-Japanese text: "船員は自衛隊員が務め、観測隊員は厳しい審査と訓練に合格した人間だけ". This means "The ship is manned by the military, and the expedition members have to pass strict screenings and training". Readability score = .
-
-Japanese text: "夜間不用意に岸辺に近づいた部下たちは全員正体不明の怪物によって食い殺されてしまいました". This means "But once night had fallen, all my soldiers that had wandered near the shore were eaten by some sort of monster". Readability score = .
+While this was a fun personal project, I don't think the model has many practical applications due to being limited to medium-sized and long texts. I don't have a dataset with shorter texts, and my Japanese isn't good enough to manually assign levels on my own.
 
 ## Implementation
 
-https://github.com/___ is using my NihongoScore-19N to output a readability score between 1 and 4. It has been implemented in the [NihongoScore add-on]() for Anki. Huge thanks to [Josh](https://github.com/joshdavham) for helping me obtain the dataset and to ___ for making the add-on! And make sure to read Josh's article [on readability](https://cij-analysis.streamlit.app/).
+The best model, NihongoScore-19N, is used in my library `nihongoscore`.
 
 
 ___
