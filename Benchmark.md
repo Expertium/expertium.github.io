@@ -149,7 +149,7 @@ For HLR, the order of reviews doesn't matter because it only requires summary st
 
 In order to calculate the length of the next interval, NN-17 requires the length of the previous interval, grade (Again/Hard/Good/Easy) and its own previous state, which is represented using four numbers: Difficulty, memory Stability, Retrievability, and the number of lapses.
 
-18.​ Ebisu v2. [It's an algorithm that uses Bayesian statistics](https://fasiha.github.io/ebisu/) to update its estimate of memory half-life after each review. It uses the SR model.
+18.​ Ebisu v2. [It's an algorithm that uses Bayesian statistics](https://fasiha.github.io/ebisu/) to update its estimate of memory half-life after each review. While it has 3 parameters, Ebisu was not designed to optimize them automatically, they have to be configured manually. It uses the SR model.
 
 19.​ AVG. It's an "algorithm" that outputs a constant equal to the user's average retention. For example, if the user presses Hard/Good/Easy 85% of the time, the "algorithm" will always output an 85% probability of recall for any given review. You can think of it as a weatherman who says, "The temperature today will be average, the wind speed will be average, and the humidity will be average as well" every single day. This "algorithm" is intended only to serve as a baseline for comparison and has no practical applications. It does not use any model of memory.
 
@@ -163,7 +163,7 @@ HLR lacks a difficulty variable, but it does have memory stability (half-life) a
 
 Additionally, below is a table comparing different algorithms.
 
-![Comparison table 1 2](https://github.com/user-attachments/assets/97acbd9b-79f8-4072-804d-e921fa3369be)
+![Comparison table 1 2](https://github.com/user-attachments/assets/ec4377aa-76b4-4eb5-9750-b0a695024e92)
 
 It should be noted that some algorithms, such as SM-2, which were not designed to be adaptive, could still be made adaptive and benefit from parameter optimization. In the table, boxes in the Adaptive column are checked based on the original design of the algorithm.
 
@@ -184,18 +184,18 @@ This benchmark is based on 19,990 collections and 702,721,850 reviews, excluding
 In the tables and charts below, the averages are weighted by the number of reviews in each user's collection, meaning that users with more reviews have a greater impact on the value of the average. If someone has 100 thousand reviews, they will affect the average 100 times more than someone who only has 1 thousand reviews.
 The tables also show the number of optimizable parameters of each algorithm. The benchmark repo also has [unweighted averages](https://github.com/open-spaced-repetition/srs-benchmark?tab=readme-ov-file#result).
 
-![image](https://github.com/user-attachments/assets/1e46dba1-459b-402d-aaeb-c743df027c64)
+![image](https://github.com/user-attachments/assets/939b8604-1287-4752-a3ee-8ef97367ed8f)
 
 ![RMSE](https://github.com/user-attachments/assets/7774c392-322c-4304-be18-46b0b1f72573)
 
 Lower is better. Black caps are 99% confidence intervals.
 Don't focus too much on absolute values, they depend on a lot of things: how we calculate RMSE (which involves somewhat arbitrary binning), whether the averages are weighted by the number of reviews or not, and how the outlier filter works. Instead, focus on the ranking​  -  ​which algorithm is the best, which one is the second best, which one is the third best, etc.
 
-The bars corresponding to FSRS-5 and GRU-P (short-term) are colored differently to indicate that these algorithms have been trained on more reviews; all other algorithms are trained without using same-day reviews. However, the comparison is still fair because all algorithms are evaluated on the same data, even if the training data is different. Here's an analogy: one student did a lot of homework before the test, the other did less homework. After that, both students took the same test. Even though they did a different amount of homework, since the test is the same, it's still valid to compare the test scores of these two students.
+The bars corresponding to FSRS-5 and GRU-P (short-term) are colored differently to indicate that these algorithms have been trained on more reviews; all other algorithms were trained without using same-day reviews. However, the comparison is still fair because all algorithms are evaluated on the same data, even if the training data is different. Here's an analogy: one student did a lot of homework before the test, the other did less homework. After that, both students took the same test. Even though they did a different amount of homework, since the test is the same, it's still valid to compare the test scores of these two students.
 
 Now let's look at log loss.
 
-![image](https://github.com/user-attachments/assets/57a80da5-9675-4cf0-a602-3e87d95b7a56)
+![image](https://github.com/user-attachments/assets/acae828d-6a4a-48d8-a218-2bb2fd9e0bf0)
 
 ![Log loss](https://github.com/user-attachments/assets/5fcc05a2-db57-4e28-bfa8-ec8d7e1af452)
 
@@ -204,7 +204,7 @@ As you can see, the ranking is a little different. For example, based on RMSE, t
 
 Finally, let's look at AUC.
 
-![image](https://github.com/user-attachments/assets/16a30242-0f9c-4eb8-aced-73bf99d00a86)
+![image](https://github.com/user-attachments/assets/b079375e-250c-4499-9f7f-07b779bd7bf3)
 
 ![AUC](https://github.com/user-attachments/assets/44772a1c-c0f4-4601-87dd-7742b04d2951)
 
