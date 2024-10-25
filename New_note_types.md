@@ -27,14 +27,6 @@ Well, with Match Pairs there is!
 
 ![Match Pairs (Sweden and Switzerland)](https://github.com/user-attachments/assets/b43b20f1-f267-49eb-ae97-a65156ffc159)
 
-And it's not the only advantage of this note type. It also supports images.
-
-![Match pairs (image)](https://github.com/user-attachments/assets/e4239938-a926-43dd-ad61-4d53c331247c)
-
-And audio (if you can't hear it in the example below, make sure to click the speaker symbol ![image](https://github.com/user-attachments/assets/9d3d1efb-8669-484d-91bb-e1c7a91b7b30)).
-
-https://github.com/user-attachments/assets/6f65fb06-322b-4745-8ee9-101b126e2df5
-
 And if you think that this is too easy and therefore would make active recall ineffective, you can make your life harder by adding a wrong answer.
 
 ![Match pairs (one wrong)](https://github.com/user-attachments/assets/0311774a-abc0-4e9d-9a24-edb9a93bddc9)
@@ -51,6 +43,14 @@ Btw, you don't necessarily have to drag answers - you can click on them. When yo
 `|` is the separator that you should put between items, **this is all you have to remember to create these cards**. Don't worry about leading/trailing spaces, they are stripped away automatically: `Answer1 | Answer2` will produce the same result as `Answer1|Answer2`.
 
 In all examples above, I used two pairs, but you can add more. However, stuffing too much information into a single card is a bad practice. I recommend having 2-3 pairs, *maaaaaaaaaaaybe* 4, but not more.
+
+But wait, there's more! It also supports images.
+
+![Match pairs (image)](https://github.com/user-attachments/assets/e4239938-a926-43dd-ad61-4d53c331247c)
+
+And audio (if you can't hear it in the example below, make sure to click the speaker symbol ![image](https://github.com/user-attachments/assets/9d3d1efb-8669-484d-91bb-e1c7a91b7b30)).
+
+https://github.com/user-attachments/assets/6f65fb06-322b-4745-8ee9-101b126e2df5
 
 Of course, how useful this note type is for you depends on how often you encounter what I call "negative interference", where card A makes it harder to remember card B, and card B makes it harder to remember card A. Personally, I've been able to replace dozens of unnecessary clozes with this note type, and I think it would be cool if this would become built-in in the future.
 
@@ -70,6 +70,8 @@ This is another note type that aims to solve the "memorizing the shape of the qu
 To save some time and effort, you can ask ChatGPT, Claude or Gemini to rephrase the sentence and generate 2-3 sentences with the same meaning, although I recommend taking the time to write sentences yourself.
 
 One thing that you should keep in mind: the numbers in curly brackets have to be the same for each item, otherwise you'll end up making multiple cards instead of one card. It doesn't mean that the number always has to be 1, you absolutely can have multiple cloze selections per item. Like this: `Just some {{c1::random}} {{c2::text}}| Also just some {{c1::random}} {{c2::text}} | And this is some {{c1::random}} {{c2::text}}, too`.
+
+![Cloze edit](https://github.com/user-attachments/assets/764d993c-0782-4816-90bf-7d0f4f13058f)
 
 The separator is the same.
 
