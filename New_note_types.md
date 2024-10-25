@@ -54,12 +54,6 @@ https://github.com/user-attachments/assets/6f65fb06-322b-4745-8ee9-101b126e2df5
 
 Of course, how useful this note type is for you depends on how often you encounter what I call "negative interference", where card A makes it harder to remember card B, and card B makes it harder to remember card A. Personally, I've been able to replace dozens of unnecessary clozes with this note type, and I think it would be cool if this would become built-in in the future.
 
-P.S. When you download the deck, there will be this card:
-
-![image](https://github.com/user-attachments/assets/ff46142b-776b-479a-bf9a-884e76761ef3)
-
-As it says, don't delete it. I won't go into the details regarding this, but basically Match Pairs doesn't play audio automatically. It's not a bug, it's a feature.
-
 
 ## Randomized Cloze
 
@@ -73,7 +67,7 @@ One thing that you should keep in mind: the numbers in curly brackets have to be
 
 ![Cloze edit](https://github.com/user-attachments/assets/764d993c-0782-4816-90bf-7d0f4f13058f)
 
-The separator is the same.
+The `|` separator is the same.
 
 ![image](https://github.com/user-attachments/assets/c60f7125-0856-4a53-96f3-92b7dbc3fa29)
 
@@ -113,6 +107,15 @@ Here's a little diagram to help you understand the difference between this and R
 "Title" is an extra field, you can leave it empty, if you want.
 
 I don't really like this note type. It's like Cloze, but with multiple answers. I believe this isn't beneficial since it makes recall much easier than cloze, which isn't good for strengthening memories, and the only "advantage" is that it looks fancy. Just use Cloze, or even better - Randomized Cloze.
+
+---
+
+P.S. When you download the deck, there will be this card:
+
+![image](https://github.com/user-attachments/assets/ff46142b-776b-479a-bf9a-884e76761ef3)
+
+As it says, don't delete it. I won't go into the details regarding this, but basically Match Pairs doesn't play audio automatically. It's not a bug, it's a feature.
+
 
 
 ___
