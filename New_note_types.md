@@ -1,9 +1,12 @@
-# New note types
+# Note types
+
+One of the big issues that Anki users face is memorizing what the answer *looks* like rather than the actual information. This can lead to situations where someone can "recall" the answer in Anki, but not in real life. The new note types that I wrote about in this article aim to solve this problem. 
 
 [https://ankiweb.net/shared/info/171015247](https://ankiweb.net/shared/info/171015247). The deck has examples of 5 new note types: Match Pairs, Randomized Cloze, Randomized Basic, Randomized Basic with Multiple Answers, and Click Words. Once you download it, you'll be able to make cards based on these note types on your own, no add-ons needed.
 
-They work on PC and on AnkiDroid too, but haven't been tested on AnkiMobile.
+They work on PC and on AnkiDroid, but haven't been tested on AnkiMobile.
 
+Table of contents:
 - [Match Pairs](#match-pairs)
 - [Randomized Cloze](#randomized-cloze)
 - [Randomized Basic](#randomized-basic)
