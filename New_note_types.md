@@ -118,7 +118,7 @@ P.S. When you download the deck, there will be this card:
 
 ![image](https://github.com/user-attachments/assets/ff46142b-776b-479a-bf9a-884e76761ef3)
 
-As it says, don't delete it. I won't go into the details regarding this, but basically Match Pairs doesn't play audio automatically. It's not a bug, it's a feature.
+As it says, don't delete it. It is necessary for some stuff related to playing audio in Match Pairs. This card is suspended by default, to avoid confusing people.
 
 
 
