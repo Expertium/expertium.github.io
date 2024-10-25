@@ -1,6 +1,6 @@
 # Note types
 
-One of the big issues that Anki users face is memorizing what the answer *looks* like rather than the actual information. This can lead to situations where someone can "recall" the answer in Anki, but not in real life. The new note types that I wrote about in this article aim to solve this problem, as well as allow you to memorize the same amount of information while making fewer cards. 
+One of the big issues that Anki users face is memorizing what the answer *looks* like rather than the actual information. This can lead to situations where someone can "recall" the answer in Anki, but not in real life. The new note types that I wrote about in this article aim to solve this problem as well as allow you to memorize the same amount of information while making fewer cards. 
 
 [https://ankiweb.net/shared/info/171015247](https://ankiweb.net/shared/info/171015247). The deck has examples of 5 new note types: Match Pairs, Randomized Cloze, Randomized Basic, Randomized Basic with Multiple Answers, and Click Words. Once you download it, you'll be able to make cards based on these note types on your own, no add-ons needed.
 
