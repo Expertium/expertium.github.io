@@ -7,7 +7,9 @@ They work on PC and on AnkiDroid too, but haven't been tested on AnkiMobile.
 - [Match Pairs](#match-pairs)
 - [Randomized Cloze](#randomized-cloze)
 - [Randomized Basic](#randomized-basic)
+- [Randomized Basic with Multiple Answers](#randomized-basic-with-multiple-answers)
 - [Click Words](#click-words)
+
 
 ## Match Pairs
 
@@ -23,11 +25,11 @@ However, this is inefficient - now you have 2 notes for the same thing. If only 
 
 Well, with Match Pairs there is!
 
-![2 capitals](https://github.com/user-attachments/assets/905f5a88-33f4-419a-a662-e1906c835385)
+![Match Pairs (Sweden and Switzerland)](https://github.com/user-attachments/assets/b43b20f1-f267-49eb-ae97-a65156ffc159)
 
 And it's not the only advantage of this note type. It also supports images.
 
-![Images](https://github.com/user-attachments/assets/2b648768-12d4-4755-a036-d0ba7681c416)
+![Match pairs (image)](https://github.com/user-attachments/assets/e4239938-a926-43dd-ad61-4d53c331247c)
 
 And audio (if you can't hear it in the example below, make sure to click the speaker symbol ![image](https://github.com/user-attachments/assets/9d3d1efb-8669-484d-91bb-e1c7a91b7b30)).
 
@@ -35,22 +37,18 @@ https://github.com/user-attachments/assets/6f65fb06-322b-4745-8ee9-101b126e2df5
 
 And if you think that this is too easy and therefore would make active recall ineffective, you can make your life harder by adding a wrong answer.
 
-![3 capitals](https://github.com/user-attachments/assets/4133a134-4501-4a7b-a17b-a562d0ec3228)
+![Match pairs (one wrong)](https://github.com/user-attachments/assets/0311774a-abc0-4e9d-9a24-edb9a93bddc9)
 
 Here you have 2 countries and 3 capitals, so you need to think harder.<br />
 Make sure that the extra answer is wrong, but not *obviously* wrong. In this example, I won't benefit from adding Jakarta to the second list, since it's obviously wrong. Which is why I added Amsterdam - Amsterdam makes me pause and think, Jakarta doesn't.
 
-Still not hard enough? You can add 2 wrong answers. If you have 3 or more wrong answers, only two of them will be shown. The card below will never show "Poopville".
+Still not hard enough? You can add 2 wrong answers. The number of wrong answers displayed is at most equal to the number of correct answers. The card below will never show "Poopville", because there are 2 correct answers, which means that there can only be 0, 1 or 2 incorrect answers.
 
 ![image](https://github.com/user-attachments/assets/c1a4eb0e-d218-4562-8a0d-f5d9e4a77d20)
 
 Btw, you don't necessarily have to drag answers - you can click on them. When you click on an answer, it is put in the topmost vacant answer box.
 
-And here's what the fields look like:
-
-![image](https://github.com/user-attachments/assets/87a2b1b6-231b-40c2-8934-b0f9977b1cd8)
-
-`|` is the separator that you should put between items. Don't worry about leading/trailing spaces, they are stripped away automatically: `Answer1 | Answer2` will produce the same result as `Answer1|Answer2`.
+`|` is the separator that you should put between items, **this is all you have to remember to create these cards**. Don't worry about leading/trailing spaces, they are stripped away automatically: `Answer1 | Answer2` will produce the same result as `Answer1|Answer2`.
 
 In all examples above, I used two pairs, but you can add more. However, stuffing too much information into a single card is a bad practice. I recommend having 2-3 pairs, *maaaaaaaaaaaybe* 4, but not more.
 
@@ -62,40 +60,53 @@ P.S. When you download the deck, there will be this card:
 
 As it says, don't delete it. I won't go into the details regarding this, but basically Match Pairs doesn't play audio automatically. It's not a bug, it's a feature.
 
+
 ## Randomized Cloze
 
 This is another note type that aims to solve the "memorizing the shape of the question rather than the content" problem.
 
-![Randomized Cloze](https://github.com/user-attachments/assets/75c665cc-470a-4930-b527-ef1e586ab04b)
+![Randomized Cloze](https://github.com/user-attachments/assets/4cfd6931-477e-4810-9465-33078f1ff8be)
 
 To save some time and effort, you can ask ChatGPT, Claude or Gemini to rephrase the sentence and generate 2-3 sentences with the same meaning, although I recommend taking the time to write sentences yourself.
 
 One thing that you should keep in mind: the numbers in curly brackets have to be the same for each item, otherwise you'll end up making multiple cards instead of one card. It doesn't mean that the number always has to be 1, you absolutely can have multiple cloze selections per item. Like this: `Just some {{c1::random}} {{c2::text}}| Also just some {{c1::random}} {{c2::text}} | And this is some {{c1::random}} {{c2::text}}, too`.
 
-The separator is the same as for Match Pairs.
+The separator is the same.
 
-![Cloze edit](https://github.com/user-attachments/assets/5881adc5-7150-4f3a-8efa-90517425eb7a)
+![image](https://github.com/user-attachments/assets/c60f7125-0856-4a53-96f3-92b7dbc3fa29)
+
 
 ## Randomized Basic
 
 It's exactly what it sounds like. And the separator is the same.
 
-![Randomized Basic](https://github.com/user-attachments/assets/7a4e54a4-5646-4f3c-8a25-7f3dfc9f3f54)
+![Randomized Basic](https://github.com/user-attachments/assets/47023e01-bbf3-4011-a47f-3a7d53a8a240)
 
-![image](https://github.com/user-attachments/assets/5df3b54d-3e07-4227-ba98-c420054674ae)
+![image](https://github.com/user-attachments/assets/34b927b5-7342-4c2f-83a7-9d881002fec7)
 
-Keep in mind that this isn't Match Pairs, the back can only have **one** item. The `|` separator won't work.
+Keep in mind that this isn't Match Pairs, the back can only have **one** item. The `|` separator won't work in the "Back" field.
 
-Here's a little diagram to help you.
 
-![Match Pairs vs Randomized Basic](https://github.com/user-attachments/assets/3926eee6-4146-403c-be11-e5e96775f151)
+## Randomized Basic with Multiple Answers
+
+This is just 2/3/n cards in one card. You may be wondering, "Why not just *actually* make several cards?". But there is one situation where this is useful: practicing math concepts.
+
+![RandomBasic with MA](https://github.com/user-attachments/assets/57269c25-e82f-4e2c-a733-f631871836d4)
+
+![image](https://github.com/user-attachments/assets/902bc3d9-5411-4ca5-b39d-16ff225e1a3e)
+
+You could make 3 separate cards, but then you would have 3 cards for the same concept, which is less efficient.
+
+Here's a little diagram to help you understand the difference between this and Randomized Basic.
+
+![RBasic vs RBasic with MA](https://github.com/user-attachments/assets/ef9ce821-61aa-44af-b534-d5c453ac0dc7)
 
 
 ## Click Words
 
 ![Click Words](https://github.com/user-attachments/assets/02d7bc6f-2a1d-4b7e-818d-9b4f30631caa)
 
-![image](https://github.com/user-attachments/assets/5e4cd91d-0f0f-46e0-a265-ba2e90acf0bc)
+![image](https://github.com/user-attachments/assets/80454f13-30f3-4733-b23b-6a9c9d3ccf37)
 
 "Title" is an extra field, you can leave it empty, if you want.
 
