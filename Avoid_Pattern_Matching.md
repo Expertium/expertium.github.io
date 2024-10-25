@@ -24,7 +24,7 @@ But there is a problem: you may end up just memorizing "thingy 1 is the top one,
 
 ![2](https://github.com/user-attachments/assets/8ef6dd0a-6417-4106-a422-10048bd67af6)
 
-However, this is inefficient - now you have 2 notes for the same piece of knowledge. If only there was a way to put them into the same note and randomize order...
+However, this is inefficient - now you have 2 notes for the same piece of knowledge. If only there was a way to put them into the same note and randomize the order...
 
 Well, with Match Pairs there is!
 
