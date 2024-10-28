@@ -72,8 +72,6 @@ One thing that you should keep in mind: the numbers in curly brackets have to be
 
 The `|` separator is the same.
 
-![image](https://github.com/user-attachments/assets/c60f7125-0856-4a53-96f3-92b7dbc3fa29)
-
 
 ## Randomized Basic
 
