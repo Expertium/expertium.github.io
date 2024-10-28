@@ -121,6 +121,7 @@ P.S. When you download the deck, there will be this card:
 
 As it says, don't delete it. It is necessary for some stuff related to playing audio in Match Pairs. This card is suspended by default, to avoid confusing people.
 
+# If you find any bugs or if you have any feature requests, here: https://github.com/Vilhelm-Ian/Interactive_And_Randomize_Anki_Note_Types/issues/new
 
 
 ___
