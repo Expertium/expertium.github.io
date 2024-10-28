@@ -86,13 +86,13 @@ Keep in mind that this isn't Match Pairs, the back can only have **one** item. T
 
 ## Randomized Basic with Multiple Answers
 
-This is just 2/3/n cards in one card. You may be wondering, "Why not just *actually* make several cards?". For the most part that's true, but there is (at least) one situation where this is useful: practicing math concepts.
+This is just 2/3/n notes in one. You may be wondering, "Why not just *actually* make several notes?". For the most part that's true, but there is (at least) one situation where this is useful: practicing math concepts.
 
 ![RandomBasic with MA](https://github.com/user-attachments/assets/57269c25-e82f-4e2c-a733-f631871836d4)
 
 ![image](https://github.com/user-attachments/assets/902bc3d9-5411-4ca5-b39d-16ff225e1a3e)
 
-You could make 3 separate cards, but then you would have 3 cards for the same concept, which is less efficient.
+You could make 3 separate notes, but then you would have 3 notes (and cards) for the same concept, which is less efficient.
 
 Here's a little diagram to help you understand the difference between this and Randomized Basic.
 
