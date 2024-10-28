@@ -88,7 +88,7 @@ Keep in mind that this isn't Match Pairs, the back can only have **one** item. T
 
 ## Randomized Basic with Multiple Answers
 
-This is just 2/3/n cards in one card. You may be wondering, "Why not just *actually* make several cards?". For the mostp art that's true, but there is (at least) one situation where this is useful: practicing math concepts.
+This is just 2/3/n cards in one card. You may be wondering, "Why not just *actually* make several cards?". For the most part that's true, but there is (at least) one situation where this is useful: practicing math concepts.
 
 ![RandomBasic with MA](https://github.com/user-attachments/assets/57269c25-e82f-4e2c-a733-f631871836d4)
 
