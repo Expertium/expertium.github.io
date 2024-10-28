@@ -55,7 +55,7 @@ And audio (if you can't hear it in the example below, make sure to click the spe
 
 https://github.com/user-attachments/assets/6f65fb06-322b-4745-8ee9-101b126e2df5
 
-Of course, how useful this note type is for you depends on how often you encounter what I call "negative interference", where card A makes it harder to remember card B, and card B makes it harder to remember card A. Personally, I've been able to replace dozens of unnecessary clozes with this note type, and I think it would be cool if this would become built-in in the future.
+Of course, how useful this note type is for you depends on how often you encounter what I call "negative interference", where card A makes it harder to remember card B, and card B makes it harder to remember card A. Personally, I've been able to replace dozens of unnecessary clozes with this note type, and I think it would be cool if this note type would become built-in in the future.
 
 
 ## Randomized Cloze
