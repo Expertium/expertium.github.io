@@ -47,7 +47,7 @@ Btw, you don't necessarily have to drag answers - you can click on them. When yo
 
 In all examples above, I used two pairs, but you can add more. However, stuffing too much information into a single card is a bad practice. I recommend having 2-3 pairs, *maaaaaaaaaaaybe* 4, but not more.
 
-It also supports images.
+Match Pairs also supports images.
 
 ![Match pairs (image)](https://github.com/user-attachments/assets/e4239938-a926-43dd-ad61-4d53c331247c)
 
