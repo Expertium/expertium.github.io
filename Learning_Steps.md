@@ -12,7 +12,7 @@ Let's just preface this by saying that **15m**, **20m** or **30m** is ideal both
 
 5) **10m 10m**. This also can cause Again, Hard and Good to be equal to each other.
 
-6) **1m 15m**. This will make you review a new card twice per day. FSRS doesn't take same-day reviews into account (FSRS-5 does, though), so the extra step is just a waste of time. The more short steps you have, the more time you waste, since FSRS won't use those reviews, and a year from now on it won't matter whether you reviewed this card 1 or 2 or 3 times on your first day of seeing it, regardless of which algorithm you use. This is arguably the least wrong way of using learning steps out of all the wrong ways listed in this post, though it's still suboptimal.
+6) **1m 15m**. This will make you review a new card twice per day. FSRS doesn't take same-day reviews into account (FSRS-5 does, though), so the extra step is just a waste of time. The more short steps you have, the more time you waste, since FSRS won't use those reviews, and a year from now on it won't matter whether you reviewed this card 1 or 2 or 3 times on your first day of seeing it, regardless of which algorithm you use. This is the least wrong way of using learning steps out of all the wrong ways listed in this article, though it's still suboptimal.
 
 7) **30m 15m**. This will cause Again to be longer than Hard, which in turn will be longer than Good aka Again > Hard > Good.
 
