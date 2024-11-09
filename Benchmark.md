@@ -88,9 +88,9 @@ In order to calculate the length of the next interval, FSRS requires the length 
 
 ### General-purpose machine learning algorithms family
 
-7.​ Transformer. This neural network architecture has become popular in recent years because of its superior performance in natural language processing. ChatGPT uses this architecture. This implementation uses the SR model.
+7.​ ormer. This neural network architecture has become popular in recent years because of its superior performance in natural language processing. ChatGPT uses this architecture. This implementation uses the SR model.
 
-8.​ GRU, Gated Recurrent Unit. This neural network architecture is commonly used for time series analysis, such as predicting stock market trends or recognizing human speech. Originally, we used a more complex architecture called LSTM, but GRU performed better with fewer parameters. Both GRU and Transformer use the same power forgetting curve as FSRS-4.5 and FSRS-5 to make the comparison more fair. This implementation uses the SR model.
+8.​ GRU, Gated Recurrent Unit. This neural network architecture is commonly used for time series analysis, such as predicting stock market trends or recognizing human speech. Originally, we used a more complex architecture called LSTM, but GRU performed better with fewer parameters. Both GRU and ormer use the same power forgetting curve as FSRS-4.5 and FSRS-5 to make the comparison more fair. This implementation uses the SR model.
 
 ![GRU](https://github.com/user-attachments/assets/49f3152b-524f-46d3-b202-4b0090f921d0)
 
@@ -114,7 +114,7 @@ These algorithms are based on a different model, not SR or DSR.
 
 ![DASH](https://github.com/user-attachments/assets/b0b0b3c7-998e-4c77-8955-f9cb650bc180)
 
-DASH, DASH[MCM] and DASH[ACT-R] don't have state variables that are carried on between reviews, and they don't process reviews sequentially, like SM-17/18 or FSRS. They are more like Transformers: all past reviews must be processed in order to calculate the length of the next interval. This makes them much slower than FSRS when the number of reviews is large. In FSRS, each review takes a constant amount of time to process. If a card has 100 reviews, processing the first review will take the same amount of time as processing the 100th review. In DASH, the processing time of a single review depends on the number of past reviews. Therefore, processing the 100th review takes much longer than processing the first one.
+DASH, DASH[MCM] and DASH[ACT-R] don't have state variables that are carried on between reviews, and they don't process reviews sequentially, like SM-17/18 or FSRS. They are more like ormers: all past reviews must be processed in order to calculate the length of the next interval. This makes them much slower than FSRS when the number of reviews is large. In FSRS, each review takes a constant amount of time to process. If a card has 100 reviews, processing the first review will take the same amount of time as processing the 100th review. In DASH, the processing time of a single review depends on the number of past reviews. Therefore, processing the 100th review takes much longer than processing the first one.
 
 Also, even though the diagram shows "Next interval length" as output, in reality, calculating the next interval using DASH algorithms would be very difficult due to the quirks of their forgetting curves. With FSRS and HLR, calculating the probability of recall that corresponds to a specific interval length and calculating the interval length that corresponds to a specific probability of recall is equally easy, but not with DASH algorithms. Still, I drew the diagram this way because a diagram that shows how algorithms predict probabilities would be much harder to read.
 
@@ -213,7 +213,7 @@ Now ranking is very different. This isn't too surprising, considering that AUC i
 It's interesting that the AUC score of HLR is 0.631, much higher than 0.54, which is what Duolingo reported in their paper. Granted, 0.631 is not that impressive either. In fact, all spaced repetition algorithms have rather unimpressive AUC scores. <br />
 Unsurprisingly, AVG has an AUC score close to 0.5. Since it always outputs a constant, it cannot differentiate between forgotten and recalled cards. <br />
 It is somewhat surprising that NN-17 has a relatively low AUC score, given that it combines the best of both worlds​  -  ​a model of human memory supplemented with a neural network. Granted, the goal  was not to create the perfect algorithm; rather, the goal was to emulate SM-17. <br />
-Jarrett's implementation of Transformer doesn't perform well according to all 3 metrics, so if any neural network experts think, "I bet I can do better!" they are welcome!
+Jarrett's implementation of Transformer doesn't perform well according to all 3 metrics, so if any neural network experts think, "I bet I can do better!" they are welcome. I think it's probably because each algorithm is only trained for 5 epochs, which is more than enough for FSRS and other simple models, but not enough for complex models.
 
 Let's address GRU-P. As you can see, it outperforms all other algorithms by all three metrics. So you're probably wondering "If predicting R directly is better than predicting an intermediate value first, why not do that?". Here's what happens when you let an algorithm predict R directly.
 
