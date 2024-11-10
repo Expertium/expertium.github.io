@@ -46,3 +46,19 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+#
+color_scheme: dark
+
+giscus:
+  repo:                "brainwo/expertium.github.io"
+  repo-id:             "R_kgDOMxNzpA"
+  category:            "General"
+  category-id:         "DIC_kwDOMxNzpM4CkJZZ"
+  mapping:             "pathname"
+  reaction-enabled:    "1"
+  theme:               "dark"
+  crossorigin:         "anonymous"
+
+last_edit_timestamp: true
+
+gh_edit_link: true
