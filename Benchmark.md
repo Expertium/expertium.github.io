@@ -308,7 +308,7 @@ Clarification: I made this prediciton a few days before Jarrett made [this tweet
 ~~3. By 2029, no algorithm in our benchmark will have achieved an (weighted by the number of reviews) AUC score higher than 0.83, unless the dataset used in the benchmark changes.~~
 
 4. By 2031, there will be an app with an algorithm that employs at least one out of the three ideas proposed above (which are not specific to FSRS), and that app will not be Anki. For example, an app using KAR3L.
-The app must be publicly available in AppStore, Google Play Store, or elsewhere, and it must not be in the beta testing stage. I'm adding these extra conditions because, without them, [mathacademy.com](mathacademy.com) has already [met the main condition](https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/). Even with the extra conditions, this prediction can easily come true way sooner than 2031.
+The app must be publicly available in AppStore, Google Play Store, or elsewhere, and it must not be in the beta testing stage. I'm adding these extra conditions because, without them, [mathacademy.com](https://www.mathacademy.com/) has already [met the main condition](https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/). Even with the extra conditions, this prediction can easily come true way sooner than 2031.
 
 Predictions were made at the end of July, 2024.
 
