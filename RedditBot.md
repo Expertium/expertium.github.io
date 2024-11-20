@@ -58,11 +58,11 @@ So how accurate is my hand-made classifier? It achieves 65.7% accuracy on the en
 
 (I use "algorithm" and "model" as synonyms)
 
-We want to train a machine learning algorithm on text. Machine learning algorithms don't work with text, they work with numbers. This is a bit of a problem, and by "a bit" I mean **THIS IS A MASSIVE GOD DAMN PROBLEM**. Fortunately, in this case there is a pretty simple way to represent each text with a bunch of numbers. Each post will be represented using 24 numbers. The first 20 are the counts of keywords related to each of the 20 categories described above. 3 more for anti-keywords for some categories. And the last number is the standardized length of the post. What is **standardization**, you ask?
+We want to train a machine learning algorithm on text. Machine learning algorithms don't work with text, they work with numbers. This is a bit of a problem, and by "a bit" I mean **THIS IS A MASSIVE GOD DAMN PROBLEM**. Fortunately, in this case there is a pretty simple way to represent text with a bunch of numbers. Each post will be represented using 24 numbers. The first 20 are the counts of keywords related to each of the 20 categories described above. 3 more for anti-keywords for some categories. And the last number is the standardized length of the post. What is **standardization**, you ask?
 
 (standardization.png)
 
-So a post might look like this: `[0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.24043715846994534]`. All numbers except for the last one are counts of keywords. For example, 2 means that the post has two keywords related to some class, like Desired Retention, Optimization, Learning Steps, etc. The last one is standardized length.
+So after encoding a post might look like this: `[0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.24043715846994534]`. All numbers except for the last one are counts of keywords. For example, 2 means that the post has two keywords related to some class, like Desired Retention, Optimization, Learning Steps, etc. The last one is standardized length.
 
 This is obviously very lossy - the algorithm won't be able to analyze any information about individual words and phrases, all of the semantic nuances are lost. Still, this should be an improvement compared to the hand-made classifier.
 
