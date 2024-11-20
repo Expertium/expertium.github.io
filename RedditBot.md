@@ -32,7 +32,7 @@ My initial idea was to just check if the post contains "FSRS", or one of its mis
 14) Platforms. A post where the person is asking whether FSRS is supported in AnkiDroid, AnkiMobile, AnkiWeb; or something along those lines.
 15) Should. A post where hte person has doubts about switching to FSRS.
 16) AO (automatic optimization). A post about *automatic* optimization of parameters and why it's not implemented yet. One of the rarest types of posts. One of the rarest types of posts.
-17) ETK (estimated total knowldge). A post about the new stats: [daily load and estimated total knowledge](https://docs.ankiweb.net/stats.html#the-graphs). One of the rarest types of posts.
+17) ETK (estimated total knowldge). A post about the new stat: [estimated total knowledge](https://docs.ankiweb.net/stats.html#the-graphs). One of the rarest types of posts.
 18) Jarrett. A post that is addressed to LMSherlock (Jarret Ye) or is about some technical stuff related to the FSRS development. One of the rarest types of posts.
 19) General. A post where the person is asking what is FSRS, how to configure it, or a whole bunch of thigns at once.
 20) Null. Either unrelated to FSRS or there is no reason to send the bot to reply to this person.
