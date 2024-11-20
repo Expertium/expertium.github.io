@@ -2,7 +2,9 @@
 
 I made [u/FSRS_bot](https://www.reddit.com/user/FSRS_bot/) on Reddit, it helps people on [r/Anki](https://www.reddit.com/r/Anki) and [r/medicalschoolanki](https://www.reddit.com/r/medicalschoolanki) with FSRS-related questions.
 In this article, I want to talk about all the different things I did to improve it. This isn't super educational and quite technical, though you will learn a thing or two about machine learning.
-I won't be showing my entire code since it's too spaghetti, but I will show some code snippets. If you don't know much about machine learning, this can serve as a (shitty) introduction.
+I won't be showing my entire code since it's too spaghetti, but I will show some code snippets. If you ever think that my storytelling sounds like a mess, just keep in mind that the reality was even messier and I did 10x more dumb stuff than this article mentions.
+
+If you don't know much about machine learning, this can serve as a (shitty) introduction.
 
 ## Part One: Scraping
 
