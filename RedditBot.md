@@ -13,7 +13,7 @@ The code looks kinda like this:
 
 This is a simplified version. In reality it has a few more checks and I'm not only sorting by new, I'm also doing this for sort by hot, by rising, by controversial, by top (week, month and year), and do a few searches to find posts that contain, for example, "FSRS". Also, I need to write IDs and text to my disk to store them.
 
-## Part Two: Keyword Matching
+## Part Two: Keyword Matching and the First Classifier
 
 My initial idea was to just check if the post contains "FSRS", or one of its misspellings ("FRS", "FRSRS", "FSES", "FRSR", etc.), and make the bot comment the same generic message. However, I quickly realized that there are different types of questions, and they require personalized answers. So I categorized posts into 20 categories:
 1) Desired Retention. A post about choosing the value of desired retention and/or using "Compute minimum recommended retention".
