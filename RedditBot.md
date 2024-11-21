@@ -282,7 +282,7 @@ Then I assigned a 6% probability to index of a valid token -> index of "unk" and
 That's a total 8% probability of a typo. Much higher than average for a human text (unless it was written by a dumb middle schooler or an ESL), but remember, we want our neural net to be robust to noise.
 Then all I had to do was just run the randomizer 9 times to create 9 more variations of the dataset (the one with original + "ChatGPTed" texts). This brought the total number of texts to 25,440.
 
-IMPORTANT: make sure that the test set doesn't have any variations of texts that are in the train set, or else the model will give unrealistically good results on the test set. In other words, if there are N variations of text X, make sure that all N variations stay in the train set and none of them are in the test set.
+IMPORTANT: make sure that the test set doesn't have any variations of texts that are in the train set, or else the model will display unrealistically good results on the test set only to shit itself in real life. In other words, if there are N variations of text X, make sure that all N variations stay in the train set and none of them are in the test set.
 
 ___
 ### [←Return to homepage](https://expertium.github.io/)
