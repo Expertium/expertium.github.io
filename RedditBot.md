@@ -266,7 +266,7 @@ I can make the search even more exhaustive and slower to scrape more posts. Afte
 
 But what if I need more data?
 
-I guess it's time to scrape comments now. However, most comments aren't useful since there are too many comments where the person is explaining FSRS rather than asking a question about FSRS. I need questions, not answers. So I only labeled 81 comments.
+I guess it's time to scrape comments now. However, most comments aren't useful since there are too many comments where the person is explaining FSRS rather than asking a question about FSRS. I need questions, not answers. So I only labeled 81 comments out of several thousands.
 
 *But what if I need more data?*
 
