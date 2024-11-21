@@ -162,7 +162,7 @@ After the multi-layer perceptron, I decided to make a Transformer. It's the same
 
 For now what matters is assigning integers to words. Here is an example sentence:
 
-"Hey everoyne, I have a problem with FSRS. I can't optimize my parameetrs. akf92j56kcvjk. Screenshot: https:www.https://preview.redd.it/thw6he9n88nc2"
+`Hey everoyne, I have a problem with FSRS. I can't optimize my parameetrs. akf92j56kcvjk. Screenshot: https:www.https://preview.redd.it/thw6he9n88nc2`
 
 First, let's remove the URL. Long story short, URLs are a pain in the arse. We can remove them automatically:
 
@@ -172,9 +172,9 @@ First, let's remove the URL. Long story short, URLs are a pain in the arse. We c
 
 Result:
 
-"Hey everoyne, I have a problem with FSRS. I can't optimize my parameetrs. akf92j56kcvjk. Screenshot: "
+`Hey everoyne, I have a problem with FSRS. I can't optimize my parameetrs. akf92j56kcvjk. Screenshot: `
 
-Now we need to split it into **tokens**. A token is not necessarily a word, it could be a dot, a comma, a semicolon, a number, etc. Thankfully, we can use the greatest Python technique known as *Import That One Library That Does Exactly What I Want*, or "ITOLTDEWIW".
+Now we need to split it into **tokens**. A token is not necessarily a word, it could be a period, a comma, a semicolon, a number, etc. Thankfully, we can use the greatest Python technique known as *Import That One Library That Does Exactly What I Want*, or "ITOLTDEWIW".
 
 ![Import That One Library That Does Exactly What I Want rainbow](https://github.com/user-attachments/assets/fd471b6f-9f3c-47c0-aab5-1e7bf06b9548)
 
@@ -238,9 +238,9 @@ Final result:
 
 `['hey', 'everyone', ',', 'i', 'have', 'a', 'problem', 'with', 'fsrs', '.', 'i', 'can', 'not', 'optimize', 'my', 'parameter', '.', '.', 'screenshot', ':']`
 
-Here the only change is that "parameters" turned into "parameter". However, in practice this can help a lot, especially if I add extra rules manually because the function above doesn't always work the way I want it to work for whatever reason. This is lossy - we lose some of the nuances. However, I don't have a ton of data. If I had 100,000 posts - sure, I could afford to treat each word individually. But with only around 1k posts the neural net won't have enough data to learn all the nuances.
+Notice that "parameters" turned into "parameter". Lemmatization can help a lot, especially if I add extra rules manually because the function above doesn't always work the way I want it to work for whatever reason. This is lossy - we lose some of the semantic nuances. However, I don't have a ton of data. If I had 100,000 posts - sure, I could afford to treat each word individually. But with only around 1k posts the neural net won't have enough data to learn all the nuances, so it's better to use as few tokens as we can.
 
-After adding ten gorillion extra rules I finally managed to make everything work (mostly) the way I want. Of course, as I gatehr more data, I will add more rules.
+After adding ten gorillion extra rules and exceptions I finally managed to make everything work (mostly) the way I want. Of course, as I gather more data, I will add more rules and exceptions.
 
 Now all that's left is to assign an integer to every word. It doesn't really matter how you do it, but I liek doing things in a way that makes sense, so I did the following:
 
@@ -258,11 +258,11 @@ NLP models require a lot of data. At the time I only had around 650 posts scrape
 
 But what if I need more data?
 
-Well, I can make the scraper look for older posts and downvoted posts at the cost of making it slower. That increased the number to around 850-900.
+Well, I can make the scraper look for older posts and downvoted posts at the cost of making it slower. That increased the number to around 850-950 (as I said, I wasn't keeping track of everything precisely).
 
 But what if I need more data?
 
-I can make the search even more exhaustive and slower to scrape more posts. After some tweaking, I managed to get around 1100 posts.
+I can make the search even more exhaustive and slower to scrape more posts. After some tweaking, I managed to get around 1200 posts.
 
 But what if I need more data?
 
@@ -270,13 +270,21 @@ I guess it's time to scrape comments now. However, most comments aren't useful s
 
 *But what if I need more data?*
 
-I can't get any more data...or can I? It's time to learn about another important concept: **data augmentation**. By takign the original data and slightly tweaking it, we can create more training examples and make the neural net robust to small, minute differences. Here are some examples of what is used in computer vision tasks:
+I can't get any more data...or can I? It's time to learn about another important concept: **data augmentation**. By taking the original data and slightly tweaking it, we can create more training examples and make the neural net robust to small, minute differences. Here are some examples of what is used in computer vision tasks:
 
 ![Data Augmentation kitten](https://github.com/user-attachments/assets/91a05e74-918c-4255-9796-be22b9fb8aff)
 
 Doing this with text is, unfortunately, much harder. So in order to make more data, I fed the texts to ChatGPT and asked it to rephrase them. Of course, occasionally it would say something stupid, so I had to proofread it.
 
 So I ended up manually feeding it 1,272 texts and manually proofreading them (don't ask me why I can't just use their API in Python). This doubled the size of the dataset, from 1,272 texts to 2,544 texts.
+
+**But what if I need more data?**
+
+I can take existing texts and randomly swap two consequtive sentences. Example:
+
+'I went from having 100 reviews to having 300 reviews every day. I am seeing the same cards over and over again.' -> 'I am seeing the same cards over and over again. I went from having 100 reviews to having 300 reviews every day.'
+
+I assigned a 10% probability of two consequtive sentences being swapped to every text with at least one period, question mark, or exclamation mark. This doubled the size of the dataset again, from 2,544 texts to 5,088 texts.
 
 ***BUT WHAT IF I NEED MORE DATA?!***
 
@@ -292,7 +300,7 @@ Then for each word I measured its distance to each other word to find the neares
 
 Then I assigned a 6% probability to index of a valid token -> index of "unk" and a 2% probability to index of a valid token -> index of a valid token.
 That's a total 8% probability of a typo. Much higher than average for a human text (unless it was written by a dumb middle schooler or an ESL), but remember, we want our neural net to be robust to noise.
-Then all I had to do was just run the randomizer 9 times to create 9 more variations of the dataset (the one with original + "ChatGPTed" texts). This brought the total number of texts to 25,440.
+Then all I had to do was just run the randomizer 9 times to create 9 more variations of the dataset (the one with original + "ChatGPTed" texts). This brought the total number of texts to 50,880.
 
 **IMPORTANT**: make sure that the test set doesn't have any variations of texts that are in the train set, or else the model will display unrealistically good results on the test set only to shit itself in real life. In other words, if there are N variations of text X, make sure that all N variations stay in the train set and none of them are in the test set.
 
