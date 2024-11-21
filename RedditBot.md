@@ -138,7 +138,7 @@ Finally, let's talk about the **optimizer**. It's the stuff that updates the mod
 
 ("w" is some parameter, "cost" is the loss function)
 
-Imagine a round rock rolling down a ravine. The steeper the slope, the faster it will roll. With gradient descent, the more the loss changes if you change the parameters, the larger the update to the parameter will be. If some parameter has no effect on the loss, it won't be updated. Ideally, we would like to update the parameters once and be done with it, but 99.9% of the time that is not possible and optimization requires several steps.
+Imagine a round rock rolling down a ravine. The steeper the slope, the faster it will roll. With gradient descent, the more the loss changes if you change the parameter, the larger the update to the parameter will be. If some parameter has no effect on the loss, it won't be updated. Ideally, we would like to update the parameters once and be done with it, but 99.9% of the time that is not possible and optimization requires several steps.
 
 Here's a cool gif:
 
