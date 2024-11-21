@@ -284,7 +284,7 @@ I can take existing texts and randomly swap two consequtive sentences. Example:
 
 'I went from having 100 reviews to having 300 reviews every day. I am seeing the same cards over and over again.' -> 'I am seeing the same cards over and over again. I went from having 100 reviews to having 300 reviews every day.'
 
-I made it so that if a text has at least one period, a question mark, or an exclamation mark, two sentences in it will be swapped. This doubled the size of the dataset again, from 2,544 texts to 5,088 texts.
+I made it so that if a text has at least one period, a question mark, or an exclamation mark, two sentences in it will be swapped. This doubled the size of the dataset again, from 2,544 texts to 5,088 texts. Sure, short texts with just one sentence are duplicated, by meh, whatever.
 
 ***BUT WHAT IF I NEED MORE DATA?!***
 
