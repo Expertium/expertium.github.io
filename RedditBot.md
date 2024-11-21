@@ -254,7 +254,7 @@ The overall vocabulary size of my Transformer is currently 1984 tokens. For ~~ma
 
 ## Part Six: But What If I Need More Data?
 
-NLP models require a lot of data. At the time I only had around 650 posts scraped.
+NLP models require a lot of data, but at the time I only had around 650 posts scraped.
 
 But what if I need more data?
 
