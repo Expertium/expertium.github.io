@@ -126,7 +126,9 @@ Total error = training error + λ ⋅ |value of the parameter|
 
 Total error = training error + λ ⋅ |value of the parameter| ^ 2
 
-Here the magnitude of the parameter is squared. This is my least favorite method because it's a pain to fine-tune.
+Here the magnitude of the parameter is squared. The main difference is that the former can force the parameters to be exactly 0.
+
+This is my least favorite method because it's a pain to fine-tune.
 
 About the loss function. It represents the difference between predictions and reality, in some mathematical sense. There are lots of loss functions for different problems. All you need to know is that usually "lower = better", and if that's not the case, you can just add a minus sign to your loss function to turn it from "higher = better" into "lower = better".
 
