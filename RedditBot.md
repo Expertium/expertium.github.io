@@ -298,8 +298,8 @@ Ok, it's time for the final technique. What if instead of modifying the text, we
 
 Then for each word in the dataset I measured its distance to each other word to find its nearest neighbor, like "interval" -> "internal". This way we can simulate a different kind of typo, the kind that a spellchecker can't possibly catch.
 
-Then I assigned a 6% probability to index of a valid token -> index of "unk" and a 2% probability to index of a valid token -> index of a valid token.
-That's a total 8% probability of a typo *per token*, or about 99.98% probability of at least one typo per 100 tokens, *waaaaaaaay* higher than average for a text made by a human, but remember, we want our neural net to be robust to noise.
+Then I assigned a 3.3% probability to index of a valid token -> index of "unk" and a 1.2% probability to index of a valid token -> index of a valid token.
+That's a total 4.5% probability of a typo *per token*, or approximately 99.00% probability of at least one typo per 100 tokens, *waaaaaaaay* higher than average for a text made by a human, but remember, we want our neural net to be robust to noise.
 Then all I had to do was just run the randomizer 9 times to create 9 more variations of the dataset (the one with original + "ChatGPTed" texts + texts with two swapped sentences). This brought the total number of texts to 50,880.
 
 So to summarize: I rephrased the texts using ChatGPT, I swapped some sentences, I simulated typos that turn valid tokens into crap and I simulated typos that turn valid tokens into other valid tokens. This increased the total amount of data from 1,272 examples to 50,880, a 40-fold increase! 
