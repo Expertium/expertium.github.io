@@ -142,6 +142,8 @@ Here's a cool gif:
 
 ![1_hUd744hDEEGx0-ypWGhrkw](https://github.com/user-attachments/assets/997a450a-5715-4c32-bc57-99a3e6c771c3)
 
+I highly recommend you to watch [this video by 1blue1brown](https://youtu.be/IHZwWFHWa-w) for a detailed explanation.
+
 ## Part Four: Multi-Layer Perceptron
 
 Initially I wanted to use [MLPClassifier](https://scikit-learn.org/dev/modules/generated/sklearn.neural_network.MLPClassifier.html) from the `sklearn` library, but quickly realized that it's very limited. It was time to ditch the toys and bring out the big guns. It was time to learn Pytorch.
