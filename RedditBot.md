@@ -284,7 +284,7 @@ I can take existing texts and randomly swap two consequtive sentences. Example:
 
 'I went from having 100 reviews to having 300 reviews every day. I am seeing the same cards over and over again.' -> 'I am seeing the same cards over and over again. I went from having 100 reviews to having 300 reviews every day.'
 
-I assigned a 10% probability of two consequtive sentences being swapped to every text with at least one period, question mark, or exclamation mark. This doubled the size of the dataset again, from 2,544 texts to 5,088 texts.
+I made it so that if a text has at least one period, a question mark, or an exclamation mark, two sentences in it will be swapped. This doubled the size of the dataset again, from 2,544 texts to 5,088 texts.
 
 ***BUT WHAT IF I NEED MORE DATA?!***
 
@@ -296,11 +296,13 @@ Ok, it's time for the final technique. What if instead of modifying the text, we
 
 ![image](https://github.com/user-attachments/assets/0b342669-6a24-49e3-86bd-8b2027a95242)
 
-Then for each word I measured its distance to each other word to find the nearest neighbor, like "interval" -> "internal". This way we can simulate a different kind of typos, the kind that a spellchecker can't possibly catch.
+Then for each word I measured its distance to each other word to find the nearest neighbor, like "interval" -> "internal". This way we can simulate a different kind of typo, the kind that a spellchecker can't possibly catch.
 
 Then I assigned a 6% probability to index of a valid token -> index of "unk" and a 2% probability to index of a valid token -> index of a valid token.
-That's a total 8% probability of a typo. Much higher than average for a human text (unless it was written by a dumb middle schooler or an ESL), but remember, we want our neural net to be robust to noise.
+That's a total 8% probability of a typo *per token*. Much higher than average for a human text (unless it was written by a dumb middle schooler or an ESL), but remember, we want our neural net to be robust to noise.
 Then all I had to do was just run the randomizer 9 times to create 9 more variations of the dataset (the one with original + "ChatGPTed" texts). This brought the total number of texts to 50,880.
+
+So to summarize: I rephrased the texts using ChatGPT, I swapped some sentences, I simulated typos that turn valid tokens into crap and I simulated typos that turn valid tokens into other valid tokens.
 
 **IMPORTANT**: make sure that the test set doesn't have any variations of texts that are in the train set, or else the model will display unrealistically good results on the test set only to shit itself in real life. In other words, if there are N variations of text X, make sure that all N variations stay in the train set and none of them are in the test set.
 
