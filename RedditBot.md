@@ -114,7 +114,7 @@ The problem is that the model on the right won't **generalize** well. Generaliza
 
 2​)​ Early stopping. It's perfectly simple - train the model on the trainining dataset (I will call it "train set") and keep an eye out for its performance on the testing dataset (test set). ![Early stopping](https://github.com/user-attachments/assets/d98cecf1-a56d-4156-be0d-db191805250f)
 
-Once the error on the test loss stops decreasing, stop the training. In practice the curves aren't so smoothed and are more jagged, so we don't stop training immediately and keep it for a few more epochs. An "epoch" is one full pass over the entire dataset. For example, in Anki FSRS is trained with 5 epochs, meaning that it will go over the entire dataset 5 times. More complex models require more epochs to train. This is my preferred method because it's simple and doesn't require a lot of fine-tuning.
+Once the error on the test loss stops decreasing, stop the training. In practice the curves aren't so smoothed and are more jagged, so we don't stop training immediately and keep it for a few more epochs. An "epoch" is one full pass over the entire dataset. For example, in Anki FSRS is trained with 5 epochs, meaning that it will go over the entire dataset 5 times. More complex models require more epochs to train. This is my preferred method because it's simple and doesn't require a lot of fine-tuning. Typically, the 70-80% of all data is used for training and 20-30% is used for training. I use 70:30.
 
 3​)​ Dropout. It's basically giving your model some brain damage. During training you randomly set some fraction of parameters to 0. This makes it so that the model cannot learn to rely on specific parameters too much. This requires tuning the percentage of parameters that are randomly set to 0, typically between 10% and 50%.
 
@@ -281,7 +281,8 @@ Then for each word I measured its distance to each other word to find the neares
 Then I assigned a 6% probability to index of a valid token -> index of "unk" and a 2% probability to index of a valid token -> index of a valid token.
 That's a total 8% probability of a typo. Much higher than average for a human text (unless it was written by a dumb middle schooler or an ESL), but remember, we want our neural net to be robust to noise.
 Then all I had to do was just run the randomizer 9 times to create 9 more variations of the dataset (the one with original + "ChatGPTed" texts). This brought the total number of texts to 25,440.
- 
+
+IMPORTANT: make sure that the test set doesn't have any variations of texts that are in the train set, or else the model will give unrealistically good results on the test set. In other words, if there are N variations of text X, make sure that all N variations stay in the train set and none of them are in the test set.
 
 ___
 ### [←Return to homepage](https://expertium.github.io/)
