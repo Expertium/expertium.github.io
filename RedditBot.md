@@ -19,24 +19,43 @@ This is a simplified version. In reality it has a few more checks and I'm not on
 
 My initial idea was to just check if the post contains "FSRS", or one of its misspellings ("FRS", "FRSRS", "FSES", "FRSR", etc.), and make the bot comment the same generic message. However, I quickly realized that there are different types of questions, and they require personalized answers. So I categorized posts into 20 categories:
 1​)​ Desired Retention. A post about choosing the value of desired retention and/or using "Compute minimum recommended retention".
+
 2​)​ Optimization. A post about the optimization of FSRS parameters.
+
 3​)​ Learning Steps. A post about choosing the right learning steps when using FSRS.
+
 4​)​ Interval Length. A post where the person either feels like the intervals are too long or too short (most of the time it's the former).
+
 5​)​ Exam. A post where the person is askign what's the best way to use FSRS before an exam.
+
 6​)​ Helper Add-on. A post about the Helper add-on.
+
 7​)​ Metrics. A post about RMSE and/or log loss values.
+
 8​)​ Easy Days. A post about the Easy Days feature of the add-on. Once Anki 24.11 will come out, posts about the native Easy Days functionality will also be labeled with this label.
+
 9​)​ Load Balance. A post about the Load Balance feature of the add-on.
+
 10​)​ Disperse Siblings. A post about the Disperse Siblings feature of the add-on.
+
 11​)​ Fuzz. A post about fuzz *and* FSRS, not just fuzz. One of the rarest types of posts.
+
 12​)​ SM-2 Retention. A post about SM-2 retention (renamed to "Historical retention" at some point). One of the rarest types of posts.
+
 13​)​ Reschedule. A post about using the "Reschedule cards on change" option.
+
 14​)​ Platforms. A post where the person is asking whether FSRS is supported in AnkiDroid, AnkiMobile, AnkiWeb; or something along those lines.
+
 15​)​ Should. A post where hte person has doubts about switching to FSRS.
+
 16​)​ AO (automatic optimization). A post about *automatic* optimization of parameters and why it's not implemented yet. One of the rarest types of posts. One of the rarest types of posts.
+
 17​)​ ETK (estimated total knowldge). A post about the new stat: [estimated total knowledge](https://docs.ankiweb.net/stats.html#the-graphs). One of the rarest types of posts.
+
 18​)​ Jarrett. A post that is addressed to LMSherlock (Jarret Ye) or is about some technical stuff related to the FSRS development. One of the rarest types of posts.
-19​)​ General. A post where the person is asking what is FSRS, how to configure it, or a whole bunch of thigns at once.
+
+19​)​ General. A post where the person is asking what is FSRS, how to configure it, or a whole bunch of things at once.
+
 20​)​ Null. Either unrelated to FSRS or there is no reason to send the bot to reply to this person.
 
 And yes, I read each of the 1191 posts and 81 comments and labeled all of them manually.
@@ -50,10 +69,15 @@ But here's the thing - what if a post has several keywords that belong to severa
 
 So in order to maximize the accuracy, I need to check for keywords in a specific order. I had to write my own evolutionary optimizer to do this:
 1​)​ Randomly generate a list of numbers that tell the classifier the order in which to check the keywords. Here's what the default ones looks like: `[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]`. This tells the classifier "First, check the keywords that are related to class 0 (in Python, indexing starts from 0). Then check keywords that are related to class 2, then to class 3, and so on". The goal is to find the order of numbers that maximizes accuracy aka number of posts where the output label is the same as the true label.
+
 2​)​ The output label is compared with the true label to determine the accuracy. Then each list ("specimen" or "members") with numbers ("genotype" where each nubmer is a "gene") will have it's own value of accuracy ("fitness").
+
 3​)​ The bottom specimen (usually around 67% of the first "generation" and around 33% of the last "generation") with the lowest fitness are culled.
-4​)​ The remaining specimen will have children. The "parents" are selected in the following way: 3 "mother" candidates are randomly chosen, and the one with the highest fitness is the "mother". Same process is used to select the "father". Thanks to culling the specimen with the lowest fitness and to making specimen with high fitness more likely to have offspring, there is enough optimization pressure (as I like to call it) to cause evolution. Random shuffling doesn't lead to evolution, there has to be some sort of process that makes the least fit less likely to leave offspring and/or makes the most fit more likely to have offspring.
+
+4​)​ The remaining specimen will have children. The "parents" are selected in the following way: 3 "mother" candidates are randomly chosen, and the one with the highest fitness is the "mother". Same process is used to select the "father". Thanks to culling the specimen with the lowest fitness and to making specimen with high fitness more likely to have offspring, there is enough optimization pressure (as I like to call it) to cause evolution. Random shuffling doesn't lead to evolution, there has to be some sort of process that makes the less fit less likely to leave offspring and/or makes the more fit more likely to have offspring aka optimization pressure.
+
 5​)​ Their genes are mixed to create the child. The procedure is a bit complicated, so I won't describe it. It involves combining the genes of both parents plus a small chance of a random mutation. This is repeated until the population is back to the same number of members as before the culling, so that each generation has the same number of members.
+
 6​)​ The next "generation" starts. Note that it's possible for a specimen with very high fitness so survive for all generations.
 
 15 generations with a population of 1500 is enough to get good results in my case.
@@ -87,10 +111,13 @@ On the left we are trying to use a straight line to fit clearly non-linear data.
 The problem is that the model on the right won't **generalize** well. Generalization is the model's ability to perform well on previously unseen data aka data that it wasn't trained on. If the model performs great on training data, but outputs garbage when you give it new data, then it's a terrible model. How do you make sure that your model isn't overfitting?
 
 1​)​ Ensure that the number of parameters is many times smaller than the number of datapoints. For example, if your model only has 3 parameters, it's probably ok to train it on 20-30 datapoints. However, when it comes to neural networks, it's not uncommon to train gigantic models on relatively small (compared to the number of datapoints) datasets.
+
 2​)​ Early stopping. It's perfectly simple - train the model on the trainining dataset (I will call it "train set") and keep an eye out for its performance on the testing dataset (test set). ![Early stopping](https://github.com/user-attachments/assets/d98cecf1-a56d-4156-be0d-db191805250f)
 
 Once the error on the test loss stops decreasing, stop the training. In practice the curves aren't so smoothed and are more jagged, so we don't stop training immediately and keep it for a few more epochs. An "epoch" is one full pass over the entire dataset. For example, in Anki FSRS is trained with 5 epochs, meaning that it will go over the entire dataset 5 times. More complex models require more epochs to train. This is my preferred method because it's simple and doesn't require a lot of fine-tuning.
+
 3​)​ Dropout. It's basically giving your model some brain damage. During training you randomly set some fraction of parameters to 0. This makes it so that the model cannot learn to rely on specific parameters too much. This requires tuning the percentage of parameters that are randomly set to 0, typically between 10% and 50%.
+
 4)​ L2/L1 regularization. Ok, this one is a bit complicated. In neural networks, if a parameter is very large (ignoring the sign, just the magnitude), it's probably a sign of overfitting. We can prevent it by explicitly adding a term for parameter magnitude to the neural network's **loss function** - the stuff that it needs to minimize:
 
 Total error = training error + λ ⋅ |value of the parameter|
@@ -178,7 +205,9 @@ We've got a few problems. It corrected "fsrs" to "furs", "ca" to "a" and "screen
 Ok, now it's time for the final step before converting tokens to numbers: **lemmatization**. Lemma is uhhhh...let me just give you some examples.
 
 1​)​ walk, walking, walked -> walk
+
 2​)​ was, is, be -> is
+
 3​)​ mice, mouse -> mouse
 
 Time to use the greatest Python technique again. Code:
@@ -202,7 +231,9 @@ After adding ten gorillion extra rules I finally managed to make everything work
 Now all that's left is to assign an integer to every word. It doesn't really matter how you do it, but I liek doing things in a way that makes sense, so I did the following:
 
 1​)​ 0 is a special integer reserved for padding ("pad" as I call it). You see, we need to make every text the same length (in tokens). I chose 512 as maximum length. A text is longer than that? Truncate it, then assign integers. A text is shorter than that? Assign integers then add a bunch of zeros as the end.
+
 2​)​ Every token is assigned an integer based on its frequency in the dataset. Most common token will be 1, second most common will be 2, third most common will be 3, etc.
+
 3​)​ If a token only appears once in the entire dataset, it will be assigned a special integer reserved for obscure crap and typos ("unk").
 
 The overall vocabulary size of my Transformer is currently 1984 tokens. For ~~magical~~ programming reasons, I made it a multiple of 8 (as well as a few of other things, like text length and some hyperparameters). Minus 0 because it's for padding, minus 1983 because it's for obscure crap and typos. 
@@ -238,6 +269,7 @@ So I ended up manually feeding it 1,272 texts and manually proofreading them. Th
 Ok, it's time for the final technique. What if instead of modifying the text, we modified the indices? Here's how exactly:
 
 1​)​ Index of a valid token -> index of "unk". Imagine that someone misspelled a word and my spellchecker didn't catch that. In that case the word would turn into something that isn't a valid word, hence it would be assigned the "unk" index. So if make it so that there is a small probability of an index randomly turning into the "unk" index, we can simulate uncorrected typos.
+
 2​)​ Index of a valid token -> index of a valid token. For example, someone may have typed "internal" instead of "interval". Both are valid words, so the spellchecker won't do anything. How do we decide what will be the replacement? Time for another cool python library: [https://github.com/MaxHalford/clavier](https://github.com/MaxHalford/clavier). It allows you to measure the distance between words - in the "distance your fingers have to travel" sense - for a given keyboard layout. I chose this layout:
 
 ![image](https://github.com/user-attachments/assets/0b342669-6a24-49e3-86bd-8b2027a95242)
