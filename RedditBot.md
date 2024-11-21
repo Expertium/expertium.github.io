@@ -270,7 +270,7 @@ I guess it's time to scrape comments now. However, most comments aren't useful s
 
 *But what if I need more data?*
 
-I can't get any more data...or can I? It's time to learn about another important concept: **data augmentation**. By taking the original data and slightly tweaking it, we can create more training examples and make the neural net robust to small, minute differences. Here are some examples of what is used in computer vision tasks:
+I can't get any more data...or can I? It's time to learn about another important concept: **data augmentation**. By taking the original data and slightly tweaking it, we can create more training examples and make the neural net robust to small differences that wouldn't throw a human off. Here are some examples of what is used in computer vision tasks:
 
 ![Data Augmentation kitten](https://github.com/user-attachments/assets/91a05e74-918c-4255-9796-be22b9fb8aff)
 
