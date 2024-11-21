@@ -160,9 +160,19 @@ After the multi-layer perceptron, I decided to make a Transformer. It's the same
 
 For now what matters is assigning integers to words. Here is an example sentence:
 
-"Hey everoyne, I have a problem with FSRS. I can't optimize my parameetrs. akf92j56kcvjk. Screenshot:"
+"Hey everoyne, I have a problem with FSRS. I can't optimize my parameetrs. akf92j56kcvjk. Screenshot: https:www.https://preview.redd.it/thw6he9n88nc2"
 
-First, we need to split it into **tokens**. A token is not necessarily a word, it could be a dot, a comma, a semicolon, a number, etc. Thankfully, we can use the greatest Python technique known as *Import That One Library That Does Exactly What I Want*, or "ITOLTDEWIW".
+First, let's remove the URL. Long story short, URLs are a pain in the arse. We can remove them automatically:
+
+`import re`
+
+`re.sub(r'http\S+', '', sentence)`
+
+Result:
+
+"Hey everoyne, I have a problem with FSRS. I can't optimize my parameetrs. akf92j56kcvjk. Screenshot: "
+
+Now we need to split it into **tokens**. A token is not necessarily a word, it could be a dot, a comma, a semicolon, a number, etc. Thankfully, we can use the greatest Python technique known as *Import That One Library That Does Exactly What I Want*, or "ITOLTDEWIW".
 
 ![Import That One Library That Does Exactly What I Want rainbow](https://github.com/user-attachments/assets/fd471b6f-9f3c-47c0-aab5-1e7bf06b9548)
 
@@ -178,15 +188,15 @@ Now our sentence has turned into...
 
 ("string" just means "a bunch of text characters" in proggrammerspeak)
 
-Notice that "can't" becomes two different tokens and spaces are removed. I'll have to add an extra rule to turn 'ca' into 'can'.
+Notice that "can't" becomes two different tokens and spaces are removed. I'll have to add an extra rule to turn "ca" into "can".
 
 Now let's make everything lowercase. Why? Because it avoids situations such as "fsrs" not being equal to "FSRS" and overall simplifies a lot of things. Here's the result:
 
-`['hey', 'everoyne', ',', 'i', 'have', 'a', 'problem', 'with', 'fsrs', '.', 'i', 'ca', "n't", 'optimize', 'my', 'parameetrs', '.', 'akf92j56kcvjk', '.', 'screenshot', ':']`
+`['hey', 'everoyne', ',', 'i', 'have', 'a', 'problem', 'with', 'fsrs', '.', 'i', 'can', "n't", 'optimize', 'my', 'parameetrs', '.', 'akf92j56kcvjk', '.', 'screenshot', ':']`
 
 Nice. However, what is that gibberish near the end? We don't want our neural net to work with junk. So I wrote a pretty sophisticated function to check if a string is random gibberish or not. After applying it:
 
-`['hey', 'everoyne', ',', 'i', 'have', 'a', 'problem', 'with', 'fsrs', '.', 'i', 'ca', "n't", 'optimize', 'my', 'parameetrs', '.', '.', 'screenshot', ':']`
+`['hey', 'everoyne', ',', 'i', 'have', 'a', 'problem', 'with', 'fsrs', '.', 'i', 'can', "n't", 'optimize', 'my', 'parameetrs', '.', '.', 'screenshot', ':']`
 
 Better! But some words are misspelled. It's time to use the greatest Python technique again.
 
@@ -198,13 +208,13 @@ Better! But some words are misspelled. It's time to use the greatest Python tech
 
 Result:
 
-`['hey', 'everyone', ',', 'i', 'have', 'a', 'problem', 'with', 'furs', '.', 'i', 'ca', 'not', 'optimize', 'my', 'parameters', '.', '.', None, ':']`
+`['hey', 'everyone', ',', 'i', 'have', 'a', 'problem', 'with', 'furs', '.', 'i', 'can', 'not', 'optimize', 'my', 'parameters', '.', '.', None, ':']`
 
-We've got a few problems. It corrected "fsrs" to "furs", "ca" to "a" and "screenshot" to...None. Not a string "None", but None (that's a Python thingy). So we need to add a few exceptions.
+We've got a few problems. It corrected "fsrs" to "furs" and "screenshot" to...None. Not a string "None", but None (that's a Python thingy). So we need to add a few exceptions.
 
-`['hey', 'everyone', ',', 'i', 'have', 'a', 'problem', 'with', 'fsrs', '.', 'i', 'ca', 'not', 'optimize', 'my', 'parameters', '.', '.', 'screenshot', ':']`
+`['hey', 'everyone', ',', 'i', 'have', 'a', 'problem', 'with', 'fsrs', '.', 'i', 'can', 'not', 'optimize', 'my', 'parameters', '.', '.', 'screenshot', ':']`
 
-Ok, now it's time for the final step before converting tokens to numbers: **lemmatization**. Lemma is uhhhh...let me just give you some examples.
+Ok, now it's time for the final step before converting tokens to numbers: **lemmatization**. Lemma is a...uhhhh...let me just give you some examples.
 
 1​)​ walk, walking, walked -> walk
 
@@ -224,9 +234,9 @@ Time to use the greatest Python technique again. Code:
 
 Final result:
 
-`['hey', 'everyone', ',', 'i', 'have', 'a', 'problem', 'with', 'fsrs', '.', 'i', 'ca', 'not', 'optimize', 'my', 'parameter', '.', '.', 'screenshot', ':']`
+`['hey', 'everyone', ',', 'i', 'have', 'a', 'problem', 'with', 'fsrs', '.', 'i', 'can', 'not', 'optimize', 'my', 'parameter', '.', '.', 'screenshot', ':']`
 
-Here the only change is that "parameters" turned into "parameter". However, in practice this can help a lot, especially if I add extra rules manually because the function above doesn't always work the way I want it to work for whatever reason.
+Here the only change is that "parameters" turned into "parameter". However, in practice this can help a lot, especially if I add extra rules manually because the function above doesn't always work the way I want it to work for whatever reason. This is lossy - we lose some of the nuances. However, I don't have a ton of data. If I had 100,000 posts - sure, I could afford to treat each word individually. But with only around 1k posts the neural net won't have enough data to learn all the nuances.
 
 After adding ten gorillion extra rules I finally managed to make everything work (mostly) the way I want. Of course, as I gatehr more data, I will add more rules.
 
@@ -240,23 +250,23 @@ Now all that's left is to assign an integer to every word. It doesn't really mat
 
 The overall vocabulary size of my Transformer is currently 1984 tokens. For ~~magical~~ programming reasons, I made it a multiple of 8 (as well as a few of other things, like text length and some hyperparameters). Minus 0 because it's for padding, minus 1983 because it's for obscure crap and typos. 
 
-## Part Six: But What If I Had More Data?
+## Part Six: But What If I Need More Data?
 
 NLP models require a lot of data. At the time I only had around 650 posts scraped.
 
-But what if I had more data?
+But what if I need more data?
 
 Well, I can make the scraper look for older posts and downvoted posts at the cost of making it slower. That increased the number to around 850-900.
 
-But what if I had more data?
+But what if I need more data?
 
 I can make the search even more exhaustive and slower to scrape more posts. After some tweaking, I managed to get around 1100 posts.
 
-But what if I had more data?
+But what if I need more data?
 
 I guess it's time to scrape comments now. However, most comments aren't useful since there are too many comments where the person is explaining FSRS rather than asking a question about FSRS. I need questions, not answers. So I only labeled 81 comments.
 
-*But what if I had more data?*
+*But what if I need more data?*
 
 I can't get any more data...or can I? It's time to learn about another important concept: **data augmentation**. By takign the original data and slightly tweaking it, we can create more training examples and make the neural net robust to small, minute differences. Here are some examples from computer vision:
 
@@ -266,13 +276,13 @@ Doing this with text is, unfortunately, much harder. So in order to make more da
 
 So I ended up manually feeding it 1,272 texts and manually proofreading them. This doubled the size of the dataset, from 1,272 texts to 2,544 texts.
 
-***BUT WHAT IF I HAD MORE DATA?***
+***BUT WHAT IF I NEED MORE DATA?!***
 
 Ok, it's time for the final technique. What if instead of modifying the text, we modified the indices? Here's how exactly:
 
 1​)​ Index of a valid token -> index of "unk". Imagine that someone misspelled a word and my spellchecker didn't catch that. In that case the word would turn into something that isn't a valid word, hence it would be assigned the "unk" index. So if make it so that there is a small probability of an index randomly turning into the "unk" index, we can simulate uncorrected typos.
 
-2​)​ Index of a valid token -> index of a valid token. For example, someone may have typed "internal" instead of "interval". Both are valid words, so the spellchecker won't do anything. How do we decide what will be the replacement? Time for another cool python library: [https://github.com/MaxHalford/clavier](https://github.com/MaxHalford/clavier). It allows you to measure the distance between words - in the "distance your fingers have to travel" sense - for a given keyboard layout. I chose this layout:
+2​)​ Index of a valid token -> index of a valid token. For example, someone may have typed "internal" instead of "interval", or "stage" instead of "state". Both are valid words, so the spellchecker won't do anything. How do we decide what will be the replacement? Time for another cool python library: [https://github.com/MaxHalford/clavier](https://github.com/MaxHalford/clavier). It allows you to measure the distance between words - in the "distance your fingers have to travel" sense - for a given keyboard layout. I chose this layout:
 
 ![image](https://github.com/user-attachments/assets/0b342669-6a24-49e3-86bd-8b2027a95242)
 
@@ -282,7 +292,7 @@ Then I assigned a 6% probability to index of a valid token -> index of "unk" and
 That's a total 8% probability of a typo. Much higher than average for a human text (unless it was written by a dumb middle schooler or an ESL), but remember, we want our neural net to be robust to noise.
 Then all I had to do was just run the randomizer 9 times to create 9 more variations of the dataset (the one with original + "ChatGPTed" texts). This brought the total number of texts to 25,440.
 
-IMPORTANT: make sure that the test set doesn't have any variations of texts that are in the train set, or else the model will display unrealistically good results on the test set only to shit itself in real life. In other words, if there are N variations of text X, make sure that all N variations stay in the train set and none of them are in the test set.
+**IMPORTANT**: make sure that the test set doesn't have any variations of texts that are in the train set, or else the model will display unrealistically good results on the test set only to shit itself in real life. In other words, if there are N variations of text X, make sure that all N variations stay in the train set and none of them are in the test set.
 
 ___
 ### [←Return to homepage](https://expertium.github.io/)
