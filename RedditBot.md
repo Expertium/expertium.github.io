@@ -308,5 +308,7 @@ So to summarize: I rephrased the texts using ChatGPT, I swapped some sentences, 
 
 **IMPORTANT**: make sure that the test set doesn't have any variations of texts that are in the train set, or else the model will display unrealistically good results on the test set only to shit itself in real life. In other words, if there are N variations of text X, make sure that all N variations stay in the train set and none of them are in the test set.
 
+Also, each text must have the same number of variations to avoid class imbalances. If you make 2 variations of text 1 but 20 variations of text 2, now text 2 is overrepresented compared to the original (unaugmented) dataset.
+
 ___
 ### [←Return to homepage](https://expertium.github.io/)
