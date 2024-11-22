@@ -276,7 +276,7 @@ I can't get any more data...or can I? It's time to learn about another important
 
 Doing this with text is, unfortunately, much harder. So in order to make more data, I fed the texts to ChatGPT and asked it to rephrase them. Example:
 
-![ChatGPT rephrasing](https://github.com/user-attachments/assets/0cf3ae33-65db-41aa-8877-4e71cf9cf179)
+![ChatGPT rephrasing](https://github.com/user-attachments/assets/64cb82c3-afa0-4d27-aee6-146ae8f8937c)
 
 Of course, occasionally it would say something stupid, so I had to proofread it. So I ended up manually feeding it 1,272 texts and manually proofreading them (don't ask me why I can't just use their API in Python). This doubled the size of the dataset, from 1,272 texts to 2,544 texts.
 
