@@ -274,9 +274,11 @@ I can't get any more data...or can I? It's time to learn about another important
 
 ![Data Augmentation kitten](https://github.com/user-attachments/assets/91a05e74-918c-4255-9796-be22b9fb8aff)
 
-Doing this with text is, unfortunately, much harder. So in order to make more data, I fed the texts to ChatGPT and asked it to rephrase them. Of course, occasionally it would say something stupid, so I had to proofread it.
+Doing this with text is, unfortunately, much harder. So in order to make more data, I fed the texts to ChatGPT and asked it to rephrase them. Example:
 
-So I ended up manually feeding it 1,272 texts and manually proofreading them (don't ask me why I can't just use their API in Python). This doubled the size of the dataset, from 1,272 texts to 2,544 texts.
+![ChatGPT rephrasing](https://github.com/user-attachments/assets/0cf3ae33-65db-41aa-8877-4e71cf9cf179)
+
+Of course, occasionally it would say something stupid, so I had to proofread it. So I ended up manually feeding it 1,272 texts and manually proofreading them (don't ask me why I can't just use their API in Python). This doubled the size of the dataset, from 1,272 texts to 2,544 texts.
 
 **But what if I need more data?**
 
