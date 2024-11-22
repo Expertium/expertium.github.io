@@ -252,25 +252,25 @@ Now all that's left is to assign an integer to every word. It doesn't really mat
 
 The overall vocabulary size of my Transformer is currently 1984 tokens. For ~~magical~~ programming reasons, I made it a multiple of 8 (as well as a few of other things, like text length and some hyperparameters). Minus 0 because it's for padding, minus 1983 because it's for obscure crap and typos. 
 
-## Part Six: But What If I Need More Data?
+## Part Six: Can I Get More Data?
 
 NLP models require a lot of data, but at the time I only had around 650 posts scraped.
 
-But what if I need more data?
+Can I get more data?
 
 Well, I can make the scraper look for older posts and downvoted posts at the cost of making it slower. That increased the number to around 850-950 (as I said, I wasn't keeping track of everything precisely).
 
-But what if I need more data?
+Can I get more data?
 
 I can make the search even more exhaustive and slower to scrape more posts. After some tweaking, I managed to get around 1200 posts.
 
-But what if I need more data?
+Can I get more data?
 
 I guess it's time to scrape comments now. However, most comments aren't useful since there are too many comments where the person is explaining FSRS rather than asking a question about FSRS. I need questions, not answers. So I only labeled 81 comments out of several thousands.
 
-*But what if I need more data?*
+*Can I get more data?*
 
-I can't get any more data...or can I? It's time to learn about another important concept: **data augmentation**. By taking the original data and slightly tweaking it, we can create more training examples and make the neural net robust to small differences that wouldn't throw a human off. Here are some examples of what is used in computer vision tasks:
+I can't get any more data...or can I? It's time to learn about another important concept: **data augmentation**. By taking the original data and tweaking it, we can create more training examples and make the neural net robust to relatively small differences that wouldn't throw a human off. Here are some examples of what is used in computer vision tasks:
 
 ![Data Augmentation kitten](https://github.com/user-attachments/assets/91a05e74-918c-4255-9796-be22b9fb8aff)
 
@@ -280,15 +280,19 @@ Doing this with text is, unfortunately, much harder. So in order to make more da
 
 Of course, occasionally it would say something stupid, so I had to proofread it. So I ended up manually feeding it 1,272 texts and manually proofreading them (don't ask me why I can't just use their API in Python). This doubled the size of the dataset, from 1,272 texts to 2,544 texts.
 
-**But what if I need more data?**
+**Can I get more data?**
 
-I can take existing texts and randomly swap two consequtive sentences. Example:
+I can take existing texts and randomly swap two adjacent (one comes after the other) sentences. Example:
 
 'I went from having 100 reviews to having 300 reviews every day. I am seeing the same cards over and over again.' -> 'I am seeing the same cards over and over again. I went from having 100 reviews to having 300 reviews every day.'
 
-I made it so that if a text has at least one period, a question mark, or an exclamation mark, two sentences in it will be swapped. This doubled the size of the dataset again, from 2,544 texts to 5,088 texts. Sure, short texts with just one sentence are duplicated, by meh, whatever.
+I made it so that if a text has more than one sentece, two randomly chosen adjacent sentences would be swapped. I did it for the entire dataset (by "dataset" I mean original + ChatGPTed), this doubled the size of the dataset again, from 2,544 texts to 5,088 texts. Sure, short texts with just one sentence are duplicated, by meh, whatever.
 
-***BUT WHAT IF I NEED MORE DATA?!***
+***Can I get more data?!***
+
+This next technique is my own invention, I haven't seen it in literature. I call it "filler sentence injection". First, I write down a bunch of filler sentences, such as "idk what to do about this", "now I'm confused", "can anyone help?", "help would be appreciated", "what are your thoughts, fellow Anki users?", "I would like to hear from experts", etc. These sentences don't change what the text is about. If a text is about learning steps, it will be about learning steps with or without these sentences. If a text is about Easy Days, it will be about Easy Days with or without these sentences, etc. Then I randomly inject one of these sentences inbetween two other sentences, or before the first sentence, or after the last sentence. I did this three times to obtain three more variations of the dataset (by "dataset" I mean original + ChatGPTed + original sentence swapped + ChatGPTed sentence swapped) and it quadrupled the size of the dataset, from 5,088 texts to 20,352 texts.
+
+<ins>***CAN I GET MORE DATA?!***</ins>
 
 Ok, it's time for the final technique. What if instead of modifying the text, we modified the indices? Here's how exactly:
 
@@ -302,9 +306,9 @@ Then for each word in the dataset I measured its distance to each other word to 
 
 Then I assigned a 3.3% probability to index of a valid token -> index of "unk" and a 1.2% probability to index of a valid token -> index of a valid token.
 That's a total 4.5% probability of a typo *per token*, or approximately 99.00% probability of at least one typo per 100 tokens, *waaaaaaaay* higher than average for a text made by a human, but remember, we want our neural net to be robust to noise.
-Then all I had to do was just run the randomizer 9 times to create 9 more variations of the dataset (the one with original + "ChatGPTed" texts + texts with two swapped sentences). This brought the total number of texts to 50,880.
+Then all I had to do was just run the randomizer 4 times to create 4 more variations of the dataset (by "dataset" I mean original + original sentence swapped + original with fillers 1 + original sentence swapped with fillers 1 + original with fillers 2 +...you get the point). This brought the total number of texts to **101,760**.
 
-So to summarize: I rephrased the texts using ChatGPT, I swapped some sentences, I simulated typos that turn valid tokens into crap and I simulated typos that turn valid tokens into other valid tokens. This increased the total amount of data from 1,272 examples to 50,880, a 40-fold increase! 
+So to summarize: I rephrased the texts using ChatGPT, I swapped some adjacent sentences, I added filler sentences, I simulated typos that turn valid tokens into crap and I simulated typos that turn valid tokens into other valid tokens. This increased the total amount of data from 1,272 examples to 101,760, an 80-fold increase! 
 
 **IMPORTANT**: make sure that the test set doesn't have any variations of texts that are in the train set, or else the model will display unrealistically good results on the test set only to shit itself in real life. In other words, if there are N variations of text X, make sure that all N variations stay in the train set and none of them are in the test set.
 
