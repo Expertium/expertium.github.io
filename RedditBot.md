@@ -18,6 +18,7 @@ This is a simplified version. In reality it has a few more checks and I'm not on
 ## Part Two: Keyword Matching and the First Classifier
 
 My initial idea was to just check if the post contains "FSRS", or one of its misspellings ("FRS", "FRSRS", "FSES", "FRSR", etc.), and make the bot comment the same generic message. However, I quickly realized that there are different types of questions, and they require personalized answers. So I categorized posts into 20 categories:
+
 1​)​ Desired Retention. A post about choosing the value of desired retention and/or using "Compute minimum recommended retention".
 
 2​)​ Optimization. A post about the optimization of FSRS parameters.
