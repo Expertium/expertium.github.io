@@ -69,6 +69,7 @@ Right now I have 22 898 keywords in total and 553 anti-keywords. Then I wrote a 
 But here's the thing - what if a post has several keywords that belong to several diferent categories? Then it depends on which keyword is checked for first. For example, if a post contains "desired retention" and "10m", if the classifier checks for Desired Retention keywords first, the output will be "Desired Retention", but if the classifier checks for Learning Steps keywords first, then the output will be "Learning Steps".
 
 So in order to maximize the accuracy, I need to check for keywords in a specific order. I had to write my own evolutionary optimizer to do this:
+
 1​)​ Randomly generate a list of numbers that tell the classifier the order in which to check the keywords. Here's what the default ones looks like: `[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]`. This tells the classifier "First, check the keywords that are related to class 0 (in Python, indexing starts from 0). Then check keywords that are related to class 2, then to class 3, and so on". The goal is to find the order of numbers that maximizes accuracy aka number of posts where the output label is the same as the true label.
 
 2​)​ The output label is compared with the true label to determine the accuracy. Then each list ("specimen" or "members") with numbers ("genotype" where each nubmer is a "gene") will have it's own value of accuracy ("fitness").
