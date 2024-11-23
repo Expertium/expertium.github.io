@@ -9,7 +9,7 @@ If you don't know much about machine learning, this can serve as a (shitty) intr
 ## Part One: Scraping
 
 So first I needed data aka Reddit posts and comments. I used [PRAW](https://praw.readthedocs.io/en/stable/) for that. A long time ago I used it to make a notifier to respond to posts myself, but quickly realized that it's exhausting.
-I have changed it several times, and I wasn't keeping track of how many posts I had at any given moment, so I will only give the final number (as of 20.11.2024): **1,191 posts and 81 comments, 1,272 training examples in total.** Most of them are from r/Anki, some from r/medicalschoolanki, and a handful of them are from r/AnkiMCAT.
+I have changed it several times, and I wasn't keeping track of how many posts I had at any given moment, so I will only give the final number (as of 20.11.2024): **1,191 posts and 81 comments, 1,272 training examples in total.** Most of them are from r/Anki, some from r/medicalschoolanki, and a handful of them are from r/AnkiMCAT and a few other subreddits.
 The code looks kinda like this:
 ![image](https://github.com/user-attachments/assets/cc805ea2-28e0-4990-89ba-ef496f2ebb2e)
 
