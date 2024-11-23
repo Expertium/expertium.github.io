@@ -282,6 +282,8 @@ Doing this with text is, unfortunately, much harder. So in order to make more da
 
 Of course, occasionally it would say something stupid, so I had to proofread it. So I ended up manually feeding it 1,272 texts and manually proofreading them (don't ask me why I can't just use their API in Python). This doubled the size of the dataset, from 1,272 texts to 2,544 texts.
 
+Thankfully, that's the only step that I had to do manually.
+
 **Can I get more data?**
 
 I can take existing texts and randomly swap two adjacent (one comes after the other) sentences. Example:
