@@ -322,13 +322,13 @@ Ok, it's time for the final technique. What if instead of modifying the text, we
 
 Then for each word in the dataset I measured its distance to each other word to find its nearest neighbor, like "interval" -> "internal". This way we can simulate a different kind of typo, the kind that a spellchecker can't possibly catch.
 
-Then I assigned a 3.3% probability to index of a valid token -> index of "unk" and a 1.2% probability to index of a valid token -> index of a valid token.
+Then I assigned a 3.3% probability to 'index of a valid token -> index of "unk"' and a 1.2% probability to 'index of a valid token -> index of a valid token'.
 That's a total 4.5% probability of a typo *per token*, or approximately 99.00% probability of at least one typo per 100 tokens, *waaaaaaaay* higher than average for a text made by a human, but remember, we want our neural net to be robust to noise.
-Then all I had to do was just run the randomizer 4 times to create 4 more variations of the dataset (by "dataset" I mean original + original sentence swapped + original with fillers 1 + original sentence swapped with fillers 1 + original with fillers 2 +...you get the point). This brought the total number of texts to **101,760**.
+Then all I had to do was just run the randomizer 4 times to create 4 more variations of the dataset (by "dataset" I mean original + original sentence swapped + original with fillers 1 + original sentence swapped with fillers 1 + original with fillers 2 +...). This brought the total number of texts to **101,760**.
 
 So to summarize: I rephrased the texts using ChatGPT, I swapped some adjacent sentences, I added filler sentences, I simulated typos that turn valid tokens into crap and I simulated typos that turn valid tokens into other valid tokens. This increased the total amount of data from 1,272 examples to 101,760, an 80-fold increase! 
 
-![image](https://github.com/user-attachments/assets/033491cc-0c38-4972-a153-1a957a7c2f60)
+![image](https://github.com/user-attachments/assets/97bf1dcf-1040-4871-be25-7d89814d4d85)
 
 
 **IMPORTANT**: make sure that the test set doesn't have any variations of texts that are in the train set, or else the model will display unrealistically good results on the test set only to shit itself in real life. In other words, if there are N variations of text X, make sure that all N variations stay in the train set and none of them are in the test set.
