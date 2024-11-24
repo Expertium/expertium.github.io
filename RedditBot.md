@@ -322,8 +322,8 @@ Ok, it's time for the final technique. What if instead of modifying the text, we
 
 Then for each word in the dataset I measured its distance to each other word to find its nearest neighbor, like "interval" -> "internal". This way we can simulate a different kind of typo, the kind that a spellchecker can't possibly catch.
 
-Then I assigned a 3.3% probability to 'index of a valid token -> index of "unk"' and a 1.2% probability to 'index of a valid token -> index of a valid token'.
-That's a total 4.5% probability of a typo *per token*, or approximately 99.00% probability of at least one typo per 100 tokens.
+Then I assigned a 4.8% probability to 'index of a valid token -> index of "unk"' and a 1.7% probability to 'index of a valid token -> index of a valid token'.
+That's a total 6.5% probability of a typo *per token*, or approximately 99.88% probability of at least one typo per 100 tokens.
 Then all I had to do was just run the randomizer 4 times to create 4 more variations of the dataset (by "dataset" I mean original + original sentence swapped + original with fillers 1 + original sentence swapped with fillers 1 + original with fillers 2 +...). This brought the total number of texts to **101,760**.
 
 So to summarize: I rephrased the texts using ChatGPT, I swapped some adjacent sentences, I added filler sentences, I simulated typos that turn valid tokens into crap and I simulated typos that turn valid tokens into other valid tokens. This increased the total amount of data from 1,272 examples to 101,760, an 80-fold increase! 
