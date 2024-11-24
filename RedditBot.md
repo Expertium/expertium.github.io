@@ -328,6 +328,9 @@ Then all I had to do was just run the randomizer 4 times to create 4 more variat
 
 So to summarize: I rephrased the texts using ChatGPT, I swapped some adjacent sentences, I added filler sentences, I simulated typos that turn valid tokens into crap and I simulated typos that turn valid tokens into other valid tokens. This increased the total amount of data from 1,272 examples to 101,760, an 80-fold increase! 
 
+![image](https://github.com/user-attachments/assets/033491cc-0c38-4972-a153-1a957a7c2f60)
+
+
 **IMPORTANT**: make sure that the test set doesn't have any variations of texts that are in the train set, or else the model will display unrealistically good results on the test set only to shit itself in real life. In other words, if there are N variations of text X, make sure that all N variations stay in the train set and none of them are in the test set.
 
 Also, each text must have the same number of variations to avoid class imbalances. If you make 2 variations of text 1 but 20 variations of text 2, now text 2 is overrepresented compared to the original (unaugmented) dataset.
