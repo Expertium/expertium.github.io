@@ -280,7 +280,11 @@ Doing this with text is, unfortunately, much harder. So in order to make more da
 
 ![ChatGPT rephrasing](https://github.com/user-attachments/assets/64cb82c3-afa0-4d27-aee6-146ae8f8937c)
 
-Of course, occasionally it would say something stupid, so I had to proofread it. So I ended up manually feeding it 1,272 texts and manually proofreading them (don't ask me why I can't just use the OpenAI API in Python, that's a different story). This doubled the size of the dataset, from 1,272 texts to 2,544 texts.
+Of course, occasionally it would say something stupid, so I had to proofread it. So I ended up manually feeding it 1,272 texts and manually proofreading them (don't ask me why I can't just use the OpenAI API in Python, that's a different story).
+
+![image](https://github.com/user-attachments/assets/41a9a3cb-b1a2-4ae5-82c6-dde776fe1037)
+
+This doubled the size of the dataset, from 1,272 texts to 2,544 texts.
 
 Thankfully, that's the only step that I had to do manually.
 
@@ -290,7 +294,15 @@ I can take existing texts and randomly swap two adjacent (one comes after the ot
 
 'I went from having 100 reviews to having 300 reviews every day. I am seeing the same cards over and over again.' -> 'I am seeing the same cards over and over again. I went from having 100 reviews to having 300 reviews every day.'
 
-I made it so that if a text has more than one sentece, two randomly chosen adjacent sentences would be swapped. I did it for the entire dataset (by "dataset" I mean original + ChatGPTed), this doubled the size of the dataset again, from 2,544 texts to 5,088 texts. Sure, short texts with just one sentence are duplicated, by meh, whatever.
+Initially, I tried writing soem really complicated regex stuff, but then I realized that I just do this:
+
+`list_of_sentences = nltk.sent_tokenize(text)`
+
+`list_of_sentences = [(x + ' ') if (x != list_of_sentences[-1]) else x for x in list_of_sentences]  # add whitespaces to everything except for the last sentence`
+
+I made it so that if a text has 2-5 sentences, two randomly chosen adjacent sentences would be swapped. If the text has >5 sentences, four sentences (two pairs) will be swapped.
+
+I did it for the entire dataset (by "dataset" I mean original + ChatGPTed), this doubled the size of the dataset again, from 2,544 texts to 5,088 texts. Sure, short texts with just one sentence are duplicated, by meh, whatever.
 
 ***Can I get more data?!***
 
