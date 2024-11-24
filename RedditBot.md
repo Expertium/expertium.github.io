@@ -250,7 +250,7 @@ Now all that's left is to assign an integer to every word. It doesn't really mat
 
 2​)​ Every token is assigned an integer based on its frequency in the dataset. Most common token will be 1, second most common will be 2, third most common will be 3, etc.
 
-3​)​ If a token only appears once in the entire dataset, it will be assigned a special integer reserved for obscure crap and typos ("unk").
+3​)​ If a token only appears once or twice in the entire dataset + "ChatGPTed" dataset (more on that in the next part), it will be assigned a special integer reserved for obscure crap and typos ("unk"). A token must appear at least 3 times to warrant having it's own index.
 
 The overall vocabulary size of my Transformer is currently 1984 tokens. For ~~magical~~ programming reasons, I made it a multiple of 8 (as well as a few of other things, like text length and some hyperparameters). Minus 0 because it's for padding, minus 1983 because it's for obscure crap and typos. 
 
