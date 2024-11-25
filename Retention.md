@@ -2,7 +2,7 @@
 
 TLDR: desired retention is "I will recall this % of cards **WHEN THEY ARE DUE**". Average retention is "I will recall this % of **ALL** my cards **TODAY**".
 
-In FSRS, there are 3 things with "retention" in their names: desired retention, true retention, and average predicted retention.
+In Anki, there are 3 things with "retention" in their names: desired retention, true retention, and average predicted retention.
 
 Desired retention is what you want. It's your way of telling the algorithm "I want to successfully recall x% of cards **when they are due**" (that's an important nuance).
 
