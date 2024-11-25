@@ -334,6 +334,8 @@ Comparison of different data augmentation methods that I used:
 
 ![image](https://github.com/user-attachments/assets/1e0a4326-c9a7-474c-9e9b-d021f455fdf0)
 
+By "diversity" I mean "difference between the original data and the augmented data".
+
 
 **IMPORTANT**: make sure that the test set doesn't have any variations of texts that are in the train set, or else the model will display unrealistically good results on the test set only to shit itself in real life. In other words, if there are N variations of text X, make sure that all N variations stay in the train set and none of them are in the test set.
 
