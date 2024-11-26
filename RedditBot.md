@@ -256,7 +256,7 @@ Now all that's left is to assign an integer to every word. It doesn't really mat
 
 2​)​ Every token is assigned an integer based on its frequency in the dataset. Most common token will be 1, second most common will be 2, third most common will be 3, etc.
 
-3​)​ If a token only appears once or twice in the entire dataset + "ChatGPTed" dataset (more on that in the next part), it will be assigned a special integer reserved for obscure crap and typos ("unk"). A token must appear at least 3 times to warrant having it's own index.
+3​)​ If a token only appears once or twice in the entire dataset + "GPTed" dataset (more on that in the next part), it will be assigned a special integer reserved for obscure crap and typos ("unk"). A token must appear at least 3 times to warrant having it's own index.
 
 The overall vocabulary size of my Transformer is currently 1984 tokens. For ~~magical~~ programming reasons, I made it a multiple of 8 (as well as a few of other things, like text length and some hyperparameters). Minus 0 because it's for padding, minus 1983 because it's for obscure crap and typos. 
 
@@ -284,7 +284,7 @@ I can't get any more data...or can I? It's time to learn about another important
 
 Doing this with text is, unfortunately, much harder. So in order to make more data, I fed all 1,272 texts to GPT-4o-mini and asked it to rephrase them. Example:
 
-![ChatGPT rephrasing](https://github.com/user-attachments/assets/64cb82c3-afa0-4d27-aee6-146ae8f8937c)
+![GPT-4o-mini rephrasing](https://github.com/user-attachments/assets/e78b49ba-1e5a-4be5-84f5-6b6f91f03b3f)
 
 This doubled the size of the dataset, from 1,272 texts to 2,544 texts.
 
@@ -306,13 +306,13 @@ list_of_sentences = [(x + ' ') if (x != list_of_sentences[-1]) else x for x in l
 
 I made it so that if a text has 2-5 sentences, two randomly chosen adjacent sentences would be swapped. If the text has >5 sentences, four sentences (two pairs) will be swapped.
 
-I did it for the entire dataset (by "dataset" I mean original + ChatGPTed), this doubled the size of the dataset again, from 2,544 texts to 5,088 texts. Sure, short texts with just one sentence are duplicated, by meh, whatever.
+I did it for the entire dataset (by "dataset" I mean original + GPTed), this doubled the size of the dataset again, from 2,544 texts to 5,088 texts. Sure, short texts with just one sentence are duplicated, by meh, whatever.
 
 ***Can I get more data?!***
 
 This next technique is my own invention, I haven't seen it in literature. I call it "filler sentence injection". First, I write down a bunch of filler sentences, such as "Hello everyone", "Hi", "EDIT: added screenshots", "P.S. English is not my native language", "Help would be appreciated", "What are your thoughts, fellow Anki users?", "I would like to hear from experts", "I'm not 100% sure", etc. These sentences don't change what the text is about. If a text is about learning steps, it will be about learning steps with or without these sentences. If a text is about Easy Days, it will be about Easy Days with or without these sentences, etc. Then I randomly inject one of these sentences inbetween two other sentences, or before the first sentence, or after the last sentence. For the sake of keeping it similar to a text actually written by a human, some filler sentences like "P.S. I love this community!" are only appended at the end, and some, like "Greetings, everyone!" are inserted only in the beginning. Obviously, nobody *starts* their post with P.S.
 
-I did this three times to obtain three more variations of the dataset (by "dataset" I mean original + ChatGPTed + original sentence swapped + ChatGPTed sentence swapped) and it quadrupled the size of the dataset, from 5,088 texts to 20,352 texts.
+I did this three times to obtain three more variations of the dataset (by "dataset" I mean original + GPTed + original sentence swapped + GPTed sentence swapped) and it quadrupled the size of the dataset, from 5,088 texts to 20,352 texts.
 
 <ins>***CAN I GET MORE DATA?!***</ins>
 
@@ -330,9 +330,9 @@ Then I assigned a 4.8% probability to 'index of a valid token -> index of "unk"'
 That's a total 6.5% probability of a typo *per token*, or approximately 99.88% probability of at least one typo per 100 tokens.
 Then all I had to do was just run the randomizer 4 times to create 4 more variations of the dataset (by "dataset" I mean original + original sentence swapped + original with fillers 1 + original sentence swapped with fillers 1 + original with fillers 2 +...). This brought the total number of texts to **101,760**.
 
-So to summarize: I rephrased the texts using ChatGPT, I swapped some adjacent sentences, I added filler sentences, I simulated typos that turn valid tokens into crap and I simulated typos that turn valid tokens into other valid tokens. This increased the total amount of data from 1,272 examples to 101,760, an 80-fold increase! 
+So to summarize: I rephrased the texts using GPT-4o-mini, I swapped some adjacent sentences, I added filler sentences, I simulated typos that turn valid tokens into crap and I simulated typos that turn valid tokens into other valid tokens. This increased the total amount of data from 1,272 examples to 101,760, an 80-fold increase! 
 
-![image](https://github.com/user-attachments/assets/97bf1dcf-1040-4871-be25-7d89814d4d85)
+![image](https://github.com/user-attachments/assets/0dcfaf4d-c921-4ab3-9cbc-18a589bd23da)
 
 Comparison of different data augmentation methods that I used:
 
