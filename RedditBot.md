@@ -11,7 +11,20 @@ If you don't know much about machine learning, this can serve as a (shitty) intr
 So first I needed data aka Reddit posts and comments. I used [PRAW](https://praw.readthedocs.io/en/stable/) for that. A long time ago I used it to make a notifier to respond to posts myself, but quickly realized that it's exhausting.
 I have changed it several times, and I wasn't keeping track of how many posts I had at any given moment, so I will only give the final number (as of 20.11.2024): **1,191 posts and 81 comments, 1,272 training examples in total.** Most of them are from r/Anki, some from r/medicalschoolanki, and a handful of them are from r/AnkiMCAT and a few other subreddits.
 The code looks kinda like this:
-![image](https://github.com/user-attachments/assets/cc805ea2-28e0-4990-89ba-ef496f2ebb2e)
+
+```python
+reddit = praw.Reddit(username="ClarityInMadness", password="", client_id="", client_secret="", user_agent="praw_scraper")
+subreddit = reddit.subreddit('Anki')
+post_ids = []
+post_text = []
+# sort by new
+for post in subreddit.new(limit=9999):
+    for keyword in all_keywords:
+        text = str(post.title) + ' ' + str(post.selftext)
+        if keyword in text and post.id not in post_ids:  # check that the post is relevant and that we haven't scraped it before
+            post_ids.append(post.id)
+            post_text.append(text)
+```
 
 This is a simplified version. In reality it has a few more checks and I'm not only sorting by new, I'm also doing this for sort by hot, by rising, by controversial, by top (week, month and year), and do a few searches to find posts that contain, for example, "FSRS". Also, I need to write IDs and text to my disk to store them.
 
@@ -168,7 +181,7 @@ For now what matters is assigning integers to words. Here is an example sentence
 
 First, let's remove the URL. Long story short, URLs are a pain in the arse. We can remove them automatically:
 
-```
+```python
 import re
 
 re.sub(r'http\S+', '', sentence)
@@ -206,7 +219,7 @@ Nice. However, what is that gibberish near the end? We don't want our neural net
 
 Better! But some words are misspelled. It's time to use the greatest Python technique again.
 
-```
+```python
 from spellchecker import SpellChecker
 
 spell = SpellChecker()
@@ -232,7 +245,7 @@ Ok, now it's time for the final step before converting tokens to numbers: **lemm
 
 Time to use the greatest Python technique again. Code:
 
-```
+```python
 from nltk.stem import WordNetLemmatizer
 
 from nltk import pos_tag
@@ -298,7 +311,7 @@ I can take existing texts and randomly swap two adjacent (one comes after the ot
 
 Initially, I tried writing soem really complicated regex stuff, but then I realized that I just do this:
 
-```
+```python
 list_of_sentences = nltk.sent_tokenize(text)
 
 list_of_sentences = [(x + ' ') if (x != list_of_sentences[-1]) else x for x in list_of_sentences]  # add whitespaces to everything except for the last sentence
