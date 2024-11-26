@@ -168,9 +168,11 @@ For now what matters is assigning integers to words. Here is an example sentence
 
 First, let's remove the URL. Long story short, URLs are a pain in the arse. We can remove them automatically:
 
-`import re`
+```
+import re
 
-`re.sub(r'http\S+', '', sentence)`
+re.sub(r'http\S+', '', sentence)
+```
 
 Result:
 
@@ -204,11 +206,13 @@ Nice. However, what is that gibberish near the end? We don't want our neural net
 
 Better! But some words are misspelled. It's time to use the greatest Python technique again.
 
-`from spellchecker import SpellChecker`
+```
+from spellchecker import SpellChecker
 
-`spell = SpellChecker()`
+spell = SpellChecker()
 
-`word = spell.correction(word)`
+word = spell.correction(word)
+```
 
 Result:
 
@@ -228,11 +232,13 @@ Ok, now it's time for the final step before converting tokens to numbers: **lemm
 
 Time to use the greatest Python technique again. Code:
 
-`from nltk.stem import WordNetLemmatizer`
+```
+from nltk.stem import WordNetLemmatizer
 
-`from nltk import pos_tag`
+from nltk import pos_tag
 
-`from nltk.corpus import wordnet`
+from nltk.corpus import wordnet
+```
 
 ![image](https://github.com/user-attachments/assets/5ee792a7-3897-4cf8-be15-2b54db05fe57)
 
@@ -292,9 +298,11 @@ I can take existing texts and randomly swap two adjacent (one comes after the ot
 
 Initially, I tried writing soem really complicated regex stuff, but then I realized that I just do this:
 
-`list_of_sentences = nltk.sent_tokenize(text)`
+```
+list_of_sentences = nltk.sent_tokenize(text)
 
-`list_of_sentences = [(x + ' ') if (x != list_of_sentences[-1]) else x for x in list_of_sentences]  # add whitespaces to everything except for the last sentence`
+list_of_sentences = [(x + ' ') if (x != list_of_sentences[-1]) else x for x in list_of_sentences]  # add whitespaces to everything except for the last sentence
+```
 
 I made it so that if a text has 2-5 sentences, two randomly chosen adjacent sentences would be swapped. If the text has >5 sentences, four sentences (two pairs) will be swapped.
 
