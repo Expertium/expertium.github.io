@@ -284,7 +284,7 @@ Well, I can make the scraper look for older posts and downvoted posts at the cos
 
 Can I get more data?
 
-I can make the search even more exhaustive and slower to scrape more posts. After some tweaking, I managed to get around 1200 posts.
+I can make the search even more exhaustive and slower to scrape more posts. Also, I can add posts that have absolutely nothing to do with FSRS whatsoever, so help the model learn to better differentiate between relevant and irrelevant posts. After some tweaking, I managed to get around 1200 posts.
 
 Can I get more data?
 
