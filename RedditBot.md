@@ -324,7 +324,7 @@ I did it for the entire dataset (by "dataset" I mean original + paraphrased), th
 
 This next technique is my own invention, I haven't seen it in literature. I call it "filler sentence injection". First, I write down a bunch of filler sentences, such as "Hello everyone", "Hi", "EDIT: added screenshots", "P.S. English is not my native language", "Help would be appreciated", "What are your thoughts, fellow Anki users?", "I would like to hear from experts", "I'm not 100% sure", etc. These sentences don't change what the text is about. If a text is about learning steps, it will be about learning steps with or without these sentences. If a text is about Easy Days, it will be about Easy Days with or without these sentences, etc. Then I randomly inject one of these sentences inbetween two other sentences, or before the first sentence, or after the last sentence. For the sake of keeping it similar to a text actually written by a human, some filler sentences like "P.S. I love this community!" are only appended at the end, and some, like "Greetings, everyone!" are inserted only in the beginning. Obviously, nobody *starts* their post with P.S.
 
-I did this two times to obtain two more variations of the dataset (by "dataset" I mean original + paraphrased + original sentence swapped + paraphrased sentence swapped) and it trippled the size of the dataset, from 8,970 texts to 26,910 texts.
+I did this three times to obtain three more variations of the dataset (by "dataset" I mean original + paraphrased + original sentence swapped + paraphrased sentence swapped) and it quadrupled the size of the dataset, from 8,970 texts to 35,880 texts.
 
 <ins>***CAN I GET MORE DATA?!***</ins>
 
@@ -340,9 +340,9 @@ Then for each word in the dataset I measured its distance to each other word to 
 
 Then I assigned a 4.8% probability to 'index of a valid token -> index of "unk"' and a 1.7% probability to 'index of a valid token -> index of a valid token'.
 That's a total 6.5% probability of a typo *per token*, or approximately 99.88% probability of at least one typo per 100 tokens.
-Then all I had to do was just run the randomizer 4 times to create 4 more variations of the dataset (by "dataset" I mean original + original sentence swapped + original with fillers 1 + original sentence swapped with fillers 1 + original with fillers 2 +...). This brought the total number of texts to **107,640**.
+Then all I had to do was just run the randomizer 4 times to create 4 more variations of the dataset (by "dataset" I mean original + original sentence swapped + original with fillers 1 + original sentence swapped with fillers 1 + original with fillers 2 +...). This brought the total number of texts to **143,520**.
 
-So to summarize: I rephrased the texts using GPT-4o-mini, I swapped some adjacent sentences, I added filler sentences, I simulated typos that turn valid tokens into crap and I simulated typos that turn valid tokens into other valid tokens. This increased the total amount of data from 1,495 examples to 107,640; x72 increase! Since I'm using 70% of data for training, the real number of training examples is 0.7*101760=75,348. Also, since I'm using 5 folds, the 70% of data in one fold is not the same data as in the other fold. Each fold contains different 70% (and different 30% for the test set) of the data. The test set consists of non-augmented, original texts.
+So to summarize: I rephrased the texts using GPT-4o-mini, I swapped some adjacent sentences, I added filler sentences, I simulated typos that turn valid tokens into crap and I simulated typos that turn valid tokens into other valid tokens. This increased the total amount of data from 1,495 examples to 143,520; x96 increase! Since I'm using 70% of data for training, the real number of training examples is 0.7*143520=100,464. Also, since I'm using 5 folds, the 70% of data in one fold is not the same data as in the other fold. Each fold contains different 70% (and different 30% for the test set) of the data. The test set consists of non-augmented, original texts.
 
 ![image](https://github.com/user-attachments/assets/0dcfaf4d-c921-4ab3-9cbc-18a589bd23da)
 
