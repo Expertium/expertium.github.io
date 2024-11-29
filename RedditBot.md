@@ -9,7 +9,7 @@ If you don't know much about machine learning, this can serve as a (shitty) intr
 ## Part One: Scraping
 
 So first I needed data aka Reddit posts and comments. I used [PRAW](https://praw.readthedocs.io/en/stable/) for that. A long time ago I used it to make a notifier to respond to posts myself, but quickly realized that it's exhausting.
-I have changed it several times, and I wasn't keeping track of how many posts I had at any given moment, so I will only give the final number (as of 20.11.2024): **1,191 posts and 81 comments, 1,272 training examples in total.** Most of them are from r/Anki, some from r/medicalschoolanki, and a handful of them are from r/AnkiMCAT and a few other subreddits. While the initial plan was to keep only FSRS-related posts, later I added a bunch of other posts for the sake of training my language model on diverse data.
+I have changed it several times, and I wasn't keeping track of how many posts I had at any given moment, so I will only give the final number (as of 20.11.2024): **1,191 posts and 81 comments, 1,495 training examples in total.** Most of them are from r/Anki, some from r/medicalschoolanki, and a handful of them are from r/AnkiMCAT and a few other subreddits. While the initial plan was to keep only FSRS-related posts, later I added a bunch of other posts for the sake of training my language model on diverse data.
 
 The scraping code looks kinda like this:
 
@@ -296,13 +296,11 @@ I can't get any more data...or can I? It's time to learn about another important
 
 ![Data Augmentation kitten](https://github.com/user-attachments/assets/91a05e74-918c-4255-9796-be22b9fb8aff)
 
-Doing this with text is, unfortunately, much harder. So in order to make more data, I fed all 1,272 texts to GPT-4o-mini and asked it to rephrase them. Example:
+Doing this with text is, unfortunately, much harder. But thankfully, large language models exist! So in order to make more data, I fed all 1,495 texts to GPT-4o-mini and Claude 3 Haiku and asked them to rephrase texts for me. Example:
 
 ![GPT-4o-mini rephrasing](https://github.com/user-attachments/assets/e78b49ba-1e5a-4be5-84f5-6b6f91f03b3f)
 
-This doubled the size of the dataset, from 1,272 texts to 2,544 texts.
-
-Thankfully, that's the only step that I had to do manually.
+This trippled the size of the dataset, from 1,495 texts to 4,485 texts.
 
 **Can I get more data?**
 
@@ -320,13 +318,13 @@ list_of_sentences = [(x + ' ') if (x != list_of_sentences[-1]) else x for x in l
 
 I made it so that if a text has 2-5 sentences, two randomly chosen adjacent sentences would be swapped. If the text has >5 sentences, four sentences (two pairs) will be swapped.
 
-I did it for the entire dataset (by "dataset" I mean original + GPTed), this doubled the size of the dataset again, from 2,544 texts to 5,088 texts. Sure, short texts with just one sentence are duplicated, by meh, whatever.
+I did it for the entire dataset (by "dataset" I mean original + paraphrased), this doubled the size of the dataset, from 4,485 texts to 8,970 texts. Sure, short texts with just one sentence are duplicated, by meh, whatever.
 
 ***Can I get more data?!***
 
 This next technique is my own invention, I haven't seen it in literature. I call it "filler sentence injection". First, I write down a bunch of filler sentences, such as "Hello everyone", "Hi", "EDIT: added screenshots", "P.S. English is not my native language", "Help would be appreciated", "What are your thoughts, fellow Anki users?", "I would like to hear from experts", "I'm not 100% sure", etc. These sentences don't change what the text is about. If a text is about learning steps, it will be about learning steps with or without these sentences. If a text is about Easy Days, it will be about Easy Days with or without these sentences, etc. Then I randomly inject one of these sentences inbetween two other sentences, or before the first sentence, or after the last sentence. For the sake of keeping it similar to a text actually written by a human, some filler sentences like "P.S. I love this community!" are only appended at the end, and some, like "Greetings, everyone!" are inserted only in the beginning. Obviously, nobody *starts* their post with P.S.
 
-I did this three times to obtain three more variations of the dataset (by "dataset" I mean original + GPTed + original sentence swapped + GPTed sentence swapped) and it quadrupled the size of the dataset, from 5,088 texts to 20,352 texts.
+I did this two times to obtain two more variations of the dataset (by "dataset" I mean original + paraphrased + original sentence swapped + paraphrased sentence swapped) and it trippled the size of the dataset, from 8,970 texts to 26,910 texts.
 
 <ins>***CAN I GET MORE DATA?!***</ins>
 
@@ -342,9 +340,9 @@ Then for each word in the dataset I measured its distance to each other word to 
 
 Then I assigned a 4.8% probability to 'index of a valid token -> index of "unk"' and a 1.7% probability to 'index of a valid token -> index of a valid token'.
 That's a total 6.5% probability of a typo *per token*, or approximately 99.88% probability of at least one typo per 100 tokens.
-Then all I had to do was just run the randomizer 4 times to create 4 more variations of the dataset (by "dataset" I mean original + original sentence swapped + original with fillers 1 + original sentence swapped with fillers 1 + original with fillers 2 +...). This brought the total number of texts to **101,760**.
+Then all I had to do was just run the randomizer 4 times to create 4 more variations of the dataset (by "dataset" I mean original + original sentence swapped + original with fillers 1 + original sentence swapped with fillers 1 + original with fillers 2 +...). This brought the total number of texts to **107,640**.
 
-So to summarize: I rephrased the texts using GPT-4o-mini, I swapped some adjacent sentences, I added filler sentences, I simulated typos that turn valid tokens into crap and I simulated typos that turn valid tokens into other valid tokens. This increased the total amount of data from 1,272 examples to 101,760, x80 increase! Since I'm using 70% of data for training, the real number of training examples is 0.7*101760=71,232. Also, since I'm using 5 folds, the 70% of data in one fold is not the same data as in the other fold. Each fold contains different 70% (and different 30% for the test set) of the data. The test set consists of non-augmented, original texts.
+So to summarize: I rephrased the texts using GPT-4o-mini, I swapped some adjacent sentences, I added filler sentences, I simulated typos that turn valid tokens into crap and I simulated typos that turn valid tokens into other valid tokens. This increased the total amount of data from 1,495 examples to 107,640; x72 increase! Since I'm using 70% of data for training, the real number of training examples is 0.7*101760=75,348. Also, since I'm using 5 folds, the 70% of data in one fold is not the same data as in the other fold. Each fold contains different 70% (and different 30% for the test set) of the data. The test set consists of non-augmented, original texts.
 
 ![image](https://github.com/user-attachments/assets/0dcfaf4d-c921-4ab3-9cbc-18a589bd23da)
 
