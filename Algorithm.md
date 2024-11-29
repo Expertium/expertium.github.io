@@ -178,7 +178,7 @@ Here is the new formula:
 
 (10-D)/9 is the linear damping term. The closer D is to 10, the smaller this term, the smaller the change in difficulty.
 
-4) FSRS-5 updates D and S after same-day reviews, which previously were unused. Difficulty is updated using the same formula that I described in the previous section. S is updated using the following formula.
+4) FSRS-5 updates D and S after same-day reviews, which previously were unused. D is updated using the formula described above. S is updated using the following formula:
 
 ![CodeCogsEqn (2)](https://github.com/user-attachments/assets/fde251b9-70b4-4207-813f-3fe3874c2887)
 
