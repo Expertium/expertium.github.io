@@ -6,7 +6,7 @@ I decided to make a list of 150 greatest scientists in history and determine how
 
 Obviously there is no way to put a precise number on how "great" someone's contribution was, so if someone decides to make their list, it may end up being somewhat different from mine. Anyway, once we have the people, we need to find out 2 things: when this person was born and when did he make his greatest contribution to science.
 
-The first one is easy. The second can be tricky, especially for people like Leonhard Euler, Galileo Galilei, and Srinivasa Ramanujan, who have made an enormous amount of contributions, sometimes even in different fields of science. So some of my estimates are debatable. Nonetheless, I think for most scientists on this list it's not terribly difficult to determine the year when they created their magnum opus.
+The first one is easy. The second can be tricky, especially for people like Leonhard Euler, Galileo Galilei, Srinivasa Ramanujan or Augustin-Louis Cauchy, who have made an enormous amount of contributions, sometimes even in different fields of science. So some of my estimates are debatable. Nonetheless, I think for most scientists on this list it's not terribly difficult to determine the year when they created their magnum opus.
 
 The full list can be found here: 
 
