@@ -14,7 +14,7 @@ I have changed it several times, and I wasn't keeping track of how many posts I 
 The scraping code looks kinda like this:
 
 ```python
-reddit = praw.Reddit(username="ClarityInMadness", password="", client_id="", client_secret="", user_agent="praw_scraper")
+reddit = praw.Reddit(username="MyUsername", password="123", client_id="abc", client_secret="123", user_agent="praw_scraper")
 subreddit = reddit.subreddit('Anki')
 post_ids = []
 post_text = []
