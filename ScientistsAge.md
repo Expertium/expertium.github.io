@@ -29,7 +29,7 @@ According to cognitive scientists, there are two types of intelligence: fluid an
 
 ![image](https://github.com/user-attachments/assets/7ce64f95-dbaa-4cc4-b773-660dc60cfb80)
 
-Fluid intelligence peaks in the mid-twenties, while crystallized intelligence either stagnates or keeps growing (for example, if that person uses spaced repetition 😉) but doesn't decline in the absence of neurodegenerative diseases.
+Fluid intelligence peaks around 20, while crystallized intelligence either stagnates or keeps growing (for example, if that person uses spaced repetition 😉) but doesn't decline in the absence of neurodegenerative diseases.
 
 Intuitively, I expect that fluid intelligence matters a lot more than crystallized when it comes to inventing/discovering something new, which is why I said that I was expecting ages to fall within the 20-30 range. 
 Perhaps the relationship between the fluid intelligence and making a great discovery is more tenuous than I thought. Or perhaps crystallized intelligence plays a more significant role than I think.
