@@ -254,13 +254,42 @@ from nltk import pos_tag
 from nltk.corpus import wordnet
 ```
 
-![image](https://github.com/user-attachments/assets/5ee792a7-3897-4cf8-be15-2b54db05fe57)
+```python
+def f_lemmatize(token: str):
+    def get_wordnet_pos(treebank_tag):
+        if treebank_tag.startswith('J'):
+            return wordnet.ADJ
+        elif treebank_tag.startswith('V'):
+            return wordnet.VERB
+        elif treebank_tag.startswith('R'):
+            return wordnet.ADV
+        else:
+            # Default to noun if no match is found or starts with 'N'
+            return wordnet.NOUN
+
+    lemmatizer = WordNetLemmatizer()
+    thingy = pos_tag([token])
+    if len(thingy) == 0:
+        return token
+    elif thingy[0][1] == 'NN':
+        return token
+    else:
+        tag = thingy[0][1]
+        lemma = lemmatizer.lemmatize(token, get_wordnet_pos(tag))
+        lemma_no_tag = lemmatizer.lemmatize(token)
+        if lemma != token and lemma is not None:  # if lemma is different from the token and isn't None
+            return lemma
+        elif lemma_no_tag != token and lemma_no_tag is not None:  # try it again, but without the tagging function
+            return lemma_no_tag
+        else:  # just give up
+            return token
+```
 
 Final result:
 
 `['hey', 'everyone', ',', 'i', 'have', 'a', 'problem', 'with', 'fsrs', '.', 'i', 'can', 'not', 'optimize', 'my', 'parameter', '.', '.', 'screenshot', ':']`
 
-Notice that "parameters" turned into "parameter". Lemmatization can help a lot, especially if I add extra rules manually because the function above doesn't always work the way I want it to work for whatever reason. This is lossy - we lose some of the semantic nuances. However, I don't have a ton of data. If I had 100,000 posts - sure, I could afford to treat each word individually. But with only around 1k posts the neural net won't have enough data to learn all the nuances, so it's better to use as few tokens as we can.
+Notice that "parameters" turned into "parameter". Lemmatization can help a lot, especially if I add extra rules manually. This is lossy - we lose some of the semantic nuances. However, I don't have a ton of data. If I had 100,000 posts - sure, I could afford to treat each word individually. But with only around 1k posts the neural net won't have enough data to learn all the nuances, so it's better to use as few tokens as we can.
 
 After adding ten gorillion extra rules and exceptions I finally managed to make everything work (mostly) the way I want. Of course, as I gather more data, I will add more rules and exceptions.
 
