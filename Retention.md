@@ -14,7 +14,7 @@ Average predicted retention is very different, and unless you took a loooooooong
 
 Average predicted retention is the average probability of recalling **any** card from your deck/collection **today**. It is FSRS's best attempt to estimate how much stuff you actually know. It basically says "Today you should be able to recall this % of all your cards!". Maybe it shouldn't be called "retention", but me and LMSherlock have bashed our heads against a wall many times while trying to come up with a naming convention that isn't utterly confusing and gave up.
 
-I'm sure that to many, this still sounds like I'm just juggling words around, so here's an image.
+I'm sure that to many people this still sounds like I'm just juggling words around, so here's an image.
 
 ![Desired retention](https://github.com/user-attachments/assets/44508803-458f-44b8-ae0d-c8525dc7148c)
 
