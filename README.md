@@ -4,7 +4,7 @@ The articles are sorted from most important to least important absed on 3 factor
 
 1. Practicality: can this information help you to make any kind of decision? For example, what settings to use in Anki.
 2. Uniqueness: are you likely to find this information anywhere else?
-3. Amount of effort I put into writing the article.
+3. Amount of effort I have put into writing the article.
 
 Here they are:
 
