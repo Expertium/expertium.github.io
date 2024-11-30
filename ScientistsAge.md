@@ -2,7 +2,7 @@
 
 If you ask someone, "How do you envision a genius scientist?" most people will probably imagine an old man with gray hair. But how close to reality is that image?
 
-I decided to make a list of 150 most famous scientists in history and determine how old they were when they made their greatest invention/discovery.
+I decided to make a list of 100 most famous scientists and inventors in history and determine how old they were when they made their greatest invention/discovery.
 
 Obviously there is no way to put a precise number on how "great" someone's contribution was, so if someone decides to make their list, it may end up being somewhat different from mine. Anyway, once we have the people, we need to find out 2 things: when this person was born and when did he make his greatest contribution to science.
 
