@@ -1,4 +1,4 @@
-# At What Age Do Scientists Make Great Discoveries?
+# At What Age Do Great Scientists Make Great Discoveries?
 
 If you ask someone, "How do you envision a genius scientist?" most people will probably imagine an old man with gray hair. But how close to reality is that image?
 
