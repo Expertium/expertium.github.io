@@ -6,7 +6,7 @@ The articles are sorted from most important to least important absed on 3 factor
 2. Uniqueness: are you likely to find this information anywhere else?
 3. Amount of effort I have put into writing the article.
 
-Here they are:
+About Anki, FSRS and spaced repetition:
 
 1. (unfinished)[Benchmark of spaced repetition algorithms](/Benchmark.md). In this article, I analyze results from the [open spaced repetition benchmark repository](https://github.com/open-spaced-repetition/srs-benchmark?tab=readme-ov-file#result), where many modern spaced repetition algorithms are compared based on their ability to predict the probability of recall. This is the most high-effort piece I've ever written. It will be finished when ~~the next major release of Anki comes out~~ when [Jarrett](https://github.com/L-M-Sherlock) finishes modifying the code for the new dataset.
 2. [Note types to avoid pattern matching](/Avoid_Pattern_Matching.md). In this article, I go over some note types that can help you avoid the "I memorized what the answer *looks* like rather than the actual information" phenomenon as well as allow you to memorize the same amount of information with fewer cards.
@@ -17,7 +17,10 @@ Here they are:
 7. [Abridged history of spaced repetition](/History.md).
 8. [Should you lower your maximum interval?](/Max_Interval.md) 
 9. [Mass adoption and the perfect UI](/Perfect_UI.md). Can FSRS be easy to use? Yes. But first, we'll need to change ~~some~~ a lot of things.
-10. [At what age do great scientists make great discoveries?](/ScientistsAge.md) Is there a "magical" age that is perfect for making groundbreaking discoveries and inventions? Let's investigate it!
+
+About Anki other things:
+
+1. [At what age do great scientists make great discoveries?](/ScientistsAge.md) Is there a "magical" age that is perfect for making groundbreaking discoveries and inventions? Let's investigate it!
 
 A list of all implementations of FSRS in different programming languages, as well as apps that use FSRS (it's not just Anki!): [https://github.com/open-spaced-repetition/awesome-fsrs.](https://github.com/open-spaced-repetition/awesome-fsrs)
 
