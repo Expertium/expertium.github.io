@@ -18,7 +18,7 @@ About Anki, FSRS and spaced repetition:
 8. [Should you lower your maximum interval?](/Max_Interval.md) 
 9. [Mass adoption and the perfect UI](/Perfect_UI.md). Can FSRS be easy to use? Yes. But first, we'll need to change ~~some~~ a lot of things.
 
-About Anki other things:
+About other things:
 
 1. [At what age do great scientists make great discoveries?](/ScientistsAge.md) Is there a "magical" age that is perfect for making groundbreaking discoveries and inventions? Let's investigate it!
 
