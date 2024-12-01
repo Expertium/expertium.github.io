@@ -14,7 +14,7 @@ I have changed it several times, and I wasn't keeping track of how many posts I 
 The scraping code looks kinda like this:
 
 ```python
-reddit = praw.Reddit(username="MyUsername", password="123", client_id="abc", client_secret="123", user_agent="praw_scraper")
+reddit = praw.Reddit(username="MyUsername", password="123", client_id="123", client_secret="123", user_agent="praw_scraper")
 subreddit = reddit.subreddit('Anki')
 post_ids = []
 post_text = []
@@ -299,7 +299,7 @@ Now all that's left is to assign an integer to every word. It doesn't really mat
 
 2​)​ Every token is assigned an integer based on its frequency in the dataset. Most common token will be 1, second most common will be 2, third most common will be 3, etc.
 
-3​)​ If a token appears <4 times in the entire dataset + "GPT'ed" dataset + "Claud'ed" dataset (more about that later), it will be assigned a special integer reserved for obscure crap and typos ("unk"). A token must appear at least 4 times across three variations of the dataset to warrant having it's own index.
+3​)​ If a token appears <4 times in the entire dataset + "GPT'ed" dataset (more about that later), it will be assigned a special integer reserved for obscure crap and typos ("unk"). A token must appear at least 4 times across three variations of the dataset to warrant having it's own index.
 
 The overall vocabulary size of my Transformer is currently 1984 tokens. For ~~magical~~ programming reasons, I made it a multiple of 8 (as well as a few of other things, like text length and some hyperparameters). Minus 0 because it's for padding, minus 1983 because it's for obscure crap and typos. 
 
@@ -325,7 +325,7 @@ I can't get any more data...or can I? It's time to learn about another important
 
 ![Data Augmentation kitten](https://github.com/user-attachments/assets/91a05e74-918c-4255-9796-be22b9fb8aff)
 
-Doing this with text is, unfortunately, much harder. But thankfully, large language models exist! So in order to make more data, I fed all 1,495 texts to GPT-4o-mini and Claude 3 Haiku and asked them to rephrase texts for me. Example:
+Doing this with text is, unfortunately, much harder. But thankfully, large language models exist! So in order to make more data, I fed all 1,495 texts to GPT-4o-mini and asked it to rephrase them for me. Example:
 
 ![GPT-4o-mini rephrasing](https://github.com/user-attachments/assets/e78b49ba-1e5a-4be5-84f5-6b6f91f03b3f)
 
