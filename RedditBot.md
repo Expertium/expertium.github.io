@@ -31,7 +31,7 @@ This is a simplified version. In reality it has a few more checks and I'm not on
 
 ## Part Two: Keyword Matching and the First Classifier
 
-My initial idea was to just check if the post contains "FSRS", or one of its misspellings ("FRS", "FRSRS", "FSES", "FRSR", etc.), and make the bot comment the same generic message. However, I quickly realized that there are different types of questions, and they require personalized answers. So I categorized posts into 20 categories:
+My initial idea was to just check if the post contains "FSRS", or one of its misspellings ("FRS", "FRSRS", "FSES", "FRSR", etc.), and make the bot comment the same generic message. However, I quickly realized that there are different types of questions, and they require personalized answers. So I categorized posts into 21 categories:
 
 1​)​ Desired Retention. A post about choosing the value of desired retention and/or using "Compute minimum recommended retention".
 
@@ -71,7 +71,9 @@ My initial idea was to just check if the post contains "FSRS", or one of its mis
 
 19​)​ General. A post where the person is asking what is FSRS, how to configure it, or a whole bunch of things at once.
 
-20​)​ Null. Either unrelated to FSRS or there is no reason to send the bot to reply to this person.
+20​)​ TR<DR. True retention is below desired retention. Well, posts where true retentino is higher than desired are lumped in here anyway. Basically, it's when there is a discrepancy.
+
+21)​ Null. Either unrelated to FSRS or there is no reason to send the bot to reply to this person.
 
 And yes, I read each of the 1191 posts and 81 comments and labeled all of them manually.
 
@@ -104,7 +106,7 @@ So how accurate is my hand-made classifier? It achieves 65.7% accuracy on the en
 
 (I use "algorithm" and "model" as synonyms)
 
-We want to train a machine learning algorithm on text. Machine learning algorithms don't work with text, they work with numbers. This is a bit of a problem, and by "a bit" I mean **THIS IS A MASSIVE GOD DAMN PROBLEM**. Fortunately, in this case there is a pretty simple way to represent text with a bunch of numbers. Each post will be represented using 26 numbers. The first 20 are the counts of keywords related to each of the 20 categories described above. 5 more for anti-keywords for some categories and "junk" keywords that are unrelated to FSRS in general. And the last number is the standardized length of the post. What is **standardization**, you ask?
+We want to train a machine learning algorithm on text. Machine learning algorithms don't work with text, they work with numbers. This is a bit of a problem, and by "a bit" I mean **THIS IS A MASSIVE GOD DAMN PROBLEM**. Fortunately, in this case there is a pretty simple way to represent text with a bunch of numbers. Each post will be represented using 27 numbers. The first 21 are the counts of keywords related to each of the 21 categories described above. 5 more for anti-keywords for some categories and "junk" keywords that are unrelated to FSRS in general. And the last number is the standardized length of the post. What is **standardization**, you ask?
 
 (standardization.png)
 
