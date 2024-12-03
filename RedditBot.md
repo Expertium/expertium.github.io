@@ -110,15 +110,11 @@ We want to train a machine learning algorithm on text. Machine learning algorith
 
 (standardization.png)
 
-So after encoding a post might look like this: `[0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.24043715846994534]`. All numbers except for the last one are counts of keywords. For example, 2 means that the post has two keywords related to some class, like Desired Retention, Optimization, Learning Steps, etc. The last one is standardized length.
+So after encoding a post might look like this: `[0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.24043715846994534]`. All numbers except for the last one are counts of keywords. For example, 2 means that the post has two keywords related to some class, like Desired Retention, Optimization, Learning Steps, etc. The last one is standardized length.
 
 This is obviously very lossy - the algorithm won't be able to analyze any information about individual words and phrases, all of the semantic nuances are lost. Still, this should be an improvement compared to the hand-made classifier.
 
-Alright, time to feed all this data to the algorithm and enjoy lif--
-
-![Overfitting Hello there](https://github.com/user-attachments/assets/da90159d-b6c4-48a0-a11b-adcd69cbec09)
-
-Right, we need to talk about **overfitting**. This is one of the most important concepts in machine learning, and it's not exclusive to neural networks. Here's an example:
+Alright, time to feed all this data to the algorithm and enjoy life...is what I would love to say, but we need to talk about **overfitting**. This is one of the most important concepts in machine learning, and it's not exclusive to neural networks. Here's an example:
 
 ![image](https://github.com/user-attachments/assets/aa8d0790-56aa-45b9-9ed2-22eeae21a13a)
 
