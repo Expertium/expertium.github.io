@@ -1,6 +1,6 @@
 I write articles about spaced repetition and especially about [FSRS](https://github.com/open-spaced-repetition/fsrs4anki/wiki/ABC-of-FSRS), a modern spaced repetition algorithm used in [Anki](https://apps.ankiweb.net/) and other apps. That's all, end of the intro.
 
-The articles are sorted from most important to least important absed on 3 factors:
+The articles are sorted from most important to least important based on 3 factors:
 
 1. Practicality: can this information help you to make any kind of decision? For example, what settings to use in Anki.
 2. Uniqueness: are you likely to find this information anywhere else?
