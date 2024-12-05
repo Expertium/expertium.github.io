@@ -265,6 +265,9 @@ This procedure is used for all algorithms. Thanks to this clever way of splittin
 
 By the way, this is not how "Evaluate" works in Anki. "Evaluate" uses a simplified procedure to avoid optimizing parameters every time the user wants to evaluate them - it just evaluates the specified parameters on the entire history, without optimizing them and without any splitting; training set = test set. "Evaluate" can only tell the user how well the parameters fit the *current* review history aka the training set. But the benchmark should evaluate the model's ability to generalize beyond the training set data. Jarrett believes that it's fine that the benchmark and Anki don't use the same evaluation procedure.
 
+I hope this diagram helps:
+
+![How benchmarking is done](https://github.com/user-attachments/assets/c0558f0c-cc73-4cc0-b23d-ac3533aee2b1)
 
 
 ## Discussion
