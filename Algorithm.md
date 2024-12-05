@@ -15,7 +15,11 @@ In this article, I'll explain how FSRS-4.5 works. The differences between FSRS-4
 
 Let's start with the forgetting curve. In FSRS v3, an exponential function was used. In FSRS v4, the exponential function was replaced by a power function, which provided a better fit to the data. Then, in FSRS-4.5, it was replaced by a different power function which provided an even better fit. It is used in FSRS-5 as well.
 
-![image](https://github.com/user-attachments/assets/113a5e63-bc1f-4246-b20d-635620fb5d75)
+$$\LARGE R = 0.9^{\frac{t}{s}}$$
+
+$$\LARGE R = ( 1 + {\frac{t}{9S}})^{-1}$$
+
+$$\LARGE R = ( 1 + {\frac{19}{81}} \cdot {\frac{t}{S}})^{-0.5}$$
 
 The main difference between them is how fast R declines when t>​>S. Note that when t=S, R=90% for all three functions. This has to hold true because in FSRS, memory stability is defined as the amount of time required for R to decrease from 100% to 90%. You can play around with them here: [https://www.desmos.com/calculator/au54ecrpiz](https://www.desmos.com/calculator/au54ecrpiz).
 
@@ -38,27 +42,29 @@ Now let's take a look at the main formula of FSRS.
 
 ![image](https://github.com/user-attachments/assets/a7a2d287-9c7b-4f68-b7ee-306eb6e25b0a)
 
+$$\LARGE S'(D,S,R,G) = S \cdot (1 + w_{15} \cdot w_{16} \cdot c^{w_8}) \cdot (11 - D) \cdot S^{-w_9} \cdot (e^{w_{10} \cdot (1 - R)} - 1)$$
+
 Here G is grade, it affects w15 and w16. R refers to retrievability at the time of the review.
 
 Let's simplify this formula as much as possible.
 
-![image](https://github.com/user-attachments/assets/f23cc0c3-041e-4486-bc53-fd1cd0c199f9)
+$$\LARGE S'(D,S,R) = S \cdot SInc$$
 
 The new value of memory stability is equal to the previous value multiplied by some factor, which we will call SInc. SInc>=1, in other words, **memory stability cannot decrease if the review was successful**. Easy, Good and Hard all count as "success", Again counts as a memory "lapse". That's why you shouldn't use Hard as a failing grade, only as a passing grade.
 
 SInc is equal to one plus the product of functions of three components of memory (I'll remove the part that depends on the grade for now).
 
-![image](https://github.com/user-attachments/assets/dd069043-83d4-4806-9477-6bfd347d8120)
+$$\LARGE SInc = 1 + f(D) \cdot f(S) \cdot f(R)$$
 
 Now let's "unfold" each of them, starting with *f(D)*.
 
-![image](https://github.com/user-attachments/assets/af75c9f2-d501-4e07-917e-eef5a4ce4b5e)
+$$\LARGE SInc = 1 + (11 - D) \cdot f(S) \cdot f(R)$$
 
 **Important takeaway number two: the larger the value of D, the smaller the SInc value. This means that the increase in memory stability for difficult material is smaller than for easy material.**
 
 Next, let's unfold *f(S)*.
 
-![image](https://github.com/user-attachments/assets/2442dc3d-e5ba-4a1f-ab15-6a1521acbb02)
+$$\LARGE SInc = 1 + (11 - D) \cdot S^{-w_9} \cdot f(R)$$
 
 **Important takeaway number three: the larger the value of S, the smaller the SInc value. This means that the higher the stability of the memory, the harder it becomes to make the memory even more stable. Memory stability tends to saturate.**
 
@@ -66,7 +72,7 @@ This will likely surprise a lot of people, but the data supports it.
 
 Finally, let's unfold *f(R)*.
 
-![image](https://github.com/user-attachments/assets/1d720801-d0a2-453d-92c9-de706b6507e1)
+$$\LARGE SInc = 1 + (11 - D) \cdot S^{-w_9} \cdot (e^{w_{10} \cdot (1 - R)}- 1 )$$
 
 **Important takeaway number four: the smaller the value of R, the larger the SInc value. This means that the best time to review your material is when you almost forgot it (provided that you succeeded in recalling it).**
 
