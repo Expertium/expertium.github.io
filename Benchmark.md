@@ -172,11 +172,11 @@ Regarding invertibility: for some algorithms, such as DASH and GRU-P, probabilit
 
 ## Dataset
 
-The dataset used in the benchmark is [FSRS Anki 20k](https://huggingface.co/datasets/open-spaced-repetition/FSRS-Anki-20k), the largest in the world. It contains data about ~1.7 billion flashcard reviews from 20 thousand users, which is approximately 8 times more reviews than in the [Maimemo dataset](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VAGUL0) and approximately 131 times more reviews than in [the Duolingo dataset](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/N8XJME).
+The dataset used in the benchmark is ~~FSRS Anki 20k~~[Anki revlogs 10k](https://huggingface.co/datasets/open-spaced-repetition/anki-revlogs-10k), the largest in the world. It contains data about ~727 million flashcard reviews from 10 thousand users, which is approximately 3 times more reviews than in the [Maimemo dataset](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VAGUL0) and approximately 56 times more reviews than in [the Duolingo dataset](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/N8XJME).
 
-The data itself is also different. In Anki, each user makes their own flashcards, while Maimemo and Duolingo offer pre-made courses. Anki has data about certain users reviewing different material, while Maimemo and Duolingo have data about certain material being reviewed by different users.
+The data itself is also different. In Anki, each user makes their own flashcards, while Maimemo and Duolingo offer pre-made courses. Simply put, Anki has "same learner - different material" kind of data, and Maimemo/Duolingo has "same material - different learner" kind of data.
 
-This benchmark is based on 19,990 collections and 702,721,850 reviews, excluding same-day reviews (which constitute approximately 24.6% of all reviews); only 1 review of a card per day is used by each algorithm other than FSRS-5 and GRU-P (short-term), which use same-day reviews for training but not for evaluation. Additionally, some reviews are filtered out, such as when the user manually changed the due date (which would count as a review) or when the user used what's called a "filtered deck" if "Reschedule cards based on my answers in this deck" was disabled. Finally, an outlier filter is applied. Because of all of that, the real number of reviews used for evaluation is around 700 million, much smaller than the 1.7 billion figure mentioned above.
+This benchmark is based on 9,999 collections and 349,923,850 reviews. Same-day reviews are excluded except when optimizing FSRS-5 and algorithms that have "-short" at the end of their names, which use same-day reviews for training but not for evaluation. Additionally, some reviews are filtered out, such as when the user manually changed the due date (which would count as a review) or when the user used what's called a "filtered deck" if "Reschedule cards based on my answers in this deck" was disabled. Finally, an outlier filter is applied. Because of all of that, the real number of reviews used for evaluation is around 350 million, much smaller than the 727 billion figure mentioned above.
 
 
 ## Results
@@ -303,7 +303,7 @@ Information from other cards (other than the card that is being reviewed right n
 
 With all that in mind, I want to make several predictions:
 
-1​.​ No further version of FSRS beyond FSRS-5 will be used in Anki by 2027. No FSRS-5.5, FSRS-6, or any other version that supersedes FSRS-5.
+1​.​ No further version of FSRS beyond FSRS-5 will be used in Anki by ~~2027~~ 2026. No FSRS-5.5, FSRS-6, or any other version that supersedes FSRS-5.
 Clarification: I made this prediciton a few days before Jarrett made [this tweet](https://x.com/JarrettYe/status/1817570865699299818). After seeing his tweet, I'm even more confident in this prediction. I have an idea for FSRS-6, but it requires getting a new dataset and using more input features than just interval lengths and grades. Also, Jarrett said that unless some other famous app decides to implement FSRS, he won't work on FSRS-6 just for the sake of Anki. Overall, I find it unlikely that FSRS-6 will be released before 2027.
 
 ~~2​. By 2029, no algorithm in our benchmark will have achieved a (weighted by the number of reviews) log loss lower than 0.27, unless the dataset used in the benchmark changes, in which case this prediction is rendered void.~~
@@ -313,9 +313,9 @@ Clarification: I made this prediciton a few days before Jarrett made [this tweet
 4​.​ By 2031, there will be an app with an algorithm that employs at least one out of the three ideas proposed above (which are not specific to FSRS), and that app will not be Anki. For example, an app using KAR3L.
 The app must be publicly available in AppStore, Google Play Store, or elsewhere, and it must not be in the beta testing stage. I'm adding these extra conditions because, without them, [mathacademy.com](https://www.mathacademy.com/) has already [met the main condition](https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/). Even with the extra conditions, this prediction can easily come true way sooner than 2031.
 
-Predictions were made at the end of July, 2024.
+Predictions were made at the end of July 2024. Revised in December 2024.
 
-The dataset has changed, the new dataset includes deck IDs and preset IDs, so predictions 2 and 3 will have to be revised.
+The dataset has changed, the new dataset includes interval lengths *in seconds* deck IDs, and preset IDs, as well as information about sibling cards, so predictions 2 and 3 are no longer valid. I have also changed the first prediction because now I'm less certain that there will be no major breakthrough.
 
 
 ## References
