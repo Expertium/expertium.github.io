@@ -166,7 +166,7 @@ It's important to mention that me and Sherlock have tried to incorporate R into 
 
 Again=1, Hard=2, Good=3, Easy=4. This formula provides a *slightly* better fit. Because difficulty is clamped between 1 and 10, negative values of D are not a problem, they will simply be replaced with 1. Remember that any difficulty value <1 is set to 1 and any value >10 is set to 10.
 
-2) "Mean reversion" now reverses the difficulty to that of D0(4), rather than D0(3).
+2) "Mean reversion" now reverses the difficulty to that of D0(4), rather than D0(3). Also, while normally D is clamped between 1 and 10, when using mean reversion, *unclamped* initial D is used. This was originally a bug, but then it turned out that it actually slightly improves the results as opposed to using a clamped D0 for mean reversion.
 
 3) A new term has been added. Thanks to that term, when the user presses "Again" or "Hard", difficulty will approach 10 *asymptotically*, meaning that it will never be precisely 10.
 
