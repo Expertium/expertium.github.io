@@ -6,6 +6,8 @@
 - [Algorithms](#algorithms)
 - [Dataset](#dataset)
 - [Results](#results)
+  - [Logloss, RMSE and AUC](#logloss-rmse-and-auc)
+  - [Superiority](#superiority)
 - [Discussion](#discussion)
 - [References](#references)
 
@@ -181,6 +183,8 @@ This benchmark is based on 9,999 collections and 349,923,850 reviews. Same-day r
 
 ## Results
 
+### Logloss, RMSE and AUC
+
 In the tables and charts below, the averages are weighted by the number of reviews in each user's collection, meaning that users with more reviews have a greater impact on the value of the average. If someone has 100 thousand reviews, they will affect the average 100 times more than someone who only has 1 thousand reviews.
 The tables also show the number of optimizable parameters of each algorithm. The benchmark repo also has [unweighted averages](https://github.com/open-spaced-repetition/srs-benchmark?tab=readme-ov-file#result).
 
@@ -229,6 +233,8 @@ Notice that while GRU-P (short-term) outperforms GRU-P and while FSRS-5 outperfo
 
 You may think that a model that knows the exact value of the probability of recall (let's call such a model "Oracle") would achieve a logloss of 0, an RMSE of 0%, and an AUC of 1. But remember - forgetting is inherently random. It's possible (albeit unlikely) that a card with a 99% probability of recall will be forgotten, and a card with a 1% probability of recall will be recalled. Even after finding every single pattern in the data, there is still an inherent, irreducible amount of randomness. Plus, the size of the dataset is finite, so even if some algorithm could reduce the prediction error to zero on an infinitely large dataset, obviously real users don't have an infinite number of reviews.
 According to my **very** crude and **very** hand-wavy estimates on the [other dataset](https://huggingface.co/datasets/open-spaced-repetition/FSRS-Anki-20k) (which has twice as many reviews but lacks some features, such as deck and preset information), **the Oracle would achieve an AUC of 0.83 and a logloss of 0.27**. I couldn't think of a good way to estimate RMSE (bins). You can use these figures as a crude upper bound of what a spaced repetition algorithm could possibly achieve on this dataset. It should give you a better idea of how far the current algorithms are from the Oracle. These figures may be different for a different dataset.
+
+### Superiority
 
 The metrics presented above can be difficult to interpret. In order to make it easier to understand how algorithms perform relative to each other, the image below shows the percentage of users for whom algorithm A (row) has a lower RMSE than algorithm B (column). For example, GRU-P-short has a 94.5% superiority over the Transformer, meaning that for 94.5% of all collections in this benchmark, GRU-P-short can estimate the probability of recall more accurately than the Transformer.
 
