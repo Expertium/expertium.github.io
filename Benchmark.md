@@ -44,15 +44,15 @@ Here's what you need to know about log loss:
 
 Next is AUC (Area Under the Curve). Unlike the previous two metrics, AUC is not a measure of **calibration** but of **discrimination**. Here's what you need to know about AUC:
 1. AUC measures how well an algorithm can tell classes apart; in our case, classes are "recalled" and "forgotten." You can think of AUC as a measure of how well the algorithm can draw a boundary between two classes, such that all members of class 1 are on one side of the boundary and all members of class 2 are on the other side.
-2. AUC scores range from 0 to 1, but in practice they're almost always greater than 0.5. AUC scores less than 0.5 indicate that the algorithm is performing worse than random. Higher is better.
+2. AUC ranges from 0 to 1, but in practice it's almost always greater than 0.5. AUC less than 0.5 indicates that the algorithm is performing worse than random. Higher is better.
 
-AUC can be rather unintuitive in some cases. Exaggerated example: suppose you have an algorithm that always outputs a 99% probability of having cancer for people who do have cancer and a 98% probability of having cancer for people who do not have cancer. It never outputs 98% for those who do have cancer, and it never outputs 99% for those who do. What do you think is the AUC score of this algorithm? Answer: 1.0, because it can perfectly distinguish between these two classes, even if the calibration is absolutely terrible. AUC doesn't tell us anything about calibration, only about discrimination.
+AUC can be rather unintuitive in some cases. Exaggerated example: suppose you have an algorithm that always outputs a 99% probability of having cancer for people who do have cancer and a 98% probability of having cancer for people who do not have cancer. It never outputs 98% for those who do have cancer, and it never outputs 99% for those who do. What do you think is the AUC of this algorithm? Answer: 1.0, because it can perfectly distinguish between these two classes, even if the calibration is absolutely terrible. AUC doesn't tell us anything about calibration, only about discrimination.
 
 Below is a diagram that explains AUC.
 
 ![AUC 2 1](https://github.com/user-attachments/assets/28c55552-0613-4643-ad69-bfecf04dfce8)
 
-For a more in-depth explanation of AUC, you can read [this article](https://www.geeksforgeeks.org/auc-roc-curve/).
+For a more in-depth explanation of AUC, you can read [this article](https://www.geeksforgeeks.org/auc-roc-curve/). The important part is how to interpret it: in the context of spaced repetition, AUC can be interpreted as a probability that the model will assign a higher probability of recall to a recalled card than to a forgotten card. For example, AUC=0.7 means that there is a 70% chance that a recalled card has a higher probability of recall predicted by the model than a forgotten card.
 
 
 Here's a table comparing different metrics.
@@ -210,9 +210,9 @@ Finally, let's look at AUC.
 
 Higher is better. Black caps are 99% confidence intervals.  <br />
 Now ranking is very different. This isn't too surprising, considering that AUC is completely uncorrelated with both RMSE and log loss. <br />
-It's interesting that the AUC score of HLR is 0.631, much higher than 0.54, which is what Duolingo reported in their paper. Granted, 0.631 is not that impressive either. In fact, all spaced repetition algorithms have rather unimpressive AUC scores. <br />
-Unsurprisingly, AVG has an AUC score close to 0.5. Since it always outputs a constant, it cannot differentiate between forgotten and recalled cards. <br />
-It is somewhat surprising that NN-17 has a relatively low AUC score, given that it combines the best of both worlds​  -  ​a model of human memory supplemented with a neural network. Granted, the goal  was not to create the perfect algorithm; rather, the goal was to emulate SM-17. <br />
+It's interesting that the AUC of HLR is 0.631, much higher than 0.54, which is what Duolingo reported in their paper. Granted, 0.631 is not that impressive either. In fact, all spaced repetition algorithms have rather unimpressive AUC. <br />
+Unsurprisingly, AVG has an AUC close to 0.5. Since it always outputs a constant, it cannot differentiate between forgotten and recalled cards. <br />
+It is somewhat surprising that NN-17 has a relatively low AUC, given that it combines the best of both worlds​  -  ​a model of human memory supplemented with a neural network. Granted, the goal  was not to create the perfect algorithm; rather, the goal was to emulate SM-17. <br />
 Jarrett's implementation of Transformer doesn't perform well according to all 3 metrics, so if any neural network experts think, "I bet I can do better!" they are welcome. I think it's probably because each algorithm is only trained for 5 epochs, which is more than enough for FSRS and other simple models, but not enough for complex models.
 
 Let's address GRU-P. As you can see, it outperforms all other algorithms by all three metrics. So you're probably wondering "If predicting R directly is better than predicting an intermediate value first, why not do that?". Here's what happens when you let an algorithm predict R directly.
@@ -308,7 +308,7 @@ Clarification: I made this prediciton a few days before Jarrett made [this tweet
 
 ~~2​. By 2029, no algorithm in our benchmark will have achieved a (weighted by the number of reviews) log loss lower than 0.27, unless the dataset used in the benchmark changes, in which case this prediction is rendered void.~~
 
-~~3​. By 2029, no algorithm in our benchmark will have achieved an (weighted by the number of reviews) AUC score higher than 0.83, unless the dataset used in the benchmark changes.~~
+~~3​. By 2029, no algorithm in our benchmark will have achieved an (weighted by the number of reviews) AUC higher than 0.83, unless the dataset used in the benchmark changes.~~
 
 4​.​ By 2031, there will be an app with an algorithm that employs at least one out of the three ideas proposed above (which are not specific to FSRS), and that app will not be Anki. For example, an app using KAR3L.
 The app must be publicly available in AppStore, Google Play Store, or elsewhere, and it must not be in the beta testing stage. I'm adding these extra conditions because, without them, [mathacademy.com](https://www.mathacademy.com/) has already [met the main condition](https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/). Even with the extra conditions, this prediction can easily come true way sooner than 2031.
