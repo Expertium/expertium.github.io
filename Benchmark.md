@@ -52,7 +52,7 @@ Below is a diagram that explains AUC.
 
 ![AUC 2 1](https://github.com/user-attachments/assets/28c55552-0613-4643-ad69-bfecf04dfce8)
 
-For a more in-depth explanation of AUC, you can read [this article](https://www.geeksforgeeks.org/auc-roc-curve/). The important part is how to interpret it: in the context of spaced repetition, AUC can be interpreted as a probability that the model will assign a higher probability of recall to a recalled card than to a forgotten card. For example, AUC=0.7 means that there is a 70% chance that a recalled card has a higher probability of recall predicted by the model than a forgotten card.
+For a more in-depth explanation of AUC, you can read [this article](https://www.geeksforgeeks.org/auc-roc-curve/). The important part is how to interpret it: in the context of spaced repetition, AUC can be interpreted as "a probability that the model will assign a higher probability of recall to a recalled card than to a forgotten card". For example, AUC=0.7 means that there is a 70% chance that a recalled card has a higher probability of recall predicted by the model than a forgotten card.
 
 
 Here's a table comparing different metrics.
@@ -227,9 +227,10 @@ So while GRU-P outperforms all other algorithms, it's not usable in practice as 
 
 Notice that while GRU-P (short-term) outperforms GRU-P and while FSRS-5 outperforms FSRS-4.5, the difference in all 3 metrics is very small. This suggests that **same-day reviews have a very small impact on long-term memory**. Since the architecture of FSRS and GRU-P is very different, the fact that the improvement is small for both of them suggests that architecture is not to blame here.
 
-You might be thinking, "But what if the dataset just has very few same-day reviews? Then it would appear that, on average, their impact is small." That's a valid concern, but in the Anki 20k dataset, 24.6% of reviews are same-day reviews (this is *after* excluding manual due date changes and other special cases). So clearly, lack of data isn't an issue.
+You may think that a model that knows the exact value of the probability of recall (let's call such a model "Oracle") would achieve a logloss of 0, an RMSE of 0%, and an AUC of 1. But remember - forgetting is inherently random. It's possible (albeit unlikely) that a card with a 99% probability of recall will be forgotten, and a card with a 1% probability of recall will be recalled. Even after finding every single pattern in the data, there is still an inherent, irreducible amount of randomness. Plus, the size of the dataset is finite, so even if some algorithm could reduce the prediction error to zero on an infinitely large dataset, obviously real users don't have an infinite number of reviews.
+According to my **very** crude and **very** hand-wavy estimates on the [other dataset](https://huggingface.co/datasets/open-spaced-repetition/FSRS-Anki-20k) (which has twice as many reviews but lacks some features, such as deck and preset information), **the Oracle would achieve an AUC of 0.83 and a logloss of 0.27**. I couldn't think of a good way to estimate RMSE (bins). You can use these figures as a crude upper bound of what a spaced repetition algorithm could possibly achieve on this dataset. It should give you a better idea of how far the current algorithms are from the Oracle. These figures may be different for a different dataset.
 
-One more thing. The metrics presented above can be difficult to interpret. In order to make it easier to understand how algorithms perform relative to each other, the image below shows the percentage of users for whom algorithm A (row) has a lower RMSE than algorithm B (column). For example, GRU-P-short has a 94.5% superiority over the Transformer, meaning that for 94.5% of all collections in this benchmark, GRU-P-short can estimate the probability of recall more accurately than the Transformer.
+The metrics presented above can be difficult to interpret. In order to make it easier to understand how algorithms perform relative to each other, the image below shows the percentage of users for whom algorithm A (row) has a lower RMSE than algorithm B (column). For example, GRU-P-short has a 94.5% superiority over the Transformer, meaning that for 94.5% of all collections in this benchmark, GRU-P-short can estimate the probability of recall more accurately than the Transformer.
 
 ![Superiority, 19990](https://github.com/user-attachments/assets/eee84fd8-0820-40ab-a2da-4e309cb8a6c9)
 
@@ -333,7 +334,7 @@ References to things that aren't academic papers:
 
 1. [https://github.com/open-spaced-repetition/srs-benchmark?tab=readme-ov-file#srs-benchmark](https://github.com/open-spaced-repetition/srs-benchmark?tab=readme-ov-file#srs-benchmark)
 2. [https://www.geeksforgeeks.org/auc-roc-curve/](https://www.geeksforgeeks.org/auc-roc-curve/)
-3. [https://huggingface.co/datasets/open-spaced-repetition/FSRS-Anki-20k](https://huggingface.co/datasets/open-spaced-repetition/FSRS-Anki-20k)
+3. [https://huggingface.co/datasets/open-spaced-repetition/anki-revlogs-10k](https://huggingface.co/datasets/open-spaced-repetition/anki-revlogs-10k)
 4. [https://github.com/open-spaced-repetition/fsrs4anki/wiki/The-Metric](https://github.com/open-spaced-repetition/fsrs4anki/wiki/The-Metric)
 5. [https://supermemo.guru/wiki/Algorithm_SM-17](https://supermemo.guru/wiki/Algorithm_SM-17)
 6. [https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VAGUL0](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VAGUL0)
