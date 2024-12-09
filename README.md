@@ -1,4 +1,4 @@
-I write articles about spaced repetition and especially about [FSRS](https://github.com/open-spaced-repetition/fsrs4anki/wiki/ABC-of-FSRS), a modern spaced repetition algorithm used in [Anki](https://apps.ankiweb.net/) and other apps. That's all, end of the intro.
+I write articles about spaced repetition and especially about [FSRS](https://github.com/open-spaced-repetition/fsrs4anki/wiki/ABC-of-FSRS), a modern spaced repetition algorithm used in [Anki](https://apps.ankiweb.net/) and other apps.
 
 The articles are sorted from most important to least important based on 3 factors:
 
