@@ -219,7 +219,7 @@ Unsurprisingly, AVG has an AUC close to 0.5. Since it always outputs a constant,
 It is somewhat surprising that NN-17 has a relatively low AUC, given that it combines the best of both worlds​  -  ​a model of human memory supplemented with a neural network. Granted, the goal  was not to create the perfect algorithm; rather, the goal was to emulate SM-17. <br />
 Jarrett's implementation of Transformer doesn't perform well according to all 3 metrics, so if any neural network experts think, "I bet I can do better!" they are welcome. I think it's probably because each algorithm is only trained for 5 epochs, which is more than enough for FSRS and other simple models, but not enough for complex models.
 
-Let's address GRU-P. As you can see, it outperforms all other algorithms by all three metrics. So you're probably wondering "If predicting R directly is better than predicting an intermediate value first, why not do that?". Here's what happens when you let an algorithm predict R directly.
+Let's address GRU-P (doesn't matter whether we are talking about the -short version or not). As you can see, it outperforms all other algorithms by all three metrics. So you're probably wondering "If predicting R directly is better than predicting an intermediate value first, why not do that?". Here's what happens when you let an algorithm predict R directly.
 
 ![GRU-P curves](https://github.com/user-attachments/assets/3420e64b-8bfb-4533-89f4-77908877af66)
 
