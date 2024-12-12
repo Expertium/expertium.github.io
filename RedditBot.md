@@ -313,7 +313,7 @@ Well, I can make the scraper look for older posts and downvoted posts at the cos
 
 Can I get more data?
 
-I can make the search even more exhaustive and slower to scrape more posts. Also, I can add posts that have absolutely nothing to do with FSRS whatsoever, so help the model learn to better differentiate between relevant and irrelevant posts. After some tweaking, I managed to get around 1300 posts.
+I can make the search even more exhaustive and slower to scrape more posts. Also, I can add posts that have absolutely nothing to do with FSRS whatsoever, to help the model learn to better differentiate between relevant and irrelevant posts. After some tweaking, I managed to get around 1300 posts.
 
 Can I get more data?
 
@@ -333,6 +333,12 @@ This trippled the size of the dataset, from 1,440 texts to 4,320 texts.
 
 **Can I get more data?**
 
+This next technique is kind of my own invention. I haven't seen anything exactly like this, but I have seen some conceptually similer idea. Let's call it "fused examples". Key idea: if two posts have the same label and their combined length, in tokens, is <= the context window of the Transformer (which is 512 tokens in my case), we can smash them together to create a third one. If you combine the text labeled as, say, "Helper Add-on", with another text that is also labeled as "Helper Add-on", then obviously the conbined text should have the same label. Why wouldn't it?
+
+This doesn't work on posts that are too long to fit into the context window after fusion, and also on posts that have 2-3 labels and this combination of labels is unique and doesn't occur anywhere else in the dataset. Last but not least, I have excluded "Null" an "General" posts from this because those categories contain vastly different posts. So only posts with other labels get fused. Because of all that, the overall increase in the number of training examples is much less than 2. 
+
+**Can I get more data?!**
+
 I can take existing texts and randomly swap two adjacent (one comes after the other) sentences. Example:
 
 'I went from having 100 reviews to having 300 reviews every day. I am seeing the same cards over and over again.' -> 'I am seeing the same cards over and over again. I went from having 100 reviews to having 300 reviews every day.'
@@ -351,7 +357,7 @@ I did it for the entire dataset (by "dataset" I mean original + paraphrased), th
 
 ***Can I get more data?!***
 
-This next technique is my own invention, I haven't seen it in literature. I call it "filler sentence injection". First, I write down a bunch of filler sentences, such as "Hello everyone", "Hi", "EDIT: added screenshots", "P.S. English is not my native language", "Help would be appreciated", "What are your thoughts, fellow Anki users?", "I would like to hear from experts", "I'm not 100% sure", etc. These sentences don't change what the text is about. If a text is about learning steps, it will be about learning steps with or without these sentences. If a text is about Easy Days, it will be about Easy Days with or without these sentences, etc. Then I randomly inject one of these sentences inbetween two other sentences, or before the first sentence, or after the last sentence. For the sake of keeping it similar to a text actually written by a human, some filler sentences like "P.S. I love this community!" are only appended at the end, and some, like "Greetings, everyone!" are inserted only in the beginning. Obviously, nobody *starts* their post with P.S.
+This next technique is also my own invention, I haven't seen it in literature. I call it "filler sentence injection". First, I write down a bunch of filler sentences, such as "Hello everyone", "Hi", "EDIT: added screenshots", "P.S. English is not my native language", "Help would be appreciated", "What are your thoughts, fellow Anki users?", "I would like to hear from experts", "I'm not 100% sure", etc. These sentences don't change what the text is about. If a text is about learning steps, it will be about learning steps with or without these sentences. If a text is about Easy Days, it will be about Easy Days with or without these sentences, etc. Then I randomly inject one of these sentences inbetween two other sentences, or before the first sentence, or after the last sentence. For the sake of keeping it similar to a text actually written by a human, some filler sentences like "P.S. I love this community!" are only appended at the end, and some, like "Greetings, everyone!" are inserted only in the beginning. Obviously, nobody *starts* their post with P.S.
 
 I did this three times to obtain three more variations of the dataset (by "dataset" I mean original + paraphrased + original sentence swapped + paraphrased sentence swapped) and it quadrupled the size of the dataset, from 8,640 texts to 34,560 texts.
 
@@ -377,7 +383,7 @@ So to summarize: I rephrased the texts using GPT-4o-mini, I swapped some adjacen
 
 Comparison of different data augmentation methods that I used:
 
-![image](https://github.com/user-attachments/assets/1e0a4326-c9a7-474c-9e9b-d021f455fdf0)
+![image](https://github.com/user-attachments/assets/2e36c670-0b66-4b52-80f2-f869560c1a59)
 
 By "diversity" I mean "difference between the original data and the augmented data".
 
