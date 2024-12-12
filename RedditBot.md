@@ -333,7 +333,7 @@ This trippled the size of the dataset, from 1,440 texts to 4,320 texts.
 
 **Can I get more data?**
 
-This next technique is kind of my own invention. I haven't seen anything exactly like this, but I have seen some conceptually similer idea. Let's call it "fused examples". Key idea: if two posts have the same label and their combined length, in tokens, is <= the context window of the Transformer (which is 512 tokens in my case), we can smash them together to create a third one. If you combine the text labeled as, say, "Helper Add-on", with another text that is also labeled as "Helper Add-on", then obviously the conbined text should have the same label. Why wouldn't it?
+I'm not sure if this technique has a name, so let's call it "fused examples". Key idea: if two posts have the same label and their combined length, in tokens, is <= the context window of the Transformer (which is 512 tokens in my case), we can smash them together to create a third one. If you combine the text labeled as, say, "Helper Add-on", with another text that is also labeled as "Helper Add-on", then obviously the conbined text should have the same label. Why wouldn't it?
 
 This doesn't work on posts that are too long to fit into the context window after fusion, and also on posts that have 2-3 labels and this combination of labels is unique and doesn't occur anywhere else in the dataset. Last but not least, I have excluded "Null" an "General" posts from this because those categories contain vastly different posts. So only posts with other labels get fused. Because of all that, the overall increase in the number of training examples is much less than 2. 
 
