@@ -75,9 +75,11 @@ My initial idea was to just check if the post contains "FSRS", or one of its mis
 
 21)​ Null. Either unrelated to FSRS or there is no reason to send the bot to reply to this person.
 
-And yes, I read each of the 1191 posts and 81 comments and labeled all of them manually.
+And yes, I read each of the 1500 posts and 90 comments and labeled all of them manually.
 
 ![image](https://github.com/user-attachments/assets/41a9a3cb-b1a2-4ae5-82c6-dde776fe1037)
+
+Btw, sometimes I would assing the same post two or three labels simultaneously.
 
 Then I wrote a whole bunch of keywords and anti-keywords. By "anti-keywords" I mean "if this keyword is in the text/title of the post, then it definitely does NOT belong to this category". Of course, I automated a lot of it.
 Right now I have 22 898 keywords in total and 553 anti-keywords. Then I wrote a simple classifier that checks if the post contains a keyword and outputs a label based on that.
