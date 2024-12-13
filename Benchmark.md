@@ -90,7 +90,7 @@ In order to calculate the length of the next interval, FSRS requires the length 
 
 ### General-purpose machine learning algorithms family
 
-7.​ ormer. This neural network architecture has become popular in recent years because of its superior performance in natural language processing. ChatGPT uses this architecture. This implementation uses the SR model.
+7.​ Transformer. This neural network architecture has become popular in recent years because of its superior performance in natural language processing. ChatGPT uses this architecture. This implementation uses the SR model.
 
 8.​ GRU, Gated Recurrent Unit. This neural network architecture is commonly used for time series analysis, such as predicting stock market trends or recognizing human speech. Originally, we used a more complex architecture called LSTM, but GRU performed better with fewer parameters. Both GRU and ormer use the same power forgetting curve as FSRS-4.5 and FSRS-5 to make the comparison more fair. This implementation uses the SR model.
 
