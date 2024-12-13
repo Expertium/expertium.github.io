@@ -79,7 +79,7 @@ And yes, I read each of the 1500 posts and 90 comments and labeled all of them m
 
 ![image](https://github.com/user-attachments/assets/41a9a3cb-b1a2-4ae5-82c6-dde776fe1037)
 
-Btw, sometimes I would assing the same post two or three labels simultaneously.
+Btw, sometimes I would assing the same post two, three or four labels simultaneously.
 
 Then I wrote a whole bunch of keywords and anti-keywords. By "anti-keywords" I mean "if this keyword is in the text/title of the post, then it definitely does NOT belong to this category". Of course, I automated a lot of it.
 Right now I have 22 898 keywords in total and 553 anti-keywords. Then I wrote a simple classifier that checks if the post contains a keyword and outputs a label based on that.
