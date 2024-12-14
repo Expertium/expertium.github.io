@@ -4,12 +4,12 @@ I made [u/FSRS_bot](https://www.reddit.com/user/FSRS_bot/) on Reddit, it helps p
 In this article, I want to talk about all the different things I did to improve it. This isn't super educational and quite technical, though you will learn a thing or two about machine learning.
 I won't be showing my entire code since it's too spaghetti, but I will show some code snippets. If you ever think that my storytelling sounds like a mess, just keep in mind that the reality was even messier and I did 10x more dumb stuff than this article mentions, and everything took 10x longer than you might expect.
 
-If you don't know much about machine learning, this can serve as a (shitty) introduction.
+Also, this is meant to be more like a diary of my journey rather than a guide/textbook for other people, so don't be surprised if this article feels like I was simultaneously playing 5 games of chess while overdosing on 3 different ADHD meds while writing it.
 
 ## Part One: Scraping
 
 So first I needed data aka Reddit posts and comments. I used [PRAW](https://praw.readthedocs.io/en/stable/) for that. A long time ago I used it to make a notifier to respond to posts myself, but quickly realized that it's exhausting.
-I have changed it several times, and I wasn't keeping track of how many posts I had at any given moment, so I will only give the final number (as of 20.11.2024): **1,351 posts and 89 comments, 1,440 training examples in total.** Most of them are from r/Anki, some from r/medicalschoolanki, and a handful of them are from r/AnkiMCAT and a few other subreddits. While the initial plan was to keep only FSRS-related posts, later I added a bunch of other posts for the sake of training my language model on diverse data.
+I have changed it several times, and I wasn't keeping track of how many posts I had at any given moment, so I will only give the final number (as of 20.11.2024): **1,427 posts and 92 comments, 1,519 training examples in total.** Most of them are from r/Anki, some from r/medicalschoolanki, and a handful of them are from r/AnkiMCAT and a few other subreddits. While the initial plan was to keep only FSRS-related posts, later I added a bunch of other posts for the sake of training my language model on diverse data.
 
 The scraping code looks kinda like this:
 
@@ -31,7 +31,7 @@ This is a simplified version. In reality it has a few more checks and I'm not on
 
 ## Part Two: Keyword Matching and the First Classifier
 
-My initial idea was to just check if the post contains "FSRS", or one of its misspellings ("FRS", "FRSRS", "FSES", "FRSR", etc.), and make the bot comment the same generic message. However, I quickly realized that there are different types of questions, and they require personalized answers. So I categorized posts into 21 categories:
+My initial idea was to just check if the post contains "FSRS", or one of its misspellings ("FRS", "FRSRS", "FSES", "FRSR", etc.), and make the bot comment the same generic message. However, I quickly realized that there are different types of questions, and they require personalized answers. So I categorized posts into 22 categories:
 
 1​)​ Desired Retention. A post about choosing the value of desired retention and/or using "Compute minimum recommended retention".
 
@@ -75,20 +75,22 @@ My initial idea was to just check if the post contains "FSRS", or one of its mis
 
 21)​ Null. Either unrelated to FSRS or there is no reason to send the bot to reply to this person.
 
-And yes, I read each of the 1500 posts and 90 comments and labeled all of them manually.
+22) Simulator. A recently added label, since in Anki 24.11 there is now a new FSRS-related thingy, similar to [this](https://ankiweb.net/shared/info/817108664).
+
+And yes, I read each of the 1,427 posts and 92 comments and labeled all of them manually.
 
 ![image](https://github.com/user-attachments/assets/41a9a3cb-b1a2-4ae5-82c6-dde776fe1037)
 
 Btw, sometimes I would assing the same post two, three or four labels simultaneously.
 
 Then I wrote a whole bunch of keywords and anti-keywords. By "anti-keywords" I mean "if this keyword is in the text/title of the post, then it definitely does NOT belong to this category". Of course, I automated a lot of it.
-Right now I have 22 898 keywords in total and 553 anti-keywords. Then I wrote a simple classifier that checks if the post contains a keyword and outputs a label based on that.
+Right now I have 23,905 keywords in total and 476 anti-keywords. Then I wrote a simple classifier that checks if the post contains a keyword and outputs a label based on that.
 
 But here's the thing - what if a post has several keywords that belong to several diferent categories? Then it depends on which keyword is checked for first. For example, if a post contains "desired retention" and "10m", if the classifier checks for Desired Retention keywords first, the output will be "Desired Retention", but if the classifier checks for Learning Steps keywords first, then the output will be "Learning Steps".
 
 So in order to maximize the accuracy, I need to check for keywords in a specific order. I had to write my own evolutionary optimizer to do this:
 
-1​)​ Randomly generate a list of numbers that tell the classifier the order in which to check the keywords. Here's what the default ones looks like: `[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]`. This tells the classifier "First, check the keywords that are related to class 0 (in Python, indexing starts from 0). Then check keywords that are related to class 2, then to class 3, and so on". The goal is to find the order of numbers that maximizes accuracy aka number of posts where the output label is the same as the true label.
+1​)​ Randomly generate a list of numbers that tell the classifier the order in which to check the keywords. Here's what the default ones looks like: `[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]`. This tells the classifier "First, check the keywords that are related to class 0 (in Python, indexing starts from 0). Then check keywords that are related to class 2, then to class 3, and so on". The goal is to find the order of numbers that maximizes accuracy aka number of posts where the output label is the same as the true label.
 
 2​)​ The output label is compared with the true label to determine the accuracy. Then each list ("specimen" or "members") with numbers ("genotype" where each nubmer is a "gene") will have it's own value of accuracy ("fitness").
 
@@ -112,7 +114,7 @@ We want to train a machine learning algorithm on text. Machine learning algorith
 
 (standardization.png)
 
-So after encoding a post might look like this: `[0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.24043715846994534]`. All numbers except for the last one are counts of keywords. For example, 2 means that the post has two keywords related to some class, like Desired Retention, Optimization, Learning Steps, etc. The last one is standardized length.
+So after encoding a post might look like this: `[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.29426751592356687, 0.6420765027322405]`. All numbers except for the last two are counts of keywords. The last two are the relative position of the first FSRS-related keyword and the [standardized](https://www.geeksforgeeks.org/what-is-standardization-in-machine-learning/) length of the post. I thought that maybe whether the first relevant keyword appears at the beginning of the post or at the end could maybe be helpful.
 
 This is obviously very lossy - the algorithm won't be able to analyze any information about individual words and phrases, all of the semantic nuances are lost. Still, this should be an improvement compared to the hand-made classifier.
 
@@ -130,9 +132,13 @@ The problem is that the model on the right won't **generalize** well. Generaliza
 
 2​)​ Early stopping. It's perfectly simple - train the model on the trainining dataset (I will call it "train set") and keep an eye out for its performance on the testing dataset (test set). ![Early stopping](https://github.com/user-attachments/assets/d98cecf1-a56d-4156-be0d-db191805250f)
 
-Once the error on the test loss stops decreasing, stop the training. In practice the curves aren't so smoothed and are more jagged, so we don't stop training immediately and keep it for a few more epochs. An "epoch" is one full pass over the entire dataset. For example, in Anki FSRS is trained with 5 epochs, meaning that it will go over the entire dataset 5 times. More complex models require more epochs to train. This is my preferred method because it's simple and doesn't require a lot of fine-tuning. Typically, around 70-80% of all data is used for training and 20-30% is used for testing. I do 70:30.
+Once the error on the test loss stops decreasing, stop the training. In practice the curves aren't so smoothed and are more jagged, so we don't stop training immediately and keep it for a few more epochs. An "epoch" is one full pass over the entire dataset. For example, in Anki FSRS is trained with 5 epochs, meaning that it will go over the entire dataset 5 times. More complex models require more epochs to train. This is my preferred method because it's simple and doesn't require a lot of fine-tuning. Typically, around 70-80% of all data is used for training and 20-30% is used for testing. I do 70:30. 70% goes into the training set, the rest goes into the test set. I use 5 folds, meaning that I create 5 different training sets and 5 different test sets. This allows me to more accurately test the model. Slightly simplified diagram:
 
-3​)​ Dropout. It's basically giving your model some brain damage. During training you randomly set some fraction of parameters to 0. This makes it so that the model cannot learn to rely on specific parameters too much. This requires tuning the percentage of parameters that are randomly set to 0, typically between 10% and 50%.
+![Transformer training split diagram](https://github.com/user-attachments/assets/56729d7b-ee0b-4684-b258-5289a06b4ece)
+
+This means that I effectively have to train the model 5 times.
+
+3​)​ Dropout. It's basically giving your model some brain damage. During training you randomly set some fraction of parameters to 0. This makes it so that the model cannot learn to rely on specific parameters too much. This requires tuning the percentage of parameters that are randomly set to 0, typically between 10% and 50%, though recent studies suggest that 50% is excessive.
 
 4)​ L2/L1 regularization. Ok, this one is a bit complicated. In neural networks, if a parameter is very large (ignoring the sign, just the magnitude), it's probably a sign of overfitting. We can prevent it by explicitly adding a term for parameter magnitude to the neural network's **loss function** - the stuff that it needs to minimize:
 
@@ -305,19 +311,19 @@ The overall vocabulary size of my Transformer is currently 1984 tokens. For ~~ma
 
 ## Part Six: Can I Get More Data?
 
-NLP models require a lot of data, but at the time I only had around 650 posts scraped.
+NLP models require a lot of data, but at the time I only had around 600-700 posts scraped.
 
 Can I get more data?
 
-Well, I can make the scraper look for older posts and downvoted posts at the cost of making it slower. That increased the number to around 850-950 (as I said, I wasn't keeping track of everything precisely).
+Well, I can make the scraper look for older posts and downvoted posts at the cost of making it slower. That increased the number to around 800-1000 (as I said, I wasn't keeping track of everything precisely).
 
 Can I get more data?
 
-I can make the search even more exhaustive and slower to scrape more posts. Also, I can add posts that have absolutely nothing to do with FSRS whatsoever, to help the model learn to better differentiate between relevant and irrelevant posts. After some tweaking, I managed to get around 1300 posts.
+I can make the search even more exhaustive and slower to scrape more posts. Also, I can add posts that have absolutely nothing to do with FSRS whatsoever, to help the model learn to better differentiate between relevant and irrelevant posts. After some tweaking, I managed to get around 1400-1450 posts.
 
 Can I get more data?
 
-I guess it's time to scrape comments now. However, most comments aren't useful since there are too many comments where the person is explaining FSRS rather than asking a question about FSRS. I need questions, not answers. So I only labeled 89 comments out of several thousands.
+I guess it's time to scrape comments now. However, most comments aren't useful since there are too many comments where the person is explaining FSRS rather than asking a question about FSRS. I need questions, not answers. So I only labeled 92 comments out of several thousands.
 
 *Can I get more data?*
 
@@ -325,17 +331,21 @@ I can't get any more data...or can I? It's time to learn about another important
 
 ![Data Augmentation kitten](https://github.com/user-attachments/assets/91a05e74-918c-4255-9796-be22b9fb8aff)
 
-Doing this with text is, unfortunately, much harder. But thankfully, large language models exist! So in order to make more data, I fed all 1,440 texts to GPT-4o-mini and asked it to rephrase them for me. Example:
+Doing this with text is, unfortunately, much harder. But thankfully, large language models exist! So in order to make more data, I fed all 1,519 texts to GPT-4o-mini and asked it to rephrase them for me. Example:
 
 ![GPT-4o-mini rephrasing](https://github.com/user-attachments/assets/e78b49ba-1e5a-4be5-84f5-6b6f91f03b3f)
 
-This trippled the size of the dataset, from 1,440 texts to 4,320 texts.
+I will be using 70% of the dataset for training and 30% for evaluation, so only 0.7*1519=1,063 texts will be used for training.
+
+Rephrasing trippled the size of the training set, from 1,063 texts to 3,189 texts.
 
 **Can I get more data?**
 
-I'm not sure if this technique has a name, so let's call it "fused examples". Key idea: if two posts have the same label and their combined length, in tokens, is <= the context window of the Transformer (which is 512 tokens in my case), we can smash them together to create a third one. If you combine the text labeled as, say, "Helper Add-on", with another text that is also labeled as "Helper Add-on", then obviously the conbined text should have the same label. Why wouldn't it?
+I'm not sure if this technique has a name, so let's call it "fusing". Key idea: if two posts have the same label and their combined length, in tokens, is <= the context window of the Transformer (which is 512 tokens in my case), we can smash them together to create a third one. If you combine the text labeled as, say, "Helper Add-on", with another text that is also labeled as "Helper Add-on", then obviously the combined text should have the same label. Why wouldn't it?
 
-This doesn't work on posts that are too long to fit into the context window after fusion, and also on posts that have 2-3 labels and this combination of labels is unique and doesn't occur anywhere else in the dataset. Last but not least, I have excluded "Null" an "General" posts from this because those categories contain vastly different posts. So only posts with other labels get fused. Because of all that, the overall increase in the number of training examples is much less than 2. Also, this is the only data augmentation technique that I use only on some classes and not on others, so it doesn't preserve the ratio of instances of different classes and makes some classes (not "General" and not "Null") more common than before.
+This doesn't work on posts that are too long to fit into the Transformer's context window after being fused with other posts, and also on posts that have 2-3 labels and this combination of labels is unique and doesn't occur anywhere else in the dataset. Last but not least, I have excluded "Null" an "General" posts from this because those categories contain vastly different posts. So only texts with other labels get fused. Because of all that, the overall increase in the number of training examples is much less than 2. Also, this is the only data augmentation technique that I use only on some classes and not on others, so it doesn't preserve the ratio of instances of different classes and makes some classes (not "General" and not "Null") more common than before.
+
+Fusing texts increased the size of the training set by roughly x1.39, from 3,189 texts to 4,425 texts.
 
 **Can I get more data?!**
 
@@ -343,7 +353,7 @@ I can take existing texts and randomly swap two adjacent (one comes after the ot
 
 'I went from having 100 reviews to having 300 reviews every day. I am seeing the same cards over and over again.' -> 'I am seeing the same cards over and over again. I went from having 100 reviews to having 300 reviews every day.'
 
-Initially, I tried writing soem really complicated regex stuff, but then I realized that I just do this:
+Initially, I tried writing some really complicated regex stuff, but then I realized that I just do this:
 
 ```python
 list_of_sentences = nltk.sent_tokenize(text)
@@ -353,13 +363,13 @@ list_of_sentences = [(x + ' ') if (x != list_of_sentences[-1]) else x for x in l
 
 I made it so that if a text has 2-5 sentences, two randomly chosen adjacent sentences would be swapped. If the text has >5 sentences, four sentences (two pairs) will be swapped.
 
-I did it for the entire dataset (by "dataset" I mean original + paraphrased), this doubled the size of the dataset, from 4,320 texts to 8,640 texts. Sure, short texts with just one sentence are duplicated, by meh, whatever.
+Sentence swapping doubled the size of the dataset, from 4,4425 texts to 8,850 texts. Sure, short texts with just one sentence are duplicated, by meh, whatever.
 
 ***Can I get more data?!***
 
 This next technique is my own invention, I haven't seen it in literature. I call it "filler sentence injection". First, I write down a bunch of filler sentences, such as "Hello everyone", "Hi", "EDIT: added screenshots", "P.S. English is not my native language", "Help would be appreciated", "What are your thoughts, fellow Anki users?", "I would like to hear from experts", "I'm not 100% sure", etc. These sentences don't change what the text is about. If a text is about learning steps, it will be about learning steps with or without these sentences. If a text is about Easy Days, it will be about Easy Days with or without these sentences, etc. Then I randomly inject one of these sentences inbetween two other sentences, or before the first sentence, or after the last sentence. For the sake of keeping it similar to a text actually written by a human, some filler sentences like "P.S. I love this community!" are only appended at the end, and some, like "Greetings, everyone!" are inserted only in the beginning. Obviously, nobody *starts* their post with P.S.
 
-I did this three times to obtain three more variations of the dataset (by "dataset" I mean original + paraphrased + original sentence swapped + paraphrased sentence swapped) and it quadrupled the size of the dataset, from 8,640 texts to 34,560 texts.
+I did three rounds of filler injection to obtain three more variations of the dataset and it quadrupled the size of the dataset, from 8,850 texts to 35,400 texts.
 
 <ins>***CAN I GET MORE DATA?!***</ins>
 
@@ -375,20 +385,21 @@ Then for each word in the dataset I measured its distance to each other word to 
 
 Then I assigned a 4.8% probability to 'index of a valid token -> index of "unk"' and a 1.7% probability to 'index of a valid token -> index of a valid token'.
 That's a total 6.5% probability of a typo *per token*, or approximately 99.88% probability of at least one typo per 100 tokens.
-Then all I had to do was just run the randomizer 4 times to create 4 more variations of the dataset (by "dataset" I mean original + original sentence swapped + original with fillers + original sentence swapped with fillers +...). This brought the total number of texts to **138,240**.
 
-So to summarize: I rephrased the texts using GPT-4o-mini, I swapped some adjacent sentences, I added filler sentences, I simulated typos that turn valid tokens into crap and I simulated typos that turn valid tokens into other valid tokens. This increased the total amount of data from 1,440 examples to 138,240; x96 increase! Since I'm using 70% of data for training, the real number of training examples is 0.7*138240=96,768. Also, since I'm using 5 folds, the 70% of data in one fold is not the same data as in the other fold. Each fold contains different 70% (and different 30% for the test set) of the data. The test set consists of non-augmented, original texts.
+Then all I had to do was just run the randomizer 4 times to create 4 more variations of the train set. This brought the total number of texts in the training set to **141,600**, 133 times more than without data augmentation!
 
-![image](https://github.com/user-attachments/assets/0dcfaf4d-c921-4ab3-9cbc-18a589bd23da)
+So to summarize: I rephrased the texts using GPT-4o-mini, I combined some texts to create new ones, I swapped some adjacent sentences, I added filler sentences, and finally I simulated typos that turn valid tokens into crap as well as typos that turn valid tokens into other valid tokens. The test set consists of non-augmented, original texts.
+
+![image](https://github.com/user-attachments/assets/159674f7-d7fe-46a8-9590-88ba2ac77205)
 
 Comparison of different data augmentation methods that I used:
 
-![image](https://github.com/user-attachments/assets/2e36c670-0b66-4b52-80f2-f869560c1a59)
+![image](https://github.com/user-attachments/assets/56baa708-9c1b-4552-8738-7295d48bc6b9)
 
 By "diversity" I mean "difference between the original data and the augmented data".
 
 
-**IMPORTANT**: when doing data augmentation, make sure that the test set doesn't have any variations of texts that are in the train set, or else the model will display unrealistically good results on the test set only to shit itself in real life. In other words, if there are N variations of text X, make sure that **all** N variations stay in the train set and **none** of them are in the test set.
+**IMPORTANT**: when doing data augmentation, make sure that the test set doesn't have any variations of texts that are in the train set, or else the model will display unrealistically good results on the test set only to shit itself in real life. It's called data leaking. In other words, if there are N variations of text X, make sure that **all** N variations stay in the train set and **none** of them are in the test set.
 
 ___
 ### [←Return to homepage](https://expertium.github.io/)
