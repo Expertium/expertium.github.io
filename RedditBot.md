@@ -75,7 +75,7 @@ My initial idea was to just check if the post contains "FSRS", or one of its mis
 
 21)​ Null. Either unrelated to FSRS or there is no reason to send the bot to reply to this person.
 
-22) Simulator. A recently added label, since in Anki 24.11 there is now a new FSRS-related thingy, similar to [this](https://ankiweb.net/shared/info/817108664).
+22)​ Simulator. A recently added label, since in Anki 24.11 there is now a new FSRS-related thingy, similar to [this](https://ankiweb.net/shared/info/817108664).
 
 And yes, I read each of the 1,427 posts and 92 comments and labeled all of them manually.
 
@@ -83,8 +83,9 @@ And yes, I read each of the 1,427 posts and 92 comments and labeled all of them 
 
 Btw, sometimes I would assing the same post two, three or four labels simultaneously.
 
-Then I wrote a whole bunch of keywords and anti-keywords. By "anti-keywords" I mean "if this keyword is in the text/title of the post, then it definitely does NOT belong to this category". Of course, I automated a lot of it.
-Right now I have 23,905 keywords in total and 476 anti-keywords. Then I wrote a simple classifier that checks if the post contains a keyword and outputs a label based on that.
+Then I wrote a whole bunch of keywords and anti-keywords. By "anti-keywords" I mean "if this keyword is in the text/title of the post, then it definitely does NOT belong to this category". Of course, I automated a lot of it. Right now I have over 20,0005 keywords in total.
+
+Then I wrote a simple classifier that checks if the post contains a keyword and outputs a label based on that.
 
 But here's the thing - what if a post has several keywords that belong to several diferent categories? Then it depends on which keyword is checked for first. For example, if a post contains "desired retention" and "10m", if the classifier checks for Desired Retention keywords first, the output will be "Desired Retention", but if the classifier checks for Learning Steps keywords first, then the output will be "Learning Steps".
 
