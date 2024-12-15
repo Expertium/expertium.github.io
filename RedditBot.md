@@ -312,7 +312,7 @@ Now all that's left is to assign an integer to every word. It doesn't really mat
 
 3​)​ If a token appears <4 times in the entire dataset + "GPT'ed" dataset (more about that later), it will be assigned a special integer reserved for obscure crap and typos ("unk"). A token must appear at least 4 times across three variations of the dataset to warrant having it's own index.
 
-The overall vocabulary size of my Transformer is currently 6512 tokens. For ~~magical~~ programming reasons, I made it a multiple of 8 (as well as a few of other things, like text length and some hyperparameters). Minus 0 because it's for padding, minus 6511 because it's for obscure crap and typos. 
+The overall vocabulary size of my Transformer is currently 6448 unique tokens. For ~~magical~~ programming reasons, I made it a multiple of 8 (as well as a few of other things, like text length and some hyperparameters). Minus 0 because it's for padding, minus 6511 because it's for obscure crap and typos. 
 
 ## Part Six: Can I Get More Data?
 
