@@ -114,7 +114,11 @@ We want to train a machine learning algorithm on text. Machine learning algorith
 
 (standardization.png)
 
-So after encoding a post might look like this: `[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.29426751592356687, 0.6420765027322405]`. All numbers except for the last two are counts of keywords. The last two are the relative position of the first FSRS-related keyword and the [standardized](https://www.geeksforgeeks.org/what-is-standardization-in-machine-learning/) length of the post. I thought that maybe whether the first relevant keyword appears at the beginning of the post or at the end could maybe be helpful.
+So after encoding a post might look like this:
+
+`[1.0, 0.0, 0.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.03288490284005979, 0.3251366120218579]`
+
+All numbers except for the last two are counts of keywords. The last two are the relative position of the first FSRS-related keyword and the [standardized](https://www.geeksforgeeks.org/what-is-standardization-in-machine-learning/) length of the post. I thought that maybe whether the first relevant keyword appears at the beginning of the post or at the end could maybe be helpful.
 
 This is obviously very lossy - the algorithm won't be able to analyze any information about individual words and phrases, all of the semantic nuances are lost. Still, this should be an improvement compared to the hand-made classifier.
 
