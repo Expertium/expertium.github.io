@@ -350,7 +350,7 @@ I'm not sure if this technique has a name, so let's call it "fusing". Key idea: 
 
 This doesn't work on posts that are too long to fit into the Transformer's context window after being fused with other posts, and also on posts that have 2-3 labels and this combination of labels is unique and doesn't occur anywhere else in the dataset. Last but not least, I have excluded "Null" an "General" posts from this because those categories contain vastly different posts. So only texts with other labels get fused. Because of all that, the overall increase in the number of training examples is much less than 2. Also, this is the only data augmentation technique that I use only on some classes and not on others, so it doesn't preserve the ratio of instances of different classes and makes some classes (not "General" and not "Null") more common than before.
 
-Fusing texts increased the size of the training set by roughly x1.41, from 3,189 texts to 4,482 texts.
+Fusing texts increased the size of the training set by roughly x1.40, from 3,189 texts to 4,467 texts.
 
 **Can I get more data?!**
 
@@ -368,13 +368,13 @@ list_of_sentences = [(x + ' ') if (x != list_of_sentences[-1]) else x for x in l
 
 I made it so that if a text has 2-5 sentences, two randomly chosen adjacent sentences would be swapped. If the text has >5 sentences, four sentences (two pairs) will be swapped.
 
-Sentence swapping doubled the size of the dataset, from 4,482 texts to 8,964 texts. Sure, short texts with just one sentence are duplicated, by meh, whatever.
+Sentence swapping doubled the size of the dataset, from 4,467 texts to 8,934 texts. Sure, short texts with just one sentence are duplicated, by meh, whatever.
 
 ***Can I get more data?!***
 
 This next technique is my own invention, I haven't seen it in literature. I call it "filler sentence injection". First, I write down a bunch of filler sentences, such as "Hello everyone", "Hi", "EDIT: added screenshots", "P.S. English is not my native language", "Help would be appreciated", "What are your thoughts, fellow Anki users?", "I would like to hear from experts", "I'm not 100% sure", etc. These sentences don't change what the text is about. If a text is about learning steps, it will be about learning steps with or without these sentences. If a text is about Easy Days, it will be about Easy Days with or without these sentences, etc. Then I randomly inject one of these sentences inbetween two other sentences, or before the first sentence, or after the last sentence. For the sake of keeping it similar to a text actually written by a human, some filler sentences like "P.S. I love this community!" are only appended at the end, and some, like "Greetings, everyone!" are inserted only in the beginning. Obviously, nobody *starts* their post with P.S.
 
-I did three rounds of filler injection to obtain three more variations of the dataset and it quadrupled the size of the dataset, from 8,964 texts to 35,856 texts.
+I did three rounds of filler injection to obtain three more variations of the dataset and it quadrupled the size of the dataset, from 8,934 texts to 35,736 texts.
 
 <ins>***CAN I GET MORE DATA?!***</ins>
 
@@ -391,7 +391,7 @@ Then for each word in the dataset I measured its distance to each other word to 
 Then I assigned a 4.8% probability to 'index of a valid token -> index of "unk"' and a 1.7% probability to 'index of a valid token -> index of a valid token'.
 That's a total 6.5% probability of a typo *per token*, or approximately 99.88% probability of at least one typo per 100 tokens.
 
-Then all I had to do was just run the randomizer 4 times to create 4 more variations of the train set. This brought the total number of texts in the training set to **143,424**, 135 times more than without data augmentation!
+Then all I had to do was just run the randomizer 4 times to create 4 more variations of the train set. This brought the total number of texts in the training set to **142,944**, 135 times more than without data augmentation!
 
 So to summarize: I rephrased the texts using GPT-4o-mini, I combined some texts to create new ones, I swapped some adjacent sentences, I added filler sentences, and finally I simulated typos that turn valid tokens into crap as well as typos that turn valid tokens into other valid tokens. The test set consists of non-augmented, original texts.
 
