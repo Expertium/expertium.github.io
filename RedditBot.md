@@ -395,7 +395,7 @@ Then all I had to do was just run the randomizer 4 times to create 4 more variat
 
 So to summarize: I rephrased the texts using GPT-4o-mini, I combined some texts to create new ones, I swapped some adjacent sentences, I added filler sentences, and finally I simulated typos that turn valid tokens into crap as well as typos that turn valid tokens into other valid tokens. This is all for the train set, the test set consists of non-augmented, original texts.
 
-![image](https://github.com/user-attachments/assets/159674f7-d7fe-46a8-9590-88ba2ac77205)
+![image](https://github.com/user-attachments/assets/034adb93-ff26-40e3-9f6f-16389e692bdf)
 
 Comparison of different data augmentation methods that I used:
 
