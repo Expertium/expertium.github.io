@@ -393,6 +393,8 @@ That's a total 6.5% probability of a typo *per token*, or approximately 99.88% p
 
 Then all I had to do was just run the randomizer 4 times to create 4 more variations of the train set. This brought the total number of texts in the training set to **140,800**, 133 times more than without data augmentation!
 
+The total number of tokens for training is around 36 million. For comparison, that's around 14 thousand times less than what GPT-3 was trained on, and around 374 thousand times less than what GPT-4 was trained on. Granted, they do different things - classifying entire texts vs predicitng the next token - but I just wanted to give you a sense of scale.
+
 So to summarize: I rephrased the texts using GPT-4o-mini, I combined some texts to create new ones, I swapped some adjacent sentences, I added filler sentences, and finally I simulated typos that turn valid tokens into crap as well as typos that turn valid tokens into other valid tokens. This is all for the train set, the test set consists of non-augmented, original texts.
 
 ![image](https://github.com/user-attachments/assets/034adb93-ff26-40e3-9f6f-16389e692bdf)
