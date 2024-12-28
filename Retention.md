@@ -16,7 +16,7 @@ Basically, desired retention is what you want, and true retention is what you ge
 
 I'm sure that to many people this still sounds like I'm just juggling words around, so here's an image.
 
-![Desired retention](https://github.com/user-attachments/assets/44508803-458f-44b8-ae0d-c8525dc7148c)
+![Figure_1](https://github.com/user-attachments/assets/e4b3e005-1a94-4cdf-b895-948f2fed8d15)
 
 On the x axis, we have time in days. On the y axis, we have the probability of recalling a card, which decreases as time passes. If the probability is x%, it means that given an infinitely large number of cards, you would successfully recall x% of those cards, and thus your retention would be x%.
 
@@ -32,7 +32,7 @@ It just does things the hard way - it goes over every single card in your deck/c
 
 Finally, here's the an important graph:
 
-![Average retention vs Desired retention](https://github.com/user-attachments/assets/63126764-0564-4f9e-90ed-a26a734e1193)
+![Figure_2](https://github.com/user-attachments/assets/410dc5d6-0477-4940-989e-79ec8794ae81)
 
 This graph shows you how average retrievability depends on desired retention, in theory. For example, if your desired retention is 90%, you will remember about 94.7% of all your cards. Again, since FSRS may or may not be accurate for you, if you set your desired retention to 90%, your ~~average predicted retention~~ average retrievability in Stats isn't necessarily going to be exactly 94.7%.
 
