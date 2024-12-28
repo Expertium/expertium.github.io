@@ -141,7 +141,7 @@ Once the error on the test loss stops decreasing, stop the training. In practice
 
 Simplified diagram:
 
-![Transformer training split diagram](https://github.com/user-attachments/assets/5ec60f7e-6352-4a77-b401-49f990c749f3)
+![Transformer training split diagram](https://github.com/user-attachments/assets/e25d709b-e12c-472e-a7f3-d73f6cecd6d2)
 
 "Simplified" because in reality the red and blue bars would look like a glitched TV due to randomization.
 
