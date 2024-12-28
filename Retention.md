@@ -28,6 +28,8 @@ Alright, so that's the theory. But what does FSRS actually do in practice in ord
 
 ![FSRS average retention](https://github.com/user-attachments/assets/cf4f5cb0-d049-400e-97b4-dc5ba14b0df1)
 
+(average predicted retention was removed from the add-on, so ignore that part of the image)
+
 It just does things the hard way - it goes over every single card in your deck/collection, records the current probability of recalling that card, then calculates a simple arithmetic average of those values. If FSRS is accurate, this number will be accurate as well. If FSRS is inaccurate, this number will also be inaccurate.
 
 Finally, here's the an important graph:
