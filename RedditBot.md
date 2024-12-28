@@ -4,7 +4,7 @@ I made [u/FSRS_bot](https://www.reddit.com/user/FSRS_bot/) on Reddit, it helps p
 In this article, I want to talk about all the different things I did to improve it. This isn't super educational and quite technical, though you will learn a thing or two about machine learning.
 I won't be showing my entire code since it's too spaghetti, but I will show some code snippets. If you ever think that my storytelling sounds like a mess, just keep in mind that the reality was even messier and I did 10x more dumb stuff than this article mentions, and everything took 10x longer than you might expect.
 
-Also, this is meant to be more like a diary of my journey rather than a guide/textbook for other people, so don't be surprised if this article feels like I was simultaneously playing 5 games of chess while overdosing on 3 different ADHD meds while writing it.
+Also, this is meant to be more like a diary of my journey rather than a guide/textbook for other people, so don't be surprised if this article feels like I was simultaneously playing 5 games of chess and overdosing on 3 different ADHD meds while writing it.
 
 ## Part One: Scraping
 
