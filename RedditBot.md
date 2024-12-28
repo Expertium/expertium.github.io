@@ -137,11 +137,13 @@ The problem is that the model on the right won't **generalize** well. Generaliza
 
 2​)​ Early stopping. It's perfectly simple - train the model on the trainining dataset (I will call it "train set") and keep an eye out for its performance on the testing dataset (test set). ![Early stopping](https://github.com/user-attachments/assets/d98cecf1-a56d-4156-be0d-db191805250f)
 
-Once the error on the test loss stops decreasing, stop the training. In practice the curves aren't so smoothed and are more jagged, so we don't stop training immediately and keep it for a few more epochs. An "epoch" is one full pass over the entire dataset. For example, in Anki FSRS is trained with 5 epochs, meaning that it will go over the entire dataset 5 times. More complex models require more epochs to train. This is my preferred method because it's simple and doesn't require a lot of fine-tuning. Typically, around 70-80% of all data is used for training and 20-30% is used for testing. I do 70:30. 70% goes into the training set, the rest goes into the test set. I use 5 folds, meaning that I create 5 different training sets and 5 different test sets. This allows me to more accurately test the model. Slightly simplified diagram:
+Once the error on the test loss stops decreasing, stop the training. In practice the curves aren't so smoothed and are more jagged, so we don't stop training immediately and keep it for a few more epochs. An "epoch" is one full pass over the entire dataset. For example, in Anki FSRS is trained with 5 epochs, meaning that it will go over the entire dataset 5 times. More complex models require more epochs to train. This is my preferred method because it's simple and doesn't require a lot of fine-tuning. Typically, around 70-80% of all data is used for training and 20-30% is used for testing. I do 50:25:25. 50% goes into the training set, 25% goes into the test set, and 25% goes into the validation set. I'll explain why I need thatl ast one later. I use 5 folds, meaning that I create 5 different training sets and 5 different test sets. This allows me to more accurately test the model, but it also means that I effectively have to train the model 5 times.
 
-![Transformer training split diagram](https://github.com/user-attachments/assets/56729d7b-ee0b-4684-b258-5289a06b4ece)
+Simplified diagram:
 
-This means that I effectively have to train the model 5 times.
+![Transformer training split diagram](https://github.com/user-attachments/assets/5ec60f7e-6352-4a77-b401-49f990c749f3)
+
+"Simplified" because in reality the red and blue bars would look like a glitched TV due to randomization.
 
 3​)​ Dropout. It's basically giving your model some brain damage. During training you randomly set some fraction of parameters to 0. This makes it so that the model cannot learn to rely on specific parameters too much. This requires tuning the percentage of parameters that are randomly set to 0, typically between 10% and 50%, though recent studies suggest that 50% is excessive.
 
