@@ -22,7 +22,7 @@ I decided to put together every single reason that I could think of, or that I h
 
 10)​ Most people don't even experiment with different learning techniques in the first place. Most people do A not because they have tried A, B, C, D, etc. and made a choice after comparing all available options.
 
-11)​ No "virality". A flashcard app that you use alone (unless someoen is looking over your shoulder, lol) and that doesn't have any achievements (like Steam) and no leaderboard (add-ons don't count). That's about as far as you can get from an app that can go viral on social media.
+11)​ No "virality". A flashcard app that you use alone (unless someone is looking over your shoulder, lol) and that doesn't have any achievements (like Steam) and no leaderboard (add-ons don't count). That's about as far as you can get from an app that can go viral on social media.
 
 12)​ Spaced repetition (SR for short) is not used in schools/colleges, so it's up to you to integrate SR into your learning routine as opposed to having a routine that already has SR in it.
 
