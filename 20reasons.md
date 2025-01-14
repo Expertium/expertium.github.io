@@ -1,6 +1,6 @@
 # 20 reasons why Anki isn't popular
 
-I decided to put together every single reason that I could think of or have heard from someone else. If a reason is not on this list, you are probably the first person to ever think of it.
+I decided to put together every single reason that I could think of, or that I had heard from someone else. If a reason is not on this list, you are probably the first person to think of it.
 
 1​)​ Active recall. It forces you to retrieve information, which strengthens memory. But it's mentally taxing. Mental effort feels uncomfortable and people naturally avoid it. Speaking of which, I recommend reading "Thinking, Fast and Slow" by Daniel Kahneman, he talks a lot about it.
 
