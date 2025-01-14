@@ -15,8 +15,9 @@ About Anki, FSRS and spaced repetition:
 5. [Let's get learning steps wrong!](/Learning_Steps.md) It's much easier than you think.
 6. [A short analysis of how review time is related to answer buttons](/Buttons.md). Some wonder, "Do people tend to think longer before pressing Again than before pressing Good?". In this article, I answer that question. Spoiler: yes.<br/> You won't find this information anywhere else; I'm 100% sure that I am the only person on the planet who has analyzed the [Anki 20k dataset](https://huggingface.co/datasets/open-spaced-repetition/FSRS-Anki-20k) to figure out how button usage of Anki users is related to their review times.
 7. [Abridged history of spaced repetition](/History.md).
-8. [Should you lower your maximum interval?](/Max_Interval.md) 
-9. [Mass adoption and the perfect UI](/Perfect_UI.md). Can FSRS be easy to use? Yes. But first, we'll need to change ~~some~~ a lot of things.
+8. [Should you lower your maximum interval?](/Max_Interval.md)
+9. [20 reasons why Anki isn't popular](/20reasons.md).
+10. [Mass adoption and the perfect UI](/Perfect_UI.md). Can FSRS be easy to use? Yes. But first, we'll need to change ~~some~~ a lot of things.
 
 About other things:
 
