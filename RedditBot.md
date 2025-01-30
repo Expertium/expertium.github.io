@@ -336,9 +336,9 @@ I guess it's time to scrape comments now. However, most comments aren't useful s
 
 I can't get any more data...or can I? It's time to learn about another important concept: **data augmentation**. By taking the original data and tweaking it, we can create more training examples and make the neural net robust to relatively small differences that wouldn't throw a human off. Here are some examples of what is used in computer vision tasks:
 
-![Data Augmentation kitten](https://github.com/user-attachments/assets/91a05e74-918c-4255-9796-be22b9fb8aff)
+![Uploading Data Augmentation kitten v1.1.png…]()
 
-Doing this with text is, unfortunately, much harder. But thankfully, large language models exist! So in order to make more data, I fed all 1,519 texts to GPT-4o-mini and asked it to rephrase them for me. Example:
+Of course, the techniques used for text are different from those used for images. The first data augmentation technique that is used is rephrasing using LLMs, I fed all 1,519 texts to GPT-4o-mini and asked it to rephrase them for me. Example:
 
 ![GPT-4o-mini rephrasing](https://github.com/user-attachments/assets/e78b49ba-1e5a-4be5-84f5-6b6f91f03b3f)
 
