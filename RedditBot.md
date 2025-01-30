@@ -362,7 +362,7 @@ I can take existing texts and randomly swap two adjacent (one comes after the ot
 
 'I went from having 100 reviews to having 300 reviews every day. I am seeing the same cards over and over again.' -> 'I am seeing the same cards over and over again. I went from having 100 reviews to having 300 reviews every day.'
 
-Initially, I tried writing some really complicated regex stuff, but then I realized that I just do this:
+Initially, I tried writing some really complicated regex stuff, but then I realized that I can just do this:
 
 ```python
 list_of_sentences = nltk.sent_tokenize(text)
