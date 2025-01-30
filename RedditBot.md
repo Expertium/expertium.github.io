@@ -350,9 +350,11 @@ Rephrasing trippled the size of the training set, from 1,063 texts to 3,189 text
 
 I'm not sure if this technique has a name, so let's call it "fusing". Key idea: if two posts have the same label and their combined length, in tokens, is <= the context window of the Transformer (which is 512 tokens in my case), we can smash them together to create a third one. If you combine the text labeled as, say, "Helper Add-on", with another text that is also labeled as "Helper Add-on", then obviously the combined text should have the same label. Why wouldn't it?
 
-This doesn't work on posts that are too long to fit into the Transformer's context window after being fused with other posts, and also on posts that have 2-3 labels and this combination of labels is unique and doesn't occur anywhere else in the dataset. Last but not least, I have excluded "Null" an "General" posts from this because those categories contain vastly different posts. So only texts with other labels get fused. Because of all that, the overall increase in the number of training examples is much less than 2. Also, this is the only data augmentation technique that I use only on some classes and not on others, so it doesn't preserve the ratio of instances of different classes and makes some classes (not "General" and not "Null") more common than before.
+From a human perspective, this can result in posts where it looks like the first part was written by one person with one issue, and the second part was written by a different person with a different issue. Still, I expect it to be useful as an augmentation technique. This is also the slowest, most time-consuming one.
 
-Fusing texts increased the size of the training set by roughly x1.38, from 3,189 texts to 4,400 texts.
+This doesn't work on posts that are too long to fit into the Transformer's context window after being fused with other posts, and also on posts that have 2-3 labels and this combination of labels is unique and doesn't occur anywhere else in the dataset. Because of all that, the overall increase in the number of training examples is less than 2.
+
+Fusing texts increased the size of the training set by roughly x1.92, from  texts to  texts.
 
 **Can I get more data?!**
 
