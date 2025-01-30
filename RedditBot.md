@@ -342,7 +342,7 @@ Of course, the techniques used for text are different from those used for images
 
 ![GPT-4o-mini rephrasing](https://github.com/user-attachments/assets/e78b49ba-1e5a-4be5-84f5-6b6f91f03b3f)
 
-I will be using 70% of the dataset for training and 30% for evaluation, so only 0.7*1519=1,063 texts will be used for training.
+I will be using 50% of the dataset for training, so only 0.5*1519=1,063 texts will be used for training.
 
 Rephrasing trippled the size of the training set, from 1,063 texts to 3,189 texts.
 
@@ -354,7 +354,7 @@ From a human perspective, this can result in posts where it looks like the first
 
 This doesn't work on posts that are too long to fit into the Transformer's context window after being fused with other posts, and also on posts that have 2-3 labels and this combination of labels is unique and doesn't occur anywhere else in the dataset. Because of all that, the overall increase in the number of training examples is less than 2.
 
-Fusing texts increased the size of the training set by roughly x1.92, from  texts to  texts.
+Fusing texts increased the size of the training set by roughly x1.92, from  texts to  texts. Note that unlike in the example with the kitten that I showed above, I apply multiple augmentation techniques sequentially to get even more data, so that the size of the dataset increases exponentially as I add more techniques.
 
 **Can I get more data?!**
 
