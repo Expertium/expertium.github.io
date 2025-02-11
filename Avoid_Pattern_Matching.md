@@ -66,7 +66,7 @@ This is another note type that aims to solve the pattern matching problem.
 
 To save some time and effort, you can ask ChatGPT, Claude or Gemini to rephrase the sentence and generate 2-3 sentences with the same meaning, although I recommend taking the time to write sentences yourself.
 
-One thing that you should keep in mind: the numbers in curly brackets have to be the same for each item, otherwise you'll end up making multiple cards instead of one card. It doesn't mean that the number always has to be 1, you absolutely can have multiple cloze selections per item. Like this: "Just some {{c1::random}} {{c2::text}}| Also just some {{c1::random}} {{c2::text}} | And this is some {{c1::random}} {{c2::text}}, too".
+One thing that you should keep in mind: the numbers in curly brackets have to be the same for each item, otherwise you'll end up making multiple cards instead of one card. It doesn't mean that the number always has to be 1, you absolutely can have multiple cloze selections per item. Like this: `Just some {c1::random} {c2::text}| Also just some {c1::random} {c2::text} | And this is some {c1::random} {c2::text}, too`.
 
 ![Cloze edit](https://github.com/user-attachments/assets/764d993c-0782-4816-90bf-7d0f4f13058f)
 
