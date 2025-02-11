@@ -326,6 +326,11 @@ Predictions were made at the end of July 2024. Revised in December 2024.
 
 The dataset has changed, the new dataset includes interval lengths *in seconds* deck IDs, and preset IDs, as well as information about sibling cards, so predictions 2 and 3 are no longer valid. I have also changed the first prediction because now I'm less certain that there will be no major breakthrough.
 
+- Has FSRS plateaued?
+- Yes, it's unlikely that future iterations of FSRS will get significantly better than FSRS-5 with recency weighting.
+- Does that mean that neural networks are the future?
+- Yes, but kind of no. Purely in terms of how accurately they can predict the probability of recall - yes. However, FSRS still has 2 important advantages: interpretability and being computationally cheap. With neural nets, it's hard to guarantee that there won't be any strange behavior, such as the interval for "Again" being longer than the interval for "Hard", or the interval decreasing after a successful review. And peeking at the parameters won't tell you much. With FSRS we can guarantee certain behavior and tell exactly what each parameter does. And since FSRS only has 19 parameters and doesn't do matrix multiplication with matrices with millions of entries, it doesn't need a GPU and can run on any modern CPU.
+
 
 ## References
 
