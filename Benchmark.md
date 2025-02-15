@@ -265,6 +265,8 @@ The first method, beta fit, works like this:
 
 This method works for log loss and AUC, but not for RMSE due to the binning method.
 
+<br />
+
 The second method, scaling law, works like this:
 
 1) Use a neural network, in this case RWKV-7.
