@@ -6,7 +6,8 @@
 - [Algorithms](#algorithms)
 - [Dataset](#dataset)
 - [Results](#results)
-  - [Logloss, RMSE and AUC](#logloss-rmse-and-auc)
+  - [Log loss, RMSE and AUC](#logloss-rmse-and-auc)
+  - [Oracle](#oracle)
   - [Superiority](#superiority)
 - [Discussion](#discussion)
 - [References](#references)
@@ -54,7 +55,7 @@ Below is a diagram that explains AUC.
 
 ![AUC 2 1](https://github.com/user-attachments/assets/28c55552-0613-4643-ad69-bfecf04dfce8)
 
-For a more in-depth explanation of AUC, you can read [this article](https://www.geeksforgeeks.org/auc-roc-curve/). The important part is how to interpret it: in the context of spaced repetition, AUC can be interpreted as "a probability that the model will assign a higher probability of recall to a recalled card than to a forgotten card". For example, AUC=0.7 means that there is a 70% chance that a recalled card has a higher probability of recall predicted by the model than a forgotten card.
+For a more in-depth explanation of AUC, you can read [this article](https://www.geeksforgeeks.org/auc-roc-curve/). The important part is how to interpret it: in the context of spaced repetition, AUC can be interpreted as "a probability that the algorithm will assign a higher probability of recall to a recalled card than to a forgotten card". For example, AUC=0.7 means that there is a 70% chance that a recalled card has a higher probability of recall predicted by the algorithm than a forgotten card.
 
 
 Here's a table comparing different metrics.
@@ -108,7 +109,7 @@ GRU is also a recurrent algorithm, just like FSRS, even if the mathematical form
 
 12.​ LSTM. This is also a recurrent neural network, but a more complex one than GRU. I won't make a diagram for it. This implementation calculates three different values of memory stability for three different forgetting curve and then combines them into one via weighted averaging (with learnable weights). It uses same-day reviews and, unlike most algorithms here, it uses fractional interval lengths. It also uses the answer time - how long the user spent on a card - as an input feature.
 
-13.​ [RWKV-7](https://github.com/BlinkDL/RWKV-LM) (pronounced "rʌkuv" in IPA, like tho<ins>**rou**</ins>gh <ins>**k**</ins>ettle m<ins>**ove**</ins>), a novel architecture that aims to combine the best of Transformers and recurrent neural nets. It uses all available information as input: fractional interval lengths, grades, answer time, deck ID, preset ID, and information about reviews of siblings (related cards). The way it's optimized is very different from the rest of the algorithms. All other algorithms are optimized on a per-user basis, meaning that the parameters are personalized for each user, and the algorithm is evaluated on the review history of *the same user* that it's trained on, just on a different, later part of that history. RWKV-7 is instead optimized on 5 thousand users and evaluated on the *other* 5 thousand users. This is then repeated twice to get full coverage of the entire dataset. This is explained in more detail in the [Superiority](#superiority) section.
+13.​ [RWKV-7](https://github.com/BlinkDL/RWKV-LM) (pronounced "rʌkuv" in IPA, like tho<ins>**rou**</ins>gh <ins>**k**</ins>ettle m<ins>**ove**</ins>), a novel architecture that aims to combine the best of Transformers and recurrent neural nets. It uses all available information as input: fractional interval lengths, grades, answer time, deck ID, preset ID, and information about reviews of siblings (related cards). The way it's optimized is very different from the rest of the algorithms. All other algorithms are optimized on a per-user basis, meaning that the parameters are personalized for each user, and the algorithm is evaluated on the review history of *the same user* that it's trained on, just on a different, later part of that history. RWKV-7 is instead optimized on 5 thousand users and evaluated on the *other* 5 thousand users. This is then repeated twice to get full coverage of the entire dataset. This is explained in more detail in the [Superiority](#superiority) section. Huge thanks to [1DWalker](https://github.com/1DWalker) on Github for implementing it!
 
 ### DASH family
 
@@ -116,9 +117,9 @@ These algorithms are based on a different model, not SR or DSR.
 
 14.​ [DASH](https://scholar.colorado.edu/concern/graduate_thesis_or_dissertations/zp38wc97m), Difficulty, Ability and Study History. This is an actual *bona fide* model of human memory based on neuroscience. Well, kind of. The issue with it is that the forgetting curve looks like a step function.
 
-15.​ DASH[MCM]. A hybrid model, it addresses some of the issues with DASH's forgetting curve.
+15.​ DASH[MCM]. A hybrid algorithm, it addresses some of the issues with DASH's forgetting curve.
 
-16.​ DASH[ACT-R]. Another hybrid model, it finally achieves a smooth forgetting curve.
+16.​ DASH[ACT-R]. Another hybrid algorithm, it finally achieves a smooth forgetting curve.
 
 [Here](https://www.politesi.polimi.it/retrieve/b39227dd-0963-40f2-a44b-624f205cb224/2022_4_Randazzo_01.pdf) is another relevant paper.
 
@@ -130,7 +131,7 @@ DASH, DASH[MCM] and DASH[ACT-R] don't have state variables that are carried on b
 
 ### Other algorithms
 
-17.​ [ACT-R](http://act-r.psy.cmu.edu/wordpress/wp-content/themes/ACT-R/workshops/2003/proceedings/46.pdf), Adaptive Control of Thought​  -  ​Rational (I've also seen "Character" instead of "Control" in some papers). It's a model of human memory that makes one very strange assumption: whether you have successfully recalled your material or not doesn't affect the magnitude of the spacing effect, only the interval length matters. Simply put, this algorithm doesn't differentiate between Again/Hard/Good/Easy. Notice that in the diagram below, grades are only used for calculating the loss function, but not used by the algorithm itself - no arrows come from "Grade". 
+17.​ [ACT-R](http://act-r.psy.cmu.edu/wordpress/wp-content/themes/ACT-R/workshops/2003/proceedings/46.pdf), Adaptive Control of Thought​  -  ​Rational (I've also seen "Character" instead of "Control" in some papers). It's based on a model of human memory that makes one very strange assumption: whether you have successfully recalled your material or not doesn't affect the magnitude of the spacing effect, only the interval length matters. Simply put, this algorithm doesn't differentiate between Again/Hard/Good/Easy. Notice that in the diagram below, grades are only used for calculating the loss function, but not used by the algorithm itself - no arrows come from "Grade". 
 
 ![ACT-R (proper)](https://github.com/user-attachments/assets/5a36cf12-b329-4b41-af55-023cabefee21)
 
@@ -142,8 +143,8 @@ The Y axis doesn't start at 0.
 
 These curves were plotted using default parameters, which have been obtained by running each algorithm on 20 thousand collections of Anki users. So what you're seeing are "average" or "typical" curves.
 DASH's curve looks like a step function, which goes against our human intuition and common sense. DASH[MCM] attempts to smooth it, but you can see that it's not perfect. DASH[ACT-R] achieves a smooth curve. <br />
-Also, the probability of recall doesn't start at 100% for DASH models and ACT-R. <br />
-It's interesting that the forgetting curve of FSRS-4.5 (and FSRS-5, they use the same formula) is so steep compared to other models. FSRS v3 used a much steeper exponential formula, which was replaced with a less steep power formula in FSRS v4, and with an even less steep power formula in FSRS-4.5. And yet, even that still predicts much faster forgetting than other models. While we could make the forgetting curve of FSRS-5 even less steep, it would practically prevent the probability of recall from ever reaching values less than 10%, since even for small values of memory stability, it would take more than a human life to reach 10% with such a curve.
+Also, the probability of recall doesn't start at 100% for DASH algorithms and ACT-R. <br />
+It's interesting that the forgetting curve of FSRS-4.5 (and FSRS-5, they use the same formula) is so steep compared to other algorithms. FSRS v3 used a much steeper exponential formula, which was replaced with a less steep power formula in FSRS v4, and with an even less steep power formula in FSRS-4.5. And yet, even that still predicts much faster forgetting than other algorithms. While we could make the forgetting curve of FSRS-5 even less steep, it would practically prevent the probability of recall from ever reaching values less than 10%, since even for small values of memory stability, it would take more than a human life to reach 10% with such a curve.
 
 18.​ [HLR](https://github.com/duolingo/halflife-regression/blob/master/settles.acl16.pdf), Half-Life Regression. It's an algorithm developed by Duolingo for Duolingo. The memory half-life in HLR is conceptually very similar to the memory stability in FSRS, but it's calculated using an overly simplistic formula. It uses the SR model.
 
@@ -193,7 +194,7 @@ This benchmark is based on 9,999 collections and 349,923,850 reviews. Same-day r
 
 ## Results
 
-### Logloss, RMSE and AUC
+### Log loss, RMSE and AUC
 
 In the tables and charts below, the averages are weighted by the number of reviews in each user's collection, meaning that users with more reviews have a greater impact on the value of the average. If someone has 100 thousand reviews, they will affect the average 100 times more than someone who only has 1 thousand reviews.
 The tables also show the number of optimizable parameters of each algorithm. The benchmark repo also has [unweighted averages](https://github.com/open-spaced-repetition/srs-benchmark?tab=readme-ov-file#result).
@@ -226,8 +227,8 @@ Higher is better. Black caps are 99% confidence intervals.  <br />
 Now ranking is very different. This isn't too surprising, considering that AUC is completely uncorrelated with both RMSE and log loss. <br />
 It's interesting that the AUC of HLR is 0.631, much higher than 0.54, which is what Duolingo reported in their paper. Granted, 0.631 is not that impressive either. In fact, all spaced repetition algorithms have rather unimpressive AUC. <br />
 Unsurprisingly, AVG has an AUC close to 0.5. Since it always outputs a constant, it cannot differentiate between forgotten and recalled cards. <br />
-It is somewhat surprising that NN-17 has a relatively low AUC, given that it combines the best of both worlds​  -  ​a model of human memory supplemented with a neural network. Granted, the goal  was not to create the perfect algorithm; rather, the goal was to emulate SM-17. <br />
-Jarrett's implementation of Transformer doesn't perform well according to all 3 metrics, so if any neural network experts think, "I bet I can do better!" they are welcome. I think it's probably because each algorithm is only trained for 5 epochs, which is more than enough for FSRS and other simple models, but not enough for complex models.
+It is somewhat surprising that NN-17 has a relatively low AUC, given that it combines the best of both worlds​  -  ​a model of human memory supplemented with a neural network. Granted, the goal was not to create the perfect algorithm; rather, the goal was to emulate SM-17. <br />
+Jarrett's implementation of Transformer doesn't perform well according to all 3 metrics, so if any neural network experts think, "I bet I can do better!" they are welcome. I think it's probably because each algorithm is only trained for 5 epochs, which is more than enough for FSRS and other simple algorithms, but not enough for complex algorithms.
 
 Let's address GRU-P (doesn't matter whether we are talking about the -short version or not). As you can see, it outperforms all other algorithms by all three metrics. So you're probably wondering "If predicting R directly is better than predicting an intermediate value first, why not do that?". Here's what happens when you let an algorithm predict R directly.
 
@@ -241,8 +242,32 @@ So while GRU-P outperforms all other algorithms, it's not usable in practice as 
 
 Notice that while GRU-P (short-term) outperforms GRU-P and while FSRS-5 outperforms FSRS-4.5, the difference in all 3 metrics is very small. This suggests that **same-day reviews have a very small impact on long-term memory**. Since the architecture of FSRS and GRU-P is very different, the fact that the improvement is small for both of them suggests that architecture is not to blame here.
 
-You may think that a model that knows the exact value of the probability of recall (let's call such a model "Oracle") would achieve a logloss of 0, an RMSE of 0%, and an AUC of 1. But remember - forgetting is inherently random. It's possible - albeit unlikely - that a card with a 99% probability of recall will be forgotten, and a card with a 1% probability of recall will be recalled. Even after finding every single pattern in the data, there is still an inherent, irreducible amount of randomness. Plus, the size of the dataset is finite, so even if some algorithm could reduce the prediction error to zero on an infinitely large dataset, obviously real users don't have an infinite number of reviews.
-According to my **very** crude and **very** hand-wavy estimates on the [other dataset](https://huggingface.co/datasets/open-spaced-repetition/FSRS-Anki-20k) (which has twice as many reviews but lacks some features, such as deck and preset information), **the Oracle would achieve an AUC of 0.83 and a logloss of 0.27**. I couldn't think of a good way to estimate RMSE (bins). You can use these figures as a crude upper bound of what a spaced repetition algorithm could possibly achieve on this dataset. It should give you a better idea of how far the current algorithms are from the Oracle. These figures may be different for a different dataset.
+### Oracle
+
+(work in progress)
+
+You may think that an algorithm that knows the exact value of the probability of recall (let's call such an algorithm "Oracle") would achieve a log loss of 0, an RMSE of 0%, and an AUC of 1. But remember - forgetting is inherently random. It's possible - albeit unlikely - that a card with a 99% probability of recall will be forgotten, and a card with a 1% probability of recall will be recalled. Even after finding every single pattern in the data, there is still an inherent, irreducible amount of randomness. 
+
+Me and 1DWalker used two methods to estimate the lowest (highest in case of AUC) values of these three metrics that the Oracle would achieve. I will refer to them as "beta fit" and "scaling law".
+
+The first method, beta fit, works like this:
+
+1) Use the most accurate algorithm available, in this case RWKV-7.
+2) For each user predict the probability of recall for each review.
+3) Do a correction to remove systematic errors.
+4) **Assume** that the shape of the distribution of predicted probabilities is close enough ot the shape of the distribution of true underlying probabilities. More precisely, assume that alpha and beta of the 
+[beta distribution](https://en.wikipedia.org/wiki/Beta_distribution) of predicted probabilities are close enough to alpha and beta of the distribution of true probabilities.
+5) Run simulations to estimate how well an algorithm that knows the exact probability of recall - sampled from a beta distribution - performs.
+
+This method works for log loss and AUC, but not for RMSE due to the binning method.
+
+The second method, scaling law, works like this:
+
+1) Use a neural network, in this case RWKV-7.
+2) Train it with many different numbers of parameters. For example, from fifty thousand to fifty million. Record the values of the metrics.
+3) Do curve-fitting using an equation of the form *L=a+b/(N^c)*, where *L* is the loss (log loss, RMSE, AUC), *N* is the number of trainable parameters of the neural network, and *a*, *b*, and *c* are fitting parameters.
+
+Parameter *a* obtained this way is the irreducible amount of loss that would be left if one trained an infinitely large neural network. This method works for all three metrics.
 
 ### Superiority
 
@@ -280,7 +305,7 @@ If you want a more technical explanation, here:
 
 This procedure is used for all algorithms. Thanks to this clever way of splitting data, no data is thrown away while at the same time the algorithm is trained on different data than it is evaluated on, so we get a realistic estimate of how it would perform on new, previously unseen data.
 
-By the way, this is not how "Evaluate" works in Anki. "Evaluate" uses a simplified procedure to avoid optimizing parameters every time the user wants to evaluate them - it just evaluates the specified parameters on the entire history, without optimizing them and without any splitting; training set=test set. "Evaluate" can only tell the user how well the parameters fit the *current* review history aka the training set. But the benchmark should evaluate the model's ability to generalize beyond the training set data. Jarrett believes that it's fine that the benchmark and Anki don't use the same evaluation procedure.
+By the way, this is not how "Evaluate" works in Anki. "Evaluate" uses a simplified procedure to avoid optimizing parameters every time the user wants to evaluate them - it just evaluates the specified parameters on the entire history, without optimizing them and without any splitting; training set=test set. "Evaluate" can only tell the user how well the parameters fit the *current* review history aka the training set. But the benchmark should evaluate the algorithm's ability to generalize beyond the training set data. Jarrett believes that it's fine that the benchmark and Anki don't use the same evaluation procedure.
 
 I hope this diagram helps:
 
