@@ -255,7 +255,7 @@ The first method, beta fit, works like this:
 1) Use the most accurate algorithm available, in this case RWKV-7.
 2) For each user predict the probability of recall for each review.
 3) Do a correction to remove systematic errors.
-4) **Assume** that the shape of the distribution of predicted probabilities is close enough ot the shape of the distribution of true underlying probabilities. More precisely, assume that alpha and beta of the 
+4) **Assume** that the shape of the distribution of predicted probabilities is close enough to the shape of the distribution of true underlying probabilities. More precisely, assume that alpha and beta of the 
 [beta distribution](https://en.wikipedia.org/wiki/Beta_distribution) of predicted probabilities are close enough to alpha and beta of the distribution of true probabilities.
 5) Run simulations to estimate how well an algorithm that knows the exact probability of recall - sampled from a beta distribution - performs.
 
