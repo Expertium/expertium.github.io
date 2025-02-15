@@ -94,11 +94,11 @@ In order to calculate the length of the next interval, FSRS requires the length 
 
 8.​ GRU, Gated Recurrent Unit. This neural network architecture is commonly used for time series analysis, such as predicting stock market trends or recognizing human speech. Originally, we used a more complex architecture called LSTM, but GRU performed better with fewer parameters. Both GRU and ormer use the same power forgetting curve as FSRS-4.5 and FSRS-5 to make the comparison more fair. This implementation uses the SR model.
 
-![GRU](https://github.com/user-attachments/assets/49f3152b-524f-46d3-b202-4b0090f921d0)
+![GRU](https://github.com/user-attachments/assets/0af95e77-4895-42b6-a717-69bdab2c9019)
 
-GRU is also a recurrent algorithm, just like FSRS, even if the mathematical formulas are completely different. Its state is represented by one number.
+GRU is also a recurrent algorithm, just like FSRS, even if the mathematical formulas are completely different. Its state is represented by an array with n numbers, where n is the dimension of the state. In this implementation n=2,
 
-9.​ GRU-P. Unlike GRU, which predicts memory stability before converting it into R via a power forgetting curve formula, GRU-P predicts R directly. More about GRU-P later. This implementation does not rely on SR or DSR models of memory.
+9.​ GRU-P. Unlike GRU, which predicts memory stability before converting it into R via a power forgetting curve formula, GRU-P predicts R directly. More about GRU-P later. This implementation does not rely on SR or DSR models of memory. In this implementation n, the dimension of the hidden state, is 8.
 
 10.​ GRU-P (short-term). Same as above, but it also uses same-day reviews, so it's trained on more data. This implementation does not rely on SR or DSR models of memory.
 
@@ -270,7 +270,7 @@ If you want a more technical explanation, here:
 
 This procedure is used for all algorithms. Thanks to this clever way of splitting data, no data is thrown away while at the same time the algorithm is trained on different data than it is evaluated on, so we get a realistic estimate of how it would perform on new, previously unseen data.
 
-By the way, this is not how "Evaluate" works in Anki. "Evaluate" uses a simplified procedure to avoid optimizing parameters every time the user wants to evaluate them - it just evaluates the specified parameters on the entire history, without optimizing them and without any splitting; training set = test set. "Evaluate" can only tell the user how well the parameters fit the *current* review history aka the training set. But the benchmark should evaluate the model's ability to generalize beyond the training set data. Jarrett believes that it's fine that the benchmark and Anki don't use the same evaluation procedure.
+By the way, this is not how "Evaluate" works in Anki. "Evaluate" uses a simplified procedure to avoid optimizing parameters every time the user wants to evaluate them - it just evaluates the specified parameters on the entire history, without optimizing them and without any splitting; training set=test set. "Evaluate" can only tell the user how well the parameters fit the *current* review history aka the training set. But the benchmark should evaluate the model's ability to generalize beyond the training set data. Jarrett believes that it's fine that the benchmark and Anki don't use the same evaluation procedure.
 
 I hope this diagram helps:
 
