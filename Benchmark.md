@@ -86,13 +86,13 @@ Below is a diagram that should give you a better understanding of FSRS. If you w
 
 ![FSRS (proper)](https://github.com/user-attachments/assets/ef19186b-330a-4805-87d7-cf7e0ebe1d59)
 
-In order to calculate the length of the next interval, FSRS requires the length of the previous interval, grade (Again/Hard/Good/Easy) and its own previous state, which is represented using three numbers: Difficulty, memory Stability, and Retrievability (DSR). Notice that horizontal arrows always point to the right, showing that past states can affect future states, but future states cannot affect past states.
+In order to calculate the probability of recall, FSRS requires the length of the previous interval and its own previous state, which is represented using three numbers: Difficulty, memory Stability, and Retrievability (DSR). Notice that horizontal arrows always point to the right, showing that past states can affect future states, but future states cannot affect past states.
 
 ### General-purpose machine learning algorithms family
 
 7.​ Transformer. This neural network architecture has become popular in recent years because of its superior performance in natural language processing. ChatGPT uses this architecture. This implementation uses the SR model.
 
-8.​ GRU, Gated Recurrent Unit. This neural network architecture is commonly used for time series analysis, such as predicting stock market trends or recognizing human speech. Originally, we used a more complex architecture called LSTM, but GRU performed better with fewer parameters. Both GRU and ormer use the same power forgetting curve as FSRS-4.5 and FSRS-5 to make the comparison more fair. This implementation uses the SR model.
+8.​ GRU, Gated Recurrent Unit. This neural network architecture is commonly used for time series analysis, such as predicting stock market trends or recognizing human speech. Both GRU and Transformer use the same power forgetting curve as FSRS-4.5 and FSRS-5 to make the comparison more fair. This implementation uses the SR model.
 
 ![GRU (proper)](https://github.com/user-attachments/assets/2c3d8eb7-6f3b-4353-94e0-5dc4e861408a)
 
@@ -118,9 +118,7 @@ These algorithms are based on a different model, not SR or DSR.
 
 (ok, I admit, this diagram is a mess, but I don't know how to make it clearer)
 
-DASH, DASH[MCM] and DASH[ACT-R] don't have state variables that are carried on between reviews, and they don't process reviews sequentially, like SM-17/18 or FSRS. They are more like ormers: all past reviews must be processed in order to calculate the length of the next interval. This makes them much slower than FSRS when the number of reviews is large. In FSRS, each review takes a constant amount of time to process. If a card has 100 reviews, processing the first review will take the same amount of time as processing the 100th review. In DASH, the processing time of a single review depends on the number of past reviews. Therefore, processing the 100th review takes much longer than processing the first one.
-
-Also, even though the diagram shows "Next interval length" as output, in reality, calculating the next interval using DASH algorithms would be very difficult due to the quirks of their forgetting curves. With FSRS and HLR, calculating the probability of recall that corresponds to a specific interval length and calculating the interval length that corresponds to a specific probability of recall is equally easy, but not with DASH algorithms. Still, I drew the diagram this way because a diagram that shows how algorithms predict probabilities would be much harder to read.
+DASH, DASH[MCM] and DASH[ACT-R] don't have state variables that are carried on between reviews, and they don't process reviews sequentially, like SM-17/18 or FSRS. They are more like Transformers: all past reviews must be processed in order to calculate the length of the next interval. This makes them slower than FSRS when the number of reviews is large. In FSRS, each review takes a constant amount of time to process. If a card has 100 reviews, processing the first review will take the same amount of time as processing the 100th review. In DASH, the processing time of a single review depends on the number of past reviews. Therefore, processing the 100th review takes longer than processing the first one.
 
 ### Other algorithms
 
@@ -147,7 +145,7 @@ For HLR, the order of reviews doesn't matter because it only requires summary st
 
 16.​ SM-2. It's a 35+ year-old algorithm that is still used by Anki, Mnemosyne, and possibly other apps as well. It's main advantage is simplicity. Note that in our benchmark, it is implemented the way it was originally designed. It's not the Anki version of SM-2, it's the original SM-2. We put a not-so-rigorous interval-to-probability converter on top of it.
 
-17.​ NN-17. It's a neural network approximation of [SM-17](https://supermemo.guru/wiki/Algorithm_SM-17). The SuperMemo wiki page about SM-17 may appear very detailed at first, but it actually obfuscates all of the important details that are necessary to implement SM-17. It tells you what the algorithm is doing, but not how. Our approximation relies on the limited information available on the formulas of SM-17 while utilizing neural networks to fill in any gaps. It uses teh DSR model.
+17.​ NN-17. It's a neural network approximation of [SM-17](https://supermemo.guru/wiki/Algorithm_SM-17). The SuperMemo wiki page about SM-17 may appear very detailed at first, but it actually obfuscates all of the important details that are necessary to implement SM-17. It tells you what the algorithm is doing, but not how. Our approximation relies on the limited information available on the formulas of SM-17 while utilizing neural networks to fill in any gaps. It uses the DSR model.
 
 ![NN-17 (proper)](https://github.com/user-attachments/assets/f01844b1-fe69-4067-8551-818512b64b5b)
 
