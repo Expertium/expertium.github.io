@@ -84,7 +84,7 @@ All FSRS algorithms use the DSR model of memory.
 
 Below is a diagram that should give you a better understanding of FSRS. If you want to know the details, please read [this article](/Algorithm.md).
 
-![FSRS](https://github.com/user-attachments/assets/89dd0ca5-6579-4471-bf95-2b1c3535f881)
+![FSRS (proper)](https://github.com/user-attachments/assets/ef19186b-330a-4805-87d7-cf7e0ebe1d59)
 
 In order to calculate the length of the next interval, FSRS requires the length of the previous interval, grade (Again/Hard/Good/Easy) and its own previous state, which is represented using three numbers: Difficulty, memory Stability, and Retrievability (DSR). Notice that horizontal arrows always point to the right, showing that past states can affect future states, but future states cannot affect past states.
 
@@ -94,7 +94,7 @@ In order to calculate the length of the next interval, FSRS requires the length 
 
 8.​ GRU, Gated Recurrent Unit. This neural network architecture is commonly used for time series analysis, such as predicting stock market trends or recognizing human speech. Originally, we used a more complex architecture called LSTM, but GRU performed better with fewer parameters. Both GRU and ormer use the same power forgetting curve as FSRS-4.5 and FSRS-5 to make the comparison more fair. This implementation uses the SR model.
 
-![GRU](https://github.com/user-attachments/assets/0af95e77-4895-42b6-a717-69bdab2c9019)
+![GRU (proper)](https://github.com/user-attachments/assets/2c3d8eb7-6f3b-4353-94e0-5dc4e861408a)
 
 GRU is also a recurrent algorithm, just like FSRS, even if the mathematical formulas are completely different. Its state is represented by an array with n numbers, where n is the dimension of the state. In this implementation n=2,
 
@@ -114,7 +114,9 @@ These algorithms are based on a different model, not SR or DSR.
 
 [Here](https://www.politesi.polimi.it/retrieve/b39227dd-0963-40f2-a44b-624f205cb224/2022_4_Randazzo_01.pdf) is another relevant paper.
 
-![DASH](https://github.com/user-attachments/assets/b0b0b3c7-998e-4c77-8955-f9cb650bc180)
+![DASH (proper)](https://github.com/user-attachments/assets/8e24941e-0364-4119-a36b-c49cca8bd1d2)
+
+(ok, I admit, this diagram is a mess, but I don't know how to make it clearer)
 
 DASH, DASH[MCM] and DASH[ACT-R] don't have state variables that are carried on between reviews, and they don't process reviews sequentially, like SM-17/18 or FSRS. They are more like ormers: all past reviews must be processed in order to calculate the length of the next interval. This makes them much slower than FSRS when the number of reviews is large. In FSRS, each review takes a constant amount of time to process. If a card has 100 reviews, processing the first review will take the same amount of time as processing the 100th review. In DASH, the processing time of a single review depends on the number of past reviews. Therefore, processing the 100th review takes much longer than processing the first one.
 
@@ -122,9 +124,9 @@ Also, even though the diagram shows "Next interval length" as output, in reality
 
 ### Other algorithms
 
-14.​ [ACT-R](http://act-r.psy.cmu.edu/wordpress/wp-content/themes/ACT-R/workshops/2003/proceedings/46.pdf), Adaptive Control of Thought​  -  ​Rational (I've also seen "Character" instead of "Control" in some papers). It's a model of human memory that makes one very strange assumption: whether you have successfully recalled your material or not doesn't affect the magnitude of the spacing effect, only the interval length matters. Simply put, this algorithm doesn't differentiate between Again/Hard/Good/Easy.
+14.​ [ACT-R](http://act-r.psy.cmu.edu/wordpress/wp-content/themes/ACT-R/workshops/2003/proceedings/46.pdf), Adaptive Control of Thought​  -  ​Rational (I've also seen "Character" instead of "Control" in some papers). It's a model of human memory that makes one very strange assumption: whether you have successfully recalled your material or not doesn't affect the magnitude of the spacing effect, only the interval length matters. Simply put, this algorithm doesn't differentiate between Again/Hard/Good/Easy. Notice that in the diagram below, grades are only used for calculating the loss function, but not used by the algorithm itself - no arrows come from "Grade". 
 
-![ACT-R](https://github.com/user-attachments/assets/f566d8d2-9d33-4f19-868f-313b9dfd2866)
+![ACT-R (proper)](https://github.com/user-attachments/assets/5a36cf12-b329-4b41-af55-023cabefee21)
 
 Below are some example forgetting curves.
 
@@ -139,7 +141,7 @@ It's interesting that the forgetting curve of FSRS-4.5 (and FSRS-5, they use the
 
 15.​ [HLR](https://github.com/duolingo/halflife-regression/blob/master/settles.acl16.pdf), Half-Life Regression. It's an algorithm developed by Duolingo for Duolingo. The memory half-life in HLR is conceptually very similar to the memory stability in FSRS, but it's calculated using an overly simplistic formula. It uses the SR model.
 
-![HLR](https://github.com/user-attachments/assets/5bfd0b0a-d030-4889-a478-27a8f520cbd9)
+![HLR (proper)](https://github.com/user-attachments/assets/ddf65b64-88fb-4b0c-a560-fe63fdc325b9)
 
 For HLR, the order of reviews doesn't matter because it only requires summary statistics about the whole review history. Regardless of how you rearrange reviews, the total number of reviews, passed reviews, and failed reviews (lapses) will remain the same.
 
@@ -147,7 +149,7 @@ For HLR, the order of reviews doesn't matter because it only requires summary st
 
 17.​ NN-17. It's a neural network approximation of [SM-17](https://supermemo.guru/wiki/Algorithm_SM-17). The SuperMemo wiki page about SM-17 may appear very detailed at first, but it actually obfuscates all of the important details that are necessary to implement SM-17. It tells you what the algorithm is doing, but not how. Our approximation relies on the limited information available on the formulas of SM-17 while utilizing neural networks to fill in any gaps. It uses teh DSR model.
 
-![NN-17](https://github.com/user-attachments/assets/f877e8f9-f06c-46c7-9573-335bfccb196b)
+![NN-17 (proper)](https://github.com/user-attachments/assets/f01844b1-fe69-4067-8551-818512b64b5b)
 
 In order to calculate the length of the next interval, NN-17 requires the length of the previous interval, grade (Again/Hard/Good/Easy) and its own previous state, which is represented using four numbers: Difficulty, memory Stability, Retrievability, and the number of lapses.
 
