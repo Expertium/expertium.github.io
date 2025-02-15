@@ -6,7 +6,7 @@
 - [Algorithms](#algorithms)
 - [Dataset](#dataset)
 - [Results](#results)
-  - [Log loss, RMSE and AUC](#logloss-rmse-and-auc)
+  - [Log loss, RMSE and AUC](#log-loss-rmse-and-auc)
   - [Oracle](#oracle)
   - [Superiority](#superiority)
 - [Discussion](#discussion)
@@ -253,10 +253,14 @@ Me and 1DWalker used two methods to estimate the lowest (highest in case of AUC)
 The first method, beta fit, works like this:
 
 1) Use the most accurate algorithm available, in this case RWKV-7.
+
 2) For each user predict the probability of recall for each review.
+
 3) Do a correction to remove systematic errors.
+
 4) **Assume** that the shape of the distribution of predicted probabilities is close enough to the shape of the distribution of true underlying probabilities. More precisely, assume that alpha and beta of the 
 [beta distribution](https://en.wikipedia.org/wiki/Beta_distribution) of predicted probabilities are close enough to alpha and beta of the distribution of true probabilities.
+
 5) Run simulations to estimate how well an algorithm that knows the exact probability of recall - sampled from a beta distribution - performs.
 
 This method works for log loss and AUC, but not for RMSE due to the binning method.
@@ -264,7 +268,9 @@ This method works for log loss and AUC, but not for RMSE due to the binning meth
 The second method, scaling law, works like this:
 
 1) Use a neural network, in this case RWKV-7.
+
 2) Train it with many different numbers of parameters. For example, from fifty thousand to fifty million. Record the values of the metrics.
+
 3) Do curve-fitting using an equation of the form *L=a+b/(N^c)*, where *L* is the loss (log loss, RMSE, AUC), *N* is the number of trainable parameters of the neural network, and *a*, *b*, and *c* are fitting parameters.
 
 Parameter *a* obtained this way is the irreducible amount of loss that would be left if one trained an infinitely large neural network. This method works for all three metrics.
