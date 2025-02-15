@@ -70,17 +70,19 @@ Most of the algorithms are based on the Stability, Retrievability (alternatively
 
 All FSRS algorithms use the DSR model of memory.
 
-1.​ ​FSRS v3. It was the first version of FSRS that people actually used, it was released in October 2022. It wasn't terrible, but it had issues. Jarrett, I, and several other users have proposed and tested several dozens of ideas (only a handful of them proved to be effective) to improve the algorithm.
+1.​ ​FSRS v1 and v2: the initial experimental versions of FSRS.
 
-2.​ FSRS v4. It came out in July 2023, and at the beginning of November 2023, it was integrated into Anki. It's a significant improvement over v3.
+2.​ ​FSRS v3. It was the first version of FSRS that people actually used, it was released in October 2022. It wasn't terrible, but it had issues. Jarrett, I, and several other users have proposed and tested several dozens of ideas (only a handful of them proved to be effective) to improve the algorithm.
 
-3.​ FSRS-4.5. It's a slightly improved version of FSRS v4, the shape of the forgetting curve has been changed.
+3.​ FSRS v4. It came out in July 2023, and at the beginning of November 2023, it was integrated into Anki. It's a significant improvement over v3.
 
-4.​ FSRS-5. The newest version. The main difference is that it takes into account same-day reviews, unlike all previous versions, though the improvement in performance is small. Anki 24.XX uses it, AnkiMobile and AnkiDroid haven't been updated yet, so they use FSRS-4.5. If you want to read about the differences between FSRS-4.5 and FSRS-5, I have an article with an in-depth explanation of FSRS formulas.
+4.​ FSRS-4.5. It's a slightly improved version of FSRS v4, the shape of the forgetting curve has been changed.
 
-5.​ FSRS-5 (default parameters). This is just to see how well FSRS-5 performs without optimization.
+5.​ FSRS-5. The newest version. The main difference is that it takes into account same-day reviews, unlike all previous versions, though the improvement in performance is small. Anki 24.XX uses it, AnkiMobile and AnkiDroid haven't been updated yet, so they use FSRS-4.5. If you want to read about the differences between FSRS-4.5 and FSRS-5, I have an article with an in-depth explanation of FSRS formulas.
 
-6.​ FSRS-5 (pretrain). In FSRS, the first 4 parameters (values of initial stability) are optimized in a completely different way compared to the rest. "Pretrain" is when the first 4 parameters are optimized, while the rest of parameters are set to default. In Anki >=24.06, when parameters are optimized, the optimizer determines whether to keep the default parameters, perform pretrain, or perform a full optimization; which one is used depends on the user's review history. The more reviews a user has, the more likely it is that full optimization will be performed.
+6.​ FSRS-5 (default parameters). This is just to see how well FSRS-5 performs without optimization.
+
+7.​ FSRS-5 (pretrain). In FSRS, the first 4 parameters (values of initial stability) are optimized in a completely different way compared to the rest. "Pretrain" is when the first 4 parameters are optimized, while the rest of parameters are set to default. In Anki >=24.06, when parameters are optimized, the optimizer determines whether to keep the default parameters, perform pretrain, or perform a full optimization; which one is used depends on the user's review history. The more reviews a user has, the more likely it is that full optimization will be performed.
 
 Below is a diagram that should give you a better understanding of FSRS. If you want to know the details, please read [this article](/Algorithm.md).
 
@@ -92,31 +94,31 @@ In order to calculate the probability of recall, FSRS requires the length of the
 
 ### General-purpose machine learning algorithms family
 
-7.​ Transformer. This neural network architecture has become popular in recent years because of its superior performance in natural language processing. ChatGPT uses this architecture. This implementation uses the SR model.
+8.​ Transformer. This neural network architecture has become popular in recent years because of its superior performance in natural language processing. ChatGPT uses this architecture. This implementation uses the SR model.
 
-8.​ GRU, Gated Recurrent Unit. This neural network architecture is commonly used for time series analysis, such as predicting stock market trends or recognizing human speech. Both GRU and Transformer use the same power forgetting curve as FSRS-4.5 and FSRS-5 to make the comparison more fair. This implementation uses the SR model.
+9.​ GRU, Gated Recurrent Unit. This neural network architecture is commonly used for time series analysis, such as predicting stock market trends or recognizing human speech. Both GRU and Transformer use the same power forgetting curve as FSRS-4.5 and FSRS-5 to make the comparison more fair. This implementation uses the SR model.
 
 ![GRU (proper)](https://github.com/user-attachments/assets/2c3d8eb7-6f3b-4353-94e0-5dc4e861408a)
 
 GRU is also a recurrent algorithm, just like FSRS, even if the mathematical formulas are completely different. Its state is represented by an array with n numbers, where n is the dimension of the state. In this implementation n=2,
 
-9.​ GRU-P. Unlike GRU, which predicts memory stability before converting it into R via a power forgetting curve formula, GRU-P predicts R directly. More about GRU-P later. This implementation does not rely on SR or DSR models of memory. In this implementation n, the dimension of the hidden state, is 8.
+10.​ GRU-P. Unlike GRU, which predicts memory stability before converting it into R via a power forgetting curve formula, GRU-P predicts R directly. More about GRU-P later. This implementation does not rely on SR or DSR models of memory. In this implementation n, the dimension of the hidden state, is 8.
 
-10.​ GRU-P (short-term). Same as above, but it also uses same-day reviews, so it's trained on more data. This implementation does not rely on SR or DSR models of memory.
+11.​ GRU-P (short-term). Same as above, but it also uses same-day reviews, so it's trained on more data. This implementation does not rely on SR or DSR models of memory.
 
-11.​ LSTM. This is also a recurrent neural network, but a more complex one than GRU. I won't make a diagram for it. This implementation calculates three different values of memory stability for three different forgetting curve and then combines them into one via weighted averaging (with learnable weights). It uses same-day reviews and, unlike most algorithms here, it uses fractional interval lengths. It also uses the answer time - how long the user spent on a card - as an input feature.
+12.​ LSTM. This is also a recurrent neural network, but a more complex one than GRU. I won't make a diagram for it. This implementation calculates three different values of memory stability for three different forgetting curve and then combines them into one via weighted averaging (with learnable weights). It uses same-day reviews and, unlike most algorithms here, it uses fractional interval lengths. It also uses the answer time - how long the user spent on a card - as an input feature.
 
-12.​ [RWKV-7](https://github.com/BlinkDL/RWKV-LM) (pronounced "rʌkuv" in IPA, like tho<ins>**rou**</ins>gh <ins>**k**</ins>ettle m<ins>**ove**</ins>), a novel architecture that aims to combine the best of Transformers and recurrent neural nets. It uses all available input information: fractional interval lengths, grades, answer time, deck ID, preset ID, and information about reviews of siblings (related cards). The way it's optimized is very different from the rest of the algorithms. All other algorithms are optimized on a per-user basis, meaning that the parameters are personalized for each user, and the algorithm is evaluated on the review history of *the same user* that it's trained on, just on a different, later part of that history. RWKV-7 is instead optimized on 5 thousand users and evaluated on the *other* 5 thousand users. This is then repeated twice to get full coverage of the entire dataset. This is explained in more detail in the [Superiority](#superiority) section.
+13.​ [RWKV-7](https://github.com/BlinkDL/RWKV-LM) (pronounced "rʌkuv" in IPA, like tho<ins>**rou**</ins>gh <ins>**k**</ins>ettle m<ins>**ove**</ins>), a novel architecture that aims to combine the best of Transformers and recurrent neural nets. It uses all available input information: fractional interval lengths, grades, answer time, deck ID, preset ID, and information about reviews of siblings (related cards). The way it's optimized is very different from the rest of the algorithms. All other algorithms are optimized on a per-user basis, meaning that the parameters are personalized for each user, and the algorithm is evaluated on the review history of *the same user* that it's trained on, just on a different, later part of that history. RWKV-7 is instead optimized on 5 thousand users and evaluated on the *other* 5 thousand users. This is then repeated twice to get full coverage of the entire dataset. This is explained in more detail in the [Superiority](#superiority) section.
 
 ### DASH family
 
 These algorithms are based on a different model, not SR or DSR.
 
-13.​ [DASH](https://scholar.colorado.edu/concern/graduate_thesis_or_dissertations/zp38wc97m), Difficulty, Ability and Study History. This is an actual *bona fide* model of human memory based on neuroscience. Well, kind of. The issue with it is that the forgetting curve looks like a step function.
+14.​ [DASH](https://scholar.colorado.edu/concern/graduate_thesis_or_dissertations/zp38wc97m), Difficulty, Ability and Study History. This is an actual *bona fide* model of human memory based on neuroscience. Well, kind of. The issue with it is that the forgetting curve looks like a step function.
 
-14.​ DASH[MCM]. A hybrid model, it addresses some of the issues with DASH's forgetting curve.
+15.​ DASH[MCM]. A hybrid model, it addresses some of the issues with DASH's forgetting curve.
 
-15.​ DASH[ACT-R]. Another hybrid model, it finally achieves a smooth forgetting curve.
+16.​ DASH[ACT-R]. Another hybrid model, it finally achieves a smooth forgetting curve.
 
 [Here](https://www.politesi.polimi.it/retrieve/b39227dd-0963-40f2-a44b-624f205cb224/2022_4_Randazzo_01.pdf) is another relevant paper.
 
@@ -128,7 +130,7 @@ DASH, DASH[MCM] and DASH[ACT-R] don't have state variables that are carried on b
 
 ### Other algorithms
 
-16.​ [ACT-R](http://act-r.psy.cmu.edu/wordpress/wp-content/themes/ACT-R/workshops/2003/proceedings/46.pdf), Adaptive Control of Thought​  -  ​Rational (I've also seen "Character" instead of "Control" in some papers). It's a model of human memory that makes one very strange assumption: whether you have successfully recalled your material or not doesn't affect the magnitude of the spacing effect, only the interval length matters. Simply put, this algorithm doesn't differentiate between Again/Hard/Good/Easy. Notice that in the diagram below, grades are only used for calculating the loss function, but not used by the algorithm itself - no arrows come from "Grade". 
+17.​ [ACT-R](http://act-r.psy.cmu.edu/wordpress/wp-content/themes/ACT-R/workshops/2003/proceedings/46.pdf), Adaptive Control of Thought​  -  ​Rational (I've also seen "Character" instead of "Control" in some papers). It's a model of human memory that makes one very strange assumption: whether you have successfully recalled your material or not doesn't affect the magnitude of the spacing effect, only the interval length matters. Simply put, this algorithm doesn't differentiate between Again/Hard/Good/Easy. Notice that in the diagram below, grades are only used for calculating the loss function, but not used by the algorithm itself - no arrows come from "Grade". 
 
 ![ACT-R (proper)](https://github.com/user-attachments/assets/5a36cf12-b329-4b41-af55-023cabefee21)
 
@@ -143,23 +145,25 @@ DASH's curve looks like a step function, which goes against our human intuition 
 Also, the probability of recall doesn't start at 100% for DASH models and ACT-R. <br />
 It's interesting that the forgetting curve of FSRS-4.5 (and FSRS-5, they use the same formula) is so steep compared to other models. FSRS v3 used a much steeper exponential formula, which was replaced with a less steep power formula in FSRS v4, and with an even less steep power formula in FSRS-4.5. And yet, even that still predicts much faster forgetting than other models. While we could make the forgetting curve of FSRS-5 even less steep, it would practically prevent the probability of recall from ever reaching values less than 10%, since even for small values of memory stability, it would take more than a human life to reach 10% with such a curve.
 
-17.​ [HLR](https://github.com/duolingo/halflife-regression/blob/master/settles.acl16.pdf), Half-Life Regression. It's an algorithm developed by Duolingo for Duolingo. The memory half-life in HLR is conceptually very similar to the memory stability in FSRS, but it's calculated using an overly simplistic formula. It uses the SR model.
+18.​ [HLR](https://github.com/duolingo/halflife-regression/blob/master/settles.acl16.pdf), Half-Life Regression. It's an algorithm developed by Duolingo for Duolingo. The memory half-life in HLR is conceptually very similar to the memory stability in FSRS, but it's calculated using an overly simplistic formula. It uses the SR model.
 
 ![HLR (proper)](https://github.com/user-attachments/assets/ddf65b64-88fb-4b0c-a560-fe63fdc325b9)
 
 For HLR, the order of reviews doesn't matter because it only requires summary statistics about the whole review history. Regardless of how you rearrange reviews, the total number of reviews, passed reviews, and failed reviews (lapses) will remain the same.
 
-18.​ SM-2. It's a 35+ year-old algorithm that is still used by Anki, Mnemosyne, and possibly other apps as well. It's main advantage is simplicity. Note that in our benchmark, it is implemented the way it was originally designed. It's not the Anki version of SM-2, it's the original SM-2. We put a not-so-rigorous interval-to-probability converter on top of it.
+19.​ SM-2. It's a 35+ year-old algorithm that is still used by Anki, Mnemosyne, and possibly other apps as well. It's main advantage is simplicity. Note that in our benchmark, it is implemented the way it was originally designed. It's not the Anki version of SM-2, it's the original SM-2. We put a not-so-rigorous interval-to-probability converter on top of it.
 
-19.​ NN-17. It's a neural network approximation of [SM-17](https://supermemo.guru/wiki/Algorithm_SM-17). The SuperMemo wiki page about SM-17 may appear very detailed at first, but it actually obfuscates all of the important details that are necessary to implement SM-17. It tells you what the algorithm is doing, but not how. Our approximation relies on the limited information available on the formulas of SM-17 while utilizing neural networks to fill in any gaps. It uses the DSR model.
+20.​ NN-17. It's a neural network approximation of [SM-17](https://supermemo.guru/wiki/Algorithm_SM-17). The SuperMemo wiki page about SM-17 may appear very detailed at first, but it actually obfuscates all of the important details that are necessary to implement SM-17. It tells you what the algorithm is doing, but not how. Our approximation relies on the limited information available on the formulas of SM-17 while utilizing neural networks to fill in any gaps. It uses the DSR model.
 
 ![NN-17 (proper)](https://github.com/user-attachments/assets/f01844b1-fe69-4067-8551-818512b64b5b)
 
 In order to calculate the length of the next interval, NN-17 requires the length of the previous interval, grade (Again/Hard/Good/Easy) and its own previous state, which is represented using four numbers: Difficulty, memory Stability, Retrievability, and the number of lapses.
 
-20.​ Ebisu v2. [It's an algorithm that uses Bayesian statistics](https://fasiha.github.io/ebisu/) to update its estimate of memory half-life after each review. While it has 3 parameters, Ebisu was not designed to optimize them automatically, they have to be configured manually. It uses the SR model.
+21.​ Ebisu v2. [It's an algorithm that uses Bayesian statistics](https://fasiha.github.io/ebisu/) to update its estimate of memory half-life after each review. While it has 3 parameters, Ebisu was not designed to optimize them automatically, they have to be configured manually. It uses the SR model.
 
-21.​ AVG. It's an "algorithm" that outputs a constant equal to the user's average retention. For example, if the user presses Hard/Good/Easy 85% of the time, the "algorithm" will always output an 85% probability of recall for any given review. You can think of it as a weatherman who says, "The temperature today will be average, the wind speed will be average, and the humidity will be average as well" every single day. This "algorithm" is intended only to serve as a baseline for comparison and has no practical applications. It does not use any model of memory.
+22.​ AVG. It's an "algorithm" that outputs a constant equal to the user's average retention. For example, if the user presses Hard/Good/Easy 85% of the time, the "algorithm" will always output an 85% probability of recall for any given review. You can think of it as a weatherman who says, "The temperature today will be average, the wind speed will be average, and the humidity will be average as well" every single day. This "algorithm" is intended only to serve as a baseline for comparison and has no practical applications. It does not use any model of memory.
+
+Some variations of these algorithms are not included because this list is already a bit too big and the article is already a bit too long.
 
 I did my best to create a "taxonomy" of spaced repetition algorithms.
 
@@ -330,7 +334,7 @@ The app must be publicly available in AppStore, Google Play Store, or elsewhere,
 
 Predictions were made at the end of July 2024. Revised in December 2024.
 
-The dataset has changed, the new dataset includes interval lengths *in seconds* deck IDs, and preset IDs, as well as information about sibling cards, so predictions 2 and 3 are no longer valid. I have also changed the first prediction because now I'm less certain that there will be no major breakthrough.
+The dataset has changed, the new dataset includes interval lengths *in seconds*, deck IDs, and preset IDs, as well as information about sibling cards, so predictions 2 and 3 are no longer valid. I have also changed the first prediction because now I'm less certain that there will be no major breakthrough.
 
 - Has FSRS plateaued?
 - Yes, it's unlikely that future iterations of FSRS will get significantly better than FSRS-5 with recency weighting.
