@@ -101,7 +101,7 @@ In order to calculate the probability of recall, FSRS requires the length of the
 
 ![GRU (proper)](https://github.com/user-attachments/assets/2c3d8eb7-6f3b-4353-94e0-5dc4e861408a)
 
-GRU is also a recurrent algorithm, just like FSRS, even if the mathematical formulas are completely different. Its state is represented by an array with n numbers, where n is called the dimension of the hidden state. In this implementation n=2,
+GRU is also a recurrent algorithm, just like FSRS, even if the mathematical formulas are completely different. Its state is represented by an array with n numbers, where n is called the dimension of the hidden state. In this implementation n=2.
 
 10.​ GRU-P. Unlike GRU, which predicts memory stability before converting it into R via a power forgetting curve formula, GRU-P predicts R directly. More about GRU-P later. This implementation does not rely on SR or DSR models of memory. In this implementation n, the dimension of the hidden state, is 8.
 
