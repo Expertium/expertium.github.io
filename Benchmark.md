@@ -123,7 +123,7 @@ These algorithms are based on a different model, not SR or DSR.
 
 [Here](https://www.politesi.polimi.it/retrieve/b39227dd-0963-40f2-a44b-624f205cb224/2022_4_Randazzo_01.pdf) is another relevant paper.
 
-![DASH (proper)](https://github.com/user-attachments/assets/8e24941e-0364-4119-a36b-c49cca8bd1d2)
+![DASH (proper)](https://github.com/user-attachments/assets/61e58e6c-5770-491d-82c9-95f6320da5d7)
 
 (ok, I admit, this diagram is a mess, but I don't know how to make it clearer)
 
