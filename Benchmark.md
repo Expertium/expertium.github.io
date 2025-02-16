@@ -79,7 +79,7 @@ All FSRS algorithms use the DSR model of memory.
 
 4.​ FSRS-4.5. It's a slightly improved version of FSRS v4, the shape of the forgetting curve has been changed.
 
-5.​ FSRS-5. The newest version. The main difference is that it takes into account same-day reviews, unlike all previous versions, though the improvement in performance is small. Anki 24.XX uses it, AnkiMobile and AnkiDroid haven't been updated yet, so they use FSRS-4.5. If you want to read about the differences between FSRS-4.5 and FSRS-5, I have an article with an in-depth explanation of FSRS formulas.
+5.​ FSRS-5. The newest version. The main difference is that it takes into account same-day reviews, unlike all previous versions, though the improvement in performance is small. All newest versions of Anki use FSRS-5.
 
 6.​ FSRS-5 (default parameters). This is just to see how well FSRS-5 performs without optimization.
 
