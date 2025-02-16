@@ -127,7 +127,7 @@ These algorithms are based on a different model, not SR or DSR.
 
 (ok, I admit, this diagram is a mess, but I don't know how to make it clearer)
 
-DASH, DASH[MCM] and DASH[ACT-R] don't have state variables that are carried on between reviews, and they don't process reviews sequentially, like SM-17/18 or FSRS. They are more like Transformers: all past reviews must be processed in order to calculate the length of the next interval. This makes them slower than FSRS when the number of reviews is large. In FSRS, each review takes a constant amount of time to process. If a card has 100 reviews, processing the first review will take the same amount of time as processing the 100th review. In DASH, the processing time of a single review depends on the number of past reviews. Therefore, processing the 100th review takes longer than processing the first one.
+DASH, DASH[MCM] and DASH[ACT-R] don't have state variables that are carried on between reviews, and they don't process reviews sequentially, like SM-17/18 or FSRS. Instead, all past reviews must be processed in order to calculate the length of the next interval. This makes them slower than FSRS when the number of reviews is large. In FSRS, each review takes a constant amount of time to process. If a card has 100 reviews, processing the first review will take the same amount of time as processing the 100th review. In DASH, the processing time of a single review depends on the number of past reviews. Therefore, processing the 100th review takes longer than processing the first one.
 
 ### Other algorithms
 
