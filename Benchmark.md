@@ -89,7 +89,7 @@ Below is a diagram that should give you a better understanding of FSRS. If you w
 
 ![FSRS (proper)](https://github.com/user-attachments/assets/ef19186b-330a-4805-87d7-cf7e0ebe1d59)
 
-"Grade" refers to Again/Hard/Good/Easy.
+"Grade" refers to Again/Hard/Good/Easy. To calculate the loss, the grade is converted into a binary value: 0 if it's Again, 1 otherwise. This doesn't mean that FSRS *itself* treats grades as binary, of course it can tell the difference between Hard, Good and Easy.
 
 In order to calculate the probability of recall, FSRS requires the length of the previous interval and its own previous state, which is represented using three numbers: Difficulty, memory Stability, and Retrievability (DSR). Notice that horizontal arrows always point to the right, showing that past states can affect future states, but future states cannot affect past states.
 
