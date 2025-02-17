@@ -148,7 +148,7 @@ It's interesting that the forgetting curve of FSRS-4.5 (and FSRS-5, they use the
 
 18.​ [HLR](https://github.com/duolingo/halflife-regression/blob/master/settles.acl16.pdf), Half-Life Regression. It's an algorithm developed by Duolingo for Duolingo. The memory half-life in HLR is conceptually very similar to the memory stability in FSRS, but it's calculated using an overly simplistic formula. It uses the SR model.
 
-![HLR (proper)](https://github.com/user-attachments/assets/ddf65b64-88fb-4b0c-a560-fe63fdc325b9)
+![HLR (proper)](https://github.com/user-attachments/assets/1532b41c-25bf-4c74-a6bf-5ff1f6b7abf9)
 
 For HLR, the order of reviews doesn't matter because it only requires summary statistics about the whole review history. Regardless of how you rearrange reviews, the total number of reviews, passed reviews, and failed reviews (lapses) will remain the same.
 
@@ -158,7 +158,7 @@ For HLR, the order of reviews doesn't matter because it only requires summary st
 
 21.​ NN-17. It's a neural network approximation of [SM-17](https://supermemo.guru/wiki/Algorithm_SM-17). The SuperMemo wiki page about SM-17 may appear very detailed at first, but it actually obfuscates all of the important details that are necessary to implement SM-17. It tells you what the algorithm is doing, but not how. Our approximation relies on the limited information available on the formulas of SM-17 while utilizing neural networks to fill in any gaps. It uses the DSR model.
 
-![NN-17 (proper)](https://github.com/user-attachments/assets/f01844b1-fe69-4067-8551-818512b64b5b)
+![NN-17 (proper)](https://github.com/user-attachments/assets/5f105c3c-f9e1-40f6-9062-20a34c56290b)
 
 In order to calculate the length of the next interval, NN-17 requires the length of the previous interval, grade (Again/Hard/Good/Easy) and its own previous state, which is represented using four numbers: Difficulty, memory Stability, Retrievability, and the number of lapses.
 
