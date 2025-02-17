@@ -87,7 +87,7 @@ All FSRS algorithms use the DSR model of memory.
 
 Below is a diagram that should give you a better understanding of FSRS. If you want to know the details, please read [this article](/Algorithm.md).
 
-![FSRS (proper)](https://github.com/user-attachments/assets/ef19186b-330a-4805-87d7-cf7e0ebe1d59)
+![FSRS (proper)](https://github.com/user-attachments/assets/44f568d8-afce-4a49-a782-99531fcc352c)
 
 "Grade" refers to Again/Hard/Good/Easy. To calculate the loss, the grade is converted into a binary value: 0 if it's Again, 1 otherwise. This doesn't mean that FSRS *itself* treats grades as binary, of course it can tell the difference between Hard, Good and Easy.
 
@@ -99,7 +99,7 @@ In order to calculate the probability of recall, FSRS requires the length of the
 
 9.​ GRU, Gated Recurrent Unit. This neural network architecture is commonly used for time series analysis, such as predicting stock market trends or recognizing human speech. Both GRU and Transformer use the same power forgetting curve as FSRS-4.5 and FSRS-5 to make the comparison more fair. This implementation uses the SR model.
 
-![GRU (proper)](https://github.com/user-attachments/assets/2c3d8eb7-6f3b-4353-94e0-5dc4e861408a)
+![GRU (proper)](https://github.com/user-attachments/assets/aed193fe-0b48-49a7-93df-9bd447da490f)
 
 GRU is also a recurrent algorithm, just like FSRS, even if the mathematical formulas are completely different. Its state is represented by an array with n numbers, where n is called the dimension of the hidden state. In this implementation n=2.
 
@@ -123,7 +123,7 @@ These algorithms are based on a different model, not SR or DSR.
 
 [Here](https://www.politesi.polimi.it/retrieve/b39227dd-0963-40f2-a44b-624f205cb224/2022_4_Randazzo_01.pdf) is another relevant paper.
 
-![DASH (proper)](https://github.com/user-attachments/assets/61e58e6c-5770-491d-82c9-95f6320da5d7)
+![DASH (proper)](https://github.com/user-attachments/assets/e678dd4a-536b-4631-a26b-a0bce04ffa67)
 
 (ok, I admit, this diagram is a mess, but I don't know how to make it clearer)
 
@@ -133,7 +133,7 @@ DASH, DASH[MCM] and DASH[ACT-R] don't have state variables that are carried on b
 
 17.​ [ACT-R](http://act-r.psy.cmu.edu/wordpress/wp-content/themes/ACT-R/workshops/2003/proceedings/46.pdf), Adaptive Control of Thought​  -  ​Rational (I've also seen "Character" instead of "Control" in some papers). It's based on a model of human memory that makes one very strange assumption: whether you have successfully recalled your material or not doesn't affect the magnitude of the spacing effect, only the interval length matters. Simply put, this algorithm doesn't differentiate between Again/Hard/Good/Easy. Notice that in the diagram below, grades are only used for calculating the loss function, but not used by the algorithm itself - no arrows come from "Grade". 
 
-![ACT-R (proper)](https://github.com/user-attachments/assets/5a36cf12-b329-4b41-af55-023cabefee21)
+![ACT-R (proper)](https://github.com/user-attachments/assets/0ed88ec8-b5bd-41da-b3ee-8c7f1bd5bcd8)
 
 Below are some example forgetting curves.
 
