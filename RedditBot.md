@@ -410,6 +410,9 @@ Comparison of different data augmentation methods that I used:
 By "diversity" I mean "variation between the original and augmented data".
 
 
+Oh, and I also added some completely made-up texts for very rare classes, such as "Automatic Optimization". If you don't have enough real data, add half-fake data. If even that is not enough, add fake data. As long as you can manually make high-quality examples, it's fine.
+
+
 **IMPORTANT**: when doing data augmentation, make sure that the test set doesn't have any variations of texts that are in the train set, or else the model will display unrealistically good results on the test set only to shit itself in real life. It's called data leaking. In other words, if there are N variations of text X, make sure that **all** N variations stay in the train set and **none** of them are in the test set.
 
 ___
