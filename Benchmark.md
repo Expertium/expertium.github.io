@@ -360,7 +360,7 @@ Information from other cards (other than the card that is being reviewed right n
 With all that in mind, I want to make several predictions:
 
 1​.​ No further version of FSRS beyond FSRS-5 will be used in Anki by ~~2027~~ 2026. No FSRS-5.5, FSRS-6, or any other version that supersedes FSRS-5.
-Clarification: I made this prediciton a few days before Jarrett made [this tweet](https://x.com/JarrettYe/status/1817570865699299818). After seeing his tweet, I'm even more confident in this prediction. I have an idea for FSRS-6, but it requires getting a new dataset and using more input features than just interval lengths and grades. Also, Jarrett said that unless some other famous app decides to implement FSRS, he won't work on FSRS-6 just for the sake of Anki. Overall, I find it unlikely that FSRS-6 will be released before 2027.
+Clarification: I made this prediciton a few days before Jarrett made [this tweet](https://x.com/JarrettYe/status/1817570865699299818). After seeing his tweet, I'm even more confident in this prediction. ~~I have an idea for FSRS-6, but it requires getting a new dataset and using more input features than just interval lengths and grades~~ (nevermind, that didn't work well). Also, Jarrett said that unless some other famous app decides to implement FSRS, he won't work on FSRS-6 just for the sake of Anki. Overall, I find it unlikely that FSRS-6 will be released before 2027.
 
 ~~2​. By 2029, no algorithm in our benchmark will have achieved a (weighted by the number of reviews) log loss lower than 0.27, unless the dataset used in the benchmark changes, in which case this prediction is rendered void.~~
 
@@ -369,7 +369,7 @@ Clarification: I made this prediciton a few days before Jarrett made [this tweet
 4​.​ By 2031, there will be an app with an algorithm that employs at least one out of the three ideas proposed above (which are not specific to FSRS), and that app will not be Anki. For example, an app using KAR3L.
 The app must be publicly available in AppStore, Google Play Store, or elsewhere, and it must not be in the beta testing stage. I'm adding these extra conditions because, without them, [mathacademy.com](https://www.mathacademy.com/) has already [met the main condition](https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/). Even with the extra conditions, this prediction can easily come true way sooner than 2031.
 
-Predictions were made at the end of July 2024. Revised in December 2024.
+Predictions were made at the end of July 2024 and revised in December 2024.
 
 The dataset has changed, the new dataset includes interval lengths *in seconds*, deck IDs, and preset IDs, as well as information about sibling cards, so predictions 2 and 3 are no longer valid. I have also changed the first prediction because now I'm less certain that there will be no major breakthrough.
 
