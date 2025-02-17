@@ -370,6 +370,9 @@ list_of_sentences = nltk.sent_tokenize(text)
 list_of_sentences = [(x + ' ') if (x != list_of_sentences[-1]) else x for x in list_of_sentences]  # add whitespaces to everything except for the last sentence
 ```
 
+I made it so that if a text has 2-5 sentences, two randomly chosen adjacent sentences would be swapped. If the text has >5 sentences, four sentences (two pairs) will be swapped.
+
+
 Sentence swapping doubled the size of the dataset, from 4,400 texts to 8,800 texts. Sure, short texts with just one sentence are duplicated, by meh, whatever.
 
 ***Can I get more data?!***
