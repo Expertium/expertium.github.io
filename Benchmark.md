@@ -47,15 +47,15 @@ Here's what you need to know about log loss:
 
 Next is AUC (Area Under the Curve). Unlike the previous two metrics, AUC is not a measure of **calibration** but of **discrimination**. Here's what you need to know about AUC:
 1. AUC measures how well an algorithm can tell classes apart; in our case, classes are "recalled" and "forgotten." You can think of AUC as a measure of how well the algorithm can draw a boundary between two classes, such that all members of class 1 are on one side of the boundary and all members of class 2 are on the other side.
-2. AUC ranges from 0 to 1, but in practice it's almost always greater than 0.5. AUC less than 0.5 indicates that the algorithm is performing worse than random. Higher is better.
+2. AUC score ranges from 0 to 1, but in practice it's almost always greater than 0.5. An AUC score less than 0.5 indicates that the algorithm is performing worse than random. Higher is better.
 
-AUC can be rather unintuitive in some cases. Exaggerated example: suppose you have an algorithm that always outputs a 99% probability of having cancer for people who do have cancer and a 98% probability of having cancer for people who do not have cancer. It never outputs 98% for those who do have cancer, and it never outputs 99% for those who don't. What do you think is the AUC of this algorithm? Answer: 1.0, because it can perfectly distinguish between these two classes, even if the calibration is absolutely terrible. AUC doesn't tell us anything about calibration, only about discrimination.
+AUC can be rather unintuitive in some cases. Exaggerated example: suppose you have an algorithm that always outputs a 99% probability of having cancer for people who do have cancer and a 98% probability of having cancer for people who do not have cancer. It never outputs 98% for those who do have cancer, and it never outputs 99% for those who don't. What do you think is the AUC score of this algorithm? Answer: 1.0, because it can perfectly distinguish between these two classes, even if the calibration is absolutely terrible. AUC doesn't tell us anything about calibration, only about discrimination.
 
 Below is a diagram that explains AUC.
 
 ![AUC 2 1](https://github.com/user-attachments/assets/28c55552-0613-4643-ad69-bfecf04dfce8)
 
-For a more in-depth explanation of AUC, you can read [this article](https://www.geeksforgeeks.org/auc-roc-curve/). The important part is how to interpret it: in the context of spaced repetition, AUC can be interpreted as "a probability that the algorithm will assign a higher probability of recall to a recalled card than to a forgotten card". For example, AUC=0.7 means that there is a 70% chance that a recalled card has a higher probability of recall predicted by the algorithm than a forgotten card.
+For a more in-depth explanation of AUC, you can read [this article](https://www.geeksforgeeks.org/auc-roc-curve/). The important part is how to interpret it: in the context of spaced repetition, the AUC score can be interpreted as "a probability that the algorithm will assign a higher probability of recall to a recalled card than to a forgotten card". For example, AUC=0.7 means that there is a 70% chance that a recalled card has a higher probability of recall predicted by the algorithm than a forgotten card.
 
 
 Here's a table comparing different metrics.
@@ -221,17 +221,17 @@ Now let's look at log loss.
 Lower is better. Black caps are 99% confidence intervals.
 As you can see, the ranking is a little different. For example, based on RMSE, the ranks of NN-17 and GRU are very close (10th and 11th best, respectively), but based on log loss, NN-17 is ranked much higher (9th best, GRU is 14th). SM-2 and Transformer have switched places.
 
-Finally, let's look at AUC.
+Finally, let's look at AUC scores.
 
 ![image](https://github.com/user-attachments/assets/b079375e-250c-4499-9f7f-07b779bd7bf3)
 
 ![AUC](https://github.com/user-attachments/assets/44772a1c-c0f4-4601-87dd-7742b04d2951)
 
 Higher is better. Black caps are 99% confidence intervals.  <br />
-Now ranking is very different. This isn't too surprising, considering that AUC is completely uncorrelated with both RMSE and log loss. <br />
-It's interesting that the AUC of HLR is 0.631, much higher than 0.54, which is what Duolingo reported in their paper. Granted, 0.631 is not that impressive either. In fact, all spaced repetition algorithms have rather unimpressive AUC. <br />
-Unsurprisingly, AVG has an AUC close to 0.5. Since it always outputs a constant, it cannot differentiate between forgotten and recalled cards. <br />
-It is somewhat surprising that NN-17 has a relatively low AUC, given that it combines the best of both worlds​  -  ​a model of human memory supplemented with a neural network. Granted, the goal was not to create the perfect algorithm; rather, the goal was to emulate SM-17. <br />
+Now ranking is very different.
+It's interesting that the AUC score of HLR is 0.631, much higher than 0.54, which is what Duolingo reported in their paper. Granted, 0.631 is not that impressive either. In fact, all spaced repetition algorithms have rather unimpressive AUC score. <br />
+Surprisingly, AVG has an AUC score slightly above 0.5. Since it always outputs a constant, it cannot differentiate between forgotten and recalled cards, so in theory, it should have an AUC score of *exactly 0.5. <br />
+It is somewhat surprising that NN-17 has a relatively low AUC score, given that it combines the best of both worlds​  -  ​a model of human memory supplemented with a neural network. Granted, the goal was not to create the perfect algorithm; rather, the goal was to emulate SM-17. <br />
 Jarrett's implementation of Transformer doesn't perform well according to all 3 metrics, so if any neural network experts think, "I bet I can do better!" they are welcome.
 
 Let's address GRU-P (doesn't matter whether we are talking about the -short version or not). As you can see, it outperforms all other algorithms by all three metrics. So you're probably wondering "If predicting R directly is better than predicting an intermediate value first, why not do that?". Here's what happens when you let an algorithm predict R directly.
@@ -250,7 +250,7 @@ Notice that while GRU-P (short-term) outperforms GRU-P and while FSRS-5 outperfo
 
 (work in progress)
 
-You may think that an algorithm that knows the exact value of the probability of recall (let's call such an algorithm "Oracle") would achieve a log loss of 0, an RMSE of 0%, and an AUC of 1. But remember - forgetting is inherently random. It's possible - albeit unlikely - that a card with a 99% probability of recall will be forgotten, and a card with a 1% probability of recall will be recalled. Even after finding every single pattern in the data, there is still an inherent, irreducible amount of randomness. 
+You may think that an algorithm that knows the exact value of the probability of recall (let's call such an algorithm "Oracle") would achieve a log loss of 0, an RMSE of 0%, and an AUC score of 1. But remember - forgetting is inherently random. It's possible - albeit unlikely - that a card with a 99% probability of recall will be forgotten, and a card with a 1% probability of recall will be recalled. Even after finding every single pattern in the data, there is still an inherent, irreducible amount of randomness. 
 
 Me and 1DWalker used two methods to estimate the lowest (highest in case of AUC) values of these three metrics that the Oracle would achieve. I will refer to them as "beta fit" and "scaling law".
 
