@@ -219,7 +219,7 @@ Now let's look at log loss.
 ![Log loss](https://github.com/user-attachments/assets/5fcc05a2-db57-4e28-bfa8-ec8d7e1af452)
 
 Lower is better. Black caps are 99% confidence intervals.
-As you can see, the ranking is a little different. For example, based on RMSE, the ranks of NN-17 and GRU are very close (10th and 11th best, respectively), but based on log loss, NN-17 is ranked much higher (9th best, GRU is 14th). SM-2 and Transformer have switched places.
+As you can see, the ranking is a little different.
 
 Finally, let's look at AUC scores.
 
@@ -231,7 +231,6 @@ Higher is better. Black caps are 99% confidence intervals.  <br />
 Now ranking is very different.
 It's interesting that the AUC score of HLR is 0.631, much higher than 0.54, which is what Duolingo reported in their paper. Granted, 0.631 is not that impressive either. In fact, all spaced repetition algorithms have rather unimpressive AUC scores. <br />
 Surprisingly, AVG has an AUC score slightly above 0.5. Since it always outputs a constant, it cannot differentiate between forgotten and recalled cards, so in theory, it should have an AUC score of *exactly 0.5. <br />
-It is somewhat surprising that NN-17 has a relatively low AUC score, given that it combines the best of both worlds​  -  ​a model of human memory supplemented with a neural network. Granted, the goal was not to create the perfect algorithm; rather, the goal was to emulate SM-17. <br />
 Jarrett's implementation of Transformer doesn't perform well according to all 3 metrics, so if any neural network experts think, "I bet I can do better!" they are welcome.
 
 Let's address GRU-P (doesn't matter whether we are talking about the -short version or not). As you can see, it outperforms all other algorithms by all three metrics. So you're probably wondering "If predicting R directly is better than predicting an intermediate value first, why not do that?". Here's what happens when you let an algorithm predict R directly.
