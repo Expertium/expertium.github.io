@@ -277,9 +277,9 @@ The second method, scaling law, works like this:
 
 2) Train it with many different numbers of parameters. For example, from fifty thousand to fifty million. Record the values of the metrics.
 
-3) Do curve-fitting using an equation of the form *L=a+b/(N^c)*, where *L* is the loss (log loss, RMSE, AUC), *N* is the number of trainable parameters of the neural network, and *a*, *b*, and *c* are fitting parameters.
+3) Do curve fitting using an equation of the form *L=a+b/(N^c)+d/(E^f)*, where *L* is the metric (log loss, RMSE, AUC), *N* is the number of trainable parameters of the neural network, *E* is the number of epochs that the neural network has been trained for; and *a*, *b*, *c*, *d* and *f* are curve fitting parameters.
 
-Parameter *a* obtained this way is the irreducible amount of loss that would be left if one trained an infinitely large neural network. This method works for all three metrics.
+Parameter *a* obtained this way is the irreducible amount of loss that would be left if one trained an infinitely large neural network for infinitely many epochs. This method works for all three metrics.
 
 ### Superiority
 
