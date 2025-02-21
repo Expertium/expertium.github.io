@@ -229,7 +229,7 @@ Finally, let's look at AUC scores.
 
 Higher is better. Black caps are 99% confidence intervals.  <br />
 Now ranking is very different.
-It's interesting that the AUC score of HLR is 0.631, much higher than 0.54, which is what Duolingo reported in their paper. Granted, 0.631 is not that impressive either. In fact, all spaced repetition algorithms have rather unimpressive AUC score. <br />
+It's interesting that the AUC score of HLR is 0.631, much higher than 0.54, which is what Duolingo reported in their paper. Granted, 0.631 is not that impressive either. In fact, all spaced repetition algorithms have rather unimpressive AUC scores. <br />
 Surprisingly, AVG has an AUC score slightly above 0.5. Since it always outputs a constant, it cannot differentiate between forgotten and recalled cards, so in theory, it should have an AUC score of *exactly 0.5. <br />
 It is somewhat surprising that NN-17 has a relatively low AUC score, given that it combines the best of both worlds​  -  ​a model of human memory supplemented with a neural network. Granted, the goal was not to create the perfect algorithm; rather, the goal was to emulate SM-17. <br />
 Jarrett's implementation of Transformer doesn't perform well according to all 3 metrics, so if any neural network experts think, "I bet I can do better!" they are welcome.
