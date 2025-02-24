@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Understanding retention in FSRS"
+date: 2024-8-17 13:17:13 +0300
+categories: fsrs
+---
+
 # Understanding retention in FSRS
 
 TLDR: desired retention is "I will recall this % of cards **WHEN THEY ARE DUE**". Average retention is "I will recall this % of **ALL** my cards **TODAY**".
@@ -40,6 +47,6 @@ This graph shows you how average retrievability depends on desired retention, in
 
 Again, just to make it clear in case you are lost: desired retention is "I will recall this % of cards **WHEN THEY ARE DUE**". Average retrievability is "I will recall this % of **ALL** my cards **TODAY**".
 
+---
 
-___
 ### [←Return to homepage](https://expertium.github.io/)
