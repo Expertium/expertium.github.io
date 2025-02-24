@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Reddit Bot"
+date: 2024-11-19 13:54:45 +0300
+categories: other
+---
+
 # Reddit Bot
 
 I made [u/FSRS_bot](https://www.reddit.com/user/FSRS_bot/) on Reddit, it helps people on [r/Anki](https://www.reddit.com/r/Anki) and [r/medicalschoolanki](https://www.reddit.com/r/medicalschoolanki) with FSRS-related questions.
@@ -53,7 +60,7 @@ My initial idea was to just check if the post contains "FSRS", or one of its mis
 
 10​)​ Disperse Siblings. A post about the Disperse Siblings feature of the add-on.
 
-11​)​ Fuzz. A post about fuzz *and* FSRS, not just fuzz. One of the rarest types of posts.
+11​)​ Fuzz. A post about fuzz _and_ FSRS, not just fuzz. One of the rarest types of posts.
 
 12​)​ SM-2 Retention. A post about SM-2 retention (renamed to "Historical retention" at some point). One of the rarest types of posts.
 
@@ -63,7 +70,7 @@ My initial idea was to just check if the post contains "FSRS", or one of its mis
 
 15​)​ Should. A post where hte person has doubts about switching to FSRS.
 
-16​)​ AO (automatic optimization). A post about *automatic* optimization of parameters and why it's not implemented yet. One of the rarest types of posts. One of the rarest types of posts.
+16​)​ AO (automatic optimization). A post about _automatic_ optimization of parameters and why it's not implemented yet. One of the rarest types of posts. One of the rarest types of posts.
 
 17​)​ ETK (estimated total knowldge). A post about the new stat: [estimated total knowledge](https://docs.ankiweb.net/stats.html#the-graphs). One of the rarest types of posts.
 
@@ -133,7 +140,7 @@ On the left we are trying to use a straight line to fit clearly non-linear data.
 
 The problem is that the model on the right won't **generalize** well. Generalization is the model's ability to perform well on previously unseen data aka data that it wasn't trained on. If the model performs great on training data, but outputs garbage when you give it new data, then it's a terrible model. How do you make sure that your model isn't overfitting?
 
-1​)​ Ensure that the number of parameters is many times smaller than the number of datapoints. For example, if your model only has 3 parameters, it's *probably* ok to train it on 20-30 datapoints. However, when it comes to neural networks, it's not uncommon to train gigantic models on relatively small (compared to the number of datapoints) datasets.
+1​)​ Ensure that the number of parameters is many times smaller than the number of datapoints. For example, if your model only has 3 parameters, it's _probably_ ok to train it on 20-30 datapoints. However, when it comes to neural networks, it's not uncommon to train gigantic models on relatively small (compared to the number of datapoints) datasets.
 
 2​)​ Early stopping. It's perfectly simple - train the model on the trainining dataset (I will call it "train set") and keep an eye out for its performance on the testing dataset (test set). ![Early stopping](https://github.com/user-attachments/assets/d98cecf1-a56d-4156-be0d-db191805250f)
 
@@ -205,7 +212,7 @@ Result:
 
 `Hey everoyne, I have a problem with FSRS. I can't optimize my parameetrs. akf92j56kcvjk. Screenshot: `
 
-Now we need to split it into **tokens**. A token is not necessarily a word, it could be a period, a comma, a semicolon, a number, etc. Thankfully, we can use the greatest Python technique known as *Import That One Library That Does Exactly What I Want*, or "ITOLTDEWIW".
+Now we need to split it into **tokens**. A token is not necessarily a word, it could be a period, a comma, a semicolon, a number, etc. Thankfully, we can use the greatest Python technique known as _Import That One Library That Does Exactly What I Want_, or "ITOLTDEWIW".
 
 ![Import That One Library That Does Exactly What I Want rainbow](https://github.com/user-attachments/assets/fd471b6f-9f3c-47c0-aab5-1e7bf06b9548)
 
@@ -314,7 +321,7 @@ Now all that's left is to assign an integer to every word. It doesn't really mat
 
 3​)​ If a token appears <4 times in the entire dataset + "GPT'ed" dataset (more about that later), it will be assigned a special integer reserved for obscure crap and typos ("unk"). A token must appear at least 4 times across three variations of the dataset to warrant having it's own index.
 
-The overall vocabulary size of my Transformer is currently 6448 unique tokens. For ~~magical~~ programming reasons, I made it a multiple of 8 (as well as a few of other things, like text length and some hyperparameters). Minus 0 because it's for padding, minus 6511 because it's for obscure crap and typos. 
+The overall vocabulary size of my Transformer is currently 6448 unique tokens. For ~~magical~~ programming reasons, I made it a multiple of 8 (as well as a few of other things, like text length and some hyperparameters). Minus 0 because it's for padding, minus 6511 because it's for obscure crap and typos.
 
 ## Part Six: Can I Get More Data?
 
@@ -332,7 +339,7 @@ Can I get more data?
 
 I guess it's time to scrape comments now. However, most comments aren't useful since there are too many comments where the person is explaining FSRS rather than asking a question about FSRS. I need questions, not answers. So I only labeled 92 comments out of several thousands.
 
-*Can I get more data?*
+_Can I get more data?_
 
 I can't get any more data...or can I? It's time to learn about another important concept: **data augmentation**. By taking the original data and tweaking it, we can create more training examples and make the neural net robust to relatively small differences that wouldn't throw a human off. Here are some examples of what is used in computer vision tasks:
 
@@ -342,7 +349,7 @@ Of course, the techniques used for text are different from those used for images
 
 ![GPT-4o-mini rephrasing](https://github.com/user-attachments/assets/e78b49ba-1e5a-4be5-84f5-6b6f91f03b3f)
 
-I will be using 50% of the dataset for training, so only 0.5*1519=1,063 texts will be used for training.
+I will be using 50% of the dataset for training, so only 0.5\*1519=1,063 texts will be used for training.
 
 Rephrasing trippled the size of the training set, from 1,063 texts to 3,189 texts.
 
@@ -354,7 +361,7 @@ From a human perspective, this can result in posts where it looks like the first
 
 This doesn't work on posts that are too long to fit into the Transformer's context window after being fused with other posts, and also on posts that have 2-3 labels and this combination of labels is unique and doesn't occur anywhere else in the dataset. Because of all that, the overall increase in the number of training examples is less than 2.
 
-Fusing texts increased the size of the training set by roughly x1.92, from  texts to  texts. Note that unlike in the example with the kitten that I showed above, I apply multiple augmentation techniques sequentially to get even more data, so that the size of the dataset increases exponentially as I add more techniques.
+Fusing texts increased the size of the training set by roughly x1.92, from texts to texts. Note that unlike in the example with the kitten that I showed above, I apply multiple augmentation techniques sequentially to get even more data, so that the size of the dataset increases exponentially as I add more techniques.
 
 **Can I get more data?!**
 
@@ -372,16 +379,15 @@ list_of_sentences = [(x + ' ') if (x != list_of_sentences[-1]) else x for x in l
 
 I made it so that if a text has 2-5 sentences, two randomly chosen adjacent sentences would be swapped. If the text has >5 sentences, four sentences (two pairs) will be swapped.
 
-
 Sentence swapping doubled the size of the dataset, from 4,400 texts to 8,800 texts. Sure, short texts with just one sentence are duplicated, by meh, whatever.
 
-***Can I get more data?!***
+**_Can I get more data?!_**
 
-This next technique is my own invention, I haven't seen it in literature. I call it "filler sentence injection". First, I write down a bunch of filler sentences, such as "Hello everyone", "Hi", "EDIT: added screenshots", "P.S. English is not my native language", "Help would be appreciated", "What are your thoughts, fellow Anki users?", "I would like to hear from experts", "I'm not 100% sure", etc. These sentences don't change what the text is about. If a text is about learning steps, it will be about learning steps with or without these sentences. If a text is about Easy Days, it will be about Easy Days with or without these sentences, etc. Then I randomly inject one of these sentences inbetween two other sentences, or before the first sentence, or after the last sentence. For the sake of keeping it similar to a text actually written by a human, some filler sentences like "P.S. I love this community!" are only appended at the end, and some, like "Greetings, everyone!" are inserted only in the beginning. Obviously, nobody *starts* their post with P.S.
+This next technique is my own invention, I haven't seen it in literature. I call it "filler sentence injection". First, I write down a bunch of filler sentences, such as "Hello everyone", "Hi", "EDIT: added screenshots", "P.S. English is not my native language", "Help would be appreciated", "What are your thoughts, fellow Anki users?", "I would like to hear from experts", "I'm not 100% sure", etc. These sentences don't change what the text is about. If a text is about learning steps, it will be about learning steps with or without these sentences. If a text is about Easy Days, it will be about Easy Days with or without these sentences, etc. Then I randomly inject one of these sentences inbetween two other sentences, or before the first sentence, or after the last sentence. For the sake of keeping it similar to a text actually written by a human, some filler sentences like "P.S. I love this community!" are only appended at the end, and some, like "Greetings, everyone!" are inserted only in the beginning. Obviously, nobody _starts_ their post with P.S.
 
 I did three rounds of filler injection to obtain three more variations of the dataset and it quadrupled the size of the dataset, from 8,800 texts to 35,200 texts.
 
-<ins>***CAN I GET MORE DATA?!***</ins>
+<ins>**_CAN I GET MORE DATA?!_**</ins>
 
 Ok, it's time for the final technique. What if instead of modifying the text, we modified the indices? Here's how exactly:
 
@@ -394,7 +400,7 @@ Ok, it's time for the final technique. What if instead of modifying the text, we
 Then for each word in the dataset I measured its distance to each other word to find its nearest neighbor, like "interval" -> "internal". This way we can simulate a different kind of typo, the kind that a spellchecker can't possibly catch.
 
 Then I assigned a 4.8% probability to 'index of a valid token -> index of "unk"' and a 1.7% probability to 'index of a valid token -> index of a valid token'.
-That's a total 6.5% probability of a typo *per token*, or approximately 99.88% probability of at least one typo per 100 tokens.
+That's a total 6.5% probability of a typo _per token_, or approximately 99.88% probability of at least one typo per 100 tokens.
 
 Then all I had to do was just run the randomizer 4 times to create 4 more variations of the train set. This brought the total number of texts in the training set to **140,800**, 133 times more than without data augmentation!
 
@@ -410,11 +416,10 @@ Comparison of different data augmentation methods that I used:
 
 By "diversity" I mean "variation between the original and augmented data".
 
-
 Oh, and I also added some completely made-up texts for very rare classes, such as "Automatic Optimization". If you don't have enough real data, add half-fake data. If even that is not enough, add fake data. As long as you can manually make high-quality examples, it's fine.
-
 
 **IMPORTANT**: when doing data augmentation, make sure that the test set doesn't have any variations of texts that are in the train set, or else the model will display unrealistically good results on the test set only to shit itself in real life. It's called data leaking. In other words, if there are N variations of text X, make sure that **all** N variations stay in the train set and **none** of them are in the test set.
 
-___
+---
+
 ### [←Return to homepage](https://expertium.github.io/)

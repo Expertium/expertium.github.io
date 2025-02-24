@@ -1,3 +1,10 @@
+---
+layout: post
+title: "A technical explanation of FSRS"
+date: 2024-8-4 16:26:57 +0300
+categories: fsrs
+---
+
 # A technical explanation of FSRS
 
 If you want a simple overview first, start here: [ABC of FSRS](https://github.com/open-spaced-repetition/fsrs4anki/wiki/ABC-of-FSRS).
@@ -5,6 +12,7 @@ If you want a simple overview first, start here: [ABC of FSRS](https://github.co
 In this article, I'll explain how FSRS-4.5 works. The differences between FSRS-4.5 and FSRS-5 are outlined near the end.
 
 # Table of contents
+
 - [R, Retrievability](#r-retrievability)
 - [S, Stability](#s-stability)
 - [D, Difficulty](#d-difficulty)
@@ -23,7 +31,7 @@ $$\LARGE R = ( 1 + {\frac{19}{81}} \cdot {\frac{t}{S}})^{-0.5}$$
 
 The main difference between them is how fast R declines when t>​>S. Note that when t=S, R=90% for all three functions. This has to hold true because in FSRS, memory stability is defined as the amount of time required for R to decrease from 100% to 90%. You can play around with them here: [https://www.desmos.com/calculator/au54ecrpiz](https://www.desmos.com/calculator/au54ecrpiz).
 
-So why does a power function provide a better fit than the exponential function if forgetting is (in theory) exponential? Let's take two exponential curves, with S=0.2 and S=3. And then let's take the average of the two resulting values of R. We will have 3 functions: R_1=0.9^(t/0.2), R_1=0.9^(t/3) and R=0.5*(0.9^(t/0.2)+0.9^(t/3)).
+So why does a power function provide a better fit than the exponential function if forgetting is (in theory) exponential? Let's take two exponential curves, with S=0.2 and S=3. And then let's take the average of the two resulting values of R. We will have 3 functions: R_1=0.9^(t/0.2), R_1=0.9^(t/3) and R=0.5\*(0.9^(t/0.2)+0.9^(t/3)).
 
 ![image](https://github.com/user-attachments/assets/b32dc8d0-23a4-40ed-af32-8674b529fdc8)
 
@@ -34,7 +42,6 @@ Now here's the interesting part: if you try to approximate the resulting functio
 Note that I displayed R^2 on the graph, but you can use any other measure to determine the goodness of fit, the conclusion will be the same.
 
 **Important takeaway number one: a superposition of two exponential functions is better approximated by a power function.**
-
 
 ## S, Stability
 
@@ -56,13 +63,13 @@ SInc is equal to one plus the product of functions of three components of memory
 
 $$\LARGE SInc = 1 + f(D) \cdot f(S) \cdot f(R)$$
 
-Now let's "unfold" each of them, starting with *f(D)*.
+Now let's "unfold" each of them, starting with _f(D)_.
 
 $$\LARGE SInc = 1 + (11 - D) \cdot f(S) \cdot f(R)$$
 
 **Important takeaway number two: the larger the value of D, the smaller the SInc value. This means that the increase in memory stability for difficult material is smaller than for easy material.**
 
-Next, let's unfold *f(S)*.
+Next, let's unfold _f(S)_.
 
 $$\LARGE SInc = 1 + (11 - D) \cdot S^{-w_9} \cdot f(R)$$
 
@@ -70,7 +77,7 @@ $$\LARGE SInc = 1 + (11 - D) \cdot S^{-w_9} \cdot f(R)$$
 
 This will likely surprise a lot of people, but the data supports it.
 
-Finally, let's unfold *f(R)*.
+Finally, let's unfold _f(R)_.
 
 $$\LARGE SInc = 1 + (11 - D) \cdot S^{-w_9} \cdot (e^{w_{10} \cdot (1 - R)}- 1 )$$
 
@@ -90,7 +97,7 @@ The formula for the next value of S is different if the user pressed "Again".
 
 min(..., S) is necessary to ensure that post-lapse stability can never be greater than stability before the lapse. w11 serves a similar purpose to e^w8 in the main formula: it just scales the whole product by some factor to provide a better fit.
 
-An interesting detail: in the main formula, the function of D is linear: f(D)=(11-D). Here, however, *f(D)* is nonlinear. Me and LMSherlock have tried different formulas, and surprisingly, these provide the best fit.
+An interesting detail: in the main formula, the function of D is linear: f(D)=(11-D). Here, however, _f(D)_ is nonlinear. Me and LMSherlock have tried different formulas, and surprisingly, these provide the best fit.
 
 There is one problem with these formulas, though. Since both formulas require the previous value of S to calculate the next value of S, they cannot be used to estimate initial stability after the first review since there is no such thing as a "zeroth review". So initial stability has to be estimated in a completely different way.
 
@@ -107,7 +114,6 @@ Next, we need to find a forgetting curve that provides the best fit to this data
 The first four parameters that you see in the "FSRS parameters" window are the initial stability values.
 
 ![image](https://github.com/user-attachments/assets/06850593-77df-4045-a901-d2ad88f4a895)
-
 
 ## D, Difficulty
 
@@ -153,9 +159,9 @@ However, a more in-depth analysis reveals that the current formula works reasona
 
 ![image](https://github.com/user-attachments/assets/d3f34617-5498-4579-b4bd-f521e3949b4b)
 
-On the x axis, we have D, and on the y axis, we have predicted and measured S. Blue dots are values of memory stability that have been measured from my review history, and the orange line is the predicted value of memory stability. Of course, both are *averages* that require thousands of reviews to estimate accurately.
+On the x axis, we have D, and on the y axis, we have predicted and measured S. Blue dots are values of memory stability that have been measured from my review history, and the orange line is the predicted value of memory stability. Of course, both are _averages_ that require thousands of reviews to estimate accurately.
 
-As you can see, the orange line is close to the blue dots, meaning that, *on average*, predicted stability is close to actual stability. Though the fit is worse for low values of D, they are also based on fewer reviews. This is based on one of my own decks. Also, I say "close", but [mean absolute percentage error (MAPE)](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error) is around 33% for my collection here, meaning that, on average, FSRS is off my 33% when predicting the value of S. Note that this depends on what you have on the X axis. For example, below is a similar graph, but for S as a function of it's own previous value. Here, MAPE is 12%. Also, both graphs are specifically for when the user presses "Good".
+As you can see, the orange line is close to the blue dots, meaning that, _on average_, predicted stability is close to actual stability. Though the fit is worse for low values of D, they are also based on fewer reviews. This is based on one of my own decks. Also, I say "close", but [mean absolute percentage error (MAPE)](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error) is around 33% for my collection here, meaning that, on average, FSRS is off my 33% when predicting the value of S. Note that this depends on what you have on the X axis. For example, below is a similar graph, but for S as a function of it's own previous value. Here, MAPE is 12%. Also, both graphs are specifically for when the user presses "Good".
 
 ![image](https://github.com/user-attachments/assets/f718217b-2444-49ab-b380-04c15d5979e2)
 
@@ -163,18 +169,17 @@ Side note: D ranges from 1 to 10, but in the built-in version of FSRS, D is disp
 
 It's important to mention that me and Sherlock have tried to incorporate R into the formulas for D, but it didn't improve the accuracy. Even though we know that in theory D should depend on R, we don't know how to actually add R to D in a way that is useful.
 
-
 ## Changes in FSRS-5
 
-1) The formula for initial D was changed.
+1. The formula for initial D was changed.
 
 ![CodeCogsEqn (3)](https://github.com/user-attachments/assets/09a02eb1-d2da-4faa-aacd-4c905556889d)
 
-Again=1, Hard=2, Good=3, Easy=4. This formula provides a *slightly* better fit. Because difficulty is clamped between 1 and 10, negative values of D are not a problem, they will simply be replaced with 1. Remember that any difficulty value <1 is set to 1 and any value >10 is set to 10.
+Again=1, Hard=2, Good=3, Easy=4. This formula provides a _slightly_ better fit. Because difficulty is clamped between 1 and 10, negative values of D are not a problem, they will simply be replaced with 1. Remember that any difficulty value <1 is set to 1 and any value >10 is set to 10.
 
-2) "Mean reversion" now reverses the difficulty to that of D0(4), rather than D0(3). Also, while normally D is clamped between 1 and 10, when using mean reversion, *unclamped* initial D is used. This was originally a bug, but then it turned out that it actually slightly improves the results as opposed to using a clamped D0 for mean reversion.
+2. "Mean reversion" now reverses the difficulty to that of D0(4), rather than D0(3). Also, while normally D is clamped between 1 and 10, when using mean reversion, _unclamped_ initial D is used. This was originally a bug, but then it turned out that it actually slightly improves the results as opposed to using a clamped D0 for mean reversion.
 
-3) A new term has been added. Thanks to that term, when the user presses "Again" or "Hard", difficulty will approach 10 *asymptotically*, meaning that it will never be precisely 10.
+3. A new term has been added. Thanks to that term, when the user presses "Again" or "Hard", difficulty will approach 10 _asymptotically_, meaning that it will never be precisely 10.
 
 Here is the new formula:
 
@@ -184,14 +189,13 @@ Here is the new formula:
 
 (10-D)/9 is the linear damping term. The closer D is to 10, the smaller this term, the smaller the change in difficulty.
 
-4) FSRS-5 updates D and S after same-day reviews, which previously were unused. D is updated using the formula described above. S is updated using the following formula:
+4. FSRS-5 updates D and S after same-day reviews, which previously were unused. D is updated using the formula described above. S is updated using the following formula:
 
 ![CodeCogsEqn (2)](https://github.com/user-attachments/assets/fde251b9-70b4-4207-813f-3fe3874c2887)
 
 In Anki, FSRS cannot get access to the real interval lengths of same-day reviews, so it has to rely solely on grades. w17 and w18 are two new parameters.
 
-5) Previously, the first 4 parameters - values of initial stability - were optimized without using gradient descent, using a curve-fitting method that is specific to spaced repetition. After that, they remained "frozen". Now, after they are calculated, they can be adjusted by gradient descent, just like the other parameters. This results in a slightly better fit.
-
+5. Previously, the first 4 parameters - values of initial stability - were optimized without using gradient descent, using a curve-fitting method that is specific to spaced repetition. After that, they remained "frozen". Now, after they are calculated, they can be adjusted by gradient descent, just like the other parameters. This results in a slightly better fit.
 
 ## Optimization aka training
 
@@ -209,6 +213,6 @@ I won't go too into detail about this, instead you can watch [this video about g
 
 Of course, it's a lot more nuanced than that, but if you want to learn about gradient descent, there are hundreds of videos and articles on the Internet, since this is how almost every machine learning algorithm in the world is trained.
 
+---
 
-___
 ### [←Return to homepage](https://expertium.github.io/)

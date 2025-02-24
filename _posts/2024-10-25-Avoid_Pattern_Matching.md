@@ -1,18 +1,25 @@
+---
+layout: post
+title: "Note Types to Avoid Pattern Matching"
+date: 2024-10-25 21:30:02 +0300
+categories: anki
+---
+
 # Note Types to Avoid Pattern Matching
 
-One of the big issues that Anki users face is memorizing what the answer *looks* like rather than the actual information, which is sometimes called "pattern matching". This can lead to situations where someone can "recall" the answer in Anki, but not in real life. The new note types that I wrote about in this article aim to solve this problem as well as allow you to memorize the same amount of information while making fewer cards. 
+One of the big issues that Anki users face is memorizing what the answer _looks_ like rather than the actual information, which is sometimes called "pattern matching". This can lead to situations where someone can "recall" the answer in Anki, but not in real life. The new note types that I wrote about in this article aim to solve this problem as well as allow you to memorize the same amount of information while making fewer cards.
 
 [https://ankiweb.net/shared/info/171015247](https://ankiweb.net/shared/info/171015247). The deck has examples of 5 new note types: Match Pairs, Randomized Cloze, Randomized Basic, Randomized Basic with Multiple Answers, and Click Words. Once you download it, you'll be able to make cards based on these note types on your own, **no add-ons needed**. Huge thanks to [Vilhelm Ian](https://github.com/Vilhelm-Ian) (aka Yoko in the [Anki Discord server](https://discord.gg/qjzcRTx), aka [AnkiQueen](https://forums.ankiweb.net/u/ankiqueen/summary) on the forum) for making these note types!
 
 They work on all platforms: on desktop Anki, on AnkiDroid and on AnkiMobile.
 
 Table of contents:
+
 - [Match Pairs](#match-pairs)
 - [Randomized Cloze](#randomized-cloze)
 - [Randomized Basic](#randomized-basic)
 - [Randomized Basic with Multiple Answers](#randomized-basic-with-multiple-answers)
 - [Click Words](#click-words)
-
 
 ## Match Pairs
 
@@ -35,7 +42,7 @@ And if you think that this is too easy and therefore would make active recall in
 ![Match pairs (one wrong)](https://github.com/user-attachments/assets/0311774a-abc0-4e9d-9a24-edb9a93bddc9)
 
 Here you have 2 countries and 3 capitals, so you need to think harder.<br />
-Make sure that the extra answer is wrong, but not *obviously* wrong. In this example, I won't benefit from adding Jakarta to the second list, since it's obviously wrong. Which is why I added Amsterdam - Amsterdam makes me pause and think, Jakarta doesn't.
+Make sure that the extra answer is wrong, but not _obviously_ wrong. In this example, I won't benefit from adding Jakarta to the second list, since it's obviously wrong. Which is why I added Amsterdam - Amsterdam makes me pause and think, Jakarta doesn't.
 
 Still not hard enough? You can add 2 wrong answers. The number of wrong answers displayed is at most equal to the number of correct answers. The card below will never show "Poopville", because there are 2 correct answers, which means that there can only be 0, 1 or 2 incorrect answers.
 
@@ -45,7 +52,7 @@ Btw, you don't necessarily have to drag answers - you can click on them. When yo
 
 `|` is the separator that you should put between items, **this is all you have to remember to create these cards**. Don't worry about leading/trailing spaces, they are stripped away automatically: `Answer1 | Answer2` will produce the same result as `Answer1|Answer2`.
 
-In all examples above, I used two pairs, but you can add more. However, stuffing too much information into a single card is a bad practice. I recommend having 2-3 pairs, *maaaaaaaaaaaybe* 4, but not more.
+In all examples above, I used two pairs, but you can add more. However, stuffing too much information into a single card is a bad practice. I recommend having 2-3 pairs, _maaaaaaaaaaaybe_ 4, but not more.
 
 Match Pairs also supports images.
 
@@ -56,7 +63,6 @@ And audio (if you can't hear it in the example below, make sure to click the spe
 https://github.com/user-attachments/assets/6f65fb06-322b-4745-8ee9-101b126e2df5
 
 Of course, how useful this note type is for you depends on how often you encounter what I call "negative interference", where card A makes it harder to remember card B, and card B makes it harder to remember card A. Personally, I've been able to replace dozens of unnecessary clozes with this note type, and I think it would be cool if this note type would become built-in in the future.
-
 
 ## Randomized Cloze
 
@@ -72,7 +78,6 @@ One thing that you should keep in mind: the numbers in curly brackets have to be
 
 The `|` separator is the same.
 
-
 ## Randomized Basic
 
 It's exactly what it sounds like. And the separator is the same.
@@ -82,7 +87,6 @@ It's exactly what it sounds like. And the separator is the same.
 ![image](https://github.com/user-attachments/assets/34b927b5-7342-4c2f-83a7-9d881002fec7)
 
 Keep in mind that this isn't Match Pairs, the back can only have **one** item. The `|` separator won't work in the "Back" field.
-
 
 ## Randomized Basic with Multiple Answers
 
@@ -97,7 +101,6 @@ You could make 3 separate notes, but then you would have 3 notes (and cards) for
 Here's a little diagram to help you understand the difference between this and Randomized Basic.
 
 ![RBasic vs RBasic with MA](https://github.com/user-attachments/assets/ef9ce821-61aa-44af-b534-d5c453ac0dc7)
-
 
 ## Click Words
 
@@ -123,6 +126,6 @@ As it says, don't delete it. It is necessary for some stuff related to playing a
 
 # If you find any bugs or if you have any feature requests, here: [https://github.com/Vilhelm-Ian/Interactive_And_Randomize_Anki_Note_Types/issues/new](https://github.com/Vilhelm-Ian/Interactive_And_Randomize_Anki_Note_Types/issues/new)
 
+---
 
-___
 ### [←Return to homepage](https://expertium.github.io/)

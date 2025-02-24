@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Should You Lower Your Max. Interval?"
+date: 2024-10-25 21:37:12 +0300
+categories: anki
+---
+
 # Should You Lower Your Max. Interval?
 
 The lower your max. interval, the more frequently you will have to see your card. This, in turn, increases your daily workload, in minutes of studying. So at first glance, it may seem like keeping it as high as possible is good. <br />
@@ -19,6 +26,6 @@ Perhaps one day I'll come up with a way to precisely determine the optimal value
 
 Until then, I set it to 5 years for most of my decks, except for decks with very hard material, where I keep the max. interval at 365 days. I think it's a reasonable compromise.
 
+---
 
-___
 ### [←Return to homepage](https://expertium.github.io/)

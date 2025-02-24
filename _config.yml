@@ -21,7 +21,7 @@
 title: Expertium's Blog
 description: Spaced repetition stuff
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://expertium.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 theme: just-the-docs
@@ -50,14 +50,14 @@ plugins:
 color_scheme: dark
 
 giscus:
-  repo:                "brainwo/expertium.github.io"
-  repo-id:             "R_kgDOMxNzpA"
-  category:            "General"
-  category-id:         "DIC_kwDOMxNzpM4CkJZZ"
-  mapping:             "pathname"
-  reaction-enabled:    "1"
-  theme:               "dark"
-  crossorigin:         "anonymous"
+  repo: "brainwo/expertium.github.io"
+  repo-id: "R_kgDOMxNzpA"
+  category: "General"
+  category-id: "DIC_kwDOMxNzpM4CkJZZ"
+  mapping: "pathname"
+  reaction-enabled: "1"
+  theme: "dark"
+  crossorigin: "anonymous"
 
 last_edit_timestamp: true
 
