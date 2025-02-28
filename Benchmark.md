@@ -193,7 +193,7 @@ The dataset used in the benchmark is ~~FSRS Anki 20k~~[Anki revlogs 10k](https:/
 
 The data itself is also different. In Anki, each user makes their own flashcards, while Maimemo and Duolingo offer pre-made courses. Simply put, Anki has "same learner - different material" kind of data, and Maimemo/Duolingo has "same material - different learner" kind of data.
 
-This benchmark is based on 9,999 collections and 349,923,850 reviews. Same-day reviews are excluded except when optimizing FSRS-5 and algorithms that have "-short" at the end of their names, which use same-day reviews for training but not for evaluation. Additionally, some reviews are filtered out, such as when the user manually changed the due date (which would count as a review) or when the user used what's called a "filtered deck" if "Reschedule cards based on my answers in this deck" was disabled. Finally, an outlier filter is applied. Because of all of that, the real number of reviews used for evaluation is around 350 million, much smaller than the 727 billion figure mentioned above.
+This benchmark is based on 9,999 collections and 349,923,850 reviews. Same-day reviews are excluded except when optimizing FSRS-5 and algorithms that have "-short" at the end of their names, which use same-day reviews for training but not for evaluation. Additionally, some reviews are filtered out, such as when the user manually changed the due date (which would count as a review) or when the user used what's called a "filtered deck" if "Reschedule cards based on my answers in this deck" was disabled. Finally, an outlier filter is applied. Because of all of that, the real number of reviews used for evaluation is around 350 million, much smaller than the 727 million figure mentioned above.
 
 
 ## Results
