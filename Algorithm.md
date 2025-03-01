@@ -88,9 +88,13 @@ An interesting detail: in the main formula, the function of D is linear: f(D)=(1
 
 There is one problem with these formulas, though. Since both formulas require the previous value of S to calculate the next value of S, they cannot be used to estimate initial stability after the first review since there is no such thing as a "zeroth review". So initial stability has to be estimated in a completely different way.
 
-Here's how. First, all reviews are grouped into 4 groups based on the first grade (Again, Hard, Good, Easy). Next, intervals and outcomes of the second review are used to plot this.
+Here's how. First, all reviews are grouped into 4 groups based on the first grade (Again, Hard, Good, Easy). Next, intervals and outcomes of the second review are used to plot graphs like the ones below.
+
+This is for first grade="Hard":
 
 ![image](https://github.com/user-attachments/assets/a7fa0cba-9713-4552-981e-ad432f871592)
+
+This is for first grade="Good":
 
 ![image](https://github.com/user-attachments/assets/e4692dc6-dcd8-4fee-b7a6-1f5c6316ecdf)
 
