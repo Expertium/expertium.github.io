@@ -193,7 +193,7 @@ In Anki, FSRS cannot get access to the real interval lengths of same-day reviews
 
 ## Optimization aka training
 
-I won't go too into detail about this, instead you can watch [this video about gradient descent by 3blue1brown](https://www.youtube.com/watch?v=IHZwWFHWa-w) or [this one](https://youtu.be/Anc2_mnb3V8). The short version:
+I won't go too into detail about this, instead you can watch [this video about gradient descent by 3blue1brown](https://www.youtube.com/watch?v=IHZwWFHWa-w) or [this one](https://youtu.be/Anc2_mnb3V8) (the second one is better IMO). The short version:
 
 1. Choose some initial values for all parameters (except the first four in our case, since they are estimated before the "main" optimization procedure).
 
