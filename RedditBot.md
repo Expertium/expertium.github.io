@@ -81,7 +81,7 @@ And yes, I read each of the 1,427 posts and 92 comments and labeled all of them 
 
 ![image](https://github.com/user-attachments/assets/41a9a3cb-b1a2-4ae5-82c6-dde776fe1037)
 
-Btw, sometimes I would assing the same post two, three or four labels simultaneously.
+Sometimes I would assing the same post two, three or four labels simultaneously. Initially I only added labels, but later I also added nubmers that must add up to 1 and indicate how much the post "belongs" to a certain label, like this: {'Helper Add-on': 0.1, 'Easy Days': 0.9}.
 
 Then I wrote a whole bunch of keywords and anti-keywords. By "anti-keywords" I mean "if this keyword is in the text/title of the post, then it definitely does NOT belong to this category". Of course, I automated a lot of it. Right now I have over 20,0005 keywords in total.
 
