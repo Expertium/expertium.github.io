@@ -65,15 +65,13 @@ My initial idea was to just check if the post contains "FSRS", or one of its mis
 
 16​)​ AO (automatic optimization). A post about *automatic* optimization of parameters and why it's not implemented yet. One of the rarest types of posts. One of the rarest types of posts.
 
-17​)​ Jarrett. A post that is addressed to LMSherlock (Jarret Ye) or is about some technical stuff related to the FSRS development. One of the rarest types of posts.
+17​)​ General. A post where the person is asking what is FSRS, how to configure it, or a whole bunch of things at once.
 
-18​)​ General. A post where the person is asking what is FSRS, how to configure it, or a whole bunch of things at once.
+18)​ TR<DR. True retention is below desired retention. Well, posts where true retentino is higher than desired are lumped in here anyway. Basically, it's when there is a discrepancy.
 
-19)​ TR<DR. True retention is below desired retention. Well, posts where true retentino is higher than desired are lumped in here anyway. Basically, it's when there is a discrepancy.
+19)​ Null. Either unrelated to FSRS or there is no reason to send the bot to reply to this person.
 
-20)​ Null. Either unrelated to FSRS or there is no reason to send the bot to reply to this person.
-
-21)​ Simulator. A recently added label, since in Anki 24.11 there is now a new FSRS-related thingy, similar to [this](https://ankiweb.net/shared/info/817108664).
+20)​ Simulator. A recently added label, since in Anki 24.11 there is now a new FSRS-related thingy, similar to [this](https://ankiweb.net/shared/info/817108664).
 
 And yes, I read each of the 1,427 posts and 92 comments and labeled all of them manually.
 
