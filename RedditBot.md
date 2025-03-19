@@ -31,7 +31,7 @@ This is a simplified version. In reality it has a few more checks and I'm not on
 
 ## Part Two: Keyword Matching and the First Classifier
 
-My initial idea was to just check if the post contains "FSRS", or one of its misspellings ("FRS", "FRSRS", "FSES", "FRSR", etc.), and make the bot comment the same generic message. However, I quickly realized that there are different types of questions, and they require personalized answers. So I categorized posts into 22 categories:
+My initial idea was to just check if the post contains "FSRS", or one of its misspellings ("FRS", "FRSRS", "FSES", "FRSR", etc.), and make the bot comment the same generic message. However, I quickly realized that there are different types of questions, and they require personalized answers. So I categorized posts into 21 categories:
 
 1​)​ Desired Retention. A post about choosing the value of desired retention and/or using "Compute minimum recommended retention".
 
@@ -65,17 +65,15 @@ My initial idea was to just check if the post contains "FSRS", or one of its mis
 
 16​)​ AO (automatic optimization). A post about *automatic* optimization of parameters and why it's not implemented yet. One of the rarest types of posts. One of the rarest types of posts.
 
-17​)​ ETK (estimated total knowldge). A post about the new stat: [estimated total knowledge](https://docs.ankiweb.net/stats.html#the-graphs). One of the rarest types of posts.
+17​)​ Jarrett. A post that is addressed to LMSherlock (Jarret Ye) or is about some technical stuff related to the FSRS development. One of the rarest types of posts.
 
-18​)​ Jarrett. A post that is addressed to LMSherlock (Jarret Ye) or is about some technical stuff related to the FSRS development. One of the rarest types of posts.
+18​)​ General. A post where the person is asking what is FSRS, how to configure it, or a whole bunch of things at once.
 
-19​)​ General. A post where the person is asking what is FSRS, how to configure it, or a whole bunch of things at once.
+19)​ TR<DR. True retention is below desired retention. Well, posts where true retentino is higher than desired are lumped in here anyway. Basically, it's when there is a discrepancy.
 
-20​)​ TR<DR. True retention is below desired retention. Well, posts where true retentino is higher than desired are lumped in here anyway. Basically, it's when there is a discrepancy.
+20)​ Null. Either unrelated to FSRS or there is no reason to send the bot to reply to this person.
 
-21)​ Null. Either unrelated to FSRS or there is no reason to send the bot to reply to this person.
-
-22)​ Simulator. A recently added label, since in Anki 24.11 there is now a new FSRS-related thingy, similar to [this](https://ankiweb.net/shared/info/817108664).
+21)​ Simulator. A recently added label, since in Anki 24.11 there is now a new FSRS-related thingy, similar to [this](https://ankiweb.net/shared/info/817108664).
 
 And yes, I read each of the 1,427 posts and 92 comments and labeled all of them manually.
 
