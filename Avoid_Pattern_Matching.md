@@ -96,7 +96,7 @@ You could make 3 separate notes, but then you would have 3 notes (and cards) for
 
 Here's a little diagram to help you understand the difference between this and Randomized Basic.
 
-![RBasic vs RBasic with MA](https://github.com/user-attachments/assets/ef9ce821-61aa-44af-b534-d5c453ac0dc7)
+![RBasic vs RBasic with MA](https://github.com/user-attachments/assets/32ac644f-b4c7-4ce2-8e3d-2ad68654d6bc)
 
 
 ## Click Words
