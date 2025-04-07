@@ -89,7 +89,7 @@ Below is a diagram that should give you a better understanding of FSRS. If you w
 
 ![FSRS (proper)](https://github.com/user-attachments/assets/44f568d8-afce-4a49-a782-99531fcc352c)
 
-"Grade" refers to Again/Hard/Good/Easy. To calculate the loss, the grade is converted into a binary value: 0 if it's Again, 1 otherwise. This doesn't mean that FSRS *itself* treats grades as binary, of course it can tell the difference between Hard, Good and Easy.
+"Grade" refers to Again/Hard/Good/Easy. To calculate the loss, the grade is converted into a binary value: 0 if it's Again, 1 otherwise. This doesn't mean that FSRS *itself* treats grades as binary, of course it can tell the difference between Hard, Good and Easy. Loss is calculated only during optimization (this is true for all diagrams you will see), so if you want to imagine how FSRS works when it's deployed and is not being optimized, just mentally remove the part about loss computation.
 
 In order to calculate the probability of recall, FSRS requires the length of the previous interval and its own previous state, which is represented using three numbers: Difficulty, memory Stability, and Retrievability (DSR). Notice that horizontal arrows always point to the right, showing that past states can affect future states, but future states cannot affect past states.
 
@@ -131,7 +131,7 @@ DASH, DASH[MCM] and DASH[ACT-R] don't have state variables that are carried on b
 
 ### Other algorithms
 
-17.​ [ACT-R](http://act-r.psy.cmu.edu/wordpress/wp-content/themes/ACT-R/workshops/2003/proceedings/46.pdf), Adaptive Control of Thought​  -  ​Rational (I've also seen "Character" instead of "Control" in some papers). It's based on a model of human memory that makes one very strange assumption: whether you have successfully recalled your material or not doesn't affect the magnitude of the spacing effect, only the interval length matters. Simply put, this algorithm doesn't differentiate between Again/Hard/Good/Easy. Notice that in the diagram below, grades are only used for calculating the loss function, but not used by the algorithm itself - no arrows come from "Grade". 
+17.​ [ACT-R](http://act-r.psy.cmu.edu/wordpress/wp-content/themes/ACT-R/workshops/2003/proceedings/46.pdf), Adaptive Control of Thought​  -  ​Rational (I've also seen "Character" instead of "Control" in some papers). It's based on a model of human memory that makes one very strange assumption: whether you have successfully recalled your material or not doesn't affect the magnitude of the spacing effect, only the interval length matters. Simply put, this algorithm doesn't differentiate between Again/Hard/Good/Easy. Notice that in the diagram below, grades are only used for calculating the loss function during optimization, but not used by the algorithm itself - no arrows come from "Grade". 
 
 ![ACT-R (proper)](https://github.com/user-attachments/assets/0ed88ec8-b5bd-41da-b3ee-8c7f1bd5bcd8)
 
