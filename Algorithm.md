@@ -100,6 +100,8 @@ This is for first grade="Good":
 
 On the x axis, we have t, the interval length. On the y axis, we have the proportion of cards that the user got right for that particular interval. The size of the blue circle indicates the number of reviews. A bigger circle means more reviews.
 
+For example, say we want to find the initial S for the "Good" grade. So we find all cards where the first grade is "Good", and calculate retention after a one day interval, retention after a two-day interval, retention after a three-day interval, etc. That way we get retention at different interval lengths, with the interval on the X axis and retention on the Y axis.
+
 Next, we need to find a forgetting curve that provides the best fit to this data, in other words, we need to find the value of S that minimizes the difference between the measured probability of recalling a card after this many days and the predicted probability. This is done using a fast curve-fitting method, so it only takes a fraction of the overall time required to optimize parameters. I could write three or four more paragraphs about the specifics of this curve-fitting procedure, but that's neither interesting nor very important for understanding FSRS as a whole.
 
 The first four parameters that you see in the "FSRS parameters" window are the initial stability values.
