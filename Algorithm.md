@@ -98,7 +98,9 @@ This is for first grade="Good":
 
 ![image](https://github.com/user-attachments/assets/e4692dc6-dcd8-4fee-b7a6-1f5c6316ecdf)
 
-On the x axis, we have t, the interval length. On the y axis, we have the proportion of cards that the user got right for that particular interval. The size of the blue circle indicates the number of reviews. A bigger circle means more reviews.
+(pretend that it says "Retention" and not "Recall")
+
+On the x axis, we have t, the interval length. On the y axis, we have the proportion of cards that the user got right for that particular interval aka retention. The size of the blue circle indicates the number of reviews. A bigger circle means more reviews.
 
 For example, say we want to find the initial S for the "Good" grade. So we find all cards where the first grade is "Good", and calculate retention after a one day interval, retention after a two-day interval, retention after a three-day interval, etc. That way we get retention at different interval lengths, with the interval on the X axis and retention on the Y axis.
 
