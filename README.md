@@ -21,7 +21,7 @@ About Anki, FSRS and spaced repetition:
 
 About other things:
 
-1. [At what age do great scientists make great discoveries?](/ScientistsAge.md) Is there a "magical" age that is perfect for making groundbreaking discoveries and inventions? Let's investigate it!
+1. [At what age do great scientists make great discoveries?](/Scientists_Age.md) Is there a "magical" age that is perfect for making groundbreaking discoveries and inventions? Let's investigate it!
 
 A list of all implementations of FSRS in different programming languages, as well as apps that use FSRS (it's not just Anki!): [https://github.com/open-spaced-repetition/awesome-fsrs.](https://github.com/open-spaced-repetition/awesome-fsrs)
 
