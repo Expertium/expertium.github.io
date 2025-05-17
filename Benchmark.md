@@ -372,6 +372,8 @@ Predictions were made at the end of July 2024 and revised in December 2024.
 
 December 2024: the dataset has changed, the new dataset includes interval lengths *in seconds*, deck IDs, and preset IDs, as well as information about sibling cards, so predictions 2 and 3 are no longer valid. I have also changed the first prediction because now I'm less certain that there will be no major breakthrough.
 
+May 2025: my first prediction did not come true, Anki 25.05 will have FSRS-6.
+
 
 ## References
 
