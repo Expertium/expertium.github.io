@@ -2,6 +2,8 @@
 
 If you want a simple overview first, start here: [ABC of FSRS](https://github.com/open-spaced-repetition/fsrs4anki/wiki/ABC-of-FSRS).
 
+[Jarrett has his own article](https://github.com/open-spaced-repetition/fsrs4anki/wiki/The-Algorithm), but I believe mine is easier to understand.
+
 In this article, I'll explain how FSRS-4.5 works. The differences between FSRS-4.5 and FSRS-5 are outlined near the end.
 
 # Table of contents
