@@ -145,7 +145,7 @@ Basically, it's:
 
 5) Then repeat steps 1-4 for each category and its items
 
-It supports images and audio as well.
+It supports images and audio as well, though pasting images in there is not convenient.
 
 To be honest, I don't think you should squeeze **that** much information into a single card, but I imagine people who disagree will like this note type.
 
