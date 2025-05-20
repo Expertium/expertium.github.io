@@ -12,6 +12,8 @@ Table of contents:
 - [Randomized Basic](#randomized-basic)
 - [Randomized Basic with Multiple Answers](#randomized-basic-with-multiple-answers)
 - [Click Words](#click-words)
+- [Shuffled Cloze](#shuffled-cloze)
+- [Sort Cards](#sort-cards)
 
 
 ## Match Pairs
@@ -112,6 +114,35 @@ I don't really like this note type. It's like Cloze, but with multiple answers. 
 All note types will notify you if the creator has released a new version on [AnkiWeb](https://ankiweb.net/shared/info/171015247):
 
 ![image](https://github.com/user-attachments/assets/464b7ae3-af82-40e4-a1df-5b1549348f65)
+
+
+## Shuffled cloze
+
+![image](https://github.com/user-attachments/assets/114084b4-f584-408f-bdf4-eb3da43cd19d)
+
+Each time you review the card, it will show you clozes in a random order. In the example here it will randomly show you either "Heme is made up protoporphyrin and iron" or "Heme is made up iron and protoporphyrin".
+
+
+## Sort Cards
+
+You can think of it as a variation of Match Pairs. You have groups, and you should put cards into groups.
+
+![Sort Cards](https://github.com/user-attachments/assets/5f4fc483-c61e-4cee-b1ed-ee515f0c6374)
+
+The format here is a bit complicated.
+
+![image](https://github.com/user-attachments/assets/301899a3-ff3f-4f8f-a3a1-82117ba3a269)
+
+Basically, it's:
+1) Category name
+2) Then [
+3) Then item 1, item 2, etc.
+4) Then ]
+5) Then repeat steps 1-4 for each category and its items
+
+It supports images and audio as well.
+
+To be honest, I don't think you should squeeze **that** much information into a single card, but I imagine people who disagree will like this note type.
 
 ---
 
