@@ -111,10 +111,6 @@ Here's a little diagram to help you understand the difference between this and R
 
 I don't really like this note type. It's like Cloze, but with multiple answers. I believe this isn't beneficial since it makes recall much easier than cloze, which isn't good for strengthening memories, and the only "advantage" is that it looks fancy. Just use Cloze, or even better - Randomized Cloze.
 
-All note types will notify you if the creator has released a new version on [AnkiWeb](https://ankiweb.net/shared/info/171015247):
-
-![image](https://github.com/user-attachments/assets/464b7ae3-af82-40e4-a1df-5b1549348f65)
-
 
 ## Shuffled cloze
 
@@ -148,6 +144,12 @@ Basically, it's:
 It supports images and audio as well, though pasting images in there is not convenient.
 
 To be honest, I don't think you should squeeze **that** much information into a single card, but I imagine people who disagree will like this note type.
+
+---
+
+All note types will notify you if the creator has released a new version on [AnkiWeb](https://ankiweb.net/shared/info/171015247):
+
+![image](https://github.com/user-attachments/assets/464b7ae3-af82-40e4-a1df-5b1549348f65)
 
 ---
 
