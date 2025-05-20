@@ -134,10 +134,15 @@ The format here is a bit complicated.
 ![image](https://github.com/user-attachments/assets/301899a3-ff3f-4f8f-a3a1-82117ba3a269)
 
 Basically, it's:
+
 1) Category name
+
 2) Then [
+
 3) Then item 1, item 2, etc.
+
 4) Then ]
+
 5) Then repeat steps 1-4 for each category and its items
 
 It supports images and audio as well.
