@@ -146,7 +146,7 @@ Basically, it's:
 
 So overall it looks like this: `category[item1, item2, item3]`
 
-It supports images and audio as well, though pasting images in there is not convenient.
+This note type supports images and audio as well, though pasting images in there is not convenient.
 
 To be honest, I don't think you should squeeze **that** much information into a single card, but I imagine people who disagree will like this note type.
 
