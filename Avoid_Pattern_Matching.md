@@ -4,7 +4,7 @@ One of the big issues that Anki users face is memorizing what the answer *looks*
 
 [https://ankiweb.net/shared/info/171015247](https://ankiweb.net/shared/info/171015247). The deck has examples of 5 new note types: Match Pairs, Randomized Cloze, Randomized Basic, Randomized Basic with Multiple Answers, and Click Words. Once you download it, you'll be able to make cards based on these note types on your own, **no add-ons needed**. Huge thanks to [Vilhelm Ian](https://github.com/Vilhelm-Ian) (aka Yoko in the [Anki Discord server](https://discord.gg/qjzcRTx), aka [AnkiQueen](https://forums.ankiweb.net/u/ankiqueen/summary) on the forum) for making these note types!
 
-They work on all platforms: on desktop Anki, on AnkiDroid and on AnkiMobile.
+They work on PC and on AnkiDroid but may not work properly on AnkiMobile.
 
 Table of contents:
 - [Match Pairs](#match-pairs)
