@@ -138,11 +138,13 @@ Basically, it's:
 
 2) Then [
 
-3) Then item 1, item 2, etc.
+3) Then item 1, item 2, etc.; the comma acts as a separatior
 
 4) Then ]
 
 5) Then repeat steps 1-4 for each category and its items
+
+So overall it looks like this: `category[item1, item2, item3]`
 
 It supports images and audio as well, though pasting images in there is not convenient.
 
