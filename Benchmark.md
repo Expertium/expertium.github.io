@@ -109,17 +109,19 @@ GRU is also a recurrent algorithm, just like FSRS, even if the mathematical form
 
 12.​ LSTM. This is also a recurrent neural network, but a more complex one than GRU. I won't make a diagram for it. This implementation calculates three different values of memory stability for three different forgetting curve and then combines them into one via weighted averaging (with learnable weights). It uses same-day reviews and, unlike most algorithms here, it uses fractional interval lengths. It also uses the answer time - how long the user spent on a card - as an input feature.
 
-13.​ [RWKV-7](https://github.com/BlinkDL/RWKV-LM) (pronounced "rʌkuv" in IPA, like "tho<ins>**rou**</ins>gh <ins>**k**</ins>ettle m<ins>**ove**</ins>"), a novel architecture that aims to combine the best of Transformers and recurrent neural nets. It uses all available information as input: fractional interval lengths, grades, answer time, deck ID, preset ID, and information about reviews of siblings (related cards). The way it's optimized is very different from the rest of the algorithms. All other algorithms are optimized on a per-user basis, meaning that the parameters are personalized for each user, and the algorithm is evaluated on the review history of *the same user* that it's trained on, just on a different, later part of that history. RWKV-7 is instead optimized on 5 thousand users and evaluated on the *other* 5 thousand users. This is then repeated twice to get full coverage of the entire dataset. This is explained in more detail in the [Superiority](#superiority) section. Huge thanks to [1DWalker](https://github.com/1DWalker) on Github for implementing it!
+13.​ [RWKV](https://github.com/BlinkDL/RWKV-LM) (pronounced "rʌkuv" in IPA, like "tho<ins>**rou**</ins>gh <ins>**k**</ins>ettle m<ins>**ove**</ins>"), a novel architecture that aims to combine the best of Transformers and recurrent neural nets. It uses all available information as input: fractional interval lengths, grades, answer time, deck ID, preset ID, and information about reviews of siblings (related cards). The way it's optimized is very different from the rest of the algorithms. All other algorithms are optimized on a per-user basis, meaning that the parameters are personalized for each user, and the algorithm is evaluated on the review history of *the same user* that it's trained on, just on a different, later part of that history. RWKV is instead optimized on 5 thousand users and evaluated on the *other* 5 thousand users. This is then repeated twice to get full coverage of the entire dataset. This is explained in more detail in the [Superiority](#superiority) section. Huge thanks to [1DWalker](https://github.com/1DWalker) on Github for implementing it!
+
+14.​ RWKV-P. Same ideas as with GRU-P: no forgetting curve in the traditional sense, it predicts the probability of recall directly, which can lead to unintuitive results. It was trained in the same way as RWKV.
 
 ### DASH family
 
 These algorithms are based on a different model, not SR or DSR.
 
-14.​ [DASH](https://scholar.colorado.edu/concern/graduate_thesis_or_dissertations/zp38wc97m), Difficulty, Ability and Study History. This is an actual *bona fide* model of human memory based on neuroscience. Well, kind of. The issue with it is that the forgetting curve looks like a step function.
+15.​ [DASH](https://scholar.colorado.edu/concern/graduate_thesis_or_dissertations/zp38wc97m), Difficulty, Ability and Study History. This is an actual *bona fide* model of human memory based on neuroscience. Well, kind of. The issue with it is that the forgetting curve looks like a step function.
 
-15.​ DASH[MCM]. A hybrid algorithm, it addresses some of the issues with DASH's forgetting curve.
+16.​ DASH[MCM]. A hybrid algorithm, it addresses some of the issues with DASH's forgetting curve.
 
-16.​ DASH[ACT-R]. Another hybrid algorithm, it finally achieves a smooth forgetting curve.
+17.​ DASH[ACT-R]. Another hybrid algorithm, it finally achieves a smooth forgetting curve.
 
 [Here](https://www.politesi.polimi.it/retrieve/b39227dd-0963-40f2-a44b-624f205cb224/2022_4_Randazzo_01.pdf) is another relevant paper.
 
@@ -131,7 +133,7 @@ DASH, DASH[MCM] and DASH[ACT-R] don't have state variables that are carried on b
 
 ### Other algorithms
 
-17.​ [ACT-R](http://act-r.psy.cmu.edu/wordpress/wp-content/themes/ACT-R/workshops/2003/proceedings/46.pdf), Adaptive Control of Thought​  -  ​Rational (I've also seen "Character" instead of "Control" in some papers). It's based on a model of human memory that makes one very strange assumption: whether you have successfully recalled your material or not doesn't affect the magnitude of the spacing effect, only the interval length matters. Simply put, this algorithm doesn't differentiate between Again/Hard/Good/Easy. Notice that in the diagram below, grades are only used for calculating the loss function during optimization, but not used by the algorithm itself - no arrows come from "Grade". 
+18.​ [ACT-R](http://act-r.psy.cmu.edu/wordpress/wp-content/themes/ACT-R/workshops/2003/proceedings/46.pdf), Adaptive Control of Thought​  -  ​Rational (I've also seen "Character" instead of "Control" in some papers). It's based on a model of human memory that makes one very strange assumption: whether you have successfully recalled your material or not doesn't affect the magnitude of the spacing effect, only the interval length matters. Simply put, this algorithm doesn't differentiate between Again/Hard/Good/Easy. Notice that in the diagram below, grades are only used for calculating the loss function during optimization, but not used by the algorithm itself - no arrows come from "Grade". 
 
 ![ACT-R (proper)](https://github.com/user-attachments/assets/0ed88ec8-b5bd-41da-b3ee-8c7f1bd5bcd8)
 
@@ -146,27 +148,25 @@ DASH's curve looks like a step function, which goes against our human intuition 
 Also, the probability of recall doesn't start at 100% for DASH algorithms and ACT-R. <br />
 It's interesting that the forgetting curve of FSRS-4.5 (and FSRS-5, they use the same formula) is so steep compared to other algorithms. FSRS v3 used a much steeper exponential formula, which was replaced with a less steep power formula in FSRS v4, and with an even less steep power formula in FSRS-4.5. And yet, even that still predicts much faster forgetting than other algorithms. While we could make the forgetting curve of FSRS-5 even less steep, it would practically prevent the probability of recall from ever reaching values less than 10%, since even for small values of memory stability, it would take more than a human life to reach 10% with such a curve.
 
-18.​ [HLR](https://github.com/duolingo/halflife-regression/blob/master/settles.acl16.pdf), Half-Life Regression. It's an algorithm developed by Duolingo for Duolingo. The memory half-life in HLR is conceptually very similar to the memory stability in FSRS, but it's calculated using an overly simplistic formula. It uses the SR model.
+19.​ [HLR](https://github.com/duolingo/halflife-regression/blob/master/settles.acl16.pdf), Half-Life Regression. It's an algorithm developed by Duolingo for Duolingo. The memory half-life in HLR is conceptually very similar to the memory stability in FSRS, but it's calculated using an overly simplistic formula. It uses the SR model.
 
 ![HLR (proper)](https://github.com/user-attachments/assets/1532b41c-25bf-4c74-a6bf-5ff1f6b7abf9)
 
 For HLR, the order of reviews doesn't matter because it only requires summary statistics about the whole review history. Regardless of how you rearrange reviews, the total number of reviews, passed reviews, and failed reviews (lapses) will remain the same.
 
-19.​ SM-2. It's a 35+ year-old algorithm that is still used by Anki, Mnemosyne, and possibly other apps as well. It's main advantage is simplicity. Note that in our benchmark, it is implemented the way it was originally designed. It's not the Anki version of SM-2, it's the original SM-2. We put a not-so-rigorous interval-to-probability converter on top of it.
+20.​ SM-2. It's a 35+ year-old algorithm that is still used by Anki, Mnemosyne, and possibly other apps as well. It's main advantage is simplicity. Note that in our benchmark, it is implemented the way it was originally designed. It's not the Anki version of SM-2, it's the original SM-2. We put a not-so-rigorous interval-to-probability converter on top of it.
 
-20.​ Anki-SM-2. A variant of SM-2 used in Anki.
+21.​ Anki-SM-2. A variant of SM-2 used in Anki.
 
-21.​ NN-17. It's a neural network approximation of [SM-17](https://supermemo.guru/wiki/Algorithm_SM-17). The SuperMemo wiki page about SM-17 may appear very detailed at first, but it actually obfuscates all of the important details that are necessary to implement SM-17. It tells you what the algorithm is doing, but not how. Our approximation relies on the limited information available on the formulas of SM-17 while utilizing neural networks to fill in any gaps. It uses the DSR model.
+22.​ NN-17. It's a neural network approximation of [SM-17](https://supermemo.guru/wiki/Algorithm_SM-17). The SuperMemo wiki page about SM-17 may appear very detailed at first, but it actually obfuscates all of the important details that are necessary to implement SM-17. It tells you what the algorithm is doing, but not how. Our approximation relies on the limited information available on the formulas of SM-17 while utilizing neural networks to fill in any gaps. It uses the DSR model.
 
 ![NN-17 (proper)](https://github.com/user-attachments/assets/5f105c3c-f9e1-40f6-9062-20a34c56290b)
 
 In order to calculate the length of the next interval, NN-17 requires the length of the previous interval, grade (Again/Hard/Good/Easy) and its own previous state, which is represented using four numbers: Difficulty, memory Stability, Retrievability, and the number of lapses.
 
-22.​ Ebisu v2. [It's an algorithm that uses Bayesian statistics](https://fasiha.github.io/ebisu/) to update its estimate of memory half-life after each review. While it has 3 parameters, Ebisu was not designed to optimize them automatically, they have to be configured manually. It uses the SR model.
+23.​ Ebisu v2. [It's an algorithm that uses Bayesian statistics](https://fasiha.github.io/ebisu/) to update its estimate of memory half-life after each review. While it has 3 parameters, Ebisu was not designed to optimize them automatically, they have to be configured manually. It uses the SR model.
 
-23.​ AVG. It's an "algorithm" that outputs a constant equal to the user's average retention. For example, if the user presses Hard/Good/Easy 85% of the time, the "algorithm" will always output an 85% probability of recall for any given review. You can think of it as a weatherman who says, "The temperature today will be average, the wind speed will be average, and the humidity will be average as well" every single day. This "algorithm" is intended only to serve as a baseline for comparison and has no practical applications. It does not use any model of memory.
-
-24.​ RMSE-BINS-EXPLOIT. An algorithm that cheats our RMSE metric. Not useful in practice.
+24.​ AVG. It's an "algorithm" that outputs a constant equal to the user's average retention. For example, if the user presses Hard/Good/Easy 85% of the time, the "algorithm" will always output an 85% probability of recall for any given review. You can think of it as a weatherman who says, "The temperature today will be average, the wind speed will be average, and the humidity will be average as well" every single day. This "algorithm" is intended only to serve as a baseline for comparison and has no practical applications. It does not use any model of memory.
 
 Some variations of these algorithms are not included because this list is already a bit too big and the article is already a bit too long.
 
@@ -251,34 +251,22 @@ Notice that while GRU-P (short-term) outperforms GRU-P and while FSRS-5 outperfo
 
 You may think that an algorithm that knows the exact value of the probability of recall (let's call such an algorithm "Oracle") would achieve a log loss of 0, an RMSE of 0%, and an AUC score of 1. But remember - forgetting is inherently random. It's possible - albeit unlikely - that a card with a 99% probability of recall will be forgotten, and a card with a 1% probability of recall will be recalled. Even after finding every single pattern in the data, there is still an inherent, irreducible amount of randomness. 
 
-Me and 1DWalker used two methods to estimate the lowest (highest in case of AUC) values of these three metrics that the Oracle would achieve. I will refer to them as "beta fit" and "scaling law".
+Me and 1DWalker used the following method to estimate the lowest log loss and the highest AUC (it cannot be used for estimating RMSE (bins)) values that the Oracle would achieve. I will refer to this method as "beta fit".
 
-The first method, beta fit, works like this:
-
-1) Use the most accurate algorithm available, in this case RWKV-7.
+1) Use several reasonably accurate algorithms, in this case RWKV, RWKV-P, LSTM and FSRS-6 with recency weighting.
 
 2) For each user predict the probability of recall for each review.
 
-3) Do a correction to remove systematic errors.
+3) Apply a calibration correction to remove systematic errors.
 
 4) **Assume** that the shape of the distribution of predicted probabilities is close enough to the shape of the distribution of true underlying probabilities. More precisely, assume that alpha and beta of the 
 [beta distribution](https://en.wikipedia.org/wiki/Beta_distribution) of predicted probabilities are close enough to alpha and beta of the distribution of true probabilities.
 
 5) Run simulations to estimate how well an algorithm that knows the exact probability of recall - sampled from a beta distribution - performs.
 
-This method works for log loss and AUC, but not for RMSE due to the binning method.
+6) If the resulting metrics are more or les the same regardless of which algorithm you used, then this method is workign well. And indeed, it is.
 
-<br />
 
-The second method, scaling law, works like this:
-
-1) Use a neural network, in this case RWKV-7.
-
-2) Train it with many different numbers of parameters. For example, from fifty thousand to fifty million. Record the values of the metrics.
-
-3) Do curve fitting using an equation of the form *L=a+b/(N^c)+d/(E^f)*, where *L* is the metric (log loss, RMSE, AUC), *N* is the number of trainable parameters of the neural network, *E* is the number of epochs that the neural network has been trained for; and *a*, *b*, *c*, *d* and *f* are curve fitting parameters.
-
-Parameter *a* obtained this way is the irreducible amount of loss that would be left if one trained an infinitely large neural network for infinitely many epochs. This method works for all three metrics.
 
 ### Superiority
 
