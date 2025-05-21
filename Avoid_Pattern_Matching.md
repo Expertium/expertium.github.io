@@ -116,7 +116,7 @@ I don't really like this note type. It's like Cloze, but with multiple answers. 
 
 ![image](https://github.com/user-attachments/assets/1c30d180-2638-481b-a521-e2316cf1329a)
 
-Each time you review the card, it will show you clozes in a random order. In the example here it will randomly show you either "Heme is made up of protoporphyrin and iron" **or** "Heme is made up of iron and protoporphyrin". Cloze numbers c1, c2, c3, etc. are randomly swapped every time you review the card.
+Each time you review the card, it will show you clozes in a random order. In the example here it will randomly show you either "Heme is made up of protoporphyrin and iron" **or** "Heme is made up of iron and protoporphyrin". Cloze numbers (and their respective content) c1, c2, c3, etc. are randomly swapped every time you review the card.
 
 ![image](https://github.com/user-attachments/assets/23fbdba8-0577-4ba0-b5bd-9b77696d3354)
 
