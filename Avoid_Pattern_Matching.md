@@ -141,9 +141,9 @@ The format here is a bit complicated.
 
 4) Then ]
 
-5) Then repeat steps 1-4 for each category and its items
+5) Then repeat steps 1-4 for each category and its items. Separate categories with a comma as well
 
-So overall it looks like this: `category[item1, item2, item3]`
+So overall it looks like this: `category1[item1, item2, item2], category2[item3, item4, item5]`
 
 This note type supports images and audio as well, though pasting images in there is not convenient.
 
