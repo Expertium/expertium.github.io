@@ -124,7 +124,7 @@ Each time you review the card, it will show you clozes in a random order. In the
 
 ## Sort Cards
 
-You can think of it as a variation of Match Pairs. You have groups, and you should put cards into groups.
+You can think of it as a variation of Match Pairs. You have groups (or categories, whatever you wanna call them), and you should put items into groups.
 
 ![Sort Cards](https://github.com/user-attachments/assets/5f4fc483-c61e-4cee-b1ed-ee515f0c6374)
 
