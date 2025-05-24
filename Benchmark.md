@@ -7,7 +7,6 @@
 - [Dataset](#dataset)
 - [Results](#results)
   - [Log loss, RMSE and AUC](#log-loss-rmse-and-auc)
-  - [Oracle](#oracle)
   - [Superiority](#superiority)
 - [Discussion](#discussion)
 - [References](#references)
@@ -244,28 +243,6 @@ Only the bottom right is a proper forgetting curve. Well, minus the fact that it
 So while GRU-P outperforms all other algorithms, it's not usable in practice as it could result in all kinds of strange behavior.
 
 Notice that while GRU-P (short-term) outperforms GRU-P and while FSRS-5 outperforms FSRS-4.5, the difference in all 3 metrics is very small. This suggests that **same-day reviews have a very small impact on long-term memory**. Since the architecture of FSRS and GRU-P is very different, the fact that the improvement is small for both of them suggests that architecture is not to blame here.
-
-### Oracle
-
-(work in progress)
-
-You may think that an algorithm that knows the exact value of the probability of recall (let's call such an algorithm "Oracle") would achieve a log loss of 0, an RMSE of 0%, and an AUC score of 1. But remember - forgetting is inherently random. It's possible - albeit unlikely - that a card with a 99% probability of recall will be forgotten, and a card with a 1% probability of recall will be recalled. Even after finding every single pattern in the data, there is still an inherent, irreducible amount of randomness. 
-
-Me and 1DWalker used the following method to estimate the lowest log loss and the highest AUC (it cannot be used for estimating RMSE (bins)) values that the Oracle would achieve. I will refer to this method as "beta fit".
-
-1) Use several reasonably accurate algorithms, in this case RWKV, RWKV-P, LSTM and FSRS-6 with recency weighting.
-
-2) For each user predict the probability of recall for each review.
-
-3) Apply a calibration correction to remove systematic errors.
-
-4) **Assume** that the shape of the distribution of predicted probabilities is close enough to the shape of the distribution of true underlying probabilities. More precisely, assume that alpha and beta of the 
-[beta distribution](https://en.wikipedia.org/wiki/Beta_distribution) of predicted probabilities are close enough to alpha and beta of the distribution of true probabilities.
-
-5) Run simulations to estimate how well an algorithm that knows the exact probability of recall - sampled from a beta distribution - performs.
-
-6) If the resulting metrics are more or les the same regardless of which algorithm you used, then this method is workign well. And indeed, it is.
-
 
 
 ### Superiority
