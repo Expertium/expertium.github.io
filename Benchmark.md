@@ -326,9 +326,7 @@ That being said, let's imagine a future where RWKV-P was successfully integrated
 2. No parameters window.
 3. Accurate probability of recall for any interval, even on the scale of minutes and seconds, unlike FSRS.
 4. No user-defined learning steps. Instead, there would probably just be a "Enable same-day reviews" toggle.
-5. RWKV can accurately R for cards for which it is **impossible** for FSRS to perform well. Consider the following simplified example: the user was in a good mood and was spamming Good at first, but then his mood got worse, and now he is spamming Again. The sequence looks like this:
-'Good, Good, Good, Good, Good, Again, Again, Again, Again, Again'
-FSRS cannot take advantage of this pattern, RWKV-P can.
+5. RWKV can accurately R for cards for which it is **impossible** for FSRS to perform well. Consider the following simplified example: the user was in a good mood and was spamming Good at first, but then his mood got worse, and now he is spamming Again. The sequence looks like this: [Good, Good, Good, Good, Good, Again, Again, Again, Again, Again]. FSRS cannot take advantage of this pattern, RWKV-P can.
 6. No memory stability and difficulty values, and also no forgetting curve graphs.
 7. No intervals above answer buttons. Instead, scheduling would be completely different: every hour/minute/second RWKV-P would calculate R for all cards, then it would show you cards for which R is below the threshold that is desired retention. You can’t really calculate intervals in a meaningful way using RWKV-P. So instead it would just recalculate R once per hour/minute/second and show you what needs to be reviewed. It would be extremely computationally expensive to do this every minute (let alone every second), so for the foreseeable future this is not viable.
 
