@@ -300,7 +300,7 @@ Caveats:
 
 We would love to benchmark [THLR](https://www.researchgate.net/publication/381792698_DRL-SRS_A_Deep_Reinforcement_Learning_Approach_for_Optimizing_Spaced_Repetition_Scheduling), but the researchers didn't release their code publicly.
 
-Regarding the future of FSRS, we have been racking our brains, trying to come up with some way to improve it, and this mild improvement in FSRS-5 was the best we could do. **FSRS-5 is the final version, there will be no major releases in the foreseeable future.**
+Regarding the future of FSRS, we have been racking our brains, trying to come up with some way to improve it. **FSRS-6 is the final version, there will be no major releases in the foreseeable future.**
 
 Broadly speaking, machine learning algorithms are bound by the amount of computational power available, by the amount of data, and by the software. FSRS is not bound by computational power at all, its parameters can be optimized on an average home PC in a matter of seconds; training FSRS for 10x as long would only improve the metrics by 1-2%. FSRS is somewhat bound by data since most users don't have hundreds of thousands of reviews. And it's almost entirely bound by software, aka the theory of memory and forgetting.
 
@@ -321,24 +321,16 @@ Datetime information is inaccessible when scheduling the next review. <br />
 Information from other cards (other than the card that is being reviewed right now) is inaccessible when scheduling the next review. <br />
 [There is no way to manually create connections between cards](https://faqs.ankiweb.net/linking-cards-together.html). <br />
 
-With all that in mind, I want to make several predictions:
-
-1​.​ No further version of FSRS beyond FSRS-5 will be used in Anki by ~~2027~~ 2026. No FSRS-5.5, FSRS-6, or any other version that supersedes FSRS-5.
-Clarification: I made this prediciton a few days before Jarrett made [this tweet](https://x.com/JarrettYe/status/1817570865699299818). After seeing his tweet, I'm even more confident in this prediction. Also, Jarrett said that unless some other famous app decides to implement FSRS, he won't work on FSRS-6 just for the sake of Anki. Overall, I find it unlikely that FSRS-6 will be released before ~~2027~~ 2026.
-
-~~2​. By 2029, no algorithm in our benchmark will have achieved a (weighted by the number of reviews) log loss lower than 0.27, unless the dataset used in the benchmark changes, in which case this prediction is rendered void.~~ The dataset has changed, we use [the 10k dataset](https://huggingface.co/datasets/open-spaced-repetition/anki-revlogs-10k) now.
-
-~~3​. By 2029, no algorithm in our benchmark will have achieved an (weighted by the number of reviews) AUC score higher than 0.83, unless the dataset used in the benchmark changes.~~ The dataset has changed.
-
-4​.​ By 2031, there will be an app with an algorithm that employs at least one out of the three ideas proposed above (which are not specific to FSRS), and that app will not be Anki. For example, an app using KAR3L.
-The app must be publicly available in AppStore, Google Play Store, or elsewhere, and it must not be in the beta testing stage. I'm adding these extra conditions because, without them, [mathacademy.com](https://www.mathacademy.com/) has already [met the main condition](https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/). Even with the extra conditions, this prediction can easily come true way sooner than 2031.
-
-Predictions were made at the end of July 2024 and revised in December 2024.
-
-December 2024: the dataset has changed, the new dataset includes interval lengths *in seconds*, deck IDs, and preset IDs, as well as information about sibling cards, so predictions 2 and 3 are no longer valid. I have also changed the first prediction because now I'm less certain that there will be no major breakthrough.
-
-May 2025: my first prediction did not come true, Anki 25.05 will have FSRS-6.
-
+That being said, let's imagine a future where RWKV-P was successfully integrated into Anki. Here's what it would look like:
+1. No "Optimize" button, RWKV would be pretrained on 10k users and then the same parameters would be used for everyone.
+2. No parameters window.
+3. Accurate probability of recall for any interval, even on the scale of minutes and seconds, unlike FSRS.
+4. No user-defined learning steps. Instead, there would probably just be a "Enable same-day reviews" toggle.
+5. RWKV can accurately R for cards for which it is **impossible** for FSRS to perform well. Consider the following simplified example: the user was in a good mood and was spamming Good at first, but then his mood got worse, and now he is spamming Again. The sequence looks like this:
+'Good, Good, Good, Good, Good, Again, Again, Again, Again, Again'
+FSRS cannot take advantage of this pattern, RWKV-P can.
+6. No memory stability and difficulty values, and also no forgetting curve graphs.
+7. No intervals above answer buttons. Instead, scheduling would be completely different: every hour/minute/second RWKV-P would calculate R for all cards, then it would show you cards for which R is below the threshold that is desired retention. You can’t really calculate intervals in a meaningful way using RWKV-P. So instead it would just recalculate R once per hour/minute/second and show you what needs to be reviewed. It would be extremely computationally expensive to do this every minute (let alone every second), so for the foreseeable future this is not viable.
 
 ## References
 
