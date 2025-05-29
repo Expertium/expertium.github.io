@@ -78,11 +78,11 @@ All FSRS algorithms use the DSR model of memory.
 
 4.​ FSRS-4.5. It's a slightly improved version of FSRS v4, the shape of the forgetting curve has been changed.
 
-5.​ FSRS-5. The newest version. The main difference is that it takes into account same-day reviews, unlike all previous versions, though the improvement in performance is small. All newest versions of Anki use FSRS-5.
+5.​ FSRS-5. It takes into account same-day reviews, unlike all previous versions, though the improvement in performance is small.
 
-6.​ FSRS-5 (default parameters). This is just to see how well FSRS-5 performs without optimization.
+6.​ FSRS-6. The newest version. It has 2 more parameters than FSRS-5. One for same-day reviews, and oen for controlling the shape of the forgetting curve. Before FSRS-6 the shape was the same for all users.
 
-7.​ FSRS-5 (pretrain). In FSRS, the first 4 parameters (values of initial stability) are optimized in a completely different way compared to the rest. "Pretrain" is when the first 4 parameters are optimized, while the rest of parameters are set to default. In Anki >=24.06, when parameters are optimized, the optimizer determines whether to keep the default parameters, perform pretrain, or perform a full optimization; which one is used depends on the user's review history. The more reviews a user has, the more likely it is that full optimization will be performed.
+7.​ FSRS-6 (default parameters). This is just to see how well FSRS-6 performs without optimization.
 
 Below is a diagram that should give you a better understanding of FSRS. If you want to know the details, please read [this article](/Algorithm.md).
 
@@ -94,35 +94,27 @@ In order to calculate the probability of recall, FSRS requires the length of the
 
 ### General-purpose machine learning algorithms family
 
-8.​ Transformer. This neural network architecture has become popular in recent years because of its superior performance in natural language processing. ChatGPT uses this architecture. This implementation uses the SR model.
-
-9.​ GRU, Gated Recurrent Unit. This neural network architecture is commonly used for time series analysis, such as predicting stock market trends or recognizing human speech. Both GRU and Transformer use the same power forgetting curve as FSRS-4.5 and FSRS-5 to make the comparison more fair. This implementation uses the SR model.
+8.​ GRU-P (GRU syands for Gated Recurrent Unit). This neural network architecture is commonly used for time series analysis, such as predicting stock market trends or recognizing human speech. This implementation uses the SR model.
 
 ![GRU (proper)](https://github.com/user-attachments/assets/aed193fe-0b48-49a7-93df-9bd447da490f)
 
 GRU is also a recurrent algorithm, just like FSRS, even if the mathematical formulas are completely different. Its state is represented by an array with n numbers, where n is called the dimension of the hidden state. In this implementation n=2.
 
-10.​ GRU-P. Unlike GRU, which predicts memory stability before converting it into R via a power forgetting curve formula, GRU-P predicts R directly. More about GRU-P later. This implementation does not rely on SR or DSR models of memory. In this implementation n, the dimension of the hidden state, is 8.
+Then there is GRU-P. Unlike GRU, which predicts memory stability before converting it into R via a power forgetting curve formula, GRU-P predicts R directly. This implementation does not rely on SR or DSR models of memory. In this implementation n, the dimension of the hidden state, is 8. GRU-P (short-term) also uses same-day reviews, so it's trained on more data. I only included GRU-P (short-term) for the sake of not making this article any longer and not making the graphs more cluttered.
 
-11.​ GRU-P (short-term). Same as above, but it also uses same-day reviews, so it's trained on more data. This implementation does not rely on SR or DSR models of memory.
+9.​ LSTM. This is also a recurrent neural network, but a more complex one than GRU. I won't make a diagram for it. This implementation calculates three different values of memory stability for three different forgetting curve and then combines them into one via weighted averaging (with learnable weights). It uses same-day reviews and, unlike most algorithms here, it uses fractional interval lengths. It also uses the answer time - how long the user spent on a card - as an input feature.
 
-12.​ LSTM. This is also a recurrent neural network, but a more complex one than GRU. I won't make a diagram for it. This implementation calculates three different values of memory stability for three different forgetting curve and then combines them into one via weighted averaging (with learnable weights). It uses same-day reviews and, unlike most algorithms here, it uses fractional interval lengths. It also uses the answer time - how long the user spent on a card - as an input feature.
+10.​ [RWKV](https://github.com/BlinkDL/RWKV-LM) (pronounced "rʌkuv" in IPA, like "tho<ins>**rou**</ins>gh <ins>**k**</ins>ettle m<ins>**ove**</ins>"), a novel architecture that aims to combine the best of Transformers and recurrent neural nets. It has too many input features to list, so here is a short version: fractional interval lengths, grades, duration of the review, note ID, deck ID, preset ID, sibling card information, hour of the day, day of the week, and the number of reviews done today.
 
-13.​ [RWKV](https://github.com/BlinkDL/RWKV-LM) (pronounced "rʌkuv" in IPA, like "tho<ins>**rou**</ins>gh <ins>**k**</ins>ettle m<ins>**ove**</ins>"), a novel architecture that aims to combine the best of Transformers and recurrent neural nets. It uses all available information as input: fractional interval lengths, grades, answer time, deck ID, preset ID, and information about reviews of siblings (related cards). The way it's optimized is very different from the rest of the algorithms. All other algorithms are optimized on a per-user basis, meaning that the parameters are personalized for each user, and the algorithm is evaluated on the review history of *the same user* that it's trained on, just on a different, later part of that history. RWKV is instead optimized on 5 thousand users and evaluated on the *other* 5 thousand users. This is then repeated twice to get full coverage of the entire dataset. This is explained in more detail in the [Superiority](#superiority) section. Huge thanks to [1DWalker](https://github.com/1DWalker) on Github for implementing it!
+Unlike other algorithms in this benchmark, RWKV is not optimized on each user individually. Instead, it is trained on 5 thousand users and evaluated on another 5 thousand; this process is repeated twice to get full coverage of the dataset. All other algorithms are optimized on a per-user basis, meaning that the parameters are personalized for each user, and the algorithm is evaluated on the review history of *the same user* that it's trained on, just on a different, later part of that history. This is explained in more detail in the [Superiority](#superiority) section. Huge thanks to [1DWalker](https://github.com/1DWalker) on Github for implementing RWKV and LSTM!
 
-14.​ RWKV-P. Same ideas as with GRU-P: no forgetting curve in the traditional sense, it predicts the probability of recall directly, which can lead to unintuitive results. It was trained in the same way as RWKV.
+11.​ RWKV-P. Same idea as with GRU-P: no forgetting curve in the traditional sense, it predicts the probability of recall directly, which can lead to unintuitive results. It's technically the same neural net as RWKV without P, it can work in two different "regimes". I decided to include both RWKV and RWKV-P to show the difference in performance.
 
 ### DASH family
 
 These algorithms are based on a different model, not SR or DSR.
 
-15.​ [DASH](https://scholar.colorado.edu/concern/graduate_thesis_or_dissertations/zp38wc97m), Difficulty, Ability and Study History. This is an actual *bona fide* model of human memory based on neuroscience. Well, kind of. The issue with it is that the forgetting curve looks like a step function.
-
-16.​ DASH[MCM]. A hybrid algorithm, it addresses some of the issues with DASH's forgetting curve.
-
-17.​ DASH[ACT-R]. Another hybrid algorithm, it finally achieves a smooth forgetting curve.
-
-[Here](https://www.politesi.polimi.it/retrieve/b39227dd-0963-40f2-a44b-624f205cb224/2022_4_Randazzo_01.pdf) is another relevant paper.
+12.​ [DASH](https://scholar.colorado.edu/concern/graduate_thesis_or_dissertations/zp38wc97m), Difficulty, Ability and Study History. This is an actual *bona fide* model of human memory based on neuroscience. Well, kind of. The issue with it is that the forgetting curve looks like a step function. There are also DASH[MCM] and DASH[ACT-R], but I won't inlcude them in this article. You can read more [here](https://www.politesi.polimi.it/retrieve/b39227dd-0963-40f2-a44b-624f205cb224/2022_4_Randazzo_01.pdf).
 
 ![DASH (proper)](https://github.com/user-attachments/assets/e678dd4a-536b-4631-a26b-a0bce04ffa67)
 
@@ -138,7 +130,7 @@ DASH, DASH[MCM] and DASH[ACT-R] don't have state variables that are carried on b
 
 Below are some example forgetting curves.
 
-![Forgetting curves 2 1](https://github.com/user-attachments/assets/08694d4b-fdfa-49cb-93d0-7712ffe2e71a)
+![Forgetting curves](https://github.com/user-attachments/assets/5f791191-6721-4406-a854-a0c53da36a0b)
 
 The Y axis doesn't start at 0.
 
