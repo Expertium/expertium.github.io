@@ -182,5 +182,12 @@ As it says, don't delete it. It is necessary for some stuff related to playing a
 # If you find any bugs or if you have any feature requests, here: [https://github.com/Vilhelm-Ian/Interactive_And_Randomize_Anki_Note_Types/issues/new](https://github.com/Vilhelm-Ian/Interactive_And_Randomize_Anki_Note_Types/issues/new)
 
 
+## Extra
+
+Unrelated to the note types above, but there is a nice note type for memorizing keyboard shortcuts: [https://github.com/Jayy001/AnkiKeys](https://github.com/Jayy001/AnkiKeys)
+
+Unfortunately, that one als orequires an add-on.
+
+
 ___
 ### [←Return to homepage](https://expertium.github.io/)
