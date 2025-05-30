@@ -244,7 +244,7 @@ By the way, this is not how "Evaluate" works in Anki. "Evaluate" uses a simplifi
 
 I hope this diagram helps:
 
-![How benchmarking is done 2 2](https://github.com/user-attachments/assets/cdbbd92e-e17e-4dce-af30-22ba6e458626)
+![How benchmarking is done 2 3](https://github.com/user-attachments/assets/c2308b36-98b2-4146-a978-b9e74f780dd6)
 
 A is not used for evaluation, E is not used for training.
 
