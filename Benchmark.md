@@ -16,6 +16,7 @@
 - [Discussion](#discussion)
 - [References](#references)
 
+
 ## Intro
 This is an extended version of my Reddit post. This article should take approximately 25–35 minutes to read, the Reddit post should take around 9–13 minutes. I tried to make this article suitable for both tech-savvy and casual readers, so I may have over-explained some things.
 Side note: when I say "we", I'm referring to myself and [Jarrett Ye](https://github.com/L-M-Sherlock), the creator of [FSRS](https://github.com/open-spaced-repetition/fsrs4anki/wiki/ABC-of-FSRS).
@@ -194,7 +195,7 @@ By the way, this is not how "Evaluate" works in Anki. "Evaluate" uses a simplifi
 
 I hope this diagram helps:
 
-![How benchmarking is done 3 0](https://github.com/user-attachments/assets/7ab10fea-2d41-40bb-9eeb-877d113ddb16)
+![How benchmarking is done 3 0](https://github.com/user-attachments/assets/16aeb100-d2f2-48df-bf96-f2241199c4e6)
 
 Split A is not used for evaluation, split E is not used for training.
 
