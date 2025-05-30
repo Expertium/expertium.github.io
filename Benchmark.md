@@ -4,7 +4,7 @@
 - [Intro](#intro)
 - [Metrics](#metrics)
 - [Algorithms](#algorithms)
-  - [SR/DSR memory model](#sr-/-dsr-memory-model)
+  - [DSR memory model](#dsr-memory-model)
   - [Other memory models](#other-memory-models)
   - [Neural networks](#neural-networks)
   - [Miscellaneous algorithms](#miscellaneous-algorithms)
@@ -68,7 +68,7 @@ Here's a table comparing different metrics.
 
 ## Algorithms
 
-### SR/DSR memory model
+### DSR memory model
 
 Most of the algorithms are based on the Stability, Retrievability (alternatively Half-Life, Probability) model of memory, or it's extension, Difficulty, Stability, Retrievability (alternatively Difficulty, Half-Life, Probability). I will refer to the former as the SR model and to the latter as the DSR model.
 
@@ -112,7 +112,7 @@ These algorithms are based on a different model, not SR or DSR.
 
 (ok, I admit, this diagram is a mess, but I don't know how to make it clearer)
 
-DASH, DASH[MCM] and DASH[ACT-R] don't have state variables that are carried on between reviews, and they don't process reviews sequentially, like SM-17/18 or FSRS. Instead, all past reviews must be processed in order to calculate the length of the next interval. This makes them slower than FSRS when the number of reviews is large. In FSRS, each review takes a constant amount of time to process. If a card has 100 reviews, processing the first review will take the same amount of time as processing the 100th review. In DASH, the processing time of a single review depends on the number of past reviews. Therefore, processing the 100th review takes longer than processing the first one.
+DASH, DASH[MCM] and DASH[ACT-R] don't have state variables that are carried on between reviews, and they don't process reviews sequentially, like SM-17/18 or FSRS. Instead, all past reviews must be processed in order to calculate the length of the next interval.
 
 10.​ [ACT-R](http://act-r.psy.cmu.edu/wordpress/wp-content/themes/ACT-R/workshops/2003/proceedings/46.pdf), Adaptive Control of Thought​  -  ​Rational (I've also seen "Character" instead of "Control" in some papers). It's based on a model of human memory that makes one very strange assumption: whether you have successfully recalled your material or not doesn't affect the magnitude of the spacing effect, only the interval length matters. Simply put, this algorithm doesn't differentiate between Again/Hard/Good/Easy. Notice that in the diagram below, grades are only used for calculating the loss function during optimization, but not used by the algorithm itself - no arrows come from "Grade". 
 
@@ -130,7 +130,7 @@ Also, the probability of recall doesn't start at 100% for DASH algorithms and AC
 
 ### Neural networks
 
-11.​ GRU-P (GRU stands for Gated Recurrent Unit). This neural network architecture is commonly used for time series analysis, such as predicting stock market trends or recognizing human speech. This implementation uses the SR model.
+11.​ GRU-P (GRU stands for Gated Recurrent Unit). This neural network architecture is commonly used for time series analysis, such as predicting stock market trends or recognizing human speech. This implementation uses the SR model - it calculates memory stability as an intermediate variable.
 
 ![GRU (proper)](https://github.com/user-attachments/assets/aed193fe-0b48-49a7-93df-9bd447da490f)
 
@@ -179,70 +179,52 @@ This benchmark is based on 9,999 collections and 349,923,850 reviews. Same-day r
 In the tables and charts below, the averages are weighted by the number of reviews in each user's collection, meaning that users with more reviews have a greater impact on the value of the average. If someone has 100 thousand reviews, they will affect the average 100 times more than someone who only has 1 thousand reviews.
 The tables also show the number of optimizable parameters of each algorithm. The benchmark repo also has [unweighted averages](https://github.com/open-spaced-repetition/srs-benchmark?tab=readme-ov-file#result).
 
-![image](https://github.com/user-attachments/assets/939b8604-1287-4752-a3ee-8ef97367ed8f)
+![RMSE table](https://github.com/user-attachments/assets/eef66b64-9678-49b9-9ceb-eb0bdfe2d2ba)
 
-![RMSE](https://github.com/user-attachments/assets/7774c392-322c-4304-be18-46b0b1f72573)
+![RMSE](https://github.com/user-attachments/assets/1b4417a7-3d38-4e31-ad91-13adb95993c1)
 
 Lower is better. Black caps are 99% confidence intervals.
 Don't focus too much on absolute values, they depend on a lot of things: how we calculate RMSE (which involves somewhat arbitrary binning), whether the averages are weighted by the number of reviews or not, and how the outlier filter works. Instead, focus on the ranking​  -  ​which algorithm is the best, which one is the second best, which one is the third best, etc.
 
-The bars corresponding to FSRS-5 and GRU-P (short-term) are colored differently to indicate that these algorithms have been trained on more reviews; all other algorithms were trained without using same-day reviews. However, the comparison is still fair because all algorithms are evaluated on the same data, even if the training data is different. Here's an analogy: one student did a lot of homework before the test, the other did less homework. After that, both students took the same test. Even though they did a different amount of homework, since the test is the same, it's still valid to compare the test scores of these two students.
+Now let's look at log loss. Reminder: both log loss and RMSE (bins) measure how close predicted probability of recall is to reality.
 
-Now let's look at log loss.
+![Log loss table](https://github.com/user-attachments/assets/6bba1278-ff93-4772-b69c-f49620834750)
 
-![image](https://github.com/user-attachments/assets/acae828d-6a4a-48d8-a218-2bb2fd9e0bf0)
-
-![Log loss](https://github.com/user-attachments/assets/5fcc05a2-db57-4e28-bfa8-ec8d7e1af452)
+![Log loss](https://github.com/user-attachments/assets/d91b7ff9-e2e1-48a4-9088-258f15c38725)
 
 Lower is better. Black caps are 99% confidence intervals.
 As you can see, the ranking is a little different.
 
-Finally, let's look at AUC scores.
+Finally, let's look at AUC scores. Reminder - higher scores indicate better ability to differentiate between recalled and forgotten cards. Scores close to 0.5 indicate that the algorithm is no better than chance at telling apart recalled and forgotten cards.
 
-![image](https://github.com/user-attachments/assets/b079375e-250c-4499-9f7f-07b779bd7bf3)
+![AUC table](https://github.com/user-attachments/assets/17de696c-711d-4c62-bd33-802ef28d51a6)
 
-![AUC](https://github.com/user-attachments/assets/44772a1c-c0f4-4601-87dd-7742b04d2951)
+![AUC](https://github.com/user-attachments/assets/a0f961f4-6e91-48a1-8f97-ac702934e0d8)
 
 Higher is better. Black caps are 99% confidence intervals.  <br />
 Now ranking is very different.
-It's interesting that the AUC score of HLR is 0.631, much higher than 0.54, which is what Duolingo reported in their paper. Granted, 0.631 is not that impressive either. In fact, all spaced repetition algorithms have rather unimpressive AUC scores. <br />
+It's interesting that the AUC score of HLR is 0.6333, much higher than 0.54, which is what Duolingo reported in their paper. Granted, 0.6333 is not that impressive either. In fact, all spaced repetition algorithms have rather unimpressive AUC scores. <br />
 Surprisingly, AVG has an AUC score slightly above 0.5. Since it always outputs a constant, it cannot differentiate between forgotten and recalled cards, so in theory, it should have an AUC score of *exactly* 0.5. <br />
-Jarrett's implementation of Transformer doesn't perform well according to all 3 metrics, so if any neural network experts think, "I bet I can do better!" they are welcome.
 
-Let's address GRU-P (doesn't matter whether we are talking about the -short version or not). As you can see, it outperforms all other algorithms by all three metrics. So you're probably wondering "If predicting R directly is better than predicting an intermediate value first, why not do that?". Here's what happens when you let an algorithm predict R directly.
-
-![GRU-P curves](https://github.com/user-attachments/assets/3420e64b-8bfb-4533-89f4-77908877af66)
-
-These are forgetting curves that GRU-P generated for different users. Only one of them makes sense. <br />
-A curve that becomes flat (top left) not only makes no sense but is also unusable in practice, it could result in *infinitely* long intervals when used for scheduling. <br />
-A curve with a maximum that is not at time=0 (bottom left) makes no sense either. A curve with a minimum (top right) implies that after some point in time, forgetting ends and some sort of anti-forgetting starts, which also makes no sense. <br />
-Only the bottom right is a proper forgetting curve. Well, minus the fact that it's wiggly. And minus the fact that it doesn't start at 100%. <br />
-So while GRU-P outperforms all other algorithms, it's not usable in practice as it could result in all kinds of strange behavior.
-
-Notice that while GRU-P (short-term) outperforms GRU-P and while FSRS-5 outperforms FSRS-4.5, the difference in all 3 metrics is very small. This suggests that **same-day reviews have a very small impact on long-term memory**. Since the architecture of FSRS and GRU-P is very different, the fact that the improvement is small for both of them suggests that architecture is not to blame here.
-
+As you can see, RWKV outperforms FSRS according to all 3 metrics, and by a very big margin. So a more general algorithm that can effectively leverage large amounts of compute has outperformed an algorithm that was hand-crafted by domain experts. [Hmmm, sounds oddly familiar, where have I heard that before?](https://www.cs.utexas.edu/~eunsol/courses/data/bitter_lesson.pdf)
 
 ### Superiority
 
 The metrics presented above can be difficult to interpret. In order to make it easier to understand how algorithms perform relative to each other, the image below shows the percentage of users for whom algorithm A (row) has a lower RMSE than algorithm B (column). For example, GRU-P-short has a 94.5% superiority over the Transformer, meaning that for 94.5% of all collections in this benchmark, GRU-P-short can estimate the probability of recall more accurately than the Transformer.
 
-![Superiority, 19990](https://github.com/user-attachments/assets/eee84fd8-0820-40ab-a2da-4e309cb8a6c9)
+![Superiority-small-9999-collections](https://github.com/user-attachments/assets/cd585653-31d3-43d1-83a5-002092d7c0a7)
 
-You may have noticed that FSRS-5 has a 99.0% superiority over SM-2, meaning that for 99.0% of users, RMSE will be lower with FSRS-5 than with SM-2. But please remember that SM-2 wasn’t designed to predict probabilities, and the only reason it does that in this benchmark is because extra formulas for converting intervals given by SM-2 into probabilities were added on top of it. **There is no way to have a truly fair, no caveats, comparison between FSRS and SM-2.**
+You may have noticed that FSRS-6 (with recency weighting) has a 99.6% superiority over Anki SM-2, meaning that for 99.6% of users, log loss will be lower with FSRS-6 than with SM-2. But please remember that SM-2 wasn’t designed to predict probabilities, and the only reason it does that in this benchmark is because extra formulas for converting intervals given by SM-2 into probabilities were added on top of it. **There is no way to have a truly fair, no caveats, comparison between FSRS and SM-2.**
 
 Here are a few fun numbers from this diagram:
 
-FSRS-5 vs FSRS-4.5: 67.9% superiority.
+FSRS-6 (recency) vs FSRS-5: 88.2% superiority.
 
-FSRS-5 vs FSRS v4: 82.5% superiority.
+FSRS-6 (recency) optimized vs FSRS-6 with default parameters: 84.3% superiority. <br />
+You may be thinking, "Wait, so in ~16% of cases, default parameters are better? That seems too high." The reason is that optimization and evaluation are performed on different data. This is a common practice in machine learning. Evaluating the performance of an algorithm on the same data that it was trained on usually leads to an overly optimistic estimate of performance, and in reality the algorithm performs worse. To get a more realistic estimate, the algorithm is trained on one subset of data (training set) and evaluated on another one (test set). Informally, you can think of it like giving a student practice problems as homework but evaluating him based on his answers during the exam rather than based on his answers to homework problems. <br />
+So what this really means is not "in 16% of cases, default parameters fit the data better", but "in 16% of cases, FSRS fails to generalize beyond the training data sufficiently well and doesn't perform well on new, unseen data". This is more likely to happen if the amount of data (reviews) is low, and less likely to happen for old, large collections.
 
-FSRS-5 vs FSRS v3: 90.4% superiority.
-
-FSRS-5 optimized vs FSRS-5 with default parameters: 81.8% superiority. <br />
-You may be thinking, "Wait, so in 18% of cases, default parameters are better? That seems too high." The reason is that optimization and evaluation are performed on different data. This is a common practice in machine learning. Evaluating the performance of an algorithm on the same data that it was trained on usually leads to an overly optimistic estimate of performance, and in reality the algorithm performs worse. To get a more realistic estimate, the algorithm is trained on one subset of data (training set) and evaluated on another one (test set). Informally, you can think of it like giving a student practice problems as homework but evaluating him based on his answers during the exam rather than based on his answers to homework problems. <br />
-So what this really means is not "in 18% of cases, default parameters fit the data better", but "in 18% of cases, FSRS fails to generalize beyond the training data sufficiently well and doesn't perform well on new, unseen data". This is more likely to happen if the amount of data (reviews) is low, and less likely to happen for old, large collections.
-
-If you want a more technical explanation, here:
+If you want a more technical explanation of how the data is split, here:
 
 1​.​ Data is split into 5 parts, let's call them A-B-C-D-E. A contains the oldest reviews, E contains the most recent reviews.
 
@@ -273,7 +255,7 @@ Caveats:
 
 1. We cannot benchmark proprietary algorithms, such as the latest SuperMemo algorithms.
 
-2. There are algorithms that require extra features, such as HLR with Duolingo's lexeme tags or [KAR3L](https://arxiv.org/pdf/2402.12291.pdf), which uses not only interval lengths and grades but also the text of the card and mildly outperforms FSRS v4 (though it's unknown whether it outperforms FSRS-4.5 and FSRS-5), according to the paper. Such algorithms can be more accurate than FSRS when given the necessary information, but they cannot be benchmarked on our dataset. Only algorithms that use interval lengths and grades can be benchmarked since no other features are available.
+2. There are algorithms that require extra features, such as HLR with Duolingo's lexeme tags or [KAR3L](https://arxiv.org/pdf/2402.12291.pdf), which uses not only interval lengths and grades but also the text of the card and mildly outperforms FSRS v4 (though it's unknown whether it outperforms FSRS-4.5, FSRS-5 and FSRS-6), according to the paper. Such algorithms can be more accurate than FSRS when given the necessary information, but they cannot be benchmarked on our dataset. Only algorithms that use interval lengths and grades can be benchmarked since no other features are available.
 
 We would love to benchmark [THLR](https://www.researchgate.net/publication/381792698_DRL-SRS_A_Deep_Reinforcement_Learning_Approach_for_Optimizing_Spaced_Repetition_Scheduling), but the researchers didn't release their code publicly.
 
@@ -316,7 +298,8 @@ References to academic papers:
 3. [http://act-r.psy.cmu.edu/wordpress/wp-content/themes/ACT-R/workshops/2003/proceedings/46.pdf](http://act-r.psy.cmu.edu/wordpress/wp-content/themes/ACT-R/workshops/2003/proceedings/46.pdf)
 4. [https://github.com/duolingo/halflife-regression/blob/master/settles.acl16.pdf](https://github.com/duolingo/halflife-regression/blob/master/settles.acl16.pdf)
 5. [https://arxiv.org/pdf/2402.12291.pdf](https://arxiv.org/pdf/2402.12291.pdf)
-6. [https://www.researchgate.net/publication/381792698_DRL-SRS_A_Deep_Reinforcement_Learning_Approach_for_Optimizing_Spaced_Repetition_Scheduling](https://www.researchgate.net/publication/381792698_DRL-SRS_A_Deep_Reinforcement_Learning_Approach_for_Optimizing_Spaced_Repetition_Scheduling)
+6. [https://www.cs.utexas.edu/~eunsol/courses/data/bitter_lesson.pdf](https://www.cs.utexas.edu/%7Eeunsol/courses/data/bitter_lesson.pdf)
+7. [https://www.researchgate.net/publication/381792698_DRL-SRS_A_Deep_Reinforcement_Learning_Approach_for_Optimizing_Spaced_Repetition_Scheduling](https://www.researchgate.net/publication/381792698_DRL-SRS_A_Deep_Reinforcement_Learning_Approach_for_Optimizing_Spaced_Repetition_Scheduling)
 
 References to things that aren't academic papers:
 
