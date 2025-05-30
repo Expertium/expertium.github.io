@@ -194,11 +194,11 @@ By the way, this is not how "Evaluate" works in Anki. "Evaluate" uses a simplifi
 
 I hope this diagram helps:
 
-![How benchmarking is done 2 3](https://github.com/user-attachments/assets/c2308b36-98b2-4146-a978-b9e74f780dd6)
+![How benchmarking is done 3 0](https://github.com/user-attachments/assets/7ab10fea-2d41-40bb-9eeb-877d113ddb16)
 
-A is not used for evaluation, E is not used for training.
+Split A is not used for evaluation, split E is not used for training.
 
-Some algorithms, like LSTM and RWKV, use more information than just interval lengths and grades. It's fine as long as evaluation is done on the same reviews of the same cards.
+Some algorithms, like LSTM and RWKV, use more information than just interval lengths and grades, for example answer time. It's fine as long as evaluation is done on the same reviews of the same cards.
 
 
 ## Results
