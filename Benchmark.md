@@ -9,6 +9,7 @@
   - [Neural networks](#neural-networks)
   - [Miscellaneous algorithms](#miscellaneous-algorithms)
 - [Dataset](#dataset)
+  - [Time Series Split](#time-series-split) 
 - [Results](#results)
   - [Log loss, RMSE and AUC](#log-loss-rmse-and-auc)
   - [Superiority](#superiority)
@@ -169,7 +170,33 @@ The dataset used in the benchmark is ~~FSRS Anki 20k~~[Anki revlogs 10k](https:/
 
 The data itself is also different. In Anki, each user makes their own flashcards, while Maimemo and Duolingo offer pre-made courses. Simply put, Anki has "same learner - different material" kind of data, and Maimemo/Duolingo has "same material - different learner" kind of data.
 
-This benchmark is based on 9,999 collections and 349,923,850 reviews. Same-day reviews are excluded except when optimizing FSRS-5 and algorithms that have "-short" at the end of their names, which use same-day reviews for training but not for evaluation. Additionally, some reviews are filtered out, such as when the user manually changed the due date (which would count as a review) or when the user used what's called a "filtered deck" if "Reschedule cards based on my answers in this deck" was disabled. Finally, an outlier filter is applied. Because of all of that, the real number of reviews used for evaluation is around 350 million, much smaller than the 727 million figure mentioned above.
+This benchmark is based on 9,999 collections and 349,923,850 reviews. Same-day reviews are excluded except when optimizing FSRS-5 and algorithms that have "-short" at the end of their names, which use same-day reviews for training but not for evaluation. Additionally, some reviews are filtered out, such as when the user manually changed the due date (which would count as a review) or when the user used what's called a "filtered deck" if "Reschedule cards based on my answers in this deck" was disabled. Finally, an outlier filter is applied. Because of all of that, the real number of reviews used for evaluation is around 350 million, much smaller than the 727 million figure mentioned above. Data is split into training sets and test sets. Algorithm are trained on training sets and evaluated on test sets.
+
+### Time Series Split
+
+If you want a more technical explanation of how the data is split, here:
+
+1​.​ Data is split into 5 parts, let's call them A-B-C-D-E. A contains the oldest reviews, E contains the most recent reviews.
+
+2​.​ An algorithm is trained on A and evaluated on B. Let's call the error that is obtained at this step error 1.
+
+3​.​ An algorithm is trained on A and B and evaluated on C to obtain error 2.
+
+4​.​ An algorithm is trained on A, B and C and evaluated on D to obtain error 3.
+
+5​.​ An algorithm is trained on A, B, C and D and evaluated on E to obtain error 4.
+
+6​.​ The final error is a simple average of four errors, and the final parameters are from step 5.
+
+This procedure is used for all algorithms. Thanks to this clever way of splitting data, no data is thrown away while at the same time the algorithm is trained on different data than it is evaluated on, so we get a realistic estimate of how it would perform on new, previously unseen data.
+
+By the way, this is not how "Evaluate" works in Anki. "Evaluate" uses a simplified procedure to avoid optimizing parameters every time the user wants to evaluate them - it just evaluates the specified parameters on the entire history, without optimizing them and without any splitting; training set=test set. "Evaluate" can only tell the user how well the parameters fit the *current* review history aka the training set. But the benchmark should evaluate the algorithm's ability to generalize beyond the training set data. Jarrett believes that it's fine that the benchmark and Anki don't use the same evaluation procedure.
+
+I hope this diagram helps:
+
+![How benchmarking is done 2 3](https://github.com/user-attachments/assets/c2308b36-98b2-4146-a978-b9e74f780dd6)
+
+A is not used for evaluation, E is not used for training.
 
 
 ## Results
@@ -223,30 +250,6 @@ FSRS-6 (recency) vs FSRS-5: 88.2% superiority.
 FSRS-6 (recency) optimized vs FSRS-6 with default parameters: 84.3% superiority. <br />
 You may be thinking, "Wait, so in ~16% of cases, default parameters are better? That seems too high." The reason is that optimization and evaluation are performed on different data. This is a common practice in machine learning. Evaluating the performance of an algorithm on the same data that it was trained on usually leads to an overly optimistic estimate of performance, and in reality the algorithm performs worse. To get a more realistic estimate, the algorithm is trained on one subset of data (training set) and evaluated on another one (test set). Informally, you can think of it like giving a student practice problems as homework but evaluating him based on his answers during the exam rather than based on his answers to homework problems. <br />
 So what this really means is not "in 16% of cases, default parameters fit the data better", but "in 16% of cases, FSRS fails to generalize beyond the training data sufficiently well and doesn't perform well on new, unseen data". This is more likely to happen if the amount of data (reviews) is low, and less likely to happen for old, large collections.
-
-If you want a more technical explanation of how the data is split, here:
-
-1​.​ Data is split into 5 parts, let's call them A-B-C-D-E. A contains the oldest reviews, E contains the most recent reviews.
-
-2​.​ An algorithm is trained on A and evaluated on B. Let's call the error that is obtained at this step error 1.
-
-3​.​ An algorithm is trained on A and B and evaluated on C to obtain error 2.
-
-4​.​ An algorithm is trained on A, B and C and evaluated on D to obtain error 3.
-
-5​.​ An algorithm is trained on A, B, C and D and evaluated on E to obtain error 4.
-
-6​.​ The final error is a simple average of four errors, and the final parameters are from step 5.
-
-This procedure is used for all algorithms. Thanks to this clever way of splitting data, no data is thrown away while at the same time the algorithm is trained on different data than it is evaluated on, so we get a realistic estimate of how it would perform on new, previously unseen data.
-
-By the way, this is not how "Evaluate" works in Anki. "Evaluate" uses a simplified procedure to avoid optimizing parameters every time the user wants to evaluate them - it just evaluates the specified parameters on the entire history, without optimizing them and without any splitting; training set=test set. "Evaluate" can only tell the user how well the parameters fit the *current* review history aka the training set. But the benchmark should evaluate the algorithm's ability to generalize beyond the training set data. Jarrett believes that it's fine that the benchmark and Anki don't use the same evaluation procedure.
-
-I hope this diagram helps:
-
-![How benchmarking is done 2 3](https://github.com/user-attachments/assets/c2308b36-98b2-4146-a978-b9e74f780dd6)
-
-A is not used for evaluation, E is not used for training.
 
 
 ## Discussion
