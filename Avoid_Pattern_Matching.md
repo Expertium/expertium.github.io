@@ -88,7 +88,7 @@ The `|` separator is the same.
 
 Same as above, but you need to type the answer. This creates one randomized card, not two sibling cards.
 
-![Randomized Cloze with Type-In](https://github.com/user-attachments/assets/c806ddce-337a-49f7-85ff-404f7a40f38b)
+![Randomized Cloze with Type-In](https://github.com/user-attachments/assets/e452794a-0094-4610-9727-86a1ac4517a5)
 
 
 ## Randomized Basic
