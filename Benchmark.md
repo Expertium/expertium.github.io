@@ -149,7 +149,7 @@ Unlike other algorithms in this benchmark, RWKV is not optimized on each user in
 
 ### Miscellaneous algorithms
 
-15.​ Anki-SM-2. A variant of SM-2 used in Anki. ISM-2 is a 35+ year-old algorithm that is (with some changes) still used by Anki, Mnemosyne, and possibly other apps as well. It's main advantage is simplicity. We put a not-so-rigorous interval-to-probability converter on top of it because it was not originally designed to predict probabilities.
+15.​ Anki SM-2. A variant of SM-2 used in Anki. ISM-2 is a 35+ year-old algorithm that is (with some changes) still used by Anki, Mnemosyne, and possibly other apps as well. It's main advantage is simplicity. We put a not-so-rigorous interval-to-probability converter on top of it because it was not originally designed to predict probabilities.
 
 16.​ AVG. It's an "algorithm" that outputs a constant equal to the user's average retention. For example, if the user presses Hard/Good/Easy 85% of the time, the "algorithm" will always output an 85% probability of recall for any given review. You can think of it as a weatherman who says, "The temperature today will be average, the wind speed will be average, and the humidity will be average as well" every single day. This "algorithm" is intended only to serve as a baseline for comparison and has no practical applications. It does not use any model of memory. If an algorithm does not outperform AVG, it cannot be considered good.
 
