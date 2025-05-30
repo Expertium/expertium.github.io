@@ -4,7 +4,7 @@
 - [Intro](#intro)
 - [Metrics](#metrics)
 - [Algorithms](#algorithms)
-  - [SR/DSR memory model](#sr/dsr-memory-model)
+  - [SR/DSR memory model](#sr-/-dsr-memory-model)
   - [Other memory models](#other-memory-models)
   - [Neural networks](#neural-networks)
   - [Miscellaneous algorithms](#miscellaneous-algorithms)
