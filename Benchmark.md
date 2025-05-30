@@ -198,6 +198,8 @@ I hope this diagram helps:
 
 A is not used for evaluation, E is not used for training.
 
+Some algorithms, like LSTM and RWKV, use more information than just interval lengths and grades. It's fine as long as evaluation is done on the same reviews of the same cards.
+
 
 ## Results
 
