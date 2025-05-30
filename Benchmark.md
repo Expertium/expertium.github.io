@@ -199,7 +199,7 @@ I hope this diagram helps:
 
 Split A is not used for evaluation, split E is not used for training.
 
-Some algorithms, like LSTM and RWKV, use more information than just interval lengths and grades, for example answer time. using other *input features* is fine as long as evaluation is done on the *same reviews of the same cards*.
+Some algorithms, like LSTM and RWKV, use more information than just interval lengths and grades, for example answer time. Using other *input features* is fine as long as evaluation is done on the *same reviews of the same cards*.
 
 
 ## Results
