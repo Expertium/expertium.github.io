@@ -2,13 +2,15 @@
 
 One of the big issues that Anki users face is memorizing what the answer *looks* like rather than the actual information, which is sometimes called "pattern matching". This can lead to situations where someone can "recall" the answer in Anki but not in real life. The new note types that I wrote about in this article aim to solve this problem as well as allow you to memorize the same amount of information while making fewer cards. 
 
-[https://ankiweb.net/shared/info/171015247](https://ankiweb.net/shared/info/171015247). The deck has examples of 5 new note types: Match Pairs, Randomized Cloze, Randomized Basic, Randomized Basic with Multiple Answers, and Click Words. Once you download it, you'll be able to make cards based on these note types on your own, **no add-ons needed**. Huge thanks to [Vilhelm Ian](https://github.com/Vilhelm-Ian) (aka Yoko in the [Anki Discord server](https://discord.gg/qjzcRTx), aka [AnkiQueen](https://forums.ankiweb.net/u/ankiqueen/summary) on the forum) for making these note types!
+[https://ankiweb.net/shared/info/171015247](https://ankiweb.net/shared/info/171015247). This deck has examples of 7 new note types: Match Pairs, Match Pairs (Reverse), Randomized Cloze, Randomized Cloze with Type-In, Randomized Basic, Randomized Basic with Multiple Answers, and Click Words. Once you download the deck, you'll be able to make cards based on these note types on your own, **no add-ons needed**. Huge thanks to [Vilhelm Ian](https://github.com/Vilhelm-Ian) (aka Yoko in the [Anki Discord server](https://discord.gg/qjzcRTx), aka [AnkiQueen](https://forums.ankiweb.net/u/ankiqueen/summary) on the forum) for making these note types!
 
 They work on PC and on AnkiDroid but may not work properly on AnkiMobile.
 
 Table of contents:
 - [Match Pairs](#match-pairs)
+- [Match Pairs Reverse](#match-pairs-reverse)
 - [Randomized Cloze](#randomized-cloze)
+- [Randomized Cloze with Type-In](#randomized-cloze-with-type-in)
 - [Randomized Basic](#randomized-basic)
 - [Randomized Basic with Multiple Answers](#randomized-basic-with-multiple-answers)
 - [Click Words](#click-words)
@@ -60,6 +62,13 @@ https://github.com/user-attachments/assets/6f65fb06-322b-4745-8ee9-101b126e2df5
 Of course, how useful this note type is for you depends on how often you encounter what I call "negative interference", where card A makes it harder to remember card B, and card B makes it harder to remember card A. Personally, I've been able to replace dozens of unnecessary clozes with this note type, and I think it would be cool if this note type would become built-in in the future.
 
 
+# Match Pairs Reverse
+
+This creates two cards where the front and back are switched, **not** a single randomized card. It creates two <ins>sibling</ins> cards.
+
+![Match pairs (Reverse)](https://github.com/user-attachments/assets/b7c80db2-4342-4997-bd5e-88f101c58f69)
+
+
 ## Randomized Cloze
 
 This is another note type that aims to solve the pattern matching problem.
@@ -73,6 +82,13 @@ One thing that you should keep in mind: the numbers in curly brackets have to be
 ![Cloze edit](https://github.com/user-attachments/assets/764d993c-0782-4816-90bf-7d0f4f13058f)
 
 The `|` separator is the same.
+
+
+## Randomized Cloze with Type-In
+
+Same as above, but you need to type the answer. This creates one randomized card, not two sibling cards.
+
+![Randomized Cloze with Type-In](https://github.com/user-attachments/assets/c806ddce-337a-49f7-85ff-404f7a40f38b)
 
 
 ## Randomized Basic
