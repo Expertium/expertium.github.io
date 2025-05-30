@@ -4,6 +4,10 @@
 - [Intro](#intro)
 - [Metrics](#metrics)
 - [Algorithms](#algorithms)
+  - [SR/DSR memory model](#sr/dsr-memory-model)
+  - [Other memory models](#other-memory-models)
+  - [Neural networks](#neural-networks)
+  - [Miscellaneous algorithms](#miscellaneous-algorithms)
 - [Dataset](#dataset)
 - [Results](#results)
   - [Log loss, RMSE and AUC](#log-loss-rmse-and-auc)
@@ -64,9 +68,9 @@ Here's a table comparing different metrics.
 
 ## Algorithms
 
-Most of the algorithms are based on the Stability, Retrievability (alternatively Half-Life, Probability) model of memory, or it's extension, Difficulty, Stability, Retrievability (alternatively Difficulty, Half-Life, Probability). I will refer to the former as the SR model and to the latter as the DSR model.
+### SR/DSR memory model
 
-### FSRS family
+Most of the algorithms are based on the Stability, Retrievability (alternatively Half-Life, Probability) model of memory, or it's extension, Difficulty, Stability, Retrievability (alternatively Difficulty, Half-Life, Probability). I will refer to the former as the SR model and to the latter as the DSR model.
 
 All FSRS algorithms use the DSR model of memory.
 
@@ -90,29 +94,19 @@ Below is a diagram that should give you a better understanding of FSRS. If you w
 
 In order to calculate the probability of recall, FSRS requires the length of the previous interval and its own previous state, which is represented using three numbers: Difficulty, memory Stability, and Retrievability (DSR). Notice that horizontal arrows always point to the right, showing that past states can affect future states, but future states cannot affect past states.
 
-### General-purpose machine learning algorithms family
+7.​ [HLR](https://github.com/duolingo/halflife-regression/blob/master/settles.acl16.pdf), Half-Life Regression. It's an algorithm developed by Duolingo for Duolingo. The memory half-life in HLR is conceptually very similar to the memory stability in FSRS, but it's calculated using an overly simplistic formula. It uses the SR model.
 
-7.​ GRU-P (GRU syands for Gated Recurrent Unit). This neural network architecture is commonly used for time series analysis, such as predicting stock market trends or recognizing human speech. This implementation uses the SR model.
+![HLR (proper)](https://github.com/user-attachments/assets/1532b41c-25bf-4c74-a6bf-5ff1f6b7abf9)
 
-![GRU (proper)](https://github.com/user-attachments/assets/aed193fe-0b48-49a7-93df-9bd447da490f)
+For HLR, the order of reviews doesn't matter because it only requires summary statistics about the whole review history. Regardless of how you rearrange reviews, the total number of reviews, passed reviews, and failed reviews (lapses) will remain the same.
 
-GRU is also a recurrent algorithm, just like FSRS, even if the mathematical formulas are completely different. Its state is represented by an array with n numbers, where n is called the dimension of the hidden state. In this implementation n=2.
+8.​ Ebisu v2. [It's an algorithm that uses Bayesian statistics](https://fasiha.github.io/ebisu/) to update its estimate of memory half-life after each review. While it has 3 parameters, Ebisu was not designed to optimize them automatically, they have to be configured manually. It uses the SR model.
 
-Then there is GRU-P. Unlike GRU, which predicts memory stability before converting it into R via a power forgetting curve formula, GRU-P predicts R directly. This implementation does not rely on SR or DSR models of memory. In this implementation n, the dimension of the hidden state, is 8. GRU-P (short-term) also uses same-day reviews, so it's trained on more data. I only included GRU-P (short-term) for the sake of not making this article any longer and not making the graphs more cluttered.
-
-8.​ LSTM. This is also a recurrent neural network, but a more complex one than GRU. I won't make a diagram for it. This implementation calculates three different values of memory stability for three different forgetting curve and then combines them into one via weighted averaging (with learnable weights). It uses same-day reviews and, unlike most algorithms here, it uses fractional interval lengths. It also uses the answer time - how long the user spent on a card - as an input feature.
-
-9.​ [RWKV](https://github.com/BlinkDL/RWKV-LM) (pronounced "rʌkuv" in IPA, like "tho<ins>**rou**</ins>gh <ins>**k**</ins>ettle m<ins>**ove**</ins>"), a novel architecture that aims to combine the best of Transformers and recurrent neural nets. It has too many input features to list, so here is a short version: fractional interval lengths, grades, duration of the review, note ID, deck ID, preset ID, sibling card information, hour of the day, day of the week, and the number of reviews done today.
-
-Unlike other algorithms in this benchmark, RWKV is not optimized on each user individually. Instead, it is trained on 5 thousand users and evaluated on another 5 thousand; this process is repeated twice to get full coverage of the dataset. All other algorithms are optimized on a per-user basis, meaning that the parameters are personalized for each user, and the algorithm is evaluated on the review history of *the same user* that it's trained on, just on a different, later part of that history. This is explained in more detail in the [Superiority](#superiority) section. Huge thanks to [1DWalker](https://github.com/1DWalker) on Github for implementing RWKV and LSTM!
-
-10.​ RWKV-P. Same idea as with GRU-P: no forgetting curve in the traditional sense, it predicts the probability of recall directly, which can lead to unintuitive results. It's technically the same neural net as RWKV without P, it can work in two different "regimes". I decided to include both RWKV and RWKV-P to show the difference in performance.
-
-### DASH family
+### Other memory models
 
 These algorithms are based on a different model, not SR or DSR.
 
-11.​ [DASH](https://scholar.colorado.edu/concern/graduate_thesis_or_dissertations/zp38wc97m), Difficulty, Ability and Study History. This is an actual *bona fide* model of human memory based on neuroscience. Well, kind of. The issue with it is that the forgetting curve looks like a step function. There are also DASH[MCM] and DASH[ACT-R], but I won't inlcude them in this article. You can read more [here](https://www.politesi.polimi.it/retrieve/b39227dd-0963-40f2-a44b-624f205cb224/2022_4_Randazzo_01.pdf).
+9.​ [DASH](https://scholar.colorado.edu/concern/graduate_thesis_or_dissertations/zp38wc97m), Difficulty, Ability and Study History. This is an actual *bona fide* model of human memory based on neuroscience. Well, kind of. The issue with it is that the forgetting curve looks like a step function. There are also DASH[MCM] and DASH[ACT-R], but I won't inlcude them in this article. You can read more [here](https://www.politesi.polimi.it/retrieve/b39227dd-0963-40f2-a44b-624f205cb224/2022_4_Randazzo_01.pdf).
 
 ![DASH (proper)](https://github.com/user-attachments/assets/e678dd4a-536b-4631-a26b-a0bce04ffa67)
 
@@ -120,9 +114,7 @@ These algorithms are based on a different model, not SR or DSR.
 
 DASH, DASH[MCM] and DASH[ACT-R] don't have state variables that are carried on between reviews, and they don't process reviews sequentially, like SM-17/18 or FSRS. Instead, all past reviews must be processed in order to calculate the length of the next interval. This makes them slower than FSRS when the number of reviews is large. In FSRS, each review takes a constant amount of time to process. If a card has 100 reviews, processing the first review will take the same amount of time as processing the 100th review. In DASH, the processing time of a single review depends on the number of past reviews. Therefore, processing the 100th review takes longer than processing the first one.
 
-### Other algorithms
-
-12.​ [ACT-R](http://act-r.psy.cmu.edu/wordpress/wp-content/themes/ACT-R/workshops/2003/proceedings/46.pdf), Adaptive Control of Thought​  -  ​Rational (I've also seen "Character" instead of "Control" in some papers). It's based on a model of human memory that makes one very strange assumption: whether you have successfully recalled your material or not doesn't affect the magnitude of the spacing effect, only the interval length matters. Simply put, this algorithm doesn't differentiate between Again/Hard/Good/Easy. Notice that in the diagram below, grades are only used for calculating the loss function during optimization, but not used by the algorithm itself - no arrows come from "Grade". 
+10.​ [ACT-R](http://act-r.psy.cmu.edu/wordpress/wp-content/themes/ACT-R/workshops/2003/proceedings/46.pdf), Adaptive Control of Thought​  -  ​Rational (I've also seen "Character" instead of "Control" in some papers). It's based on a model of human memory that makes one very strange assumption: whether you have successfully recalled your material or not doesn't affect the magnitude of the spacing effect, only the interval length matters. Simply put, this algorithm doesn't differentiate between Again/Hard/Good/Easy. Notice that in the diagram below, grades are only used for calculating the loss function during optimization, but not used by the algorithm itself - no arrows come from "Grade". 
 
 ![ACT-R (proper)](https://github.com/user-attachments/assets/0ed88ec8-b5bd-41da-b3ee-8c7f1bd5bcd8)
 
@@ -136,15 +128,27 @@ These curves were plotted using default parameters, which have been obtained by 
 DASH's curve looks like a step function, which goes against our human intuition and common sense. DASH[MCM] attempts to smooth it, but you can see that it's not perfect. DASH[ACT-R] achieves a smooth curve. <br />
 Also, the probability of recall doesn't start at 100% for DASH algorithms and ACT-R. <br />
 
-13.​ [HLR](https://github.com/duolingo/halflife-regression/blob/master/settles.acl16.pdf), Half-Life Regression. It's an algorithm developed by Duolingo for Duolingo. The memory half-life in HLR is conceptually very similar to the memory stability in FSRS, but it's calculated using an overly simplistic formula. It uses the SR model.
+### Neural networks
 
-![HLR (proper)](https://github.com/user-attachments/assets/1532b41c-25bf-4c74-a6bf-5ff1f6b7abf9)
+11.​ GRU-P (GRU stands for Gated Recurrent Unit). This neural network architecture is commonly used for time series analysis, such as predicting stock market trends or recognizing human speech. This implementation uses the SR model.
 
-For HLR, the order of reviews doesn't matter because it only requires summary statistics about the whole review history. Regardless of how you rearrange reviews, the total number of reviews, passed reviews, and failed reviews (lapses) will remain the same.
+![GRU (proper)](https://github.com/user-attachments/assets/aed193fe-0b48-49a7-93df-9bd447da490f)
 
-14.​ Anki-SM-2. A variant of SM-2 used in Anki. ISM-2 is a 35+ year-old algorithm that is (with some changes) still used by Anki, Mnemosyne, and possibly other apps as well. It's main advantage is simplicity. We put a not-so-rigorous interval-to-probability converter on top of it because it was not originally designed to predict probabilities.
+GRU is also a recurrent algorithm, just like FSRS, even if the mathematical formulas are completely different. Its state is represented by an array with n numbers, where n is called the dimension of the hidden state. In this implementation n=2.
 
-15.​ Ebisu v2. [It's an algorithm that uses Bayesian statistics](https://fasiha.github.io/ebisu/) to update its estimate of memory half-life after each review. While it has 3 parameters, Ebisu was not designed to optimize them automatically, they have to be configured manually. It uses the SR model.
+Then there is GRU-P. Unlike GRU, which predicts memory stability before converting it into R via a power forgetting curve formula, GRU-P predicts R directly. This implementation does not rely on SR or DSR models of memory. In this implementation n, the dimension of the hidden state, is 8. GRU-P (short-term) also uses same-day reviews, so it's trained on more data. I only included GRU-P (short-term) for the sake of not making this article any longer and not making the graphs more cluttered.
+
+12.​ LSTM. This is also a recurrent neural network, but a more complex one than GRU. I won't make a diagram for it. This implementation calculates three different values of memory stability for three different forgetting curve and then combines them into one via weighted averaging (with learnable weights). It uses same-day reviews and, unlike most algorithms here, it uses fractional interval lengths. It also uses the answer time - how long the user spent on a card - as an input feature.
+
+13.​ [RWKV](https://github.com/BlinkDL/RWKV-LM) (pronounced "rʌkuv" in IPA, like "tho<ins>**rou**</ins>gh <ins>**k**</ins>ettle m<ins>**ove**</ins>"), a novel architecture that aims to combine the best of Transformers and recurrent neural nets. It has too many input features to list, so here is a short version: fractional interval lengths, grades, duration of the review, note ID, deck ID, preset ID, sibling card information, hour of the day, day of the week, and the number of reviews done today.
+
+Unlike other algorithms in this benchmark, RWKV is not optimized on each user individually. Instead, it is trained on 5 thousand users and evaluated on another 5 thousand; this process is repeated twice to get full coverage of the dataset. All other algorithms are optimized on a per-user basis, meaning that the parameters are personalized for each user, and the algorithm is evaluated on the review history of *the same user* that it's trained on, just on a different, later part of that history. This is explained in more detail in the [Superiority](#superiority) section. Huge thanks to [1DWalker](https://github.com/1DWalker) on Github for implementing RWKV and LSTM!
+
+14.​ RWKV-P. Same idea as with GRU-P: no forgetting curve in the traditional sense, it predicts the probability of recall directly, which can lead to unintuitive results. It's technically the same neural net as RWKV without P, it can work in two different "regimes". I decided to include both RWKV and RWKV-P to show the difference in performance, but keep in mind that RWKV and RWKV-P are actually *exactly* the same neural net, just used in different ways.
+
+### Miscellaneous algorithms
+
+15.​ Anki-SM-2. A variant of SM-2 used in Anki. ISM-2 is a 35+ year-old algorithm that is (with some changes) still used by Anki, Mnemosyne, and possibly other apps as well. It's main advantage is simplicity. We put a not-so-rigorous interval-to-probability converter on top of it because it was not originally designed to predict probabilities.
 
 16.​ AVG. It's an "algorithm" that outputs a constant equal to the user's average retention. For example, if the user presses Hard/Good/Easy 85% of the time, the "algorithm" will always output an 85% probability of recall for any given review. You can think of it as a weatherman who says, "The temperature today will be average, the wind speed will be average, and the humidity will be average as well" every single day. This "algorithm" is intended only to serve as a baseline for comparison and has no practical applications. It does not use any model of memory. If an algorithm does not outperform AVG, it cannot be considered good.
 
