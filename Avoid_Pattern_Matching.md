@@ -64,7 +64,7 @@ Of course, how useful this note type is for you depends on how often you encount
 
 # Match Pairs Reverse
 
-This creates two cards where the front and back are switched, **not** a single randomized card. It creates two <ins>sibling</ins> cards.
+This creates two <ins>sibling</ins> cards where the fields are switched, **not** a single randomized card.
 
 ![Match pairs (Reverse)](https://github.com/user-attachments/assets/b7c80db2-4342-4997-bd5e-88f101c58f69)
 
