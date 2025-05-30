@@ -16,7 +16,7 @@
 - [References](#references)
 
 ## Intro
-This is an extended version of my Reddit post. This article should take approximately 32–37 minutes to read, the Reddit post should take around 11–13 minutes. I tried to make this article suitable for both tech-savvy and casual readers, so I may have over-explained some things.
+This is an extended version of my Reddit post. This article should take approximately 25–35 minutes to read, the Reddit post should take around 9–13 minutes. I tried to make this article suitable for both tech-savvy and casual readers, so I may have over-explained some things.
 Side note: when I say "we", I'm referring to myself and [Jarrett Ye](https://github.com/L-M-Sherlock), the creator of [FSRS](https://github.com/open-spaced-repetition/fsrs4anki/wiki/ABC-of-FSRS).
 
 
