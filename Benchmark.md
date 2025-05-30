@@ -81,7 +81,7 @@ All FSRS algorithms use the DSR model of memory.
 
 3.​ FSRS-4.5. It's a slightly improved version of FSRS v4, the shape of the forgetting curve has been changed.
 
-4.​ FSRS-5. It takes into account same-day reviews, unlike all previous versions, though the improvement in performance is small.
+4.​ FSRS-5. It has 2 more parameters than FSRS-4.5 and it takes into account same-day reviews, unlike all previous versions; though the improvement in accuracy is small.
 
 5.​ FSRS-6. The newest version. It has 2 more parameters than FSRS-5. One for same-day reviews, and oen for controlling the shape of the forgetting curve. Before FSRS-6 the shape was the same for all users.
 
