@@ -26,17 +26,17 @@ First of all, every spaced repetition algorithm must be able to predict the **pr
 
 If an algorithm doesn't calculate probabilities and just outputs an interval, it's still possible to convert that interval into a probability under certain assumptions. It's better than nothing, since it allows us to perform at least some sort of comparison. That's what we did for SM-2, the only algorithm in the entire benchmark that wasn't originally designed to predict probabilities. We decided not to include [Memrise](https://memrise.zendesk.com/hc/en-us/articles/360015889057-How-does-the-spaced-repetition-system-work) because we are unsure if the assumptions required to convert its intervals to probabilities hold. Well, it wouldn't perform great anyway, it's about as inflexible as possible.
 
-Once we have an algorithm that predicts R, we can run it on some users' review histories to see how much predicted R deviates from measured R. If we do that using hundreds of millions of reviews, we will get a very good idea of which algorithm performs better on average. **RMSE**, or root mean square error, can be interpreted as "the average difference between predicted and measured probability of recall (R)". RMSE is a measure of **calibration**.
+Once we have an algorithm that predicts R, we can run it on some users' review histories to see how much predicted R deviates from measured R. If we do that using hundreds of millions of reviews, we will get a very good idea of which algorithm performs better on average. **RMSE** (bins), or root mean square error, can be interpreted as "the average difference between predicted and measured probability of recall (R)". RMSE (bins) is a measure of **calibration**. I will keep adding (bins) just to make it clear that it's not the same as the standard RMSE.
 
-Loosely speaking, if an algorithm predicts an X% chance of something happening, it should happen X% of the time. For example, if a weatherman says, "There is a 90% chance of rain today,"  it should rain on 90% of days when he says that. That's good calibration. If it rained only on 40% of those days, it means that the weatherman (or, well, his forecasting system) is poorly calibrated​  -  ​his probabilities don't match observed frequencies. RMSE measures how well-calibrated an algorithm is.
+Loosely speaking, if an algorithm predicts an X% chance of something happening, it should happen X% of the time. For example, if a weatherman says, "There is a 90% chance of rain today,"  it should rain on 90% of days when he says that. That's good calibration. If it rained only on 40% of those days, it means that the weatherman (or, well, his forecasting system) is poorly calibrated​  -  ​his probabilities don't match observed frequencies. RMSE (bins) measures how well-calibrated an algorithm is.
 
-The calculation of RMSE has been reworked in the past to prevent cheating, aka algorithms achieving good numbers on paper without getting better at predicting R in reality. If you want to know the nitty-gritty mathematical details, you can read [this article by Jarrett and me](https://github.com/open-spaced-repetition/fsrs4anki/wiki/The-Metric). The new method is our own invention, and you won't find it in any academic paper. Anki >=24.04 uses the new method when "Evaluate" is used.
+The calculation of RMSE (bins) has been reworked in the past to reduce cheating, aka algorithms achieving good numbers on paper without getting better at predicting R in reality. If you want to know the nitty-gritty mathematical details, you can read [this article by Jarrett and me](https://github.com/open-spaced-repetition/fsrs4anki/wiki/The-Metric). The new method is our own invention, and you won't find it in any academic paper. Anki >=24.04 uses the new method when "Evaluate" is used.
 
-Here's what you need to know about RMSE:
-1. RMSE measures how close the predicted R is to reality. It puts reviews into bins and measures the difference between *average* actual retention and *average* predicted R within each bin.
-2. RMSE ranges from 0 to 1, lower is better.
+Here's what you need to know about RMSE (bins):
+1. RMSE (bins) measures how close the predicted R is to reality. It puts reviews into bins and measures the difference between *average* actual retention and *average* predicted R within each bin.
+2. RMSE (bins) ranges from 0 to 1, lower is better.
 3. We calculate it by binning reviews in a way that is specific to spaced repetition, you won't find this in the literature. This isn't very nice for making the benchmark results accepted by other researchers, but we have other metrics for that.
-4. It's not what the optimizer in Anki is minimizing. Log loss is what the FSRS optimizer is internally using for optimization, not RMSE. We can't use RMSE for that.
+4. It's not what the optimizer in Anki is minimizing. Log loss is what the FSRS optimizer is internally using for optimization, not RMSE (bins). We can't use RMSE (bins) for that.
 
 Next is log loss. It is calculated using the following formula:
 
@@ -45,9 +45,9 @@ Next is log loss. It is calculated using the following formula:
 where *y* is a binary label (either 0 or 1), and *R* is the probability of recall (a real number between 0 and 1) predicted by some algorithm.
 
 Here's what you need to know about log loss:
-1. Log loss measures how close the predicted probability of recall (R) is to reality, just like RMSE. However, unlike RMSE, it doesn't rely on binning reviews. RMSE is based on the difference between averages, whereas log loss is based on the difference between individual predictions and individual review outcomes.
+1. Log loss measures how close the predicted probability of recall (R) is to reality, just like RMSE (bins). However, unlike RMSE (bins), it doesn't rely on binning reviews. RMSE (bins) is based on the difference between averages, whereas log loss is based on the difference between individual predictions and individual review outcomes.
 2. Log loss ranges from 0 to infinity, lower is better.
-3. Unlike RMSE, log loss never reaches 0, unless the algorithm only outputs ones and zeros. If an algorithm outputs numbers between 0 and 1, the minimum possible value of log loss that it can achieve is >0. This makes log loss less intuitive than RMSE. You might intuitively expect that if the distribution of predicted probabilities exactly matches the distribution of true probabilities, the loss would be zero, but no.
+3. Unlike RMSE (bins), log loss never reaches 0, unless the algorithm only outputs ones and zeros. If an algorithm outputs numbers between 0 and 1, the minimum possible value of log loss that it can achieve is >0. This makes log loss less intuitive than RMSE (bins). You might intuitively expect that if the distribution of predicted probabilities exactly matches the distribution of true probabilities, the loss would be zero, but no.
 
 Next is AUC (Area Under the Curve). Unlike the previous two metrics, AUC is not a measure of **calibration** but of **discrimination**. Here's what you need to know about AUC:
 1. AUC measures how well an algorithm can tell classes apart; in our case, classes are "recalled" and "forgotten." You can think of AUC as a measure of how well the algorithm can draw a boundary between two classes, such that all members of class 1 are on one side of the boundary and all members of class 2 are on the other side.
@@ -237,7 +237,7 @@ As you can see, RWKV outperforms FSRS according to all 3 metrics, and by a very 
 
 ### Superiority
 
-The metrics presented above can be difficult to interpret. In order to make it easier to understand how algorithms perform relative to each other, the image below shows the percentage of users for whom algorithm A (row) has a lower RMSE than algorithm B (column). For example, GRU-P-short has a 94.5% superiority over the Transformer, meaning that for 94.5% of all collections in this benchmark, GRU-P-short can estimate the probability of recall more accurately than the Transformer.
+The metrics presented above can be difficult to interpret. In order to make it easier to understand how algorithms perform relative to each other, the image below shows the percentage of users for whom algorithm A (row) has a lower RMSE (bins) than algorithm B (column). For example, GRU-P-short has a 94.5% superiority over the Transformer, meaning that for 94.5% of all collections in this benchmark, GRU-P-short can estimate the probability of recall more accurately than the Transformer.
 
 ![Superiority-small-9999-collections](https://github.com/user-attachments/assets/cd585653-31d3-43d1-83a5-002092d7c0a7)
 
