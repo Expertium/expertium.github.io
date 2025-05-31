@@ -240,6 +240,11 @@ On all three graphs if an algorithm is to the right of AVG, it is not good. AVG 
 
 As you can see, RWKV outperforms FSRS according to all 3 metrics, and by a very big margin. So a more general algorithm that can effectively leverage large amounts of compute has outperformed an algorithm that was hand-crafted by domain experts. [Hmmm, sounds oddly familiar, where have I heard that before?](https://www.cs.utexas.edu/~eunsol/courses/data/bitter_lesson.pdf)
 
+Side note: with FSRS-6 there is no reason to use different parameters for different presets, it makes no difference.
+
+![image](https://github.com/user-attachments/assets/ffff0c82-a0a2-414d-85d0-3a185cfc3ff1)
+
+
 ### Superiority
 
 The metrics presented above can be difficult to interpret. In order to make it easier to understand how algorithms perform relative to each other, the image below shows the percentage of users for whom algorithm A (row) has a lower RMSE (bins) than algorithm B (column). For example, GRU-P-short has a 96.1% superiority over Ebisu v2, meaning that for 96.1% of all collections in this benchmark, GRU-P-short can estimate the probability of recall more accurately than Ebisu.
