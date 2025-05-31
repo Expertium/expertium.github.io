@@ -236,6 +236,8 @@ Now ranking is very different.
 It's interesting that the AUC score of HLR is 0.6333, much higher than 0.54, which is what Duolingo reported in their paper. Granted, 0.6333 is not that impressive either. In fact, all spaced repetition algorithms have rather unimpressive AUC scores. <br />
 Surprisingly, AVG has an AUC score slightly above 0.5. Since it always outputs a constant, it cannot differentiate between forgotten and recalled cards, so in theory, it should have an AUC score of *exactly* 0.5. <br />
 
+On all three graphs if an algorithm is to the right of AVG, it is not good. AVG always outputs a constant equal to the user's average retention. If a spaced repetition algorithm cannot outpeform a constant prediction, it cannot be considered good.
+
 As you can see, RWKV outperforms FSRS according to all 3 metrics, and by a very big margin. So a more general algorithm that can effectively leverage large amounts of compute has outperformed an algorithm that was hand-crafted by domain experts. [Hmmm, sounds oddly familiar, where have I heard that before?](https://www.cs.utexas.edu/~eunsol/courses/data/bitter_lesson.pdf)
 
 ### Superiority
