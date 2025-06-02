@@ -265,6 +265,16 @@ So what this really means is not "in 16% of cases, default parameters fit the da
 
 You may also wonder why RWKV-P is so much better than RWKV. Is it because the idea of a forgetting curve is bogus? No. If you want a smooth and monotonic forgetting curve, you have to give up the ability to change predictions after they have been made. Suppose that today FSRS predicted that the stbaility of this card is 365 days, and at 90% desired retention, it will show it to you in a year. A year has passed. In the absense of optimziation, the card still the same S=365 days, which will only be updated once a card is reviewed. FSRS cannot say "You know, I think memory stability of this card is more like 330 days actually, I was off, can I change my prediction?". RWKV can't either. But RWKV-P is not constrained by that. In other words, RWKV-P sacrifices smoothness and monotonicity for the ability to madjust it's predictions as new information comes in even if the parameters are frozen aka no optimization.
 
+And just out of curiosity, here is a comparison of forgettign curves of FSRS-6 with recency weighting and RWKV.
+
+![image](https://github.com/user-attachments/assets/287da038-c4ba-499e-b18e-7f2a8bae7979)
+
+![image](https://github.com/user-attachments/assets/24617225-0fe1-4a2b-8ac3-cf4ed16c7b72)
+
+Green vertical line = a passing review (Hard/Good/Easy).
+
+Notice that RWKV predicts that probability of recall falls off very sharply after the first review, within hours or even minutes, but the declines much more slowly. FSRS doesn't have a short-term memory model, so it cannot predict something like that.
+
 
 ## Discussion
 
