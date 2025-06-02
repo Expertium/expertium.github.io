@@ -43,7 +43,7 @@ Next is log loss. It is calculated using the following formula:
 
 ![CodeCogsEqn (10)](https://github.com/user-attachments/assets/c38fecc4-0f35-42e4-a02b-86756410e641)
 
-where *y* is a binary label (either 0 or 1), and *R* is the probability of recall (a real number between 0 and 1) predicted by some algorithm.
+where *y* is a binary label (either 0 or 1; 0 = Again and 1=Hard/Good/Easy in the context of Anki), and *R* is the probability of recall (a real number between 0 and 1) predicted by some algorithm.
 
 Here's what you need to know about log loss:
 1. Log loss measures how close the predicted probability of recall (R) is to reality, just like RMSE (bins). However, unlike RMSE (bins), it doesn't rely on binning reviews. RMSE (bins) is based on the difference between averages, whereas log loss is based on the difference between individual predictions and individual review outcomes.
@@ -84,7 +84,7 @@ All FSRS algorithms use the DSR model of memory.
 
 4.​ FSRS-5. It has 2 more parameters than FSRS-4.5 and it takes into account same-day reviews, unlike all previous versions; though the improvement in accuracy is small.
 
-5.​ FSRS-6. The newest version. It has 2 more parameters than FSRS-5. One for same-day reviews, and oen for controlling the shape of the forgetting curve. Before FSRS-6 the shape was the same for all users.
+5.​ FSRS-6. The newest version. It has 2 more parameters than FSRS-5. One for same-day reviews, and oen for controlling the shape of the forgetting curve. Before FSRS-6 the shape was the same for all users. In this article I show results for FSRS-6 with recency weighting. Recency weighting makes more recent reviews have greater importance during optimization, meaning that FSRS adapts more to newer reviews at the cost of adapting les to older reviews.
 
 6.​ FSRS-6 (default parameters). This is just to see how well FSRS-6 performs without optimization.
 
@@ -101,6 +101,8 @@ In order to calculate the probability of recall, FSRS requires the length of the
 ![HLR (proper)](https://github.com/user-attachments/assets/1532b41c-25bf-4c74-a6bf-5ff1f6b7abf9)
 
 For HLR, the order of reviews doesn't matter because it only requires summary statistics about the whole review history. Regardless of how you rearrange reviews, the total number of reviews, passed reviews, and failed reviews (lapses) will remain the same.
+
+In Duolingo, HLR also incorporates linguistic data into the model, which we don't have in Anki, so in Duolingo it likely performs a little better. A little.
 
 8.​ Ebisu v2. [It's an algorithm that uses Bayesian statistics](https://fasiha.github.io/ebisu/) to update its estimate of memory half-life after each review. While it has 3 parameters, Ebisu was not designed to optimize them automatically, they have to be configured manually. It uses the SR model.
 
@@ -150,7 +152,7 @@ Unlike other algorithms in this benchmark, RWKV is not optimized on each user in
 
 ### Miscellaneous algorithms
 
-15.​ Anki SM-2. A variant of SM-2 used in Anki. ISM-2 is a 35+ year-old algorithm that is (with some changes) still used by Anki, Mnemosyne, and possibly other apps as well. It's main advantage is simplicity. We put a not-so-rigorous interval-to-probability converter on top of it because it was not originally designed to predict probabilities.
+15.​ [Anki SM-2](https://faqs.ankiweb.net/what-spaced-repetition-algorithm#sm-2). A variant of SM-2 used in Anki. ISM-2 is a 35+ year-old algorithm that is (with some changes) still used by Anki, Mnemosyne, and possibly other apps as well. It's main advantage is simplicity. We put a not-so-rigorous interval-to-probability converter on top of it because **it was not originally designed to predict probabilities**.
 
 16.​ AVG. It's an "algorithm" that outputs a constant equal to the user's average retention. For example, if the user presses Hard/Good/Easy 85% of the time, the "algorithm" will always output an 85% probability of recall for any given review. You can think of it as a weatherman who says, "The temperature today will be average, the wind speed will be average, and the humidity will be average as well" every single day. This "algorithm" is intended only to serve as a baseline for comparison and has no practical applications. It does not use any model of memory. If an algorithm does not outperform AVG, it cannot be considered good.
 
@@ -167,7 +169,7 @@ HLR lacks a difficulty variable, but it does have memory stability (half-life) a
 
 ## Dataset
 
-The dataset used in the benchmark is ~~FSRS Anki 20k~~ [Anki revlogs 10k](https://huggingface.co/datasets/open-spaced-repetition/anki-revlogs-10k), the largest in the world. It contains data about ~727 million flashcard reviews from 10 thousand users, which is approximately 3 times more reviews than in the [Maimemo dataset](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VAGUL0) and approximately 56 times more reviews than in [the Duolingo dataset](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/N8XJME).
+The dataset used in the benchmark is [Anki revlogs 10k](https://huggingface.co/datasets/open-spaced-repetition/anki-revlogs-10k), the largest in the world. It contains data about ~727 million flashcard reviews from 10 thousand users, which is approximately 3 times more reviews than in the [Maimemo dataset](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VAGUL0) and approximately 56 times more reviews than in [the Duolingo dataset](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/N8XJME).
 
 The data itself is also different. In Anki, each user makes their own flashcards, while Maimemo and Duolingo offer pre-made courses. Simply put, Anki has "same learner - different material" kind of data, and Maimemo/Duolingo has "same material - different learner" kind of data.
 
@@ -261,6 +263,8 @@ FSRS-6 (recency) optimized vs FSRS-6 with default parameters: 84.3% superiority.
 You may be thinking, "Wait, so in ~16% of cases, default parameters are better? That seems too high." The reason is that optimization and evaluation are performed on different data. This is a common practice in machine learning. Evaluating the performance of an algorithm on the same data that it was trained on usually leads to an overly optimistic estimate of performance, and in reality the algorithm performs worse. To get a more realistic estimate, the algorithm is trained on one subset of data (training set) and evaluated on another one (test set). Informally, you can think of it like giving a student practice problems as homework but evaluating him based on his answers during the exam rather than based on his answers to homework problems. <br />
 So what this really means is not "in 16% of cases, default parameters fit the data better", but "in 16% of cases, FSRS fails to generalize beyond the training data sufficiently well and doesn't perform well on new, unseen data". This is more likely to happen if the amount of data (reviews) is low, and less likely to happen for old, large collections.
 
+You may also wonder why RWKV-P is so much better than RWKV. Is it because the idea of a forgetting curve is bogus? No. If you want a smooth and monotonic forgetting curve, you have to give up the ability to change predictions after they have been made. Suppose that today FSRS predicted that the stbaility of this card is 365 days, and at 90% desired retention, it will show it to you in a year. A year has passed. In the absense of optimziation, the card still the same S=365 days, which will only be updated once a card is reviewed. FSRS cannot say "You know, I think memory stability of this card is more like 330 days actually, I was off, can I change my prediction?". RWKV can't either. But RWKV-P is not constrained by that. In other words, RWKV-P sacrifices smoothness and monotonicity for the ability to madjust it's predictions as new information comes in even if the parameters are frozen aka no optimization.
+
 
 ## Discussion
 
@@ -298,7 +302,7 @@ That being said, let's imagine a future where RWKV-P was successfully integrated
 2. No parameters window.
 3. Accurate probability of recall for any interval, even on the scale of minutes and seconds, unlike FSRS.
 4. No user-defined learning steps. Instead, there would probably just be a "Enable same-day reviews" toggle.
-5. RWKV can accurately R for cards for which it is **impossible** for FSRS to perform well. Consider the following simplified example: the user was in a good mood and was spamming Good at first, but then his mood got worse, and now he is spamming Again. The sequence looks like this: [Good, Good, Good, Good, Good, Again, Again, Again, Again, Again]. FSRS cannot take advantage of this pattern, RWKV-P can.
+5. RWKV can accurately predict R for cards for which it is **impossible** for FSRS to perform well. Consider the following simplified example: the user was in a good mood and was spamming Good at first, but then his mood got worse, and now he is spamming Again. The sequence looks like this: [Good, Good, Good, Good, Good, Again, Again, Again, Again, Again]. FSRS cannot take advantage of this pattern, RWKV-P can.
 6. No memory stability and difficulty values, and also no forgetting curve graphs.
 7. No intervals above answer buttons. Instead, scheduling would be completely different: every hour/minute/second RWKV-P would calculate R for all cards, then it would show you cards for which R is below the threshold that is desired retention. You can’t really calculate intervals in a meaningful way using RWKV-P. So instead it would just recalculate R once per hour/minute/second and show you what needs to be reviewed. It would be extremely computationally expensive to do this every minute (let alone every second), so for the foreseeable future this is not viable.
 
