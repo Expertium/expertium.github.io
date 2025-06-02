@@ -273,7 +273,7 @@ And just out of curiosity, here is a comparison of forgetting curves of FSRS-6 w
 
 Green vertical line = a passing review (Hard/Good/Easy).
 
-Notice that RWKV predicts that probability of recall falls off very sharply after the first review, within hours or even minutes, but the declines much more slowly. FSRS doesn't have a short-term memory model, so it cannot predict something like that.
+Notice that RWKV predicts that probability of recall falls off very sharply after the first review, within hours or even minutes, but then declines much more slowly. FSRS doesn't have a short-term memory model, so it cannot predict something like that.
 
 
 ## Discussion
