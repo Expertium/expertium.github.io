@@ -18,7 +18,7 @@
 
 
 ## Intro
-This is an extended version of my Reddit post. This article should take approximately 25–35 minutes to read, the Reddit post should take around 9–13 minutes.
+This is an extended version of my Reddit post. This article should take approximately 28–38 minutes to read, the Reddit post should take around 9–13 minutes.
 Side note: when I say "we", I'm referring to myself and [Jarrett Ye](https://github.com/L-M-Sherlock), the creator of [FSRS](https://github.com/open-spaced-repetition/fsrs4anki/wiki/ABC-of-FSRS).
 
 
