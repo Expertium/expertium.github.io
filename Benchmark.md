@@ -227,7 +227,7 @@ Now let's look at log loss. Reminder: both log loss and RMSE (bins) measure how 
 Lower is better. Black caps are 99% confidence intervals.
 As you can see, the ranking is a little different.
 
-Finally, let's look at AUC scores. Reminder - higher scores indicate better ability to differentiate between recalled and forgotten cards. Scores close to 0.5 indicate that the algorithm is no better than chance at telling apart recalled and forgotten cards.
+Finally, let's look at AUC scores. Reminder - higher scores indicate better ability to differentiate between recalled and forgotten cards. A score close to 0.5 indicate that the algorithm is no better than chance at telling apart recalled and forgotten cards.
 
 ![AUC table](https://github.com/user-attachments/assets/17de696c-711d-4c62-bd33-802ef28d51a6)
 
