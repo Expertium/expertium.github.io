@@ -231,7 +231,7 @@ Finally, let's look at AUC scores. Reminder - higher scores indicate better abil
 
 ![AUC table](https://github.com/user-attachments/assets/17de696c-711d-4c62-bd33-802ef28d51a6)
 
-![AUC](https://github.com/user-attachments/assets/a0f961f4-6e91-48a1-8f97-ac702934e0d8)
+![AUC](https://github.com/user-attachments/assets/59cddb73-fb4e-4f7e-8031-afea221a35b5)
 
 Higher is better. Black caps are 99% confidence intervals.  <br />
 Now ranking is very different.
