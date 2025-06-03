@@ -284,7 +284,7 @@ We would love to benchmark [THLR](https://www.researchgate.net/publication/38179
 
 Regarding the future of FSRS, we have been racking our brains, trying to come up with some way to improve it. **FSRS-6 is the final version, there will be no major releases in the foreseeable future.**
 
-Broadly speaking, machine learning algorithms are bound by the amount of computational power available, by the amount of data, and by the software. FSRS is not bound by computational power at all, its parameters can be optimized on an average home PC in a matter of seconds; training FSRS for 10x as long would only improve the metrics by 1-2%. FSRS is somewhat bound by data since most users don't have hundreds of thousands of reviews. And it's almost entirely bound by software, aka the theory of memory and forgetting.
+Broadly speaking, machine learning algorithms are bound by the amount of computational power available, by the amount of data, and by how good the underlying algorithm is. FSRS is not bound by computational power at all, its parameters can be optimized on an average home PC in a matter of seconds; training FSRS for 10x as long would improve the metrics by <1%. FSRS is somewhat bound by data since most users don't have hundreds of thousands of reviews. And it's almost entirely bound by the theory of memory and forgetting.
 
 There are several ways to make FSRS more accurate, none of which are currently feasible:
 
