@@ -160,7 +160,7 @@ Some variations of these algorithms are not included because this list is alread
 
 I did my best to create a "taxonomy" of spaced repetition algorithms.
 
-![All algorithms (new) 3](https://github.com/user-attachments/assets/55d3a4fa-fd20-4f18-8667-1f884330f4d1)
+![All algorithms (new) 3 1](https://github.com/user-attachments/assets/4d9d8b19-bcf5-440c-bd1c-56166122a9ae)
 
 SM-2 is not included in this diagram because it wasn't designed to predict the probability of recall, unlike the other algorithms.
 SM-17/18 algorithms also use the three-component (Difficulty, Stability, Retrievability) model of memory.
