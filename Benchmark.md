@@ -197,11 +197,11 @@ By the way, this is not how "Evaluate" works in Anki. "Evaluate" uses a simplifi
 
 I hope this diagram helps:
 
-![How benchmarking is done 3 0](https://github.com/user-attachments/assets/16aeb100-d2f2-48df-bf96-f2241199c4e6)
+![How benchmarking is done 3 1](https://github.com/user-attachments/assets/a4d0084b-12d4-4591-86e5-56d76d4d8565)
 
 Split A is not used for evaluation, split E is not used for training.
 
-Some algorithms, like LSTM and RWKV, use more information than just interval lengths and grades, for example answer time. Using other *input features* is fine as long as evaluation is done on the *same reviews of the same cards*.
+Some algorithms, like LSTM and RWKV, use more information than just interval lengths and grades, for example answer time. Using other *input features* is fine as long as evaluation is done on the *same reviews of the same cards*. Of course, the evaluation of all algorithms is based not just on exactly the same total number of reviews (349,923,850), but on the exactly the *same* reviews.
 
 
 ## Results
@@ -241,10 +241,6 @@ Surprisingly, AVG has an AUC score slightly above 0.5. Since it always outputs a
 On all three graphs if an algorithm is to the right of AVG, it is not good. AVG always outputs a constant equal to the user's average retention. If a spaced repetition algorithm cannot outperform a constant prediction, it cannot be considered good.
 
 As you can see, RWKV outperforms FSRS according to all 3 metrics, and by a very big margin. So a more general algorithm that can effectively leverage large amounts of compute has outperformed an algorithm that was hand-crafted by domain experts. [Hmmm, sounds oddly familiar, where have I heard that before?](https://www.cs.utexas.edu/~eunsol/courses/data/bitter_lesson.pdf)
-
-Side note: with FSRS-6 there is no reason to use different parameters for different presets, it makes no difference.
-
-![image](https://github.com/user-attachments/assets/ffff0c82-a0a2-414d-85d0-3a185cfc3ff1)
 
 
 ### Superiority
