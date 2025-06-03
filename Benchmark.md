@@ -245,7 +245,7 @@ As you can see, RWKV outperforms FSRS according to all 3 metrics, and by a very 
 
 ### Superiority
 
-The metrics presented above can be difficult to interpret. In order to make it easier to understand how algorithms perform relative to each other, the image below shows the percentage of users for whom algorithm A (row) has a lower RMSE (bins) than algorithm B (column). For example, GRU-P-short has a 96.1% superiority over Ebisu v2, meaning that for 96.1% of all collections in this benchmark, GRU-P-short can estimate the probability of recall more accurately than Ebisu.
+The metrics presented above can be difficult to interpret. In order to make it easier to understand how algorithms perform relative to each other, the image below shows the percentage of users for whom algorithm A (row) has a lower log loss than algorithm B (column). For example, GRU-P-short has a 96.1% superiority over Ebisu v2, meaning that for 96.1% of all collections in this benchmark, GRU-P-short can estimate the probability of recall more accurately than Ebisu.
 
 ![Superiority-small-9999-collections](https://github.com/user-attachments/assets/069776be-001a-46a3-b92b-9c0fecbe7ff6)
 
