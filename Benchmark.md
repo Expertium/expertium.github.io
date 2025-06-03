@@ -193,7 +193,7 @@ If you want a more technical explanation of how the data is split, here:
 
 This procedure is used for all algorithms except for RWKV. Thanks to this clever way of splitting data, no data is thrown away while at the same time the algorithm is trained on different data than it is evaluated on, so we get a realistic estimate of how it would perform on new, previously unseen data.
 
-By the way, this is not how "Evaluate" works in Anki. "Evaluate" uses a simplified procedure to avoid optimizing parameters every time the user wants to evaluate them - it just evaluates the specified parameters on the entire history, without optimizing them and without any splitting; training set=test set. "Evaluate" can only tell the user how well the parameters fit the *current* review history aka the training set. But the benchmark should evaluate the algorithm's ability to generalize beyond the training set data. Jarrett believes that it's fine that the benchmark and Anki don't use the same evaluation procedure.
+By the way, this is not how "Evaluate" works in Anki. "Evaluate" uses a simplified procedure to avoid optimizing parameters every time the user wants to evaluate them - it just evaluates the specified parameters on the entire history, without optimizing them and without any splitting; training set=test set. "Evaluate" can only tell the user how well the parameters fit the *current* review history aka the training set. But the benchmark should evaluate the algorithm's ability to generalize beyond the training set data. In Anki 25.06 "Evaluate" has been removed.
 
 I hope this diagram helps:
 
