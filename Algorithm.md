@@ -19,6 +19,8 @@ Let's start with the forgetting curve. In FSRS v3, an exponential function was u
 
 ![Forgetting curves](https://github.com/user-attachments/assets/cecc0e54-c96a-4b4c-9e84-416f0a953929)
 
+w20 can be between 0.1 and 0.8. For most users it's less than 0.2.
+
 The main difference between these curves is how fast R declines when t>​>S. Note that when t=S, R=90% for all four functions. This has to hold true because in FSRS, memory stability is defined as the amount of time required for R to decrease from 100% to 90%. You can play around with them here: [https://www.desmos.com/calculator/seqokdyixj](https://www.desmos.com/calculator/seqokdyixj).
 
 So why does a power function provide a better fit than the exponential function if forgetting is (in theory) exponential? Let's take two exponential curves, with S=0.2 and S=3. And then let's take the average of the two resulting values of R. We will have 3 functions: R_1=0.9^(t/0.2), R_1=0.9^(t/3) and R=0.5*(0.9^(t/0.2)+0.9^(t/3)).
