@@ -115,7 +115,7 @@ The first four parameters that you see in the "FSRS parameters" window are the i
 
 ### Short-term S
 
-This was introduced in FSRS-5. While neither FSRS-5 nor FSRS-6 have a proper model of short-term memory, they have a crude heuristic. In FSRS-6 the new S after a same-day review (what counts as "same-day" depends on Anki settings) is calcualted using this formula:
+This was introduced in FSRS-5. While neither FSRS-5 nor FSRS-6 have a proper model of short-term memory, they have a crude heuristic. In FSRS-6 the new S after a same-day review (what counts as "same-day" depends on Anki settings) is calculated using this formula:
 
 ![image](https://github.com/user-attachments/assets/387c1ff3-3cf3-458b-99e2-0f44873b3fd4)
 
