@@ -4,22 +4,22 @@ If you want a simple overview first, start here: [ABC of FSRS](https://github.co
 
 [Jarrett has his own article](https://github.com/open-spaced-repetition/fsrs4anki/wiki/The-Algorithm), but I believe mine is easier to understand.
 
-In this article, I'll explain how FSRS-4.5 works. The differences between FSRS-4.5 and FSRS-5 are outlined near the end.
+In this article, I'll explain how FSRS-6 works. Note that FSRS-6 is available in Anki since version 25.06.
 
 # Table of contents
 - [R, Retrievability](#r-retrievability)
 - [S, Stability](#s-stability)
+- - [Short-term S](#short-term-s)
 - [D, Difficulty](#d-difficulty)
-- [Changes in FSRS-5](#changes-in-fsrs-5)
 - [Optimization aka training](#optimization-aka-training)
 
 ## R, Retrievability
 
-Let's start with the forgetting curve. In FSRS v3, an exponential function was used. In FSRS v4, the exponential function was replaced by a power function, which provided a better fit to the data. Then, in FSRS-4.5, it was replaced by a different power function which provided an even better fit. It is used in FSRS-5 as well.
+Let's start with the forgetting curve. In FSRS v3, an exponential function was used. In FSRS v4, the exponential function was replaced by a power function, which provided a better fit to the data. Then, in FSRS-4.5, it was replaced by a different power function which provided an even better fit. It was used in FSRS-5 as well. Then, finally, FSRS-6 added an optimizable parameter (w20) to the curve to make it personalizable for every user:
 
-![image](https://github.com/user-attachments/assets/113a5e63-bc1f-4246-b20d-635620fb5d75)
+![Forgetting curves](https://github.com/user-attachments/assets/cecc0e54-c96a-4b4c-9e84-416f0a953929)
 
-The main difference between them is how fast R declines when t>​>S. Note that when t=S, R=90% for all three functions. This has to hold true because in FSRS, memory stability is defined as the amount of time required for R to decrease from 100% to 90%. You can play around with them here: [https://www.desmos.com/calculator/seqokdyixj](https://www.desmos.com/calculator/seqokdyixj).
+The main difference between these curves is how fast R declines when t>​>S. Note that when t=S, R=90% for all four functions. This has to hold true because in FSRS, memory stability is defined as the amount of time required for R to decrease from 100% to 90%. You can play around with them here: [https://www.desmos.com/calculator/seqokdyixj](https://www.desmos.com/calculator/seqokdyixj).
 
 So why does a power function provide a better fit than the exponential function if forgetting is (in theory) exponential? Let's take two exponential curves, with S=0.2 and S=3. And then let's take the average of the two resulting values of R. We will have 3 functions: R_1=0.9^(t/0.2), R_1=0.9^(t/3) and R=0.5*(0.9^(t/0.2)+0.9^(t/3)).
 
@@ -113,25 +113,38 @@ The first four parameters that you see in the "FSRS parameters" window are the i
 ![image](https://github.com/user-attachments/assets/06850593-77df-4045-a901-d2ad88f4a895)
 
 
+### Short-term S
+
+This was introduced in FSRS-5. While neither FSRS-5 nor FSRS-6 have a proper model of short-term memory, they have a crude heuristic. In FSRS-6 the new S after a same-day review (what counts as "same-day" depends on Anki settings) is calcualted using this formula:
+
+![image](https://github.com/user-attachments/assets/387c1ff3-3cf3-458b-99e2-0f44873b3fd4)
+
+w17 and w18 control how much grades affect S. w19 plays a role similar to w9 above: as S increases, the change in S decreases. For small values of S, the impact of same-day reviews is greater.
+
+Additionally, there is an extra check to ensure that S' >= S if G >= 4. In other words, Good and Easy cannot decrease S, Hard and Again can. This is different from the main formula, where Hard cannot decrease S.
+
+
 ## D, Difficulty
 
 Unlike S and R, D has no precise definition and is just a crude heuristic. Here is the formula for initial D, after the first review.
 
-![image](https://github.com/user-attachments/assets/4564336c-f8cb-4b9c-9f6f-4ac0e85c5e42)
+![CodeCogsEqn (3)](https://github.com/user-attachments/assets/09a02eb1-d2da-4faa-aacd-4c905556889d)
 
-G is grade. Again=1, Hard=2, Good=3, Easy=4. We have tried turning these four values into optimizable parameters (as opposed to just using constants), but that didn't improve accuracy.
+G is grade. Again=1, Hard=2, Good=3, Easy=4. We have tried turning these four values into optimizable parameters (as opposed to just using constants), but that didn't improve accuracy. Note that the output of this formula is then clamped to ensure that it is between 1 and 10.
 
-And here is the formula for the next value of D.
+The formula for the next value of D is more complicated.
 
-![image](https://github.com/user-attachments/assets/72951fcd-6c2f-4371-8753-6bacae17cc56)
+First, we calculate the change in difficulty that only depends on the grade:
 
-There are two things going on here. First, we update D by some value which depends on the grade and is 0 if the grade is "Good".
+![image](https://github.com/user-attachments/assets/51343624-2828-408b-a53f-1a1aa262a165)
 
-![image](https://github.com/user-attachments/assets/19582720-5495-49cd-9b20-4210c23c6392)
+Then we modify it using what I call "linear damping". Linear damping makes it so that as difficulty approaches 10 (maximum value), each update gets smaller and smaller. That way D is never *exactly* 10, just asymptotically approaching 10.
 
-Next, we apply what LMSherlock calls "mean reversion", where the current value of D is slightly reverted back to the default value, w4.
+![image](https://github.com/user-attachments/assets/1f100bf6-599a-4164-9db5-5fe0f1384303)
 
-![image](https://github.com/user-attachments/assets/3b06da2e-0cc2-4245-b7db-92fa26dcc97e)
+Finally, we apply what LMSherlock calls "mean reversion", where the current value of D is slightly reverted back to the default value that corresponds to the Easy button: w4.
+
+![image](https://github.com/user-attachments/assets/30353383-9bd7-4df5-ae62-eca15a3bb2d0)
 
 This means that if you keep pressing "Good", difficulty will eventually converge to its default value, which is an optimizable parameter.
 
@@ -168,35 +181,6 @@ Side note: D ranges from 1 to 10, but in the built-in version of FSRS, D is disp
 It's important to mention that me and Sherlock have tried to incorporate R into the formulas for D, but it didn't improve the accuracy. Even though we know that in theory D should depend on R, we don't know how to actually add R to D in a way that is useful.
 
 
-## Changes in FSRS-5
-
-1) The formula for initial D was changed.
-
-![CodeCogsEqn (3)](https://github.com/user-attachments/assets/09a02eb1-d2da-4faa-aacd-4c905556889d)
-
-Again=1, Hard=2, Good=3, Easy=4. This formula provides a *slightly* better fit. Because difficulty is clamped between 1 and 10, negative values of D are not a problem, they will simply be replaced with 1. Remember that any difficulty value <1 is set to 1 and any value >10 is set to 10.
-
-2) "Mean reversion" now reverses the difficulty to that of D0(4), rather than D0(3). Also, while normally D is clamped between 1 and 10, when using mean reversion, *unclamped* initial D is used. This was originally a bug, but then it turned out that it actually slightly improves the results as opposed to using a clamped D0 for mean reversion.
-
-3) A new term has been added. Thanks to that term, when the user presses "Again" or "Hard", difficulty will approach 10 *asymptotically*, meaning that it will never be precisely 10.
-
-Here is the new formula:
-
-![DeltaD](https://github.com/user-attachments/assets/52227f33-c383-4336-b00a-bb2562790a31)
-
-![NewD](https://github.com/user-attachments/assets/9c6e8e2c-3780-4b30-807d-3e629a22ad49)
-
-(10-D)/9 is the linear damping term. The closer D is to 10, the smaller this term, the smaller the change in difficulty.
-
-4) FSRS-5 updates D and S after same-day reviews, which previously were unused. D is updated using the formula described above. S is updated using the following formula:
-
-![CodeCogsEqn (2)](https://github.com/user-attachments/assets/fde251b9-70b4-4207-813f-3fe3874c2887)
-
-In Anki, FSRS cannot get access to the real interval lengths of same-day reviews, so it has to rely solely on grades. w17 and w18 are two new parameters.
-
-5) Previously, the first 4 parameters - values of initial stability - were optimized without using gradient descent, using a curve-fitting method that is specific to spaced repetition. After that, they remained "frozen". Now, after they are calculated, they can be adjusted by gradient descent, just like the other parameters. This results in a slightly better fit.
-
-
 ## Optimization aka training
 
 I won't go too into detail about this, instead you can watch [this video about gradient descent by 3blue1brown](https://www.youtube.com/watch?v=IHZwWFHWa-w) or [this one](https://youtu.be/Anc2_mnb3V8) (the second one is better IMO). The short version:
@@ -212,6 +196,8 @@ I won't go too into detail about this, instead you can watch [this video about g
 5. Keep updating the parameters based on how much it affects the loss (steps 2-4) until the loss stops decreasing, which indicates that you have reached the minimum.
 
 Of course, it's a lot more nuanced than that, but if you want to learn about gradient descent, there are hundreds of videos and articles on the Internet, since this is how almost every machine learning algorithm in the world is trained.
+
+Note that the first four parameters are first estimated directly from the results of first and second reviews, and then are further optimized by gradient descent.
 
 
 ___
