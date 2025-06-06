@@ -110,7 +110,7 @@ Next, we need to find a forgetting curve that provides the best fit to this data
 
 The first four parameters that you see in the "FSRS parameters" window are the initial stability values.
 
-![image](https://github.com/user-attachments/assets/06850593-77df-4045-a901-d2ad88f4a895)
+![image](https://github.com/user-attachments/assets/949a0fbc-f71e-4238-b2a7-65229c7e4aad)
 
 
 ### Short-term S
