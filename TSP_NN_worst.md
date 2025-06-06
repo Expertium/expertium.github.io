@@ -50,10 +50,15 @@ Finally, here's a visualization:
 Suppose you start in city 1 (though the starting city doesn't affect the result).
 
 ​1​)​ The closest city to city 1 is city 2 with coordinates (200, 0) and the distance of 200 units from city 1. So you would go to city 2.
+
 ​2​)​ The next closest city is city 3 with coordinates (101.002500, -173.780019) and the distance of approximately 200 units from city 2. So you would go to city 3.
+
 ​3​)​ The next closest city is city 4 with coordinates (398.997500, -28.301855) and the distance of approximately 331.6096 units from city 3. So you would go to city 4.
+
 ​4​)​ Then, finally, you would go back to city 1. The distance between city 4 and city 1 is approximately 400 units.
+
 ​5​)​ Then the total distance that you have traveled would be approximately 200 + 200 + 331.6096 + 400 = 1131.6096. And if you look at what I wrote above, that is the longest possible route!
+
 
 I love this example because of how counterintuitive it is. NN not only results in a suboptimal route, but it results in the worst possible route. I thought this would require a lot of cities arranged in some weird geometric pattern and was surprised that such an example is possible with just 4 cities.
 
