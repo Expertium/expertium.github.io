@@ -45,7 +45,7 @@ And if you do the math:
 
 Finally, here's a visualization:
 
-![Figure_1](https://github.com/user-attachments/assets/09af3e79-d8ab-4658-9ed0-5243ff068e8c)
+![Figure_1](https://github.com/user-attachments/assets/99cfe8f8-ae6d-41f2-8a4c-5020273b9dbe)
 
 Suppose you start in city 1 (though the starting city doesn't affect the result).
 
