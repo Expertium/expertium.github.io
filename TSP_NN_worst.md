@@ -24,7 +24,7 @@ I thought, "Alright, I've got the distances, so surely finding the coordinates w
 
 ...right?
 
-Well, after spending 2 hours doing a bunch of stuff with circle intersections in Photoshop, I gave up and asked Claude 4 Sonnet to implement some code to do it for me. As it turns out, it's actually impossible to construct an example with the specific distances mentioend in that comment.
+Well, after spending 2 hours doing a bunch of stuff with circle intersections in Photoshop, I gave up and asked Claude 4 Sonnet to implement some code to do it for me. As it turns out, it's actually impossible to construct an example with the specific distances mentioned in that comment.
 
 Here are the coordinates that I ended up with:
 
