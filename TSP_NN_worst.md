@@ -16,7 +16,7 @@ Sounds easy, right? Well, as it turns out, no. You could try every possible comb
 
 This sounds nice, but somewhat unintuitively, in practice it often results in a suboptimal solution. What's far more unintuitive is that Nearest Neighbor (NN for short) - "just go to the city that is closest to the current city" - can actually result in **provably THE WORST possible route**. Not just suboptimal. THE WORST.
 
-When I first heard that, I was really intrigued. How can we construct an example like that? I did a whole lot of googling and the only useful piece of information that I found was this comment on math.stackexchange:
+When I first heard that, I was really intrigued. How can we construct an example like that? I did a whole lot of googling and the only useful piece of information that I found was this comment on [math.stackexchange](https://math.stackexchange.com/questions/935468/traveling-salesman-problem-a-worst-case-scenario):
 
 ![image](https://github.com/user-attachments/assets/2183bf5c-a5b0-4b29-9939-ad5ecedd7ebd)
 
