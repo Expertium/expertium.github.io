@@ -121,7 +121,7 @@ This was introduced in FSRS-5. While neither FSRS-5 nor FSRS-6 have a proper mod
 
 w17 and w18 control how much grades affect S. w19 plays a role similar to w9 above: as S increases, the change in S decreases. For small values of S, the impact of same-day reviews is greater.
 
-Additionally, there is an extra check to ensure that S' >= S if G >= 4. In other words, Good and Easy cannot decrease S, Hard and Again can. This is different from the main formula, where Hard cannot decrease S.
+Additionally, there is an extra check to ensure that S' >= S if G >= 3. In other words, Good and Easy cannot decrease S, Hard and Again can. This is different from the main formula, where Hard cannot decrease S.
 
 
 ## D, Difficulty
