@@ -32,7 +32,7 @@ Here are the coordinates that I ended up with:
 cities = [(0, 0), (200, 0), (101.002500, -173.780019), (398.997500, -28.301855)]
 ```
 
-And if you do the math:
+All routes:
 
   1. Route: 1 -> 2 -> 4 -> 3 -> 1, Total Distance = 933.6096
   2. Route: 1 -> 3 -> 4 -> 2 -> 1, Total Distance = 933.6096
