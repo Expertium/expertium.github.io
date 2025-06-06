@@ -130,7 +130,7 @@ Unlike S and R, D has no precise definition and is just a crude heuristic. Here 
 
 ![CodeCogsEqn (3)](https://github.com/user-attachments/assets/09a02eb1-d2da-4faa-aacd-4c905556889d)
 
-G is grade. Again=1, Hard=2, Good=3, Easy=4. We have tried turning these four values into optimizable parameters (as opposed to just using constants), but that didn't improve accuracy. Note that the output of this formula is then clamped to ensure that it is between 1 and 10.
+G is grade. Again=1, Hard=2, Good=3, Easy=4. We have tried turning these four values into optimizable parameters (as opposed to just using constants), but that didn't improve accuracy. Note that the output of this formula is clamped afterwards to ensure that D0 is between 1 and 10.
 
 The formula for the next value of D is more complicated.
 
