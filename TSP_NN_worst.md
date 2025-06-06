@@ -34,12 +34,12 @@ cities = [(0, 0), (200, 0), (101.002500, -173.780019), (398.997500, -28.301855)]
 
 And if you do the math:
 
-  1. Route: 1 -> 2 -> 4 -> 3 -> 1, Distance: 933.6096
-  2. Route: 1 -> 3 -> 4 -> 2 -> 1, Distance: 933.6096
-  3. Route: 1 -> 3 -> 2 -> 4 -> 1, Distance: 1002.0000
-  4. Route: 1 -> 4 -> 2 -> 3 -> 1, Distance: 1002.0000
-  5. Route: 1 -> 2 -> 3 -> 4 -> 1, Distance: 1131.6096
-  6. Route: 1 -> 4 -> 3 -> 2 -> 1, Distance: 1131.6096
+  1. Route: 1 -> 2 -> 4 -> 3 -> 1, Total Distance = 933.6096
+  2. Route: 1 -> 3 -> 4 -> 2 -> 1, Total Distance = 933.6096
+  3. Route: 1 -> 3 -> 2 -> 4 -> 1, Total Distance = 1002.0000
+  4. Route: 1 -> 4 -> 2 -> 3 -> 1, Total Distance = 1002.0000
+  5. Route: 1 -> 2 -> 3 -> 4 -> 1, Total Distance = 1131.6096
+  6. Route: 1 -> 4 -> 3 -> 2 -> 1, Total Distance = 1131.6096
 
 1 -> 2 -> 3 -> 4 -> 1 is the route that NN would choose.
 
