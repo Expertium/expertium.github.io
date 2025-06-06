@@ -10,7 +10,7 @@ Example:
 
 ![image](https://github.com/user-attachments/assets/ab22708f-f68c-48ec-917f-2003a4f209c0)
 
-Sounds easy, right? Well, as it turns out, no. You could try every possible combination of routes, but doing that becomes too computationally expensive very quickly. And the algorithms that do not try every possible route are complicated.
+Sounds easy, right? Well, as it turns out, no. You could try every possible route, but doing that becomes too computationally expensive very quickly as the number of cities increases. And the algorithms that do not try every possible route are complicated.
 
 *"Just always go to the nearest city, duh"*
 
