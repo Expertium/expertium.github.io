@@ -57,7 +57,7 @@ Then researchers once again thought "Hmmm, maybe LLMs just saw these questions i
 **GPT-4 achieved 92.8% on "necessary" questions and 78.5% on "sufficient" questions** made specifically for this paper.
 
 
-Note that this isn't a recent paper, it's from 2023. And these days there are much smarter models that use Chain-of-Thought reasoning. Of course, LLMs still fail in silly (or deeply inhuman) ways sometimes, but to say that they have no understading of how the world works would be nonsense.
+Note that this isn't a recent paper, it's from 2023. And these days there are much smarter LLMs that use Chain-of-Thought reasoning. Of course, LLMs still fail in silly (or deeply inhuman) ways sometimes, but to say that they have no understading of how the world works would be nonsense.
 
 
 Hopefully my article can convince at least one or two people on this planet to stop saying "stochastic parrots" and "LLMs just regurgitate words with zero understanding".
