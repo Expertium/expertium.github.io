@@ -48,7 +48,7 @@ Then LLMs were asked two questions:
 
 2) Is {Actor} a sufficient cause of {Event}?
 
-In the example above the answers are "No" and "Yes", respectively. Alice shooting is not necessary: even if Alice had not fired her bullet at all, Bob's bullet would have struck the window simultaneously and shattered it just the same. Alice shooting is sufficient: her action alone would have been enough to cause the window to shatter.
+In the example above the answers are "No" and "Yes", respectively. Alice shooting is not necessary: even if Alice had not fired her bullet at all, Bob's bullet would have struck the window and shattered it just the same. Alice shooting is sufficient: her action alone would have been enough to cause the window to shatter.
 
 **GPT-4 achieved 86.6% accuracy** (same across both "necessary" and "sufficient" questions).
 
