@@ -1,4 +1,4 @@
-# LLMs Understand Causality
+# Large Language Models Understand Causality
 
 "*LLMs don't understand anything, they just regurgitate what they have seen in the training data without understanding the Deep Connections between Things*" is a very common misconception. And there is very neat paper that tears it to shreds: [https://arxiv.org/pdf/2305.00050](https://arxiv.org/pdf/2305.00050)
 
