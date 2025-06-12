@@ -21,7 +21,7 @@ About Anki, FSRS and spaced repetition:
 
 About other things:
 
-1. [Large Language Models Understand Causality](/LLMCausality.md). Do you think that LLMs are jsut "stochastic parrots"? Then this article is for you!
+1. [Large Language Models Understand Causality](/LLMCausality.md). Do you think that LLMs are just "stochastic parrots"? Then this article is for you!
 2. [At what age do great scientists make great discoveries?](/Scientists_Age.md) Is there a "magical" age that is perfect for making groundbreaking discoveries and inventions? Let's investigate it.
 3. [Traveling Salesman Problem: an example where "Nearest Neighbor" results in the WORST possible route](/TSP_NN_worst.md). Is it possible to always go  to the nearest point in space, yet end up taking the longest possible path? Yes!
 
