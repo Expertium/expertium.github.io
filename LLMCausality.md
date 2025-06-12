@@ -52,7 +52,7 @@ In the example above the answers are "No" and "Yes", respectively. Alice shootin
 
 **GPT-4 achieved 86.6% accuracy** (same across both "necessary" and "sufficient" questions).
 
-Then researchers once again thought "Hmmm, maybe LLMs just saw these questions in the training data? Let's make new pairs!".
+Then researchers once again thought "Hmmm, maybe LLMs just saw these questions in the training data? Let's make new questions!".
 
 **GPT-4 achieved 92.8% on "necessary" questions and 78.5% on "sufficient" questions** made specifically for this paper.
 
