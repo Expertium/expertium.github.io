@@ -178,16 +178,6 @@ All note types will notify you if the creator has released a new version on [Ank
 
 ![image](https://github.com/user-attachments/assets/464b7ae3-af82-40e4-a1df-5b1549348f65)
 
----
-
-P.S. When you download the deck, there will be this card:
-
-![image](https://github.com/user-attachments/assets/ff46142b-776b-479a-bf9a-884e76761ef3)
-
-As it says, don't delete it. It is necessary for some stuff related to playing audio in Match Pairs. This card is suspended by default, to avoid confusing people.
-
-# If you find any bugs or if you have any feature requests, here: [https://github.com/Vilhelm-Ian/Interactive_And_Randomize_Anki_Note_Types/issues/new](https://github.com/Vilhelm-Ian/Interactive_And_Randomize_Anki_Note_Types/issues/new)
-
 
 ## Sequence
 
@@ -205,6 +195,17 @@ Note that the `|` separator in the first field is used twice between each "event
 Unrelated to the note types above, but there is a nice note type for memorizing keyboard shortcuts: [https://github.com/Jayy001/AnkiKeys](https://github.com/Jayy001/AnkiKeys)
 
 Unfortunately, that one als orequires an add-on.
+
+
+---
+
+P.S. When you download the deck, there will be this card:
+
+![image](https://github.com/user-attachments/assets/ff46142b-776b-479a-bf9a-884e76761ef3)
+
+As it says, don't delete it. It is necessary for some stuff related to playing audio in Match Pairs. This card is suspended by default, to avoid confusing people.
+
+# If you find any bugs or if you have any feature requests, here: [https://github.com/Vilhelm-Ian/Interactive_And_Randomize_Anki_Note_Types/issues/new](https://github.com/Vilhelm-Ian/Interactive_And_Randomize_Anki_Note_Types/issues/new)
 
 
 ___
