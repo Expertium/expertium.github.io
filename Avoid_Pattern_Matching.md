@@ -71,7 +71,7 @@ This creates two <ins>sibling</ins> cards where the fields are switched, **not**
 
 This is what it looks like when you are reviewing the reverse card, and the first list has fewer items than the second list.
 
-![image](https://github.com/user-attachments/assets/697c5228-b149-4bed-8415-d3e6dbc2b48f)
+![image](https://github.com/user-attachments/assets/23f71769-21ca-425d-bfde-77d6689c56e8)
 
 
 ## Randomized Cloze
