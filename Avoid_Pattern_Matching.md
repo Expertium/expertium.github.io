@@ -73,6 +73,8 @@ This is what it looks like when you are reviewing the reverse card, and the firs
 
 ![image](https://github.com/user-attachments/assets/23f71769-21ca-425d-bfde-77d6689c56e8)
 
+![image](https://github.com/user-attachments/assets/706f58b7-b494-439f-8bd7-b72b8ec8f4fc)
+
 
 ## Randomized Cloze
 
