@@ -194,7 +194,7 @@ Note that the `|` separator in the first field is used twice between each "event
 
 Unrelated to the note types above, but there is a nice note type for memorizing keyboard shortcuts: [https://github.com/Jayy001/AnkiKeys](https://github.com/Jayy001/AnkiKeys)
 
-Unfortunately, that one als orequires an add-on.
+Unfortunately, this one requires an add-on.
 
 
 ---
