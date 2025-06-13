@@ -2,7 +2,7 @@
 
 One of the big issues that Anki users face is memorizing what the answer *looks* like rather than the actual information, which is sometimes called "pattern matching". This can lead to situations where someone can "recall" the answer in Anki but not in real life. The new note types that I wrote about in this article aim to solve this problem as well as allow you to memorize the same amount of information while making fewer cards. 
 
-[https://ankiweb.net/shared/info/171015247](https://ankiweb.net/shared/info/171015247). This deck has examples of 9 new note types: Match Pairs, Match Pairs (Reverse), Randomized Cloze, Randomized Cloze with Type-In, Randomized Basic, Randomized Basic with Multiple Answers, Click Words, Shuffled Cloze, and Sort Cards. Once you download the deck, you'll be able to make cards based on these note types on your own, **no add-ons needed**. Huge thanks to [Vilhelm Ian](https://github.com/Vilhelm-Ian) (aka Yoko in the [Anki Discord server](https://discord.gg/qjzcRTx), aka [AnkiQueen](https://forums.ankiweb.net/u/ankiqueen/summary) on the forum) for making these note types!
+[https://ankiweb.net/shared/info/171015247](https://ankiweb.net/shared/info/171015247). This deck has examples of 10 new note types: Match Pairs, Match Pairs (Reverse), Randomized Cloze, Randomized Cloze with Type-In, Randomized Basic, Randomized Basic with Multiple Answers, Click Words, Shuffled Cloze, Sort Cards and Sequence. Once you download the deck, you'll be able to make cards based on these note types on your own, **no add-ons needed**. Huge thanks to [Vilhelm Ian](https://github.com/Vilhelm-Ian) (aka Yoko in the [Anki Discord server](https://discord.gg/qjzcRTx), aka [AnkiQueen](https://forums.ankiweb.net/u/ankiqueen/summary) on the forum) for making these note types!
 
 They work on PC and on AnkiDroid but may not work properly on AnkiMobile.
 
@@ -16,6 +16,7 @@ Table of contents:
 - [Click Words](#click-words)
 - [Shuffled Cloze](#shuffled-cloze)
 - [Sort Cards](#sort-cards)
+- [Sequence](#sequence)
 
 
 ## Match Pairs
@@ -67,6 +68,10 @@ Of course, how useful this note type is for you depends on how often you encount
 This creates two <ins>sibling</ins> cards where the fields are switched, **not** a single randomized card.
 
 ![Match pairs (Reverse)](https://github.com/user-attachments/assets/b7c80db2-4342-4997-bd5e-88f101c58f69)
+
+This is what it looks like when you are reviewing the reverse card, and the first list has fewer items than the second list.
+
+![image](https://github.com/user-attachments/assets/697c5228-b149-4bed-8415-d3e6dbc2b48f)
 
 
 ## Randomized Cloze
@@ -180,6 +185,17 @@ P.S. When you download the deck, there will be this card:
 As it says, don't delete it. It is necessary for some stuff related to playing audio in Match Pairs. This card is suspended by default, to avoid confusing people.
 
 # If you find any bugs or if you have any feature requests, here: [https://github.com/Vilhelm-Ian/Interactive_And_Randomize_Anki_Note_Types/issues/new](https://github.com/Vilhelm-Ian/Interactive_And_Randomize_Anki_Note_Types/issues/new)
+
+
+## Sequence
+
+This can be useful for memorizing historical events, chemical reactions or pretty much anything where the elements are ordered and the order matters.
+
+![ezgif-778b23bad22d13](https://github.com/user-attachments/assets/8745b789-b580-4b96-9706-7a79d442b2f0)
+
+ote that the | separator in the first field is used twice between each "event".
+
+![image](https://github.com/user-attachments/assets/1856eae0-4734-4fef-b92f-c6bc95fb86c2)
 
 
 ## Extra
