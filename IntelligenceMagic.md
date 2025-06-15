@@ -2,7 +2,7 @@
 
 A while ago I saw a person arguing that a superintelligent AI would not be able to do anything too weird and that "intelligence is not magic", hence it's Business As Usual.
 
-Of course, in a purely technical sense, he's right. No matter how intelligent you are, you cannot override fundamental laws of physics. But people (myself included) have a fairly low threshold for what counts as "magic," to the point where other humans can surpass that threshold.
+Of course, in a purely technical sense, he's right. No matter how intelligent you are, you cannot override fundamental laws of physics. But people (myself included) have a fairly low threshold for what counts as "magic," to the point where other *humans* (not even AI) can surpass that threshold.
 
 Example 1: Trevor Rainbolt. There is an [8-minute-long video](https://youtu.be/QRqKPDJYyLE) where he does seemingly impossible things, such as correctly guessing that a photo of **nothing but literal blue sky** was taken in Indonesia or guessing Jordan based only on pavement. He can also [correctly identify the country after looking at a photo for **0.1** seconds](https://www.youtube.com/shorts/eAppbmqlnuw).
 
