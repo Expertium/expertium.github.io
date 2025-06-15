@@ -6,7 +6,7 @@ Of course, in a purely technical sense, he's right. No matter how intelligent yo
 
 Example 1: Trevor Rainbolt. There is an [8-minute-long video](https://youtu.be/QRqKPDJYyLE) where he does seemingly impossible things, such as correctly guessing that a photo of **nothing but literal blue sky** was taken in Indonesia or guessing Jordan based only on pavement. He can also [correctly identify the country after looking at a photo for **0.1** seconds](https://www.youtube.com/shorts/eAppbmqlnuw).
 
-Example 2: [Joaquín "El Chapo" Guzmán](https://en.wikipedia.org/wiki/Joaqu%C3%ADn_%22El_Chapo%22_Guzm%C3%A1n). He ran a drug empire **while being imprisoned**. Tell this to anyone who still believes that "boxing" a superintelligent AI is a good idea.
+Example 2: [Joaquín "El Chapo" Guzmán](https://en.wikipedia.org/wiki/Joaqu%C3%ADn_%22El_Chapo%22_Guzm%C3%A1n). He ran a drug empire **while being imprisoned**. Tell this to anyone who still believes that keeping a superintelligent AI in a "box" (text-only chat) is a good idea.
 
 Example 3: [Stephen Wiltshire](https://en.wikipedia.org/wiki/Stephen_Wiltshire). He made a nineteen-foot-long drawing of New York City after flying on a helicopter for 20 minutes, and he got the number of windows and floors of all the buildings correct.
 
