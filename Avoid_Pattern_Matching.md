@@ -185,7 +185,7 @@ This can be useful for memorizing historical events, chemical reactions or prett
 
 ![ezgif-778b23bad22d13](https://github.com/user-attachments/assets/8745b789-b580-4b96-9706-7a79d442b2f0)
 
-Note that the `|` separator in the first field is used twice between each "event": `||`.
+Note that the `|` separator is used twice between each "event": `||`.
 
 ![image](https://github.com/user-attachments/assets/1856eae0-4734-4fef-b92f-c6bc95fb86c2)
 
