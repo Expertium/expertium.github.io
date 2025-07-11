@@ -84,7 +84,7 @@ All FSRS algorithms use the DSR model of memory.
 
 4.​ FSRS-5. It has 2 more parameters than FSRS-4.5 and it takes into account same-day reviews, unlike all previous versions; though the improvement in accuracy is small.
 
-5.​ FSRS-6. The newest version. It has 2 more parameters than FSRS-5. One for same-day reviews, and oen for controlling the shape of the forgetting curve. Before FSRS-6 the shape was the same for all users. In this article I show results for FSRS-6 with recency weighting. Recency weighting makes more recent reviews have greater importance during optimization, meaning that FSRS adapts more to newer reviews at the cost of adapting les to older reviews.
+5.​ FSRS-6. The newest version. It has 2 more parameters than FSRS-5. One for same-day reviews, and oen for controlling the shape of the forgetting curve. Before FSRS-6 the shape was the same for all users. In this article I show results for FSRS-6 with recency weighting. Recency weighting makes more recent reviews have greater importance during optimization, meaning that FSRS adapts more to newer reviews at the cost of adapting les to older reviews. If you want to know exactly how FSRS-6 works, read [this](/Algorithm.md).
 
 6.​ FSRS-6 (default parameters). This is just to see how well FSRS-6 performs without optimization. To see how FSRS has evolved over time, check this out: [https://imgur.com/a/calibration-of-different-fsrs-versions-KfJ32EV](https://imgur.com/a/calibration-of-different-fsrs-versions-KfJ32EV). Althought I recommend looking at those graphs *after* reading the rest of the article.
 
