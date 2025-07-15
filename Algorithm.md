@@ -8,6 +8,7 @@ In this article, I'll explain how FSRS-6 works. Note that FSRS-6 is available in
 
 # Table of contents
 - [R, Retrievability](#r-retrievability)
+- - [Intervals](#intervals)
 - [S, Stability](#s-stability)
 - - [Short-term S](#short-term-s)
 - [D, Difficulty](#d-difficulty)
@@ -34,6 +35,15 @@ Now here's the interesting part: if you try to approximate the resulting functio
 Note that I displayed R^2 on the graph, but you can use any other measure to determine the goodness of fit, the conclusion will be the same.
 
 **Important takeaway number one: a superposition of two exponential functions is better approximated by a power function.**
+
+
+### Intervals
+
+In FSRS-6, intervals are calculated using this formula:
+
+<img width="1536" height="277" alt="FSRS intervals" src="https://github.com/user-attachments/assets/0d5f8803-1469-4c46-9700-0b2c85058213" />
+
+When desired retention is 90%, the interval is equal to stability (here I am not taking int oaccount Anki's [fuzz](https://docs.ankiweb.net/studying.html#fuzz-factor)).
 
 
 ## S, Stability
@@ -147,6 +157,8 @@ Then we modify it using what I call "linear damping". Linear damping makes it so
 Finally, we apply what LMSherlock calls "mean reversion", where the current value of D is slightly reverted back to the default value that corresponds to the Easy button: w4.
 
 ![image](https://github.com/user-attachments/assets/30353383-9bd7-4df5-ae62-eca15a3bb2d0)
+
+I could write the entire formula without splitting it into several parts (like D' and D''), but I think it's easier to understand this way.
 
 This means that if you keep pressing "Good", difficulty will eventually converge to its default value, which is an optimizable parameter.
 
