@@ -43,7 +43,7 @@ In FSRS-6, intervals are calculated using this formula:
 
 ![image](https://github.com/user-attachments/assets/e368d494-7b68-41df-b9c6-8c09d5ed9b2c)
 
-Here I means interval, DR means desired retention.
+I is interval length, DR is desired retention.
 
 When desired retention is 90%, the interval is equal to stability (before taking into account Anki's [fuzz](https://docs.ankiweb.net/studying.html#fuzz-factor)).
 
