@@ -41,7 +41,7 @@ Note that I displayed R^2 on the graph, but you can use any other measure to det
 
 In FSRS-6, intervals are calculated using this formula:
 
-<img width="1536" height="277" alt="FSRS intervals" src="https://github.com/user-attachments/assets/0d5f8803-1469-4c46-9700-0b2c85058213" />
+![image](https://github.com/user-attachments/assets/0d5f8803-1469-4c46-9700-0b2c85058213)
 
 When desired retention is 90%, the interval is equal to stability (here I am not taking int oaccount Anki's [fuzz](https://docs.ankiweb.net/studying.html#fuzz-factor)).
 
