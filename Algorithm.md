@@ -4,7 +4,7 @@ If you want a simple overview first, start here: [ABC of FSRS](https://github.co
 
 [Jarrett has his own article](https://github.com/open-spaced-repetition/fsrs4anki/wiki/The-Algorithm), but I believe mine is easier to understand.
 
-In this article, I'll explain how FSRS-6 works. Note that FSRS-6 is available in Anki since version 25.06.
+In this article, I'll explain how FSRS-6 works. Note that FSRS-6 is available in Anki since version 25.07.
 
 # Table of contents
 - [R, Retrievability](#r-retrievability)
