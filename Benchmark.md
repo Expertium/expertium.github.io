@@ -282,35 +282,8 @@ Caveats:
 
 We would love to benchmark [THLR](https://www.researchgate.net/publication/381792698_DRL-SRS_A_Deep_Reinforcement_Learning_Approach_for_Optimizing_Spaced_Repetition_Scheduling), but the researchers didn't release their code publicly.
 
-Regarding the future of FSRS, we have been racking our brains, trying to come up with some way to improve it. **FSRS-6 is the final version, there will be no major releases in the foreseeable future.**
+Regarding the future of FSRS, we have been racking our brains, trying to come up with some way to improve it. **FSRS-7 is the final version, there will be no major releases in the foreseeable future.**
 
-Broadly speaking, machine learning algorithms are bound by the amount of computational power available, by the amount of data, and by how good the underlying algorithm is. FSRS is not bound by computational power at all, its parameters can be optimized on an average home PC in a matter of seconds; training FSRS for 10x as long would improve the metrics by <1%. FSRS is somewhat bound by data since most users don't have hundreds of thousands of reviews. And it's almost entirely bound by the theory of memory and forgetting.
-
-There are several ways to make FSRS more accurate, none of which are currently feasible:
-
-1. Consider the number of reviews done before a particular review and the time of day to estimate how fatigued the user was (perhaps some other factors could be taken into account when estimating fatigue as well). If someone is doing their first review at 4 PM, they are probably less fatigued than someone who is doing their 500th review at 4 AM, which affects retention. This is not possible with the way Anki currently works​  -  ​FSRS cannot access datetime information​  -  ​and would require major changes.
-
-2. Consider the content of the cards: text, sound, and images. It would require adding another machine learning algorithm (or even several algorithms) just for text/audio/image recognition, and we wouldn't be able to train it since Dae (the main Anki dev) can't give us a dataset that has all of the content of cards. That is against Anki's privacy policy, only scheduling data is available publicly.
-
-3. Consider the interference from sibling cards. This could also be extended to "conceptual siblings"​  -  ​cards that don't come from the same note, but test you on similar material. Again, not possible due to how Anki works: when the user is reviewing a particular card, FSRS (or any other algorithm) cannot access the review history of any other card. So it cannot combine data from multiple cards. Even if it could, optimization would probably become a nightmare.
-
-All three of these combined could greatly increase the efficiency of spaced repetition. 2 and 3 combined could be particularly effective if each pair of cards is assigned a "similarity score" (using some machine learning algorithm) based on their content, though doing that naively would be computationally intractable​  -  ​the number of pairs is proportional to the number of cards squared; for example, 10,000 cards have 49,995,000 pairs. Still, I would expect great improvements from an algorithm that doesn't treat cards as independent, and a review of card A affects not only the memory stability of card A but also the memory stability of card B, albeit to a lesser extent. [Math Academy does something like that](https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/). By the way, Jarrett highly recommends Math Academy.
-
-**Anki is not designed for advanced spaced repetition algorithms.** <br />
-There are about 20 different ways to get learning steps wrong, and having two arbitrary stages ("learning" and "review") isn't necessary to begin with. <br />
-Any algorithm, FSRS or otherwise, can only access interval lengths and grades, nothing else. <br />
-Datetime information is inaccessible when scheduling the next review. <br />
-Information from other cards (other than the card that is being reviewed right now) is inaccessible when scheduling the next review. <br />
-[There is no way to manually create connections between cards](https://faqs.ankiweb.net/linking-cards-together.html). <br />
-
-That being said, let's imagine a future where RWKV-P was successfully integrated into Anki. Here's what it would look like:
-1. No "Optimize" button, RWKV would be pretrained on 10k users and then the same parameters would be used for everyone.
-2. No parameters window.
-3. Accurate probability of recall for any interval, even on the scale of minutes and seconds, unlike FSRS.
-4. No user-defined learning steps. Instead, there would probably just be a "Enable same-day reviews" toggle.
-5. RWKV can accurately predict R for cards for which it is **impossible** for FSRS to perform well. Consider the following simplified example: the user was in a good mood and was spamming Good at first, but then his mood got worse, and now he is spamming Again. The sequence looks like this: [Good, Good, Good, Good, Good, Again, Again, Again, Again, Again]. FSRS cannot take advantage of this pattern, RWKV-P can.
-6. No memory stability and difficulty values, and also no forgetting curve graphs.
-7. No intervals above answer buttons. Instead, scheduling would be completely different: every hour/minute/second RWKV-P would calculate R for all cards, then it would show you cards for which R is below the threshold that is desired retention. You can’t really calculate intervals in a meaningful way using RWKV-P. So instead it would just recalculate R once per hour/minute/second and show you what needs to be reviewed. It would be extremely computationally expensive to do this every minute (let alone every second), so for the foreseeable future this is not viable.
 
 ## References
 
