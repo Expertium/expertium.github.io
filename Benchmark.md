@@ -1,5 +1,7 @@
 (UNFINISHED)
 
+(WHY ARE YOU EVEN HERE? HOW? DON'T READ THIS...well, not yet)
+
 # Benchmark of Spaced Repetition Algorithms
 
 # Table of contents
