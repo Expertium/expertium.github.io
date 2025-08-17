@@ -10,7 +10,7 @@ I decided to put together every single reason that I could think of, or that I h
 
 4)​ Spaced repetition is great for lifelong learning, but most people are not lifelong learners.
 
-5)​ Anki is far more complex than, say, Duolingo, so it could never compete with Duolingo in terms of the number of active users. An app that is easier to use has a tremendous advantage when it comes to attracting users, *regardless of its effectiveness*. An app that has a 200 pages manual has lost the popularity race before the it even made it to the starting line.
+5)​ Anki is far more complex than, say, Duolingo, so it could never compete with Duolingo in terms of the number of active users. An app that is easier to use has a tremendous advantage when it comes to attracting users, *regardless of its effectiveness*. An app that has a 200 pages manual has lost the popularity race before it even made it to the starting line.
 
 6)​ A lot of people want to "pause" Anki to prevent due cards from piling up, but that contradicts the simple fact that even if you can pause an app, you can't pause forgetting inside your head. So there is a conflict between optimal scheduling and user satisfaction.
 
