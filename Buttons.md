@@ -16,7 +16,7 @@ Here's a stacked bar chart aka [pie chart's cooler brother](https://github.com/c
 
 In case you are confused: for example, Again > Hard > Good > Easy means "Average time for 'Again' is greater than the average time for 'Hard', which in turn is greater than the average time for 'Good', which in turn is greater than the average time for 'Easy'". But that's too long, so I just wrote it as Again > Hard > Good > Easy.
 
-For example, for 39.8% of users, the pattern is very intuitive: they spend the longest time before pressing 'Again', less time when pressing 'Hard', even less when pressing 'Good', and the least when pressing 'Easy'. For the other ~60% of users, the pattern is less intuitive. It's hard to say how much of that is because of the inherent randomness of the review time data and how much of it is because of the idiosyncrasies of users.
+For example, for 39.8% of users, the pattern is very intuitive: they spend the longest time when pressing 'Again', less time when pressing 'Hard', even less when pressing 'Good', and the least when pressing 'Easy'. For the other ~60% of users, the pattern is less intuitive. It's hard to say how much of that is because of the inherent randomness of the review time data and how much of it is because of the idiosyncrasies of users.
 
 I hope nobody will interpret this article as "It's ok to use review time to automatically select the answer button for the user".
 
