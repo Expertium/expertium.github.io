@@ -28,4 +28,10 @@ About other things:
 
 A list of all implementations of FSRS in different programming languages, as well as apps that use FSRS (it's not just Anki!): [https://github.com/open-spaced-repetition/awesome-fsrs.](https://github.com/open-spaced-repetition/awesome-fsrs)
 
+
+If you want to support me, you can send me some Ethereum: 0xf9c22186be4dbF21dE3E149C167Ed90DE0E37279
+
+<img width="164" height="164" alt="image" src="https://github.com/user-attachments/assets/93a52002-d460-46c9-ba81-e09524bbcb62" />
+
+---
 Nothing that floats your boat? [Take a look at these articles and blogs then](/Resources_Dump.md).
