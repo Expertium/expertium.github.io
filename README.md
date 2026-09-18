@@ -28,11 +28,7 @@ About other things:
 
 A list of all implementations of FSRS in different programming languages, as well as apps that use FSRS (it's not just Anki!): [https://github.com/open-spaced-repetition/awesome-fsrs.](https://github.com/open-spaced-repetition/awesome-fsrs)
 
-
-If you want to support me, you can use [Boosty.to](https://boosty.to/expertium/donate) or send me some Ethereum: 0xf9c22186be4dbF21dE3E149C167Ed90DE0E37279
-
-<img width="150" height="150" alt="expertium-donate" src="https://github.com/user-attachments/assets/6f5b4223-2a20-4368-9f41-0df089c4c0f2" />
-
+If you want to support me, you can send me some Ethereum: 0xf9c22186be4dbF21dE3E149C167Ed90DE0E37279
 
 ---
 Nothing that floats your boat? [Take a look at these articles and blogs then](/Resources_Dump.md).
