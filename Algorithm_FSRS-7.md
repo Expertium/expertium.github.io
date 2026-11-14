@@ -57,7 +57,7 @@ FSRS-7 has two values of memory stability, S_long and S_short. Neither can be in
 
 Here are the formulas for S_long and S_short. The formula is the same, but it uses different parameters and retrievability values depending on which S is being computed. The S_long update uses R (weighted average of two curves), while the S_short update uses R_short.
 
-<img width="1195" height="1013" alt="fig_s_success" src="https://github.com/user-attachments/assets/22b33ace-0b4f-4f43-865c-ed245ddb3b5d" />
+<img width="1195" height="1088" alt="fig_s_success" src="https://github.com/user-attachments/assets/0073c978-b5bb-46ee-874a-e608dac40e2f" />
 
 The new value of memory stability is equal to the previous value multiplied by a factor that we will call S_Inc (Inc stands for "increase"). S_Inc >= 1. In other words, **memory stability cannot decrease if the review was successful**. Easy, Good, and Hard all count as "success"; Again counts as a memory "lapse". That's why you shouldn't use Hard as a failing grade, only as a passing grade.
 
