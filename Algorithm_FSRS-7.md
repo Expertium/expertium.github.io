@@ -55,7 +55,7 @@ Notice that FSRS-7's curve falls off very steeply at first, but is flatter than 
 
 FSRS-7 has two values of memory stability, S_long and S_short. Neither can be interpreted as "how long it takes for R to drop from 100% to 90%". They do not have any intuitive interpretation, but, as I said above, you can still calculate the intuitive S90 separately.
 
-Here are the formulas for S_long and S_short. The formula is the same, but it uses different parameters and retrievability values depending on which S is being computed. The S_long update uses R, while the S_short update uses R_short.
+Here are the formulas for S_long and S_short. The formula is the same, but it uses different parameters and retrievability values depending on which S is being computed. The S_long update uses R (weighted average of two curves), while the S_short update uses R_short.
 
 <img width="1195" height="1013" alt="fig_s_success" src="https://github.com/user-attachments/assets/22b33ace-0b4f-4f43-865c-ed245ddb3b5d" />
 
