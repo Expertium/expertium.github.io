@@ -112,7 +112,7 @@ FSRS-7 is most likely the last version of FSRS. There's simply nothing left to s
 
 1) It only uses interval lengths and grades. It doesn't know whether you reviewed this card after doing 5 other reviews or after 500. It doesn't know whether you reviewed it at 7 AM on Tuesday or at 9 PM on Sunday.
 
-2) It treats all cards as independent, even cards that came from the same day and *even siblings* (sibling dispersion in Anki is not part of the FSRS algorithm, it's a separate thing, like a cherry on top of a cake).
+2) It treats all cards as independent, even cards from the same deck and *even siblings* (sibling dispersion in Anki is not part of the FSRS algorithm, it's a separate thing, like a cherry on top of a cake).
 
 3) It doesn't take into account card content.
 
