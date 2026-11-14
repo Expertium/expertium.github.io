@@ -1,4 +1,4 @@
-# A technical explanation of FSRS
+# A technical explanation of FSRS-6
 
 If you want a simple overview first, start here: [ABC of FSRS](https://github.com/open-spaced-repetition/fsrs4anki/wiki/ABC-of-FSRS).
 
