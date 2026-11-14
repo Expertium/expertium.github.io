@@ -72,7 +72,7 @@ The formula for the next value of S is different if the user pressed "Again".
 
 <img width="1134" height="735" alt="fig_s_lapse" src="https://github.com/user-attachments/assets/e2ef30d5-ef92-45a9-88ef-3850c8f26275" />
 
-min() is necessary to ensure that post-lapse stability can never be greater than stability before the lapse. Interesting fact: in FSRS-6 there was a D-related term, but it turns out that this formula works just fine even without D, so in FSRS-7 it no longer depends on D.
+min(S, S_fail) is necessary to ensure that post-lapse stability can never be greater than stability before the lapse. Interesting fact: in FSRS-6 there was a D-related term, but it turns out that this formula works just fine even without D, so in FSRS-7 it no longer depends on D.
 
 Since both formulas require the previous value of S to calculate the next value, they cannot be used to estimate initial stability on the first review; there is no such thing as a "zeroth review". So the initial stability values for the four answer buttons (Again, Hard, Good, and Easy) are learnable parameters. FSRS-6 estimated them separately from the main optimization. In FSRS-7 all parameters are optimized jointly, without using different methods for different parameters.
 
