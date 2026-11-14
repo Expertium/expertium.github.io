@@ -105,7 +105,7 @@ You can find the training pipeline and hyperparameters in [srs-benchmark](https:
 
 FSRS-7's formulas were developed mostly by humans (http://github.com/1DWalker and https://github.com/Expertium), with some help from LLMs. See https://github.com/Expertium/fsrs-autoresearch. For example, the forgetting curve originally had 8 parameters, not 11. And originally I wasn't very keen on the idea of splitting S into S_long and S_short, but the results were too good to pass up.
 
-The optimizer that is used for FSRS-6 and FSRS-7 was greatly sped up entirely by LLMs, with very little human guidance. See https://github.com/Expertium/fsrs-rs-speed-autoresearch.
+The optimizer that is used for FSRS-6 and FSRS-7 was greatly sped up entirely by LLMs, with very little human guidance. See https://github.com/Expertium/fsrs-rs-speed-autoresearch. FSRS-6 parameters are now optimized faster, and FSRS-7's optimizer will be even faster.
 
 ## Post-FSRS future
 
@@ -114,7 +114,7 @@ FSRS-7 is most likely the last version of FSRS. There's simply nothing left to s
 2) It treats all cards as independent, even cards that came from the same day and *even siblings* (sibling dispersion in Anki is not part of the FSRS algorithm, it's a separate thing, like a cherry on top of a cake).
 3) It doesn't take into account card content.
 
-In srs-benchmark, RWKV (a type of neural network) addresses issues 1 and 2. RWKV will most likely never be implemented in Anki, but there are forks that use it (and FSRS-7 too). See:
+In srs-benchmark, RWKV (a type of neural network) addresses issues 1 and 2, though it's still in development and [JSchoreels](https://github.com/JSchoreels) (Sound in the Anki Discord server) is releasing new versions regularly. RWKV will most likely never be implemented in Anki, but there are forks that use it (and FSRS-7 too). See:
 Desktop: https://github.com/JSchoreels/anki/releases. I'm planning to make my own fork too, but sadly, I'll have to postpone working on it until mid or late 2027.
 AnkiDroid: https://github.com/Pedrubik2000/kuma3-anki-app/releases
 
