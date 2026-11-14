@@ -111,7 +111,9 @@ The optimizer that is used for FSRS-6 and FSRS-7 was greatly sped up entirely by
 FSRS-7 is most likely the last version of FSRS. There's simply nothing left to squeeze in terms of accuracy (log loss, more precisely, I just use "accuracy" colloquially since not everyone knows what log loss is). All low-hanging fruit has been picked up, and not-so-low-hanging fruit as well. However, FSRS-7 still has weaknesses:
 
 1) It only uses interval lengths and grades. It doesn't know whether you reviewed this card after doing 5 other reviews or after 500. It doesn't know whether you reviewed it at 7 AM on Tuesday or at 9 PM on Sunday.
+
 2) It treats all cards as independent, even cards that came from the same day and *even siblings* (sibling dispersion in Anki is not part of the FSRS algorithm, it's a separate thing, like a cherry on top of a cake).
+
 3) It doesn't take into account card content.
 
 In srs-benchmark, RWKV (a type of neural network) addresses issues 1 and 2, though it's still in development and [JSchoreels](https://github.com/JSchoreels) (Sound in the Anki Discord server) is releasing new versions regularly. RWKV will most likely never be implemented in Anki, but there are forks that use it (and FSRS-7 too). See:
