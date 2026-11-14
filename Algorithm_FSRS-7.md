@@ -19,9 +19,11 @@ Finally, FSRS-7 uses a weighted average of two power forgetting curves.
 
 <img width="2440" height="3062" alt="fig_forgetting_curves" src="https://github.com/user-attachments/assets/69d8624b-c46c-4957-8ddc-2049d1cf2321" />
 
-In total, FSRS-7's curve has 11 parameters. While it may seem like it will overfit and fail to generalize, it has lower log loss in the [srs-benchmark](https://github.com/open-spaced-repetition/srs-benchmark), which uses time series splits. Simply put, this formula works better on data that FSRS wasn't trained on, compared to FSRS-6's one parameter formula.
+In total, FSRS-7's curve has 11 parameters. While it may seem like it will overfit and fail to generalize, it has lower log loss in the [srs-benchmark](https://github.com/open-spaced-repetition/srs-benchmark), which uses time series splits. Simply put, this formula works better on data that FSRS wasn't trained on, compared to FSRS-6's one parameter formula. Ignore constant offsets such as -0.3 and -0.5, they are not important.
 
-Note that for all parameters of all versions I use 0-based notation. Not "one, two, three", but "zero, one, two".
+<img width="2964" height="908" alt="fig_curve_shape_table" src="https://github.com/user-attachments/assets/6730999f-4ffb-48f6-b896-9a3f3b143b18" />
+
+Note that for all parameters of all versions I use 0-based notation. "Zero, one, two", not "one, two, three".
 
 <img width="482" height="414" alt="image" src="https://github.com/user-attachments/assets/9b14d5ee-065a-4c88-b8b8-8904406883a9" />
 
@@ -44,8 +46,6 @@ d_long and f_long control the shape of the long-term forgetting curve. Greater W
 
 You don't need to understand the math (unless you are a researcher). The simple version is: **the shape of the curve now depends on each card's history and can change after every review, two Stabilities and Difficulty affect it**.
 
-
-
 Also, unlike all previous versions that were designed to work with integer interval lengths (0 days, 1 day, 2 days, etc.), FSRS-7 is designed to work with fractional interval lengths. So **FSRS-7 can finally properly model the forgetting curve during same-day reviews**, which no previous FSRS version was good at.
 
 ## S, Stability
@@ -62,7 +62,7 @@ You can find the training pipeline and hyperparameters in [srs-benchmark](https:
 
 ## LLM usage disclosure
 
-FSRS-7's formulas were developed mostly by humans (http://github.com/1DWalker and https://github.com/Expertium), with some help from LLMs. See https://github.com/Expertium/fsrs-autoresearch.
+FSRS-7's formulas were developed mostly by humans (http://github.com/1DWalker and https://github.com/Expertium), with some help from LLMs. See https://github.com/Expertium/fsrs-autoresearch. For example, the forgettign curve originally had 8 parameters, not 11.
 The optimizer that is used for FSRS-6 and FSRS-7 was greatly sped up entirely by LLMs, with very little human guidance. See https://github.com/Expertium/fsrs-rs-speed-autoresearch.
 
 ## Post-FSRS future
@@ -73,7 +73,7 @@ FSRS-7 is most likely the last version of FSRS. There's simply nothing left to s
 3) It doesn't take into account card content.
 
 In srs-benchmark, RWKV (a type of neural network) addresses issues 1 and 2. RWKV will most likely never be implemented in Anki, but there are forks that use it (and FSRS-7 too). See:
-Desktop: https://github.com/JSchoreels/anki/releases
+Desktop: https://github.com/JSchoreels/anki/releases. I'm planning to make my own fork too, but sadly, I'll have to postpone working on it until mid or late 2027.
 AnkiDroid: https://github.com/Pedrubik2000/kuma3-anki-app/releases
 
 So if you want to try out FSRS-7 and RWKV while Anki still uses FSRS-6, you can try these.
