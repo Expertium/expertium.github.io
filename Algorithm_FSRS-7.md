@@ -110,7 +110,7 @@ The optimizer that is used for FSRS-6 and FSRS-7 was greatly sped up entirely by
 
 FSRS-7 is most likely the last version of FSRS. There's simply nothing left to squeeze in terms of accuracy (more precisely log loss, I just use "accuracy" colloquially since not everyone knows what log loss is). All low-hanging fruit has been picked up, and not-so-low-hanging fruit as well. However, FSRS-7 still has weaknesses:
 
-1) It only uses interval lengths and grades. It doesn't know whether you reviewed this card after doing 5 other reviews or after 500. It doesn't know whether you reviewed it at 7 AM on Tuesday or at 9 PM on Sunday.
+1) It only uses interval lengths and grades. It doesn't know whether you first reviewed this card immediately after creating it or months later. It doesn't know whether you reviewed it after doing 5 other reviews or after 500. It doesn't know whether you reviewed it at 7 AM on Tuesday or at 9 PM on Sunday.
 
 2) It treats all cards as independent, even cards from the same deck and *even siblings* (sibling dispersion in Anki is not part of the FSRS algorithm, it's a separate thing, like a cherry on top of a cake).
 
