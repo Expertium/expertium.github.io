@@ -116,7 +116,7 @@ FSRS-7 is most likely the last version of FSRS. There's simply nothing left to s
 
 3) It doesn't take into account card content.
 
-In srs-benchmark, RWKV (a type of neural network) addresses issues 1 and 2, though it's still in development and [JSchoreels](https://github.com/JSchoreels) (Sound in the Anki Discord server) is releasing new versions regularly. RWKV will most likely never be implemented in Anki, but there are forks that use it (and FSRS-7 too). See:
+In srs-benchmark, RWKV (a type of neural network) addresses issues 1 and 2, though it's still in development and [JSchoreels](https://github.com/JSchoreels) (Sound in the Anki Discord server) is releasing new versions regularly. RWKV will most likely never be implemented in Anki, but there are forks that use it (and FSRS-7 too).
 
 Desktop: [JSchoreels Anki fork releases](https://github.com/JSchoreels/anki/releases). I'm planning to make my own fork too, but sadly, I'll have to postpone working on it until mid- to late 2027.
 
