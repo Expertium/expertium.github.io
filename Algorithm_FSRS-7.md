@@ -114,7 +114,7 @@ FSRS-7 is most likely the last version of FSRS. There's simply nothing left to s
 
 2) It treats all cards as independent, even cards from the same deck and *even siblings* (sibling dispersion in Anki is not part of the FSRS algorithm, it's a separate thing, like a cherry on top of a cake).
 
-3) It doesn't take into account card content.
+3) It doesn't take into account card content: text/audio/images/video.
 
 In srs-benchmark, RWKV (a type of neural network) addresses issues 1 and 2, though it's still in development and [JSchoreels](https://github.com/JSchoreels) (Sound in the Anki Discord server) is releasing new versions regularly. RWKV will most likely never be implemented in Anki, but there are forks that use it (and FSRS-7 too).
 
