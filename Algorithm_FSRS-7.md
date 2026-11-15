@@ -41,7 +41,7 @@ All versions before FSRS-7 used the three-component model of memory: Difficulty,
 Unlike previous versions, where the interval at a given level of desired retention could be calculated analytically (aka using a single formula), this is no longer possible in FSRS-7, so intervals are calculated iteratively.
 Also, in previous versions memory stability—amount of time needed for R to drop from 100% to 90%, I'll call it **S90**—was both a number used internally and a number the user could see. In FSRS-7 S90 is not used internally, inside FSRS-7, but it can still be calculated separately; for example, to be shown in Anki's Stats window.
 
-Also, unlike all previous versions that were designed to work with integer interval lengths (0 days, 1 day, 2 days, etc.), FSRS-7 is designed to work with fractional interval lengths. So **FSRS-7 can finally properly model the forgetting curve during same-day reviews**, which no previous FSRS version was good at.
+Also, unlike all previous versions that were designed to work with integer interval lengths (0 days, 1 day, 2 days, etc.), FSRS-7 is designed to work with fractional interval lengths. So **FSRS-7 can finally properly model the forgetting curve during same-day reviews**, which no previous FSRS version was good at. "5 minutes or 5 hours? Idk, looks the same to me" - FSRS-6.
 
 You don't need to understand the math (unless you are a researcher). The simple version is: **the shape of the curve depends on each card's history and can change after every review. It is affected by the two stability values and by Difficulty.**
 
