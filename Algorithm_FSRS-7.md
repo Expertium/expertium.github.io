@@ -39,17 +39,17 @@ Below is a table that compares the curve shapes of different FSRS versions. As F
 
 All versions before FSRS-7 used the three-component model of memory: Difficulty, Stability, Retrievability. FSRS-7 uses four: stability is split into long-term stability (S_long) and short-term stability (S_short).
 Unlike previous versions, where the interval at a given level of desired retention could be calculated analytically (aka using a single formula), this is no longer possible in FSRS-7, so intervals are calculated iteratively.
-Also, in previous versions memory stability—amount of time needed for R to drop from 100% to 90%, I'll call it S90—was both a number used internally and a number the user could see. In FSRS-7 S90 is not used internally, inside FSRS-7, but it can still be calculated separately; for example, to be shown in Anki's Stats window.
+Also, in previous versions memory stability—amount of time needed for R to drop from 100% to 90%, I'll call it **S90**—was both a number used internally and a number the user could see. In FSRS-7 S90 is not used internally, inside FSRS-7, but it can still be calculated separately; for example, to be shown in Anki's Stats window.
 
 Also, unlike all previous versions that were designed to work with integer interval lengths (0 days, 1 day, 2 days, etc.), FSRS-7 is designed to work with fractional interval lengths. So **FSRS-7 can finally properly model the forgetting curve during same-day reviews**, which no previous FSRS version was good at.
 
 You don't need to understand the math (unless you are a researcher). The simple version is: **the shape of the curve depends on each card's history and can change after every review. It is affected by the two stability values and by Difficulty.**
 
-Here is a comparison of all forgetting curves with default parameters of each FSRS version. S=10 days for all versions except for FSRS-7.
+Here is a comparison of all forgetting curves with default parameters of each FSRS version. S=10 days for all previous versions, for FSRS-7 S_long and S_short are chosen in such a way that S90=10 days; D=5.
 
-<img width="1800" height="1040" alt="fig_r_vs_t" src="https://github.com/user-attachments/assets/33b22cc4-d591-448f-a775-b118e8907f6b" />
+<img width="1800" height="1040" alt="fig_r_vs_t" src="https://github.com/user-attachments/assets/bc03d07c-db23-49bc-a995-80ad040cd74a" />
 
-Notice that FSRS-7's curve falls off very steeply at first, but is flatter than any other curve after that. This specific shape—steep fall-off initially, then flatter later—allowed FSRS-7 to become far more accurate on same-day reviews than FSRS-6 (and modestly more accurate on long-term reviews as well).
+Notice that FSRS-7's curve falls off very steeply at first, but is flatter than any other curve after that. This specific shape—steep fall-off initially, then flatter later—allowed FSRS-7 to become far more accurate on same-day reviews than FSRS-6 (and modestly more accurate on long-term reviews as well). It seems FSRS-7 learned something like "99% retention on same-day reviews isn't real".
 
 ## S, Stability
 
