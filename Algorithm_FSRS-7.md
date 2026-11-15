@@ -24,9 +24,9 @@ In total, FSRS-7's curve has 11 parameters. While it may seem like it will overf
 
 FSRS-7's formula is quite complex, so let me try to explain what each part does.
 
-R is the final output. It's a weighted average of R_short and R_long. The weights *themselves* depend on S_short and S_long. This means that the shape of the forgetting curve can vary not only between users, and not even only between cards, but **even change over the course of a card's lifetime**. Also, the shape of the curve depends on Difficulty now, see W_long and R_long.
+R is the final output. It's a weighted average of R_short and R_long. The weights *themselves* depend on S_short and S_long. This means that the shape of the forgetting curve can vary not only between users, and not even only between cards, but **even change over the course of a card's lifetime**. Also, the shape of the curve depends on difficulty now, see W_long and R_long.
 
-d_short and f_short control the shape of the short-term forgetting curve. W_short controls whether the final curve is more similar to the short-term curve or to the long-term curve. A greater W_short means that the final curve is more similar to the short-term curve. Note that the short-term curve's shape and weight don't depend on Difficulty.
+d_short and f_short control the shape of the short-term forgetting curve. W_short controls whether the final curve is more similar to the short-term curve or to the long-term curve. A greater W_short means that the final curve is more similar to the short-term curve. Note that the short-term curve's shape and weight don't depend on difficulty.
 d_long and f_long control the shape of the long-term forgetting curve. A greater W_long means that the final curve is more similar to the long-term curve. W_long depends on D. R_long also has another factor, e^((w_32 - 0.3)(D-5)). You can think of that factor this way: for difficult cards, it's *as if* time passes faster. Every minute, 3 minutes pass for a difficult card. That may sound silly, but I can't think of a better way to explain it. The long-term curve's shape and weight both depend on D.
 
 Btw, I use 0-based notation for the parameters of all versions: "zero, one, two", not "one, two, three".
