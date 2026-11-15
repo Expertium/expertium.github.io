@@ -16,7 +16,7 @@ In this article, I'll explain how FSRS-7 works. Note that FSRS-7 is not yet avai
 
 Let's start with the forgetting curve. FSRS v3 used an exponential function. In FSRS v4, it was replaced by a power function that provided a better fit to the data. FSRS-4.5 introduced a different power function that provided an even better fit, and FSRS-5 used that curve as well. FSRS-6 added an optimizable parameter (w20), which lets the curve adapt to each user. Finally, FSRS-7 uses a weighted average of two power forgetting curves.
 
-Below, R denotes the probability of recall, S denotes memory stability, D denotes difficulty, and t denotes the time since the last review.
+Below, R denotes the probability of recall, S denotes memory stability, D denotes difficulty, and t denotes the time S_Ince the last review.
 
 <img width="2440" height="3062" alt="fig_forgetting_curves" src="https://github.com/user-attachments/assets/69d8624b-c46c-4957-8ddc-2049d1cf2321" />
 
@@ -61,11 +61,11 @@ Here are the formulas for S_long and S_short. The formula is the same, but it us
 
 The new value of memory stability is equal to the previous value multiplied by a factor that we will call S_Inc (Inc stands for "increase"). S_Inc >= 1. In other words, **memory stability cannot decrease if the review was successful**. Easy, Good, and Hard all count as "success"; Again counts as a memory "lapse". That's why you shouldn't use Hard as a failing grade, only as a passing grade.
 
-**Important takeaway number one: the larger the value of D, the smaller the SInc value. This means that the increase in memory stability for difficult material is smaller than for easy material.**
+**Important takeaway number one: the larger the value of D, the smaller the S_Inc value. This means that the increase in memory stability for difficult material is smaller than for easy material.**
 
-**Important takeaway number two: the larger the value of S, the smaller the SInc value. This means that the higher the stability of the memory, the harder it becomes to make the memory even more stable. Memory stability tends to saturate.**
+**Important takeaway number two: the larger the value of S, the smaller the S_Inc value. This means that the higher the stability of the memory, the harder it becomes to make the memory even more stable. Memory stability tends to saturate.**
 
-**Important takeaway number three: the smaller the value of R, the larger the SInc value. This means that the best time to review your material is when you almost forgot it (provided that you succeeded in recalling it).**
+**Important takeaway number three: the smaller the value of R, the larger the S_Inc value. This means that the best time to review your material is when you almost forgot it (provided that you succeeded in recalling it).**
 If that sounds counter-intuitive, imagine if the opposite was true. Imagine that the best time to review your material is when you know it perfectly (R is very close to 100%). There is no reason to review something if you know it perfectly, so this can't be true.
 
 The formula for the next value of S is different if the user pressed "Again".
@@ -74,7 +74,7 @@ The formula for the next value of S is different if the user pressed "Again".
 
 min(S, S_fail) is necessary to ensure that post-lapse stability can never be greater than stability before the lapse. Interesting fact: in FSRS-6 there was a D-related term, but it turns out that this formula works just fine even without D, so in FSRS-7 it no longer depends on D.
 
-Since both formulas require the previous value of S to calculate the next value, they cannot be used to estimate initial stability on the first review; there is no such thing as a "zeroth review". So the initial stability values for the four answer buttons (Again, Hard, Good, and Easy) are learnable parameters. FSRS-6 estimated them separately from the main optimization. In FSRS-7 all parameters are optimized jointly, without using different methods for different parameters.
+S_Ince both formulas require the previous value of S to calculate the next value, they cannot be used to estimate initial stability on the first review; there is no such thing as a "zeroth review". So the initial stability values for the four answer buttons (Again, Hard, Good, and Easy) are learnable parameters. FSRS-6 estimated them separately from the main optimization. In FSRS-7 all parameters are optimized jointly, without using different methods for different parameters.
 
 <img width="1147" height="678" alt="fig_s_initial" src="https://github.com/user-attachments/assets/6b5ac1de-e72c-414c-967a-96ea35c545c4" />
 
@@ -108,7 +108,7 @@ The optimizer that is used for FSRS-6 and FSRS-7 was greatly sped up entirely by
 
 ## Post-FSRS future
 
-FSRS-7 is most likely the last version of FSRS. There's simply nothing left to squeeze in terms of accuracy (more precisely log loss, I just use "accuracy" colloquially since not everyone knows what log loss is). All low-hanging fruit has been picked up, and not-so-low-hanging fruit as well. However, FSRS-7 still has weaknesses:
+FSRS-7 is most likely the last version of FSRS. There's simply nothing left to squeeze in terms of accuracy (more precisely log loss, I just use "accuracy" colloquially S_Ince not everyone knows what log loss is). All low-hanging fruit has been picked up, and not-so-low-hanging fruit as well. However, FSRS-7 still has weaknesses:
 
 1) It only uses interval lengths and grades. It doesn't know whether you first reviewed this card immediately after creating it or months later. It doesn't know whether you reviewed it after doing 5 other reviews or after 500. It doesn't know whether you reviewed it at 7 AM on Tuesday or at 9 PM on Sunday.
 
