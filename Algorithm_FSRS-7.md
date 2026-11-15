@@ -104,7 +104,7 @@ You can find the training pipeline and hyperparameters in [srs-benchmark](https:
 
 FSRS-7's formulas were developed mostly by humans (Me, [Expertium](https://github.com/Expertium), with some assistance from Alex ([1DWalker](https://github.com/1DWalker))), with some help from LLMs. See the [FSRS autoresearch repository](https://github.com/Expertium/fsrs-autoresearch). For example, the forgetting curve originally had 8 parameters, not 11. And originally I wasn't very keen on the idea of splitting S into S_long and S_short, but the results were too good to pass up.
 
-The optimizer that is used for FSRS-6 and FSRS-7 was greatly sped up entirely by LLMs, with very little human guidance. See the [optimizer speedup project](https://github.com/Expertium/fsrs-rs-speed-autoresearch). FSRS-6 parameters are now optimized faster, and FSRS-7's optimizer will be even faster.
+The optimizer that is used for FSRS-6 and FSRS-7 was greatly sped up entirely by LLMs, with very little human guidance. See the [optimizer speedup repository](https://github.com/Expertium/fsrs-rs-speed-autoresearch). FSRS-6 parameters are now optimized faster, and FSRS-7's optimizer will be even faster.
 
 ## Post-FSRS future
 
