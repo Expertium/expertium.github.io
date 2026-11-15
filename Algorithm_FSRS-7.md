@@ -33,7 +33,7 @@ Btw, I use 0-based notation for the parameters of all versions: "zero, one, two"
 
 <img width="482" height="414" alt="image" src="https://github.com/user-attachments/assets/9b14d5ee-065a-4c88-b8b8-8904406883a9" />
 
-Below is a table that compares the curve shapes of different FSRS versions. As FSRS evolved, its curve shape was changed to better fit [the data from the 10k dataset](https://huggingface.co/datasets/open-spaced-repetition/anki-revlogs-10k). FSRS-6 made the curve shape adaptive, so it differs between users, and FSRS-7 made it even more adaptive. I would even go as far as to say that increasing the expressiveness of FSRS formulas (not just the forgetting curve) was the main driving force behind all FSRS version upgrades.
+Below is a table that compares the curve shapes of different FSRS versions. As FSRS evolved, its curve shape was changed to better fit [the data from the 10k dataset](https://huggingface.co/datasets/open-spaced-repetition/anki-revlogs-10k). FSRS-6 made the curve shape adaptive, so it differs between users, and FSRS-7 made it even more adaptive. I would even go as far as to say that increasing the expressiveness of FSRS formulas (not just the forgetting curve) was the main driving force behind all FSRS version upgrades. Check out [https://imgur.com/a/calibration-of-different-fsrs-versions-KfJ32EV](https://imgur.com/a/calibration-of-different-fsrs-versions-KfJ32EV) to see how FSRS's calibration improved as it evolved.
 
 <img width="2964" height="908" alt="fig_curve_shape_table" src="https://github.com/user-attachments/assets/78a513c4-81bf-40ea-91ba-a79be7dd3580" />
 
