@@ -43,7 +43,7 @@ Also, in previous versions memory stability—amount of time needed for R to dro
 
 Also, unlike all previous versions that were designed to work with integer interval lengths (0 days, 1 day, 2 days, etc.), FSRS-7 is designed to work with fractional interval lengths. So **FSRS-7 can finally properly model the forgetting curve during same-day reviews**, which no previous FSRS version was good at. "5 minutes or 5 hours? Idk, looks the same to me" - FSRS-6.
 
-You don't need to understand the math (unless you are a researcher). The simple version is: **the shape of the curve depends on each card's history and can change after every review. It is affected by the two stability values and by Difficulty.**
+You don't need to understand the math (unless you are a researcher). The simple version is: **the shape of the curve depends on each card's history and can change after every review. It is affected by the two stability values and by difficulty.**
 
 Here is a comparison of all forgetting curves with default parameters of each FSRS version. S=10 days for all previous versions, for FSRS-7 S_long and S_short are chosen in such a way that S90=10 days; D=5.
 
